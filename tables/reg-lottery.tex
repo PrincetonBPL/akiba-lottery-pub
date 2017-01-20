@@ -1,0 +1,19 @@
+\begin{table}[htbp]\centering
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\caption{Treatment effects - Lottery usage}
+\begin{tabular}{l*{4}{c}}
+\toprule
+          &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}\\
+          &\multicolumn{1}{c}{Regret}&\multicolumn{1}{c}{Regret with controls}&\multicolumn{1}{c}{\specialcell{Lottery Mean\\(SD)}}&\multicolumn{1}{c}{N}\\
+\midrule
+Do you trust that the lottery was fair?&0.22$^{*}$&     0.18&        0&      185\\
+          &   (0.13)&   (0.14)&   (1.00)&         \\
+          &   [1.00]&   [1.00]&         &         \\
+How good did you feel when you won a prize?&     0.21&     0.20&        0&      185\\
+          &   (0.14)&   (0.14)&   (1.00)&         \\
+          &   [1.00]&   [1.00]&         &         \\
+How bad did you feel when you didn't win a prize?&     0.10&     0.06&        0&      185\\
+          &   (0.15)&   (0.16)&   (1.00)&         \\
+          &   [1.00]&   [1.00]&         &         \\
+\midrule Joint (\emph{p}-value)&     0.30&     0.30&         &         \\
+\hline \multicolumn{5}{p{\linewidth}}{\footnotesize \emph{Notes:} Column 1 report OLS estimates for the effect of the regret treatment on the treated. Column 2 reports the estimate controlling for baseline covariates. Standard errors are in parentheses and FWER adjusted \emph{p}-values are in brackets. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level.}\\ \end{tabular}\\ \end{table}

@@ -1,0 +1,231 @@
+\documentclass[10pt]{article}
+\usepackage[strict]{changepage}
+\usepackage{longtable}
+\usepackage{pdflscape}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{geometry}
+\usepackage{placeins}
+\usepackage{caption}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{threeparttable}
+\usepackage{adjustbox}
+
+\makeatletter
+\newcommand*{\centerfloat}{%
+  \parindent \z@
+  \leftskip \z@ \@plus 1fil \@minus \textwidth
+  \rightskip\leftskip
+  \parfillskip \z@skip}
+\makeatother
+
+\newcommand{\specialcell}[2][c]{%
+  \begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
+
+\begin{document}
+
+\title{Using Lotteries to Encourage Saving: Appendix\thanks{For online publication only.}}
+
+\author{Merve Akbas\thanks{Department of Economics, Duke University. \protect\href{mailto:merve.akbas@duke.edu}{merve.akbas@duke.edu}}, Dan Ariely\thanks{Fuqua School of Business, Duke University. \protect\href{mailto:dan@danariely.com}{dan@danariely.com}}, and Chaning Jang\thanks{Department of Psychology, Princeton University and The Busara Center for Behavioral Economics. \protect\href{mailto:cjang@princeton.edu}{cjang@princeton.edu}}}
+
+\maketitle
+
+\newpage
+
+\tableofcontents
+
+\newpage
+
+\appendix
+
+\section{Description of variables}
+
+	We estimate treatment effects on measured savings behavior. The main outcome variables we are interested in are:
+
+		\begin{enumerate}
+		\item Average savings over the entire study period.
+		\item Average savings over the first and second 30-day period.
+		\item Average number of active days and average number of transactions.
+		\item Average length of the streaks, i.e. the highest number of consecutive days with a positive daily balance for each person.
+		\end{enumerate}
+
+	Aside from the overall savings behavior, we additionally estimate the effect of the program on:
+
+		\begin{enumerate}
+		\item Amount withdrawn mid-project
+		\item Monthly savings
+		\item Whether subject saves
+		\item Monthly M-Pesa savings
+		\item Whether subject saves with a ROSCA
+		\item Temptation to gamble
+		\item Gambling behavior
+		\item How often subject discussed savings program with family and friends
+		\item Trust in the savings program
+		\item Satisfaction with saving behavior in the program
+		\item Continuation with the savings program
+		\item Self-perception as a saver
+		\item Trust in the savings program
+		\end{enumerate}
+
+\section{Experiment}
+
+	\clearpage
+
+\section{Summary statistics}
+
+	\subsection{Baseline variables}
+
+		\input{../../tables/sum-ysum1.tex}
+		\input{../../tables/sum-ysum2.tex}
+		\input{../../tables/sum-ysum3.tex}
+		\input{../../tables/sum-ysum4.tex}
+		\input{../../tables/sum-ysum5.tex}
+
+	\clearpage
+
+	\subsection{Endline variables}
+
+		\input{../../tables/tab-lottery-final.tex}
+		\input{../../tables/tab-select.tex}
+		\begin{landscape} \input{../../tables/sum-ysum6.tex} \end{landscape}
+		\begin{landscape} \input{../../tables/sum-ysum7.tex} \end{landscape}
+		\begin{landscape} \input{../../tables/sum-ysum8.tex} \end{landscape}
+		\begin{landscape} \input{../../tables/sum-ysum9.tex} \end{landscape}
+
+	\clearpage
+
+\section{Attrition}
+
+	\input{../../tables/tab-balance.tex}
+
+	\input{../../tables/reg-attr.tex}
+	\input{../../tables/sum-attr1.tex}
+	\input{../../tables/sum-attr2.tex}
+	\input{../../tables/sum-attr3.tex}
+	\input{../../tables/sum-attr4.tex}
+
+	\input{../../tables/sum-attrtreat1.tex}
+	\input{../../tables/sum-attrtreat2.tex}
+	\input{../../tables/sum-attrtreat3.tex}
+	\input{../../tables/sum-attrtreat4.tex}
+
+	\clearpage
+
+\section{Treatment effects}
+
+	\subsection{Main effects}
+
+		\begin{landscape} \input{../../tables/reg-mobile.tex} \end{landscape}
+		\begin{landscape} \input{../../tables/reg-panel.tex} \end{landscape}
+		\begin{landscape} \input{../../tables/reg-save.tex} \end{landscape}
+		\begin{landscape} \input{../../tables/reg-gamble.tex} \end{landscape}
+		\begin{landscape} \input{../../tables/reg-akiba.tex} \end{landscape}
+		\begin{landscape} \input{../../tables/reg-lottery.tex} \end{landscape}
+		\begin{landscape} \input{../../tables/reg-self.tex} \end{landscape}
+		\begin{landscape} \input{../../tables/reg-select.tex} \end{landscape}
+
+	\clearpage
+
+	\subsection{Heterogeneous effects}
+
+		\input{../../tables/het-lottery.tex}
+		\input{../../tables/het-regret.tex}
+		\begin{landscape} \input{../../tables/het-demo_children_0.tex} \end{landscape}
+		\begin{landscape} \input{../../tables/het-demo_married_0.tex} \end{landscape}
+		\begin{landscape} \input{../../tables/het-demo_female_0.tex} \end{landscape}
+		\begin{landscape} \input{../../tables/het-demo_young_0.tex} \end{landscape}
+		\begin{landscape} \input{../../tables/het-demo_stdschool_0.tex} \end{landscape}
+		\begin{landscape} \input{../../tables/het-demo_formschool_0.tex} \end{landscape}
+		\begin{landscape} \input{../../tables/het-gam_mediancpgi_z_0.tex} \end{landscape}
+		\begin{landscape} \input{../../tables/het-gam_medianindex_0.tex} \end{landscape}
+		\begin{landscape} \input{../../tables/het-labor_dependants_0.tex} \end{landscape}
+		\begin{landscape} \input{../../tables/het-labor_employed_0.tex} \end{landscape}
+		\begin{landscape} \input{../../tables/het-labor_isdependant_0.tex} \end{landscape}
+		\begin{landscape} \input{../../tables/het-labor_regularinc_0.tex} \end{landscape}
+		\begin{landscape} \input{../../tables/het-labor_selfemployed_0.tex} \end{landscape}
+		\begin{landscape} \input{../../tables/het-lnlabor_medianinc_0.tex} \end{landscape}
+		\begin{landscape} \input{../../tables/het-lnsave_mediansave_0.tex} \end{landscape}
+		\begin{landscape} \input{../../tables/het-pref_riskaverse_0.tex} \end{landscape}
+		\begin{landscape} \input{../../tables/het-save_dosave_0.tex} \end{landscape}
+		\begin{landscape} \input{../../tables/het-pref_medianloc_0.tex} \end{landscape}
+		\begin{landscape} \input{../../tables/het-pref_medianindiff_0.tex} \end{landscape}
+
+	\clearpage
+
+	\subsection{Panel treatment effects}
+
+		\input{../../tables/panel-ar.tex}
+		\input{../../tables/panel-dl.tex}
+
+	\clearpage
+
+\section{Visualization}
+
+	\subsection{Main treatment effects by risk aversion}
+
+		\begin{figure}[!htb]
+		\centering
+		\caption{Treatment effect by risk aversion: Total deposits made}
+		\centerfloat
+		\includegraphics{../../figures/line-mobile_totdepositsbyrisk.pdf}
+		\end{figure}
+
+	\clearpage
+
+	\subsection{Savings behavior over project period}
+
+		\begin{figure}[!htb]
+		\centering
+		\caption{Average deposit amount on day t}
+		\centerfloat
+		\includegraphics{../../figures/line-depositamount.pdf}
+		\end{figure}
+
+		\begin{figure}[!htb]
+		\centering
+		\caption{Amount deposited by day t}
+		\centerfloat
+		\includegraphics{../../figures/line-cumdepositamount.pdf}
+		\end{figure}
+
+		\begin{figure}[!htb]
+		\centering
+		\caption{No. of deposits made on day t}
+		\centerfloat
+		\includegraphics{../../figures/line-deposits.pdf}
+		\end{figure}
+
+		\begin{figure}[!htb]
+		\centering
+		\caption{No. of deposits made by day t}
+		\centerfloat
+		\includegraphics{../../figures/line-cumdeposits.pdf}
+		\end{figure}
+
+		\begin{figure}[!htb]
+		\centering
+		\caption{Average balance on day t}
+		\centerfloat
+		\includegraphics{../../figures/line-balance.pdf}
+		\end{figure}
+
+	\clearpage
+
+	\subsection{Panel treatment effects}
+
+		\begin{figure}[!htb]
+		\centering
+		\caption{Autoregressive model - Saved on day t}
+		\centerfloat
+		\includegraphics{../../figures/line-ar.pdf}
+		\end{figure}
+
+		\begin{figure}[!htb]
+		\centering
+		\caption{Distributed lag model - Saved on day t}
+		\centerfloat
+		\includegraphics{../../figures/line-dl.pdf}
+		\end{figure}
+
+\end{document}

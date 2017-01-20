@@ -1,0 +1,99 @@
+{smcl}
+{hline}
+help for {hi:pstest}
+{hline}
+
+{title:Covariate imbalance testing}
+
+{p 8 21 2}{cmdab:pstest}
+{it:varlist}
+{cmd:[,}
+	{cmdab:sum:mary}
+	{cmdab:qui:etly}
+	{cmdab:mw:eight}{cmd:(}{it:varname}{cmd:)}
+	{cmdab:t:reated}{cmd:(}{it:varname}{cmd:)}
+	{cmdab:sup:port}{cmd:(}{it:varname}{cmd:)]}
+
+{title:Description}
+
+{p 4 4 2}{cmd:pstest} calculates several measures of the balancing of the variables in {it:varlist}
+before and after matching. In particular:
+
+{p 4 4 2}For each variable in {it:varlist} it calculates
+
+{p 8 8 2}(a) t-tests for equality of means in the treated and non-treated groups, both before
+and after matching. T-tests are based on a regression of the variable on a treatment indicator.
+Before matching this is an unweighted regression on the whole sample, after matching the regression is weighted using the
+matching weight variable _weight and based on the on-support sample;
+
+{p 8 8 2}(b) the standardised bias before and after matching, together with the achieved percentage reduction
+in abs(bias).
+The standardised bias is the difference of the sample means in the treated and non-treated (full or
+matched) sub-samples as a percentage of the square root of the average of the
+sample variances in the treated and non-treated groups (formulae from Rosenbaum and Rubin, 1985).
+
+{p 4 4 2}It optionally also calculates overall measures of covariate
+imbalance before and fater matching:
+
+{p 8 8 2}(a) Pseudo R2 from probit estimation of the conditional treatment probability (propensity score)
+on on all the variables in {it:varlist} before matching, and Pseudo R2 from the same probit
+on the {cmd:matched} samples. Also displayed are the corresponding P-values of the
+likelihood-ratio test of the joint insignificance of all the regressors before and after matching;
+
+{p 8 8 2}(b) summary indicators of the distribution of the abs(bias) before and after matching;
+		
+{p 4 4 2}{cmd:pstest} can be called with only a {it:varlist} directly after {cmd:psmatch2} to inspect
+the extent of covariate balancing.
+
+{p 4 4 2}If option {cmd:summary} is specified, {cmd:pstest} returns the following diagnostics of
+covariate balancing before and after matching: {it:r(meanbiasbef)} and {it:r(meanbiasaft)} the mean absolute standardised bias,  
+{it:r(medbiasbef)} and {it:r(medbiasaft)} the median absolute standardised bias,  
+{it:r(r2bef)} and {it:r(r2aft)} the pseudo R2 from probit estimation and
+{it:r(chiprobbef)} and {it:r(chiprobaft)} the P-value of the likelihood-ratio test.
+
+
+{title:Important notes}
+
+{p 4 4 2}{cmd:pstest} only considers balancing for the treated.
+
+{p 4 4 2}Default local linear regression matching first smooths the outcome and
+then performs nearest neighbor matching. {cmd:pstest} does not make sense in this case since
+more controls are used to calculate the counterfactual outcome than the nearest neighbor only.
+
+
+{title:Options}
+
+{p 4 8 2}{cmdab:mw:eight}{cmd:(}{it:varname}{cmd:)} Weight of matches. Default is _weight left from the latest psmatch2 call.
+
+{p 4 8 2}{cmdab:t:reated}{cmd:(}{it:varname}{cmd:)} Treatment indicator (0/1).
+
+{p 4 8 2}{cmdab:sup:port}{cmd:(}{it:varname}{cmd:)} Common support indicator (0/1).
+
+{p 4 8 2}{cmdab:sum:mary} Display summary indicators of the distribution of the abs(bias)
+before and after matching; pseudo R2 from a probit of treatment status on on all the variables
+in {it:varlist} before matching as well as on the {cmd:matched} samples; and the corresponding P-values of the
+likelihood-ratio test of the joint insignificance of all the regressors before and after matching;
+
+{p 4 8 2}{cmdab:qui:etly} Do not display the table with the reduction in covariate imbalance
+after propensity score matching for each variable in {it:varlist}. To be used together with
+{cmdab:sum:mary}.
+
+{title:Examples}
+
+    {inp: . pstest age gender foreign exper, sum}
+    {inp: . pstest age gender foreign exper , t(training) w(altweight) }
+
+{title:Also see}
+
+{p 4 4 2}The commands {help psmatch2}, {help psgraph}.
+
+{title:Background Reading}
+
+{p 0 2}Rosenbaum, P.R. and Rubin, D.B. (1985), "Constructing a Control Group Using Multivariate Matched Sampling Methods that Incorporate the Propensity Score", {it:The American Statistician 39(1)}, 33-38.
+
+{title:Author}
+
+{p 4 4 2}Edwin Leuven, École Nationale de la Statistique et de l'Administration Économique (ENSAE). If
+you observe any problems {browse "mailto:leuven@ensae.fr"}.
+
+{p 4 4 2}Barbara Sianesi, Institute for Fiscal Studies, London, UK.

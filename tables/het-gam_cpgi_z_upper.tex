@@ -1,0 +1,23 @@
+\begin{table}[htbp]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \caption{Heterogeneous effects - Primary outcomes by above median cpgi} \label{tab:het-gam_cpgi_z_upper} \maxsizebox*{\paperwidth}{\paperheight}{ \begin{threeparttable} \begin{tabular}{l*{5}{c}} \toprule
+                &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}&\multicolumn{1}{c}{(5)}\\
+                &\multicolumn{1}{c}{Log avg. savings}&\multicolumn{1}{c}{Log total savings}&\multicolumn{1}{c}{Total no. of deposits}&\multicolumn{1}{c}{Longest savings streak}&\multicolumn{1}{c}{Withdrew mid-project}\\
+\midrule
+Lottery         &    -0.15         &    -0.07         &     3.19         &     3.05\sym{**} &    -0.03         \\
+                &   (0.13)         &   (0.30)         &   (3.06)         &   (1.43)         &   (0.09)         \\
+Lottery $\times$ \\ Above median CPGI&    -0.16         &    -0.05         &     1.21         &    -1.86         &     0.21         \\
+                &   (0.23)         &   (0.49)         &   (4.25)         &   (1.79)         &   (0.13)         \\
+Regret          &    -0.19         &     0.11         &     4.77         &     3.71\sym{**} &    -0.01         \\
+                &   (0.13)         &   (0.32)         &   (3.21)         &   (1.49)         &   (0.09)         \\
+Regret $\times$ \\ Above median CPGI&    -0.16         &    -0.23         &     0.35         &    -2.55         &     0.13         \\
+                &   (0.22)         &   (0.49)         &   (4.33)         &   (1.87)         &   (0.14)         \\
+Above median CPGI&     0.14         &    -0.02         &    -3.05         &    -0.20         &    -0.12         \\
+                &   (0.18)         &   (0.35)         &   (2.56)         &   (0.82)         &   (0.10)         \\
+Constant        &    -0.34\sym{***}&     1.81\sym{***}&    13.56\sym{***}&     2.98\sym{***}&     0.67\sym{***}\\
+                &   (0.10)         &   (0.22)         &   (2.00)         &   (0.56)         &   (0.06)         \\
+\midrule
+Observations    &      272         &      272         &      306         &      306         &      306         \\
+\(R^{2}\)       &    0.030         &    0.003         &    0.025         &    0.041         &    0.012         \\
+Control mean    &    -0.27         &     1.85         &    12.68         &     3.10         &     0.62         \\
+Lottery \emph{p}-value&     0.11         &     0.76         &     0.14         &     0.27         &     0.07         \\
+Regret \emph{p}-value&     0.05         &     0.75         &     0.08         &     0.31         &     0.22         \\
+\bottomrule \end{tabular} \begin{tablenotes}[flushleft] \footnotesize \item \emph{Notes:} This table reports OLS estimates of the treatment effect and its interaction with baseline. Standard errors are in parentheses. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level. We also report the \(p\)-values for joint tests on the direct treatment effect conditional on the baseline covariate $= 1$. \end{tablenotes} \end{threeparttable} } \end{table}

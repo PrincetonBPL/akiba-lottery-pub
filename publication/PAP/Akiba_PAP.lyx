@@ -1,0 +1,1228 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+\usepackage{achicago}
+\usepackage{amsmath}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing onehalf
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1.5in
+\topmargin 1.5in
+\rightmargin 1.5in
+\bottommargin 1.5in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Using Lotteries to Encourage Saving: A Pre-Analysis Plan
+\end_layout
+
+\begin_layout Author
+Merve Akbas
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Department of Economics, Duke University.
+ merve.akbas@duke.edu
+\end_layout
+
+\end_inset
+
+, Dan Ariely
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Fuqua School of Business, Duke University.
+ dan@danariely.com
+\end_layout
+
+\end_inset
+
+, and Chaning Jang
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Department of Psychology, Princeton University and Busara Center for Behavioral
+ Economics.
+ cjang@princeton.edu
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Abstract
+This paper describes the analysis plan for a randomized controlled trial
+ evaluating the impact of a lottery-linked savings program on informal workers
+ in Nairobi, Kenya.
+ In 2014, we designed and administered a mobile savings program to 311 randomly
+ sampled residents from the Kibera and Viwandani settlements.
+ This study aims to test the effect of using lotteries to increase demand
+ for commitment savings by comparing the lottery-linked savings program
+ with a standard interest-bearing program.
+ This plan outlines our experimental design, identification strategy, and
+ outcomes of interest.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Introduction
+\end_layout
+
+\begin_layout Standard
+Although access to savings accounts for the poor has improved in recent
+ years, demand for savings and usage of savings accounts is a stumbling
+ block for full financial inclusion 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+shortcite{dupas_challenges_2014}
+\end_layout
+
+\end_inset
+
+.
+ Researchers have developed and tested new and innovative ways to spur demand
+ – including text messages, puzzle pieces, lockboxes and deposit collectors,
+ with varying degrees of success 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+shortcite{ashraf_deposit_2006}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+shortcite{ashraf_tying_2006}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+shortcite{dupas_why_2013}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+shortcite{karlan_getting_2010}
+\end_layout
+
+\end_inset
+
+.
+ Our study proposes to test a scheme that has been around for thousands
+ of years and seen as anathema to savers – lotteries.
+ Although lotteries are derisively referred to as a “tax on the poor”, lottery-b
+ased savings products have attracted savers for hundreds of years 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+shortcite{murphy_lotteries_2005}
+\end_layout
+
+\end_inset
+
+.
+ Versions of these accounts exist in various forms around the globe 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+shortcite{kearney_making_2010}
+\end_layout
+
+\end_inset
+
+, but none have been rigorously evaluated as a method of attracting deposits
+ from the poor.
+ Recent experimental evidence has shown that lottery incentives holds promise
+ in increasing savings among the poor, unbanked, and gambling prone population
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+shortcite{atalay_savings_2014}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+shortcite{filiz-ozbay_lottery_2014}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+This study aims to test the effect of using lotteries to increase demand
+ for commitment savings.
+ We created a savings mechanism whereby the act of saving enters customers
+ into a lottery.
+ Lottery-linked deposit accounts work by pooling interest payments and distribut
+ing them in bulk to fewer recipients rather than piecemeal to all.
+ In our mechanism, winners of the lottery receive additional funds into
+ their savings account, while those who do not win receive no interest.
+ 
+\end_layout
+
+\begin_layout Standard
+We are primarily interested in learning if we can use lottery devices as
+ a way to encourage the poor to save.
+ Specifically, we are interested in understanding how behavioral nudges
+ and the attractiveness of gambling changes a person’s perception towards
+ act of saving.
+ Our first hypothesis is that lottery linked deposit accounts will have
+ significantly higher take up and usage rates compared to similarly structured
+ interest bearing accounts with an equivalent expected return.
+ Our second hypothesis is that framing matters.
+ We believe that framing the product that maximizes regret will significantly
+ increase take-up and usage rates compared to an equivalent product that
+ does not mention regret.
+ 
+\end_layout
+
+\begin_layout Section
+Savings Program
+\end_layout
+
+\begin_layout Standard
+We implemented our mobile-phone based savings program over Safaricom’s 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+emph{Sambaza}
+\end_layout
+
+\end_inset
+
+ airtime sharing service.
+ Using 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+emph{Sambaza}
+\end_layout
+
+\end_inset
+
+, Safaricom users can send airtime to each other free of charge.
+ Subjects saved into our program by sending airtime to a designated project
+ phone that held the airtime in an account for each user.
+ We chose to run our savings program via airtime rather than M-Pesa to avoid
+ the fees involved with conversion to and from M-Pesa.
+\end_layout
+
+\begin_layout Standard
+Subjects received two SMS messages every morning after the first morning
+ of the project period.
+ The first message was an end-of-day message that reported how much the
+ subject saved the previous day, how much the subject earned through interest
+ or winnings, and their total balance.
+ An hour later, subjects received a beginning-of-day message encouraging
+ them to save that day.
+ Subjects were allowed to send in savings at any time but any savings sent
+ in after the end-of-day message would be counted towards the next day’s
+ total.
+ We used a custom-developed administrative system to manage the savings
+ program.
+ This system logged airtime sent to our project phone, maintained an internal
+ ledger of balances, sent automated SMS confirmations after every transaction,
+ and conducted the daily lottery game.
+\end_layout
+
+\begin_layout Standard
+Subjects were enrolled in the savings program for a total of 60 days, split
+ into consecutive 30-day periods.
+ After the first 30 days, subjects were allowed to withdraw any amount of
+ their savings up to the total balance.
+ Outside of this opportunity, regular withdrawals were not allowed.
+ If a subject wished to withdraw their balance, they were required to withdraw
+ from the entire experiment.
+ 
+\end_layout
+
+\begin_layout Standard
+At the end of our experiment, we returned subjects’ savings and accumulated
+ interest or winnings via an M-Pesa transfer.
+ This M-Pesa transfer included the extra withdrawal fees needed to cash
+ out an amount equal to the subject’s full account balance.
+ Therefore, subjects paid no explicit fees to participate in our program.
+\end_layout
+
+\begin_layout Subsection
+Treatment groups
+\end_layout
+
+\begin_layout Standard
+Subjects were randomized into one of three treatment groups and had the
+ chance to earn either daily interest (in the form of matching) or play
+ a daily lottery depending on assignment.
+\end_layout
+
+\begin_layout Subsubsection
+Interest (control group)
+\end_layout
+
+\begin_layout Standard
+Subjects in the control group participated in a standard, interest-bearing
+ savings program.
+ Subjects earned a 5% matching contribution on any amount that they saved
+ in a particular day.
+\end_layout
+
+\begin_layout Subsubsection
+Lottery 
+\end_layout
+
+\begin_layout Standard
+After saving a non-zero amount, subjects earned a lottery ticket - transmitted
+ via text message, which could win a cash prize in proportion to the amount
+ they saved.
+ A lottery ticket was a random sequence of four numbers between 1 and 9,
+ inclusive.
+ Each day, our administrative system randomly generated a winning sequence
+ of four numbers.
+ Prizes were awarded according to how well a subject’s lottery numbers matched
+ the winning numbers.
+ If the first 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+emph{or}
+\end_layout
+
+\end_inset
+
+ second numbers matched, a 10% match of savings was awarded.
+ If 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+emph{both}
+\end_layout
+
+\end_inset
+
+ the first 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+emph{and}
+\end_layout
+
+\end_inset
+
+ second numbers matched, a 100% match of savings was awarded.
+ Finally if all numbers matched, a prize of 200 times daily savings was
+ awarded.
+ The earnings on this lottery ticket were equal in expectation to the 5%
+ match earned in the control group.
+ Our system processed the matching of lottery numbers and entered winnings
+ into the internal ledger.
+ Subjects could only earn one lottery ticket per day.
+\end_layout
+
+\begin_layout Subsubsection
+Lottery+Regret
+\end_layout
+
+\begin_layout Standard
+This scheme is similar to the Lottery treatment but subjects in this third
+ group were sent lottery tickets in their beginning-of-day text message.
+ These tickets only became redeemable, however, after subjects had saved
+ a non-zero amount that day.
+ Subjects with winning lottery tickets who did not save that day did not
+ win money from their lottery ticket.
+ However, they were informed of the amount they 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+emph{would have}
+\end_layout
+
+\end_inset
+
+ won in their end-of-day message the next morning.
+ 
+\end_layout
+
+\begin_layout Section
+Study Design
+\end_layout
+
+\begin_layout Standard
+This study was conducted in conjunction with the Busara Center for Behavioral
+ Economics in Nairobi, Kenya.
+ We recruited 311 subjects through Busara’s subject pool.
+ Participants were first invited to the lab at Busara where they completed
+ a computerized questionnaire and played various behavioral games.
+ The following outlines the schedule of tasks during the lab portion of
+ the study:
+\end_layout
+
+\begin_layout Enumerate
+Risk preference elicitation 
+\end_layout
+
+\begin_layout Enumerate
+Time preference elicitation
+\end_layout
+
+\begin_layout Enumerate
+Lottery task
+\end_layout
+
+\begin_layout Enumerate
+Locus of control
+\end_layout
+
+\begin_layout Enumerate
+Baseline questionnaire
+\end_layout
+
+\begin_layout Standard
+Following the lab session, subjects were randomly assigned to one of the
+ three treatment groups.
+ Subjects were then taught about their assigned savings program.
+ Each subject was given KSH 20 airtime credit and asked to practice saving
+ using the Sambaza mechanism.
+ Subjects were then sent home with business-card sized handouts which described
+ their savings program.
+ We provided subjects simple instructions for saving and listed the number
+ to our project phone.
+ This was the number through which the savings program operated that also
+ functioned as a help line for subjects.
+\end_layout
+
+\begin_layout Standard
+Lab sessions took place over five weeks in May and June of 2014.
+ Subjects were enrolled in the our savings program for two consecutive periods
+ of 30 days starting from the day of a subject’s lab session.
+ On a subject’s 30th day, a field officer called them and asked if they
+ wished to withdraw any amount of their balance.
+ Subjects who requested withdrawals were sent M-Pesa tranfers equal to their
+ request plus the M-Pesa withdrawal fee.
+ These withdrawals were recorded in our system’s ledger.
+ 
+\end_layout
+
+\begin_layout Standard
+Following this, subjects moved on to their second 30-day savings period.
+ Subjects were called and notified a few days before the end of their second
+ 30-day period that the program would be ending soon.
+ After receiving the end-of-day message on their 60th day, subject were
+ unenrolled from the program and were no longer allowed to save.
+ Field officers called subjects to confirm final balances and sent M-Pesa
+ transfers equal to total balance plus withdrawal fee shortly after.
+ All subjects had completed the program by August 2014.
+ In September 2014, we called subjects and conducted an endline survey.
+ We obtained endline surveys for all but 27 of the 311 subjects.
+ 
+\end_layout
+
+\begin_layout Section
+Identification Strategy
+\end_layout
+
+\begin_layout Standard
+Our study has two main goals.
+ The first goal is to measure treatment effects on a number of key outcome
+ variables outlined in section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Outcomes-of-Interest"
+
+\end_inset
+
+.
+ The second goal is to explore the link between actual saving behavior and
+ lab measures such as risk and time preferences.
+ Below we explain our analysis plan for each of these goals separately.
+ 
+\end_layout
+
+\begin_layout Subsection
+Treatment effects
+\end_layout
+
+\begin_layout Standard
+We use the following econometric specification for basic identification
+ of the treatment effect.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+y{}_{i,t}=\beta_{0}+\beta_{1}LOTTERY{}_{i}+\beta_{2}REGRET_{i}+\delta y_{i,t=0}+\varepsilon_{i}\label{eq:4-1-1}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where 
+\begin_inset Formula $Y_{i,t}$
+\end_inset
+
+ refers to a host of outcome variables for individual 
+\begin_inset Formula $i$
+\end_inset
+
+, 
+\begin_inset Formula $LOTTERY$
+\end_inset
+
+ indicates assignment to the lotter group, and 
+\begin_inset Formula $REGRET$
+\end_inset
+
+ indicates assignment to the lottery with regret framing group.
+ The omitted group is the interest group.
+ 
+\begin_inset Formula $\beta_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta_{2}$
+\end_inset
+
+ identify the treatment effect.
+ Following 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+shortciteN{mckenzie_beyond_2012}
+\end_layout
+
+\end_inset
+
+, where possible we will estimate equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:4-1-1"
+
+\end_inset
+
+ conditional on the baseline level of the individual outcome 
+\begin_inset Formula $y_{i,t=0}$
+\end_inset
+
+ to improve statistical power.
+ We will use an 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+emph{F}
+\end_layout
+
+\end_inset
+
+-test to compare the joint effect of both lottery treatments to the comparison
+ group.
+ We also extend this analysis by re-analyzing the treatment effects on a
+ restricted timeframe of the first 30 days (the first part of the trial),
+ 15 days and 10 days periods.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Heterogeneous treatment effects
+\end_layout
+
+\begin_layout Standard
+We explore the extent to which the savings program produces heterogeneous
+ treatment effects.
+ We use the following specification for this analysis:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{align*} y{}_{i,t}= & 
+\backslash
+beta_{0}+
+\backslash
+beta_{1}LOTTERY{}_{i}+
+\backslash
+beta_{2}REGRET_{i} 
+\backslash
+
+\backslash
+  &+
+\backslash
+beta_{3}LOTTERY{}_{i}
+\backslash
+times X_{i,t=0}+
+\backslash
+beta_{4}REGRET_{i}
+\backslash
+times X_{i,t=0} 
+\backslash
+
+\backslash
+ & +
+\backslash
+beta_{5}X_{i,t=0}+
+\backslash
+delta y_{i,t=0}+
+\backslash
+varepsilon_{i} 
+\backslash
+end{align*}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\begin{equation}
+y{}_{i,t}=\beta_{0}+\beta_{1}LOTTERY{}_{i}+\beta_{2}REGRET_{i}+\beta_{3}LOTTERY{}_{i}\times X_{i,t=0}+\beta_{4}REGRET_{i}\times X_{i,t=0}+\beta_{5}X_{i,t=0}+\delta y_{i,t=0}+\varepsilon_{i}\label{eq:4-1-1-1}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where 
+\begin_inset Formula $X_{i,t=0}$
+\end_inset
+
+ refers to the interaction term for individual 
+\begin_inset Formula $i$
+\end_inset
+
+ at baseline 
+\begin_inset Formula $t=0$
+\end_inset
+
+.
+ To do this, we first look at the interaction between treatment effects
+ and gender, income level, and previous savings patterns, education level,
+ marital status, as well as risk, time and gambling preferences.
+ As a second step, we investigate whether there is any subgroup for which
+ we observe particularly different treatment effects than the rest of the
+ sample.
+ To this end, we identify subgroups based on key independent variables such
+ as income level and risk preferences and run restricted regressions.
+ Restricted regressions will take the form:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+(y{}_{i,t}\mid G_{i,t}=1)=\beta_{0}+\beta_{1}LOTTERY{}_{i}+\beta_{2}REGRET_{i}+\delta y_{i,t=0}+\varepsilon_{i}\label{eq:4-1-1-2}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where 
+\begin_inset Formula $G_{i,t}$
+\end_inset
+
+ refers to the restricted subgroup.
+ The subgroups will be defined after we analyze the general features of
+ our sample.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Seemingly unrelated regression
+\end_layout
+
+\begin_layout Standard
+We might expect that the errors for each of these regression are correlated.
+ Instead of estimating these equations separately, we can estimate the system
+ of seemingly related regressions (SUR) to improve the precision of the
+ coefficient estimates 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+shortcite{zellner_efficient_1962}
+\end_layout
+
+\end_inset
+
+.
+ SUR estimation is equivalent to OLS when the error terms are in fact uncorrelat
+ed between regressions or when each equation contains the same set of regressors.
+ Simultaneous estimation allows us to perform Wald tests of joint significance
+ on the treatment coefficients.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Multiple inference
+\end_layout
+
+\begin_layout Standard
+We will account for multiple inference by using a family-wise 
+\begin_inset Formula $p$
+\end_inset
+
+-value adjustment.
+ We will report both unadjusted 
+\begin_inset Formula $p$
+\end_inset
+
+-values as well as 
+\begin_inset Formula $p$
+\end_inset
+
+-values corrected for multiple comparisons using the Family-Wise Error Rate.
+ We adjust the 
+\begin_inset Formula $p$
+\end_inset
+
+-values of our coefficients of interest for multiple statistical inference
+ following the procedure developed in 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+shortciteN{anderson_multiple_2008}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Sample attrition
+\end_layout
+
+\begin_layout Standard
+To assess whether attrition potentially confounds our results, we proceed
+ as follows.
+ First, we define 
+\begin_inset Formula $attrit_{i}=1$
+\end_inset
+
+ if individual 
+\begin_inset Formula $i$
+\end_inset
+
+ was surveyed at baseline but not at endline, and zero otherwise.
+ We then assess the severity of attrition using three approaches.
+ First, equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:4-1"
+
+\end_inset
+
+ estimates whether the magnitude of attrition is different for treatment
+ groups and the control group:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+attrit_{i}=\beta_{0}+\beta_{1}LOTTERY{}_{i}+\beta_{2}REGRET_{i}+\varepsilon_{i}\label{eq:4-1}
+\end{equation}
+
+\end_inset
+
+Where 
+\begin_inset Formula $LOTTERY$
+\end_inset
+
+ refers to the group assigned to the lottery treatment, and 
+\begin_inset Formula $REGRET$
+\end_inset
+
+ refers to the group assigned to the lottery+regret treatment.
+ The omitted group is the interest (control) group.
+ Second, equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:4-2"
+
+\end_inset
+
+ assesses whether attrition individuals are different in terms of a comprehensiv
+e range of baseline characteristics: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+y_{i,t=0}=\beta_{0}+\beta_{1}attrit_{i}+\varepsilon_{i,t=0}\label{eq:4-2}
+\end{equation}
+
+\end_inset
+
+And third, equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:4-3"
+
+\end_inset
+
+ measures whether the baseline characteristics of attrition individuals
+ in the treatment group are significantly different from those in the control
+ group.
+ The sample for regression will be restricted to attrition individuals:
+ 
+\begin_inset Formula 
+\begin{equation}
+\left(y_{i,t=0}\mid attrit_{i}=1\right)=\beta_{0}+\beta_{1}LOTTERY_{i}+\beta_{2}REGRET{}_{i}+\varepsilon_{i,t=0}\label{eq:4-3}
+\end{equation}
+
+\end_inset
+
+If worrying levels of attrition are found, we will adjust for the potential
+ effect of such attrition using bounding techniques, matching, or modeling
+ the selection process.
+ 
+\end_layout
+
+\begin_layout Subsection
+Transaction analysis 
+\end_layout
+
+\begin_layout Standard
+With daily data on savings behavior, we will be able to explore the temporal
+ dynamics of the treatment effect.
+ That is, we can observe how the intervention impacts the dynamics of savings
+ behavior over the sixty-day period.
+ This analysis will be used to explore the following questions, for example.
+ In the panel data, we have outcome measures 
+\begin_inset Formula $y_{it}$
+\end_inset
+
+ for individual 
+\begin_inset Formula $i$
+\end_inset
+
+ for 
+\begin_inset Formula $t=1,\dots,60$
+\end_inset
+
+, where 
+\begin_inset Formula $t=1$
+\end_inset
+
+ indexes the first day of the intervention and 
+\begin_inset Formula $t=60$
+\end_inset
+
+ indexes the end of the savings period.
+ We will estimate the following autoregressive model: 
+\begin_inset Formula 
+\begin{equation}
+y_{it}=\beta_{0}+\beta_{1}LOTTERY_{i}+\beta_{2}REGRET{}_{i}+\sum_{k=1}^{K}[\beta_{k+2}y_{i,t-k}+\beta_{k+3}LOTTERY_{i}y_{i,t-k}+\beta_{k+4}REGRET{}_{i}y_{i,t-k}]+\varepsilon_{it}
+\end{equation}
+
+\end_inset
+
+Where 
+\begin_inset Formula $y_{it}$
+\end_inset
+
+ is decision to deposit, amount of deposit, or withdrawals at day 
+\begin_inset Formula $t.$
+\end_inset
+
+ We will use the Akaike information criterion to determine number of lags
+ 
+\begin_inset Formula $K$
+\end_inset
+
+ to include.
+ The standard errors will be corrected for auto-correlation by clustering
+ at the individual level.
+ We might also be interested in whether or not there is evidence for the
+ hot-hand fallacy or gambler's fallacy amongst our participants in the lottery
+ conditions.
+ This can be estimated using the following distributed lag model for the
+ subsample of respondents in the lottery and regret groups:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+y_{it}=\beta_{0}+\sum_{k=1}^{K}X_{i,t-k}+\varepsilon_{it}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where 
+\begin_inset Formula $y_{it}$
+\end_inset
+
+ is decision to deposit, amount of deposit, or withdrawals at day 
+\begin_inset Formula $t$
+\end_inset
+
+ and 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $X_{i,t-k}$
+\end_inset
+
+ measures lottery winnings or whether subject 
+\begin_inset Formula $i$
+\end_inset
+
+ won the lottery at day 
+\begin_inset Formula $t-k$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Baseline correlates of savings behavior
+\end_layout
+
+\begin_layout Standard
+A second goal of our study is to explore the correlation between preferences
+ that can be measured in the lab and savings behavior.
+ To do this, we will run a regression using baseline outcomes as predictors
+ of total savings:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+y_{it}=\beta_{0}+\delta y_{i,t=0}+\varepsilon_{it}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Baseline indicators that we are interested include risk, time, and gambling
+ preferences.
+ Where applicable, we will use data reduction methods such as principal
+ component analysis and factor analysis.
+ These analyses are correlational and will be used to inform potential mechanism
+s or future avenues of research.
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Subsection
+Strategic behavior
+\end_layout
+
+\begin_layout Plain Layout
+Our final goal is to document the degree of strategic behavior among study
+ participants.
+ During the study period, our participants had multiple opportunities to
+ “game the system” in highly profitable ways.
+ Many lab studies address this issue but field studies with real products
+ usually do not offer obvious and profitable opportunities to game the system.
+ Our opportunity of setting up our own experimental savings product allowed
+ us to address this issue in a very simple way.
+ If a participant is purely strategic, he should for example withdraw all
+ of his savings with the returns at the end of 30 days and then deposit
+ again the next day to gain the returns based on all of his savings.
+ In summary, we analyze to what extent our participants optimize their behavior
+ to maximize their returns by examining the percentage of participants who
+ act strategically in our experiment.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Outcomes of Interest
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Outcomes-of-Interest"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We estimate treatment effects on measured savings behavior.
+ The main outcome variables we are interested in are:
+\end_layout
+
+\begin_layout Enumerate
+Average savings over the entire study period.
+\end_layout
+
+\begin_layout Enumerate
+Average savings over the first and second 30-day period.
+\end_layout
+
+\begin_layout Enumerate
+Average number of active days and average number of transactions.
+\end_layout
+
+\begin_layout Enumerate
+Average length of the streaks, i.e.
+ the highest number of consecutive days with a positive balance for each
+ person.
+ 
+\end_layout
+
+\begin_layout Standard
+Aside from the overall savings behavior, we additionally estimate the effect
+ of the program on:
+\end_layout
+
+\begin_layout Enumerate
+Monthly self-reported savings balance
+\end_layout
+
+\begin_layout Enumerate
+Savings engagement (whether you currently save, engagment with ROSCA)
+\end_layout
+
+\begin_layout Enumerate
+Displacement of other saving mechanisms
+\end_layout
+
+\begin_layout Enumerate
+How often subject discussed savings program with family and friends
+\end_layout
+
+\begin_layout Enumerate
+Trust in the savings program
+\end_layout
+
+\begin_layout Enumerate
+Satisfaction with saving behavior in the program
+\end_layout
+
+\begin_layout Enumerate
+Continuation with the savings program
+\end_layout
+
+\begin_layout Enumerate
+Self-perception as a saver
+\end_layout
+
+\begin_layout Enumerate
+Self-reported gambling behavior
+\end_layout
+
+\begin_layout Enumerate
+Trust in the savings program
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "Akiba_PAP"
+options "achicago"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

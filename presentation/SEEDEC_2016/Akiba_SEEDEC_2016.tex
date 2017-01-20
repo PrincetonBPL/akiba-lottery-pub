@@ -1,0 +1,401 @@
+\documentclass{beamer}
+
+\mode<presentation> {
+\usetheme{Madrid}
+\usecolortheme{whale}
+
+%\setbeamertemplate{footline} % To remove the footer line in all slides uncomment this line
+%\setbeamertemplate{footline}[page number] % To replace the footer line in all slides with a simple slide count uncomment this line
+%\setbeamertemplate{navigation symbols}{} % To remove the navigation symbols from the bottom of all slides uncomment this line
+
+}
+
+\usepackage{pdflscape}
+\usepackage{booktabs}
+\usepackage{geometry}
+\usepackage{placeins}
+\usepackage{caption}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{threeparttable, adjustbox, tabularx, longtable}
+
+\newcommand{\specialcell}[2][c]{\begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
+
+\title[Lottery]{Using Lotteries to Encourage Saving: Experimental Evidence from Kenya}
+
+\author[Abraham, Akbas, Ariely, Jang (2016)]{Justin Abraham \inst{\ddag} \and Merve Akbas \inst{\dag} \and Dan Ariely \inst{\dag} \and Chaning Jang \inst{\ddag}} \institute[]{\inst{\dag} Duke University \and \inst{\ddag} Princeton University}
+
+\date{\today}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+% joint work with CJ, DA, MA
+% name of this project is ``Using Lotteries to Encourage Saving: Experimental Evidence from Kenya''
+% one of Busara's earliest projects
+
+\begin{frame} \frametitle{Behavioral Barriers To Saving} \pause
+
+	\begin{itemize}
+	\item Why don't people save more? \pause
+		\begin{itemize}
+		\item Susceptible to extraction (Dupas and Robinson, 2013) \pause
+		\item Planning fallacies, self-control, inability to remember \pause
+		\end{itemize}
+	\item Behaviorally-informed product designs have been extremely cost-effective
+		\begin{itemize}
+		\item Thaler, 2004; Ashraf, 2006; Karlan, 2010; Kast et al. 2012; Akbas et al. 2016 \pause
+		\end{itemize}
+	\end{itemize}
+
+\end{frame}
+
+% begin by re-posing a classic development question:
+% given high returns to productive investments, the ability to smooth potentially disastrous financial shocks, why don't the poor save more?
+% in the absence of proper savings technologies, savings are susceptible to extraction (lack of savings products is a constraint)
+% this project focuses on a second explanation: behavioral barriers to savings
+% here I'm thinking about planning fallacies, self-control failures, inability to remember
+% Behaviorally-informed product designs that target these failures have been extremely cost-effective
+% default contributions, binding and non-binding commitment devices, reminders
+% previous work by merve and dan showing that using tokens to track can increase savings more than double
+% compare these to matched incentives (which incentivize savings in a direct way and are proven to be extremely effective) these little changes in product design are very cheap
+
+\begin{frame} \frametitle{The Promise of LLDAs} \pause
+	
+	\begin{itemize}
+	\item Lottery-linked deposit accounts (LLDAs) incorporate stochastic payoffs to saving \pause
+		\begin{itemize}
+		\item Has existed since the 17th century and widespread \pause
+		\item NS\&I Premium Bonds in the U.K. and A-Million-A-Month in South Africa \pause
+		\end{itemize}
+	\item How might lotteries better induce savings than a match? \pause
+		\begin{itemize}
+		\item Over-weighting of small probabilities \pause
+		\item Preferences for skewness \pause
+		\item Preferences for large payoffs \pause
+		\item Hot hand and gambler's fallacy \pause
+		\item Thrill of playing \pause
+		\end{itemize}
+	\end{itemize}
+
+\end{frame}
+
+% want to focus on an specific kind of savings product known as PLSA or LLDA
+% kind of savings scheme has been documented in 17th century england
+% that incorporates lottery-like incentives to traditional deposit accounts, the opportunity to win large prizes with small probabilities
+% prominent examples on the national level include
+% though focus on decision theory today, useful to contemplate how lottery-like incentives might encourage saving
+% -
+% behavioral biases such as fallacy that affects risk perceptions
+
+\begin{frame} \frametitle{The Promise of LLDAs} \pause
+	\begin{itemize} 
+	\item Possible benefits \pause
+		\begin{enumerate}
+		\item Cost-effective compared to matched incentives, displaces problem gambling with ``win-win'' gambling, effective for poorer individuals \pause
+		\end{enumerate}
+	\item Possible drawbacks \pause
+		\begin{enumerate}
+		\item Complements outside gambling, merely cannibalizes other savings \pause
+		\end{enumerate}
+	\item Do lottery-like incentives work? \pause 
+		\begin{itemize}
+		\item In the lab, shifts away from consumption into savings (Atalay, 2014; Filiz-Ozbay, 2015) \pause
+		\item In the field, mixed results (Halpern et al., 2011; Gajic et al., 2012; Brune, 2015; Loibl, 2015) \pause
+		\end{itemize}
+	\end{itemize}
+
+\end{frame}
+
+% compared to matching incentives, stochastic rewards attract depositers absent an increase in the payoff
+% can meet people's ``gambling fix'' and thereby reduce problem gambling, in the case of national lotteries widely seen as a ``tax on the poor''
+% principal oftentimes returned then lldas are ``win-win''
+% we know, for whatever behavioral or structural reason, that gambling as a proprtion of income is highest among the poor
+% low income individuals might be especially responsive to this mechanism
+% can act as a sanction to gambling
+% even if it encourages savings, might just shift savings portfolio away from other sources
+% there is some evidence as to whether LLDAs work and whether they are beneficial
+% atalay find that people shift budget away from other lotteries and consumption when given lldas
+% fo shows that lottery induces a deferral in payment works even when equal in expected values
+
+\begin{frame} \frametitle{Research Questions} \pause
+	
+	\begin{enumerate}
+	\item Do lotttery-like incentives improve saving vis-\`{a}-vis matched incentives? \pause
+	\item Do lotttery-like incentives displace gambling behavior? \pause
+	\end{enumerate}
+
+\end{frame}
+
+\begin{frame} \frametitle{Study Overview} \pause
+
+	\begin{itemize}
+	\item 311 respondents from informal settlements in Nairobi \pause
+		\begin{enumerate}
+		\item Matched incentives account (105) \pause
+		\item Lottery-linked account (103) \pause
+		\item Lottery-linked account with regret (103) \pause
+		\end{enumerate}
+	\item Lab component at baseline \pause
+		\begin{enumerate}
+		\item Risk aversion  \pause
+		\item Temporal discounting \pause
+		\item Willingness-to-pay to play a lottery \pause
+		\item Internal locus of control \pause
+		\item Gambling questionnaire \pause
+		\item Demographics questionnaire \pause
+		\end{enumerate}
+	\item Observed transactions over a 60-day period \pause
+	\item Endline questionnaire \pause
+	\end{itemize}
+
+\end{frame}
+
+% majority from kibera/viwandani
+% Around 50\% of sample reports saving (M-Pesa, ROSCA)
+% Monthly savings of USD 53
+% Monthly income of USD 111
+% 50\% employed
+% 3 dependants in each household
+% two benefits to this design, we have baseline measures of preference parameters, because we follow over thirty days we observe dynamic savings behavior (which we later find is important)
+
+\begin{frame} \frametitle{Mobile Savings} \pause
+	
+	\begin{itemize}
+
+	\item Respondents assigned a project phone linked to account \pause
+	\item Deposited into account by sending airtime free of charge \pause
+	\item Project-specific admin system maintained ledger of balances \pause
+	\item Respondents received end-of-day and reminder SMS \pause
+	\item Withdrawal only on the 30th day \pause
+	\item Principal returned after 60 days via M-Pesa \pause
+	\end{itemize}
+
+\end{frame}
+
+\begin{frame} \frametitle{Mobile Savings -- Treatment Groups} \pause
+	
+	\begin{block}{Matching}
+		\begin{itemize}
+		\item Fixed 5\% match on daily deposits \pause
+		\item Contributions dispayed at end of day \pause
+		\end{itemize}
+	\end{block}
+
+	\begin{block}{Lottery}
+		\begin{itemize}
+		\item Entered into a daily lottery if saved a non-zero amount \pause
+		\item One ``ticket'' with random sequence of four numbers between 1 and 9 \pause
+		\item Prize equal in expectation to 5\% match \pause
+		\end{itemize}
+	\end{block}
+
+	\begin{block}{Lottery With Regret Feature}
+		\begin{itemize}
+		\item Payoffs identical to lottery group \pause
+		\item Tickets disbursed every morning regardless of deposit \pause
+		\end{itemize}
+	\end{block}
+
+\end{frame}
+
+\begin{frame} \frametitle{Treatment Effects -- Mobile savings} \pause
+	
+	\begin{itemize}
+	\item Comparing matching vs. lottery is the treatment effect of lotteries \pause
+	\item Comparing lottery vs. lottery + regret is the treatment effect of experienced regret \pause
+	\end{itemize}
+
+\end{frame}
+
+\begin{frame} \frametitle{Treatment Effects -- Deposits Made}
+	
+\maxsizebox*{0.90\linewidth}{0.90\paperheight}{
+	\includegraphics{../../figures/line-cumdeposits.pdf}
+}
+
+\end{frame}
+
+\begin{frame} \frametitle{Treatment Effects -- Gross Deposits}
+	
+\maxsizebox*{0.90\linewidth}{0.90\paperheight}{
+		\includegraphics{../../figures/line-cumdepositamount.pdf}
+}
+
+\end{frame}
+
+\begin{frame} \frametitle{Treatment Effects -- Mobile Savings}
+	
+	\begin{landscape} \input{../../tables/reg-mobile-1.tex} \end{landscape}
+
+\end{frame}
+
+\begin{frame} \frametitle{Treatment Effects -- Mobile Savings}
+	
+	\begin{landscape} \input{../../tables/reg-mobile-2.tex} \end{landscape}
+
+\end{frame}
+
+\begin{frame} \frametitle{Treatment Effects -- Mobile Savings}
+	
+	\begin{landscape} \input{../../tables/reg-mobile-3.tex} \end{landscape}
+
+\end{frame}
+
+\begin{frame} \frametitle{Treatment Effects -- Mobile Savings}
+	
+	\begin{landscape} \input{../../tables/reg-mobile-n.tex} \end{landscape}
+
+\end{frame}
+
+% each row are results for each row variable as dependant variable
+% column 1 is the coefficient on lottery etc.
+% 40% more deposits over the project period than the matching incentive
+% might expect an increase in no. of days in which they make non-zero deposits
+% number of deposits per day increases as well
+% column 3 tests whether the coefficients are the same, we cant reject the h but magnitudes suggest that it may contribute to the effect
+% the second set of columns is the regression with controls
+% robust to the inclusion of controls in the rhs
+% se are in parentheses and fwer p-values are in the brackets to correct for multiple testing
+
+\begin{frame} \frametitle{Treatment Effects -- Gambling}
+	
+	How do lottery-like incentives change outside gambling behavior?
+
+\end{frame}
+
+\begin{frame} \frametitle{Treatment Effects -- Gambling}
+
+	\begin{landscape} \input{../../tables/reg-gamble-n.tex} \end{landscape}
+
+\end{frame}
+
+\begin{frame} \frametitle{Discussion} \pause
+
+	\begin{itemize}
+	\item What is the appeal of lottery-like savings? \pause
+		\begin{itemize}
+		\item Lump-sum utility from gambling \pause
+		\end{itemize}
+	\item Are LLDAs useful? \pause
+		\begin{itemize}
+		\item More frequent deposits might be habit-forming \pause
+		\item Could attract new savers to open accounts \pause
+		\item Not revenue neutral if high transaction costs \pause
+		\item Effect on outside gambling depends on program components (Cookson 2016) \pause
+		\end{itemize}
+	\end{itemize}
+
+\end{frame}
+
+% increased deposits but no increase in savings: are lottery incentives still useful?
+% if habit forming, then it might be useful to more carefully track other savings and over a longer period of time
+% one thing we didn't show is that we asked respondents at endline to self-select into one the the treatment groups, majority chose the lottery regardless of assignment
+% cost on the financial institution perspective
+% obviously, program components matter in how we design programs
+
+\begin{frame} \frametitle{Conclusion} \pause
+	
+	\begin{itemize}
+	\item What we find
+		\begin{enumerate}
+		\item More frequent deposits \pause
+		\item No change in amount saved \pause
+		\item Increase in self-reported gambling \pause
+		\end{enumerate}
+	\item To-do
+		\begin{enumerate}
+		\item Examine entire savings portfolio \pause
+		\item Long term follow-up \pause
+		\end{enumerate}
+	\end{itemize}
+
+\end{frame}
+
+\begin{frame} \frametitle{Thank You}
+
+	\begin{itemize}
+	\item Research assistance
+		\begin{itemize}
+		\item Arun Varghese, Jonathan Page
+		\end{itemize}
+	\item Fieldwork
+		\begin{itemize}	
+		\item Busara Center For Behavioral Economics
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\appendix
+
+\begin{frame} \frametitle{Appendix -- Attrition}
+	
+	\input{../../tables/tab-balance.tex}
+
+\end{frame}
+
+\begin{frame} \frametitle{Appendix -- Attrition}
+	
+	\input{../../tables/reg-attr.tex}
+
+\end{frame}
+
+\begin{frame} \frametitle{Appendix -- Baseline Balance}
+
+		\input{../../tables/sum-ysum1.tex}
+
+\end{frame}
+
+\begin{frame} \frametitle{Appendix -- Baseline Balance}
+
+		\input{../../tables/sum-ysum2.tex}
+
+\end{frame}
+
+\begin{frame} \frametitle{Appendix -- Baseline Balance}
+
+		\input{../../tables/sum-ysum3.tex}
+
+\end{frame}
+
+\begin{frame} \frametitle{Appendix -- Lottery Results}
+
+	\input{../../tables/tab-lottery-final.tex}
+
+\end{frame}
+
+\begin{frame} \frametitle{Appendix -- Estimation Strategy}
+
+		$$ y_{i,E} = \beta_{0} + \beta_{1}\text{LOTTERY}_{i} + \beta_{2}\text{REGRET}_{i} + \delta y_{i,B} + \mathbf{X}'_i \omega + \varepsilon_{i} $$
+
+		\begin{align*} y_{i,E} & \text{: Outcome at endline} \\
+						\text{LOTTERY}_{i} & \text{: Lottery group} \\
+						\text{REGRET}_{i} & \text{: Lottery with regret group} \\
+						y_{i,B} & \text{: Outcome at baseline} \\
+						\mathbf{X}_i & \text{: Controls} \\
+		\end{align*}
+
+\end{frame}
+
+\begin{frame} \frametitle{Appendix -- Mobile savings by period}
+
+	\begin{landscape} \input{../../tables/reg-panel-n.tex} \end{landscape}
+
+\end{frame}
+
+\begin{frame} \frametitle{Appendix -- Other Savings}
+
+	\begin{landscape} \input{../../tables/reg-save-n.tex} \end{landscape}
+
+\end{frame}
+
+\begin{frame} \frametitle{Appendix -- Heterogeneity}
+
+	\input{../../tables/het-demo_female_0.tex}
+
+\end{frame}
+
+\end{document} 
