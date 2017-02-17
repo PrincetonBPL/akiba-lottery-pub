@@ -115,6 +115,7 @@ di "Finished in `r(t1)' seconds."
 ** Notes **
 ***********
 
+Samuelson '63: fallacy of large numbers
 Investigate result on ROSCA savings
 probably remove FWER correction from individual tables
 fix citations for capitalization

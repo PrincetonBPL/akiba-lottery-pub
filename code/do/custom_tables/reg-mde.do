@@ -88,3 +88,7 @@ esttab col* using "$tab_dir/$regpath.tex", booktabs cells(none) nogap mtitle("Lo
 esttab col* using "$tab_dir/$regpath-n.tex", booktabs cells(none) nogap mtitle("Lottery" "\specialcell{Control Mean\\(SD)}" "N") stats(`statnames', labels(`varlabels')) prehead("`prehead_n'") postfoot("`postfoot'") compress replace
 
 eststo clear
+
+file open tex using "$tab_dir/$regpth.tex", write append
+file write tex _n "% File produced by reg-mde.do with `c(filename)' on `c(current_time)' `c(current_date)' by user `c(username)' on Stata `c(version)' with seed `c(seed)'"
+file close tex

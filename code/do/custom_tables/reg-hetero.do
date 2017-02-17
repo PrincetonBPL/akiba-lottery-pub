@@ -108,3 +108,6 @@ esttab col* using "$tab_dir/het-$treat-n.tex", booktabs unstack cells(none) noco
 
 eststo clear
 
+file open tex using "$tab_dir/$regpath.tex", write append
+file write tex _n "% File produced by reg-hetero.do with `c(filename)' on `c(current_time)' `c(current_date)' by user `c(username)' on Stata `c(version)' with seed `c(seed)'"
+file close tex

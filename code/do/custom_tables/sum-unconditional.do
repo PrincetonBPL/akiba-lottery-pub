@@ -82,3 +82,7 @@ loc footnote "This table reports unconditional summary statistics for each row v
 esttab col* using "$tab_dir/$sumpath.tex", booktabs cells(none) nonum nogap mtitle("Mean" "SD" "Median" "Min" "Max" "N") stats(`statnames', labels(`varlabels')) note("`footnote'") prehead("`prehead'") postfoot("`postfoot'") compress wrap replace
 
 eststo clear
+
+file open tex using "$tab_dir/$sumpath.tex", write append
+file write tex _n "% File produced by sum-unconditional.do with `c(filename)' on `c(current_time)' `c(current_date)' by user `c(username)' on Stata `c(version)' with seed `c(seed)'"
+file close tex

@@ -225,3 +225,7 @@ esttab col* using "$tab_dir/$regpath.tex", booktabs cells(none) nogap mgroups("N
 esttab col* using "$tab_dir/$regpath-n.tex", booktabs cells(none) nogap mgroups("No controls" "With controls" "Sample", pattern(1 0 0 1 0 0 1) prefix(\multicolumn{@span}{c}{) suffix(}) span erepeat(\cmidrule(lr){@span})) mtitle("Lottery" "Regret" "\specialcell{Difference\\\(p\)-value}" "Lottery" "Regret" "\specialcell{Difference\\\(p\)-value}" "\specialcell{Control Mean\\(SD)}" "Obs.") stats(`statnames', labels(`varlabels')) prehead("`prehead_n'") postfoot("`postfoot'") compress replace
 
 eststo clear
+
+file open tex using "$tab_dir/$regpath.tex", write append
+file write tex _n "% File produced by reg-fwer.do with `c(filename)' on `c(current_time)' `c(current_date)' by user `c(username)' on Stata `c(version)' with seed `c(seed)'"
+file close tex

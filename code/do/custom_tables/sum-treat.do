@@ -99,3 +99,7 @@ loc footnote "The first three columns report means of each row variable for each
 esttab col* using "$tab_dir/$sumpath.tex", booktabs cells(none) nonum nogap mgroups("Mean (SD, N)" "\specialcell{Difference\\\emph{p}-value}", pattern(1 0 0 1 0 0) prefix(\multicolumn{@span}{c}{) suffix(}) span erepeat(\cmidrule(lr){@span})) mtitle("Control" "Lottery" "Regret" "\specialcell{Lottery -\\Control}" "\specialcell{Regret -\\Control}" "\specialcell{Lottery -\\Regret}") stats(`statnames', labels(`varlabels')) note("`footnote'") prehead("`prehead'") postfoot("`postfoot'") compress wrap replace
 
 eststo clear
+
+file open tex using "$tab_dir/$sumpath.tex", write append
+file write tex _n "% File produced by sum-treat.do with `c(filename)' on `c(current_time)' `c(current_date)' by user `c(username)' on Stata `c(version)' with seed `c(seed)'"
+file close tex

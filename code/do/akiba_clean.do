@@ -624,7 +624,7 @@ order surveyid account period period_date in_pilot left_akiba nrblocation kibera
 order *_0 *_1, after(survey_date)
 
 qui compress
-
+label data "Produced by akiba_clean.do on `c(current_time)' `c(current_date)' by user `c(username)' on Stata `c(version)'"
 save "$data_dir/clean/akiba_long.dta", replace
 
 ************************
@@ -668,5 +668,5 @@ order surveyid account in_pilot left_akiba nrblocation kiberalocation treatmentg
 order *_0 *_1, after(survey_date)
 
 qui compress
-
+label data "Produced by akiba_clean.do on `c(current_time)' `c(current_date)' by user `c(username)' on Stata `c(version)'"
 save "$data_dir/clean/akiba_wide.dta", replace

@@ -75,3 +75,7 @@ loc footnote "The first two columns report means of each row variable by observa
 esttab col* using "$tab_dir/$sumpath.tex", booktabs cells(none) nonum nogap mgroups("Mean (SD)" "\specialcell{Difference \\ \emph{p}-value}", pattern(1 0 0 1 0) prefix(\multicolumn{@span}{c}{) suffix(}) span erepeat(\cmidrule(lr){@span})) mtitle("Complete" "Attrition" "\specialcell{Complete -\\Attrition}") stats(`statnames', labels(`varlabels')) note("`footnote'") prehead("`prehead'") postfoot("`postfoot'") compress replace
 
 eststo clear
+
+file open tex using "$tab_dir/$sumpath.tex", write append
+file write tex _n "% File produced by sum-participation.do with `c(filename)' on `c(current_time)' `c(current_date)' by user `c(username)' on Stata `c(version)' with seed `c(seed)'"
+file close tex
