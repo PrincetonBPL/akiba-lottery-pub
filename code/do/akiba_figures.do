@@ -33,8 +33,8 @@ foreach yvar in $ymobile {
 	gen ubr = C3 + (C4 * 1.96)
 	gen lbr = C3 - (C4 * 1.96)
 
-	twoway (line C1 C5, color(navy)) (line C3 C5, color(maroon)) (rcap ubl lbl C5, color(navy)) (rcap ubr lbr C5, color(maroon)), ytitle("Effect") xtitle("CRRA parameter") legend(order(1 "Lottery" 2 "Regret")) graphregion(color(white))
-	graph export "$fig_dir/line-`yvar'byrisk.eps", as(eps) replace
+	twoway (line C1 C5, color(gs0) lpattern(solid)) (line C3 C5, color(gs0) lpattern(dash)) (rcap ubl lbl C5, color(gs0)) (rcap ubr lbr C5, color(gs0)), ytitle("Effect point estimate") xtitle("CRRA parameter") legend(order(1 "Lottery" 2 "Regret")) graphregion(color(white))
+	graph export "$fig_dir/line-`yvar'byrisk.eps", replace
 	!epstopdf "$fig_dir/line-`yvar'byrisk.eps"
 
 }
@@ -60,29 +60,25 @@ if $panelflag {
 
 	}
 
-	graph twoway (line mobile_balance period if treatmentgroup == 1) (line mobile_balance period if treatmentgroup == 2) (line mobile_balance period if treatmentgroup == 3), ytitle("Balance") legend(order(1 "Control" 2 "Lottery" 3 "Regret")) graphregion(color(white))
-	graph export "$fig_dir/line-balance.eps", as(eps) replace
+	graph twoway (line mobile_balance period if treatmentgroup == 1, color(gs0) lpattern(solid)) (line mobile_balance period if treatmentgroup == 2, color(gs0) lpattern(dash)) (line mobile_balance period if treatmentgroup == 3, color(gs0) lpattern(dot)), ytitle("Balance") legend(order(1 "Control" 2 "Lottery" 3 "Regret")) graphregion(color(white))
+	graph export "$fig_dir/line-balance.eps", replace
 	!epstopdf "$fig_dir/line-balance.eps"
 
-	graph twoway (line mobile_depositamount period if treatmentgroup == 1) (line mobile_depositamount period if treatmentgroup == 2) (line mobile_depositamount period if treatmentgroup == 3), ytitle("Deposit amount") legend(order(1 "Control" 2 "Lottery" 3 "Regret")) graphregion(color(white))
-	graph export "$fig_dir/line-depositamount.eps", as(eps) replace
+	graph twoway (line mobile_depositamount period if treatmentgroup == 1, color(gs0) lpattern(solid)) (line mobile_depositamount period if treatmentgroup == 2, color(gs0) lpattern(dash)) (line mobile_depositamount period if treatmentgroup == 3, color(gs0) lpattern(dot)), ytitle("Deposit amount") legend(order(1 "Control" 2 "Lottery" 3 "Regret")) graphregion(color(white))
+	graph export "$fig_dir/line-depositamount.eps", replace
 	!epstopdf "$fig_dir/line-depositamount.eps"
 
-	graph twoway (line mobile_cumdepositamount period if treatmentgroup == 1) (line mobile_cumdepositamount period if treatmentgroup == 2) (line mobile_cumdepositamount period if treatmentgroup == 3) (rcap ub_cumdepositamount lb_cumdepositamount period if treatmentgroup == 1 & period == 60, color(navy)) (rcap ub_cumdepositamount lb_cumdepositamount period if treatmentgroup == 2 & period == 60, color(maroon)) (rcap ub_cumdepositamount lb_cumdepositamount period if treatmentgroup == 3 & period == 60, color(green)), ytitle("Amount deposited") legend(order(1 "Control" 2 "Lottery" 3 "Regret")) graphregion(color(white))
-	graph export "$fig_dir/line-cumdepositamount.eps", as(eps) replace
+	graph twoway (line mobile_cumdepositamount period if treatmentgroup == 1, color(gs0) lpattern(solid)) (line mobile_cumdepositamount period if treatmentgroup == 2, color(gs0) lpattern(dash)) (line mobile_cumdepositamount period if treatmentgroup == 3, color(gs0) lpattern(dot)) (rcap ub_cumdepositamount lb_cumdepositamount period if treatmentgroup == 1 & period == 60, color(gs0)) (rcap ub_cumdepositamount lb_cumdepositamount period if treatmentgroup == 2 & period == 60, color(gs0)) (rcap ub_cumdepositamount lb_cumdepositamount period if treatmentgroup == 3 & period == 60, color(gs0)), ytitle("Amount deposited") legend(order(1 "Control" 2 "Lottery" 3 "Regret")) graphregion(color(white))
+	graph export "$fig_dir/line-cumdepositamount.eps", replace
 	!epstopdf "$fig_dir/line-cumdepositamount.eps"
 
-	graph twoway (line mobile_deposits period if treatmentgroup == 1) (line mobile_deposits period if treatmentgroup == 2) (line mobile_deposits period if treatmentgroup == 3), ytitle("No. of deposits") legend(order(1 "Control" 2 "Lottery" 3 "Regret")) graphregion(color(white))
-	graph export "$fig_dir/line-deposits.eps", as(eps) replace
+	graph twoway (line mobile_deposits period if treatmentgroup == 1, color(gs0) lpattern(solid)) (line mobile_deposits period if treatmentgroup == 2, color(gs0) lpattern(dash)) (line mobile_deposits period if treatmentgroup == 3, color(gs0) lpattern(dot)), ytitle("No. of deposits") legend(order(1 "Control" 2 "Lottery" 3 "Regret")) graphregion(color(white))
+	graph export "$fig_dir/line-deposits.eps", replace
 	!epstopdf "$fig_dir/line-deposits.eps"
 
-	graph twoway (line mobile_cumdeposits period if treatmentgroup == 1) (line mobile_cumdeposits period if treatmentgroup == 2) (line mobile_cumdeposits period if treatmentgroup == 3) (rcap ub_cumdeposits lb_cumdeposits period if treatmentgroup == 1 & period == 60, color(navy)) (rcap ub_cumdeposits lb_cumdeposits period if treatmentgroup == 2 & period == 60, color(maroon)) (rcap ub_cumdeposits lb_cumdeposits period if treatmentgroup == 3 & period == 60, color(green)), ytitle("No. of deposits") legend(order(1 "Control" 2 "Lottery" 3 "Regret")) graphregion(color(white))
-	graph export "$fig_dir/line-cumdeposits.eps", as(eps) replace
+	graph twoway (line mobile_cumdeposits period if treatmentgroup == 1, color(gs0) lpattern(solid)) (line mobile_cumdeposits period if treatmentgroup == 2, color(gs0) lpattern(dash)) (line mobile_cumdeposits period if treatmentgroup == 3, color(gs0) lpattern(dot)) (rcap ub_cumdeposits lb_cumdeposits period if treatmentgroup == 1 & period == 60, color(gs0)) (rcap ub_cumdeposits lb_cumdeposits period if treatmentgroup == 2 & period == 60, color(gs0)) (rcap ub_cumdeposits lb_cumdeposits period if treatmentgroup == 3 & period == 60, color(gs0)), ytitle("No. of deposits") legend(order(1 "Control" 2 "Lottery" 3 "Regret")) graphregion(color(white))
+	graph export "$fig_dir/line-cumdeposits.eps", replace
 	!epstopdf "$fig_dir/line-cumdeposits.eps"
-
-	/* Convert eps to pdf for Latex */
-
-	!epstopdf "$fig_dir/*.eps"
 
 	/* Autoregressive plot */
 
@@ -134,7 +130,7 @@ if $panelflag {
 	* }
 
 	* graph twoway (line A_b lag) (line B_b lag) (line C_b lag), ytitle("Likelihood of saving") xtitle("Lag in days") legend(order(1 "Control" 2 "Lottery" 3 "Regret")) graphregion(color(white))
-	* graph export "$fig_dir/line-ar.eps", as(eps) replace
+	* graph export "$fig_dir/line-ar.eps", replace
 
 	* /Distributed lag plot */
 
@@ -165,6 +161,6 @@ if $panelflag {
 	* drop if lag > $laglength
 
 	* graph twoway (line B lag if day_type == 0) (line B lag if day_type == 1) (line B lag if day_type == 2), ytitle("Likelihood of saving") xtitle("Lag in days") legend(order(1 "Won prize" 2 "Won without saving" 3 "Lost with saving")) graphregion(color(white))
-	* graph export "$fig_dir/line-dl.eps", as(eps) replace
+	* graph export "$fig_dir/line-dl.eps", replace
 
 }
