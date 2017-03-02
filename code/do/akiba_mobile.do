@@ -74,4 +74,4 @@ use `tickets', clear
 merge 1:m account period using `ledger', keep(1 3) nogen
 
 label data "Produced by akiba_mobile.do on `c(current_time)' `c(current_date)' by user `c(username)' on Stata `c(version)'"
-save "$data_dir/clean/akiba_mobile.dta", replace
+saveold "$data_dir/clean/akiba_mobile.dta", replace

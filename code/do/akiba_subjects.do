@@ -456,4 +456,4 @@ gen attrit = _merge == 1
 drop _merge
 
 label data "Produced by akiba_subjects.do on `c(current_time)' `c(current_date)' by user `c(username)' on Stata `c(version)'"
-save "$data_dir/clean/akiba_subjects.dta", replace
+saveold "$data_dir/clean/akiba_subjects.dta", replace
