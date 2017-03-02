@@ -28,13 +28,15 @@ glo tab_dir "$project_dir/tables"
 adopath + "$ado_dir"
 cap cd "$project_dir"
 
+graph set window fontface "CMU Serif"
+
 /* Customize program */
 
-glo builddataflag = 1		 // Build combined dataset
-glo cleandataflag = 1		 // Clean combined dataset
-glo summaryflag = 1	 		 // Output summary stats
-glo estimateflag = 1         // Output regression tables
-glo figuresflag = 1 		 // Output graphs and figures
+glo builddataflag = 0		 // Build combined dataset
+glo cleandataflag = 0		 // Clean combined dataset
+glo summaryflag = 0	 		 // Output summary stats
+glo estimateflag = 0         // Output regression tables
+glo figuresflag = 1			 // Output graphs and figures
 
 /* Analysis options */
 
@@ -48,8 +50,8 @@ glo USDconvertflag = 1 		 // Runs analysis in USD-PPP
 glo ppprate = (1/38.84) 	 // PPP exchange rate from KSH (2009-2013)
 
 glo laglength = 7			 // Lag length for panel analysis
-glo iterations = 10000 		 // Number of iterations for calculating FWER adjusted p-values
-glo riterations = 10000		 // Number of iterations for permutation test
+glo iterations = 10 		 // Number of iterations for calculating FWER adjusted p-values
+glo riterations = 10		 // Number of iterations for permutation test
 
 /* Regressands by category */
 

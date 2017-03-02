@@ -4,28 +4,6 @@
 ** Input: akiba_wide.dta, akiba_long.dta
 ** Output: Regression tables
 
-/* Control variables missing dummies */
-
-/* loc temp ""
-
-foreach v in $controlvars {
-
-	foreach type in wide long {
-
-		use "$data_dir/clean/akiba_`type'.dta", clear
-		gen `v'_miss = mi(`v')
-		gen `v'_full = `v'
-		replace `v'_full = 0 if `v'_miss
-		save "$data_dir/clean/akiba_`type'.dta", replace
-
-	}
-
-	loc temp "`temp' `v'_full `v'_miss"
-
-}
-
-glo controlvars "`temp'" */
-
 /* Control variables demeaned and interacted */
 
 foreach v in $controlvars {
@@ -124,21 +102,14 @@ if $riflag {
 	program ri, rclass
 
 		version 13.1
-		qui reg `1' i.treatmentgroup, vce(cl surveyid)
+		qui reg `1' i.treatmentgroup `2', vce(cl surveyid)
+
 		return scalar lottery = _b[2.treatmentgroup]
+		return scalar lotteryse = _se[2.treatmentgroup]
+
 		return scalar regret = _b[3.treatmentgroup]
-		return scalar diff = _b[2.treatmentgroup] - _b[3.treatmentgroup]
+		return scalar regretse = _se[3.treatmentgroup]
 
-	end
-
-	cap program drop ricon
-
-	program ricon, rclass
-
-		version 13.1
-		qui reg `1' i.treatmentgroup controlvars, vce(cl surveyid)
-		return scalar lottery = _b[2.treatmentgroup]
-		return scalar regret = _b[3.treatmentgroup]
 		return scalar diff = _b[2.treatmentgroup] - _b[3.treatmentgroup]
 
 	end
@@ -147,13 +118,13 @@ if $riflag {
 
 		loc root = substr("`group'", 2, .)
 		glo regvars "$`group'"
-		glo regpath "reg-`root'"
-		glo regtitle "Treatment effects -- ``group'desc'"
+		glo regpath "ri-`root'"
+		glo regtitle "Treatment effects with randomization inference -- ``group'desc'"
 
 		if ("`group'" == "ypanel") use "$data_dir/clean/akiba_long.dta", clear
 		else use "$data_dir/clean/akiba_wide.dta", clear
 
-		/* do "$do_dir/custom_tables/reg-ri.do" */
+		do "$do_dir/custom_tables/reg-ri.do"
 
 	}
 
