@@ -125,27 +125,41 @@ di "Finished in `r(t1)' seconds."
 ** Notes **
 ***********
 
-Samuelson '63: fallacy of large numbers
+Overview of results
+
+	Regret increases number of deposits (days and not more per day)
+	Lottery shows some evidence but perhaps underpowered
+	No effect on balance
+	Regret increases amount withdrew
+	Regret increases savings and usage of ROSCA
+	Regret increases self-reported gambling
+	Lottery/Regret increases lucky person
+	Lottery/Regret increases self-selection into regret group
+
+Possible explanations for results
+	Overweighting of probabilities
+	Samuelson '63: fallacy of large numbers
+	Benartzi Thaler: myopic loss aversion
+	Liquidity constraints
+	Lumpy gambling utility
+	Usage diminishes learning curve, improves trust, etc.
+
+
 Investigate result on ROSCA savings
-probably remove FWER correction from individual tables
 fix citations for capitalization
 do winnings affect endline savings/gambling?
 resps also withdrew more resulting in a lower total balance!
 why should people save more? have to provide evidence of this
 actually separate days saved and average deposits within day by not counting the additional days when taking the average
 we should analyze withdrawal activity
-
+differences with PAP
+Mention null effects on downstream outcomes (consumption, etc.)
 think about intertemporal consumer behavior; what do our results say about the prevailing model?
-Investigate result on informal savings
 
-can we say something about overweight probabilities that decrease over time vs. preferences for long-odds (skewness?)
-pretty sure some models predict increase in deposits without increase in amount (utility from gambling)
-can investigate how people saved during project period (time of day, week fixed effects, distance from reminder, etc.)
+can investigate more thoroughly how people saved during project period (time of day, week fixed effects, distance from reminder, etc.)
 how do we know when people attrited? is it before or after the end of savings? need for tsfill
 what the hell is 11111 2222 winning ticket?
 discrepancy in prizes and savings in a day?
 refunds with KSH 150 limit?
-test for time trend/FE
+test for time trend/FE (perhaps learning by doing)
 Could people just have saved with interest and bought regular lottery tickets?
-Select control variables using LASSO/Tikhonov
-Is baseline savings behavior predictive of mobile savings? Is mobile savings predictive of future savings behavior?
