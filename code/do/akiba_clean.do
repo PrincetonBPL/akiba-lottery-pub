@@ -158,9 +158,9 @@ forval i = 0/1 {
 
 }
 
-xtile lnlabor_medianinc_0 = lnlabor_monthlyinc_0, n(2)
-replace lnlabor_medianinc_0 = lnlabor_medianinc_0 - 1
-la var lnlabor_medianinc_0 "Above median monthly inc."
+xtile labor_medianinc_0 = labor_monthlyinc_0, n(2)
+replace labor_medianinc_0 = labor_medianinc_0 - 1
+la var labor_medianinc_0 "Above median monthly inc."
 
 *************
 ** Savings **
@@ -499,26 +499,29 @@ la var period "Savings period"
 
 gen period_date = date(substr(time, 1, 10), "YMD")
 format period_date %tdDD_Mon_YY
-la var period_date "Date of period"
+la var period_date "Date of savings period"
 
 gen mobile_depositamount = amount if type_deposit
 gen mobile_refundamount = amount if type_refund
 gen mobile_prizeamount = amount if type_prize
 gen mobile_withdrawalamount = amount if type_withdrawal
 
-collapse (mean) ticketid participantticket winningticket matchtype awarded (sum) *amount type_*, by(account period period_date)
+collapse (mean) ticketid participantticket winningticket matchtype awarded (sum) mobile_*amount type_*, by(account period period_date)
 
-/* Transactions */
-
-ren amount mobile_netamount
-la var mobile_netamount "Net transaction amt."
-
-replace mobile_withdrawalamount = abs(mobile_withdrawalamount)
-la var mobile_withdrawalamount "Amount withdrew"
+/* Transaction amounts */
 
 la var mobile_depositamount "Amount deposited"
 la var mobile_refundamount "Amount refunded"
 la var mobile_prizeamount "Amount received as prize"
+
+replace mobile_withdrawalamount = abs(mobile_withdrawalamount)
+la var mobile_withdrawalamount "Amount withdrew"
+
+egen mobile_netamount = rowtotal(mobile_depositamount mobile_refundamount mobile_prizeamount), m
+replace mobile_netamount = mobile_netamount - mobile_withdrawalamount if ~mi(mobile_withdrawalamount)
+la var mobile_netamount "Net transaction amount"
+
+/* Transaction types */
 
 ren type_deposit mobile_deposits
 la var mobile_deposits "No. of deposits"
@@ -534,8 +537,7 @@ la var mobile_withdrawals "No. of withdrawals"
 
 /* Lottery tickets */
 
-ren participantticket subjectticket
-la var subjectticket "Ticket no."
+la var participantticket "Ticket no."
 la var winningticket "Winning ticket no."
 
 ren matchtype mobile_matches
@@ -543,14 +545,20 @@ la var mobile_matches "No. of matches"
 
 /* Merge with subjects data */
 
-merge m:1 account using `clean_subjects', keep(2 3)
+merge m:1 account using `clean_subjects', keep(2 3) // Why are there 24 unmatched from subjects? They're not in the raw ledger data
 
-/* Balanced panel for non-users */
+/* Create balanced panel for days without account activity */
 
 replace period = 1 if _merge == 2
 
 xtset surveyid period
 tsfill, full
+
+bys surveyid: egen mobile_nonuser = mode(_merge)
+recode mobile_nonuser (2 = 1) (3 = 0)
+la var mobile_nonuser "Never used mobile savings"
+
+/* Set mobile savings variables to 0 for days without account activity */
 
 foreach var of varlist mobile_*amount mobile_deposits mobile_refunds mobile_prizes mobile_withdrawals mobile_matches {
 
@@ -558,7 +566,9 @@ foreach var of varlist mobile_*amount mobile_deposits mobile_refunds mobile_priz
 
 }
 
-foreach var of varlist account in_pilot left_akiba control lottery regret treated endline attrit session *_date FO_* demo_* labor_* lnlabor_* save_* lnsave_* gam_* pref_* self_* akiba_* lnakiba_* treatmentgroup {
+/* Expand subject-level variables to all periods for days without account activity */
+
+foreach var of varlist account in_pilot left_akiba control lottery regret treated endline attrit session *_date FO_* demo_* labor_* lnlabor_* save_* lnsave_* gam_* pref_* self_* akiba_* lnakiba_* mobile_nonuser treatmentgroup {
 
 	bysort surveyid: egen `var'_temp = mode(`var'), maxmode
 	replace `var' = `var'_temp if mi(treatmentgroup)
@@ -567,6 +577,8 @@ foreach var of varlist account in_pilot left_akiba control lottery regret treate
 }
 
 drop _merge
+
+/* Cumulative outcomes at the participant-period level */
 
 sort account period
 
@@ -581,18 +593,18 @@ bysort account: gen mobile_cumdepositamount = sum(mobile_depositamount)
 la var mobile_cumdepositamount "Cumulative deposit amount"
 
 bysort account: gen mobile_cumdeposits = sum(mobile_deposits)
-la var mobile_cumdeposits "Cumulative deposits"
+la var mobile_cumdeposits "Cumulative deposits made"
 
 gen mobile_saved = mobile_depositamount > 0 & ~mi(mobile_depositamount)
 la var mobile_saved "Made a deposit"
 
-gen mobile_withindeposits = mobile_deposits if mobile_saved
+gen mobile_withindeposits = mobile_deposits if mobile_saved == 1
 la var mobile_withindeposits "No. of deposits on days saved"
 
 gen mobile_matched = mobile_matches > 0 & ~mi(mobile_matches)
 la var mobile_matched "Matching ticket"
 
-gen mobile_awarded = mobile_matched & mobile_saved
+gen mobile_awarded = mobile_matched == 1 & mobile_saved == 1
 la var mobile_awarded "Awarded prize"
 
 foreach v of varlist mobile_balance mobile_finalbalance mobile_*amount {
@@ -607,8 +619,8 @@ foreach v of varlist mobile_balance mobile_finalbalance mobile_*amount {
 
 /* Save panel dataset */
 
-keep surveyid account period period_date in_pilot left_akiba nrblocation kiberalocation treatmentgroup control lottery regret treated endline attrit subjectticket winningticket mobile_* lnmobile_* session *_date FO_* demo_* labor_* lnlabor_* save_* lnsave_* gam_* pref_* self_* akiba_* lnakiba_*
-order surveyid account period period_date in_pilot left_akiba nrblocation kiberalocation treatmentgroup control lottery regret treated endline attrit subjectticket winningticket mobile_* lnmobile_* session *_date FO_* demo_* labor_* lnlabor_* save_* lnsave_* gam_* pref_* self_* akiba_* lnakiba_*
+keep surveyid account period period_date in_pilot left_akiba nrblocation kiberalocation treatmentgroup control lottery regret treated endline attrit participantticket winningticket mobile_* lnmobile_* session *_date FO_* demo_* labor_* lnlabor_* save_* lnsave_* gam_* pref_* self_* akiba_* lnakiba_*
+order surveyid account period period_date in_pilot left_akiba nrblocation kiberalocation treatmentgroup control lottery regret treated endline attrit participantticket winningticket mobile_* lnmobile_* session *_date FO_* demo_* labor_* lnlabor_* save_* lnsave_* gam_* pref_* self_* akiba_* lnakiba_*
 order *_0 *_1, after(survey_date)
 
 qui compress
@@ -624,14 +636,15 @@ keep account mobile_*
 collapse ///
 	(mean) mobile_finalbalance = mobile_finalbalance mobile_avgdeposits = mobile_withindeposits mobile_avgdepositamt = mobile_depositamount mobile_avgrefunds = mobile_refunds mobile_avgrefundamt = mobile_refundamount mobile_avgprizes = mobile_prizes mobile_avgprizeamt = mobile_prizeamount mobile_avgwithdrawals = mobile_withdrawals mobile_avgwithdrawalamt = mobile_withdrawalamount ///
 	(sum) mobile_totdeposits = mobile_deposits mobile_totdepositamt = mobile_depositamount mobile_totrefunds = mobile_refunds mobile_totrefundamt = mobile_refundamount mobile_totprizes = mobile_prizes mobile_totprizeamt = mobile_prizeamount mobile_totwithdrawals = mobile_withdrawals mobile_totwithdrawalamt = mobile_withdrawalamount mobile_savedays = mobile_saved ///
+	(max) mobile_nonuser = mobile_nonuser ///
 , by(account)
 
 merge 1:1 account using `clean_subjects', nogen
 
 foreach root in deposit refund prize withdrawal {
 
-	la var mobile_avg`root's "Avg. no. of `root's"
-	la var mobile_avg`root'amt "Avg. `root' amt."
+	la var mobile_avg`root's "Daily avg. no. of `root's"
+	la var mobile_avg`root'amt "Daily avg. `root' amt."
 	la var mobile_tot`root's "Total no. of `root's"
 	la var mobile_tot`root'amt "Total `root' amt."
 
@@ -639,6 +652,7 @@ foreach root in deposit refund prize withdrawal {
 
 la var mobile_finalbalance "Final balance"
 la var mobile_savedays "No. of days saved"
+la var mobile_nonuser "Never used mobile savings"
 
 gen mobile_withdrew = mobile_totwithdrawals > 0 | ~mi(mobile_totwithdrawals)
 la var mobile_withdrew "Withdrew at day 30"

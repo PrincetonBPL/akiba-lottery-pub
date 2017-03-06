@@ -1,19 +1,19 @@
 \begin{table}[htbp]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \caption{Heterogeneous effects - Primary outcomes by completed std. 8} \label{tab:het-demo_stdschool_0} \maxsizebox*{\paperwidth}{\paperheight}{ \begin{threeparttable} \begin{tabular}{l*{4}{c}} \toprule
                 &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}\\
-                &\multicolumn{1}{c}{Total no. of deposits}&\multicolumn{1}{c}{Avg. no. of deposits}&\multicolumn{1}{c}{No. of days saved}&\multicolumn{1}{c}{Gamble more}\\
+                &\multicolumn{1}{c}{Total no. of deposits}&\multicolumn{1}{c}{Daily avg. no. of deposits}&\multicolumn{1}{c}{No. of days saved}&\multicolumn{1}{c}{Gamble more}\\
 \midrule
-Lottery         &    14.33         &     0.02         &    13.33         &    -0.00         \\
-                &  (14.29)         &   (0.02)         &  (13.47)         &      (.)         \\
+Lottery         &    14.33         &     0.02         &    13.33         &     0.00\sym{**} \\
+                &  (14.29)         &   (0.02)         &  (13.47)         &   (0.00)         \\
 Lottery $\times$ \\ Completed std. 8&    -9.84         &    -0.04         &    -9.53         &     0.07         \\
                 &  (14.52)         &   (0.04)         &  (13.63)         &   (0.05)         \\
-Regret          &     4.67         &     0.04\sym{***}&     4.33         &    -0.00         \\
-                &   (7.15)         &   (0.00)         &   (6.87)         &      (.)         \\
+Regret          &     4.67         &     0.04         &     4.33         &     0.00\sym{***}\\
+                &   (7.15)         &      (.)         &   (6.87)         &   (0.00)         \\
 Regret $\times$ \\ Completed std. 8&     1.27         &    -0.06         &     0.78         &     0.15\sym{**} \\
                 &   (7.57)         &   (0.04)         &   (7.19)         &   (0.06)         \\
 Completed std. 8&     9.75\sym{***}&     0.16\sym{***}&     7.86\sym{***}&     0.12\sym{***}\\
                 &   (1.49)         &   (0.03)         &   (1.28)         &   (0.03)         \\
-Constant        &     4.00         &     1.00\sym{***}&     4.00\sym{***}&     0.00         \\
-                &      (.)         &   (0.00)         &   (0.00)         &      (.)         \\
+Constant        &     4.00         &     1.00\sym{***}&     4.00         &    -0.00\sym{***}\\
+                &      (.)         &   (0.00)         &      (.)         &   (0.00)         \\
 \midrule
 Adjusted \(R^{2}\)&    0.005         &   -0.013         &    0.006         &    0.010         \\
 Control mean    &    13.66         &     1.16         &    11.78         &     0.12         \\
@@ -22,4 +22,4 @@ Regret \emph{p}-value&     0.02         &     0.68         &     0.02         & 
 Observations    &      311         &      275         &      311         &      284         \\
 \bottomrule \end{tabular} \begin{tablenotes}[flushleft] \footnotesize \item \emph{Notes:} This table reports OLS estimates of the treatment effect and its interaction with baseline. Standard errors are in parentheses. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level. We also report the \(p\)-values for joint tests on the direct treatment effect conditional on the baseline covariate $= 1$. \end{tablenotes} \end{threeparttable} } \end{table}
 
-% File produced by akiba_estimate.do with /n/homeserver2/user2a/justinra/repos/akiba-lottery-pub/data/clean/akiba_wide.dta on 22:58:54  2 Mar 2017 by user justinra on Stata 13.1 with seed Xc31010d38bb59a6a4ed57a15d037d5ca00041155
+% File produced by akiba_estimate.do with /Users/Justin/Repos/akiba-lottery-pub/data/clean/akiba_wide.dta on 14:36:13  6 Mar 2017 by user Justin on Stata 13.1 with seed Xab009a28c79e3115499f664c1f29957300040c93

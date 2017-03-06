@@ -33,6 +33,7 @@ cap cd "$project_dir"
 /* Typeface for graphics */
 
 local graphfont "CMU Serif"
+
 graph set eps fontface "`graphfont'"
 graph set eps fontfaceserif "`graphfont'"
 graph set window fontface "`graphfont'"
@@ -43,8 +44,8 @@ graph set window fontfaceserif "`graphfont'"
 glo builddataflag = 1		 // Build combined dataset
 glo cleandataflag = 1		 // Clean combined dataset
 glo summaryflag = 1	 		 // Output summary stats
-glo estimateflag = 0         // Output regression tables
-glo figuresflag = 0			 // Output graphs and figures
+glo estimateflag = 1         // Output regression tables
+glo figuresflag = 1			 // Output graphs and figures
 
 /* Analysis options */
 
@@ -58,17 +59,17 @@ glo USDconvertflag = 1 		 // Runs analysis in USD-PPP
 glo ppprate = (1/38.84) 	 // PPP exchange rate from KSH (2009-2013)
 
 glo laglength = 7			 // Lag length for panel analysis
-glo iterations = 10000 		 // Number of iterations for calculating FWER adjusted p-values
-glo riterations = 10000		 // Number of iterations for permutation test
+glo iterations = 1 		 // Number of iterations for calculating FWER adjusted p-values
+glo riterations = 1		 // Number of iterations for permutation test
 
 /* Regressands by category */
 
-glo ymobile "mobile_totdeposits mobile_savedays mobile_avgdeposits lnmobile_totdepositamt"
-glo ypanel "mobile_deposits mobile_saved lnmobile_depositamount lnmobile_withdrawalamount"
-glo ysave "lnsave_monthlysave_1 lnsave_mpesa_1 lnsave_monthlyrosca_1 save_dorosca_1"
+glo ymobile "mobile_totdeposits mobile_savedays mobile_avgdeposits mobile_totdepositamt mobile_totwithdrawalamt"
+glo ypanel "mobile_deposits mobile_saved mobile_depositamount mobile_withdrawalamount"
+glo ysave "save_monthlysave_1 save_mpesa_1 save_monthlyrosca_1 save_dorosca_1"
 glo ygamble "gam_moregamble_1 gam_lessgamble_1 gam_moretempted_1 gam_lesstempted_1"
 glo yakiba "akiba_trust_z_1 akiba_confidence_z_1 akiba_family_1 akiba_continue_1"
-glo yselect "akiba_controlselect_1 akiba_lotteryselect_1 akiba_regretselect_1 lnakiba_controlsave_1 lnakiba_lotterysave_1 lnakiba_regretsave_1"
+glo yselect "akiba_controlselect_1 akiba_lotteryselect_1 akiba_regretselect_1 akiba_controlsave_1 akiba_lotterysave_1 akiba_regretsave_1"
 glo ylottery "akiba_lotteryfair_z_1 akiba_prizegood_z_1 akiba_prizebad_z_1"
 glo yself "self_saver_z_1 self_lucky_z_1 self_savingsfeel_z_1 self_nosavefeel_z_1"
 glo ynull "$ymobile $ysave gam_moregamble_1"
@@ -86,12 +87,12 @@ glo ysum5 "pref_avgindiff_0 pref_avggeometric_0 pref_avgexponential_0 pref_avghy
 
 glo ysum6 "mobile_totdeposits mobile_totdepositamt mobile_avgdepositamt mobile_totwithdrawalamt"
 glo ysum7 "akiba_trust_1 akiba_confidence_1 akiba_lotteryfair_1 akiba_family_1 akiba_prizegood_1 akiba_prizebad_1 akiba_continue_1 akiba_rules_1"
-glo ysum8 "akiba_controlselect_1 akiba_lotteryselect_1 akiba_regretselect_1 lnakiba_controlsave_1 lnakiba_lotterysave_1 lnakiba_regretsave_1"
+glo ysum8 "akiba_controlselect_1 akiba_lotteryselect_1 akiba_regretselect_1 akiba_controlsave_1 akiba_lotterysave_1 akiba_regretsave_1"
 glo ysum9 "gam_moretempted_1 gam_lesstempted_1 gam_moregamble_1 gam_lessgamble_1 self_saver_1 self_lucky_1 self_savingsfeel_1 self_nosavefeel_1"
 
 /* Regressors */
 
-glo xhet "demo_female_0 demo_young_0 demo_stdschool_0 demo_formschool_0 demo_married_0 demo_haschild_0 save_dosave_0 lnlabor_medianinc_0 labor_employed_0 labor_selfemployed_0 labor_hasdependant_0 labor_isdependant_0 pref_riskaverse_0 pref_medianloc_0 pref_medianindiff_0 gam_mediancpgi_z_0"
+glo xhet "demo_female_0 demo_young_0 demo_stdschool_0 demo_formschool_0 demo_married_0 demo_haschild_0 save_dosave_0 labor_medianinc_0 labor_employed_0 labor_selfemployed_0 labor_hasdependant_0 labor_isdependant_0 pref_riskaverse_0 pref_medianloc_0 pref_medianindiff_0 gam_mediancpgi_z_0"
 
 *************
 ** Program **
@@ -125,6 +126,7 @@ di "Finished in `r(t1)' seconds."
 ** Notes **
 ***********
 
+do never-users ruin our results? depends on whether we think they actually just never used the product or exclusion due to error
 project timeline
 do winnings affect endline savings/gambling?
 actually separate days saved and average deposits within day by not counting the additional days when taking the average
