@@ -424,20 +424,8 @@ replace akiba_prizegood_1 = . if control
 ren endline_prizebad akiba_prizebad_1
 replace akiba_prizebad_1 = . if control
 
-encode endline_akibarules, gen(akiba_rules_1)
-replace akiba_rules_1 = 1 if akiba_rules_1 == 2 | akiba_rules_1 == 3
-la var akiba_rules_1 "Describe rules of AKIBA"
-
-tab akiba_rules_1, gen(akiba_comprehension)
-
-ren akiba_comprehension1 akiba_comprehension1_1
-la var akiba_comprehension1_1 "Good rules comprehension"
-
-ren akiba_comprehension2 akiba_comprehension2_1
-la var akiba_comprehension2_1 "Minor confusion with rules"
-
-ren akiba_comprehension3 akiba_comprehension3_1
-la var akiba_comprehension3_1 "No rules comprehension"
+recode akiba_rules (5 = 0) (nonm = 1), gen(akiba_rules_1)
+la var akiba_rules_1 "Can describe rules of AKIBA"
 
 encode endline_chooseplan, gen(akiba_select_1)
 la var akiba_select_1 "Group self-selection"
@@ -633,7 +621,10 @@ save "$data_dir/clean/akiba_long.dta", replace
 
 keep account mobile_*
 
-collapse (mean) mobile_finalbalance = mobile_finalbalance mobile_avgdeposits = mobile_withindeposits mobile_avgdepositamt = mobile_depositamount mobile_avgrefunds = mobile_refunds mobile_avgrefundamt = mobile_refundamount mobile_avgprizes = mobile_prizes mobile_avgprizeamt = mobile_prizeamount mobile_avgwithdrawals = mobile_withdrawals mobile_avgwithdrawalamt = mobile_withdrawalamount (sum) mobile_totdeposits = mobile_deposits mobile_totdepositamt = mobile_depositamount mobile_totrefunds = mobile_refunds mobile_totrefundamt = mobile_refundamount mobile_totprizes = mobile_prizes mobile_totprizeamt = mobile_prizeamount mobile_totwithdrawals = mobile_withdrawals mobile_totwithdrawalamt = mobile_withdrawalamount mobile_savedays = mobile_saved, by(account)
+collapse ///
+	(mean) mobile_finalbalance = mobile_finalbalance mobile_avgdeposits = mobile_withindeposits mobile_avgdepositamt = mobile_depositamount mobile_avgrefunds = mobile_refunds mobile_avgrefundamt = mobile_refundamount mobile_avgprizes = mobile_prizes mobile_avgprizeamt = mobile_prizeamount mobile_avgwithdrawals = mobile_withdrawals mobile_avgwithdrawalamt = mobile_withdrawalamount ///
+	(sum) mobile_totdeposits = mobile_deposits mobile_totdepositamt = mobile_depositamount mobile_totrefunds = mobile_refunds mobile_totrefundamt = mobile_refundamount mobile_totprizes = mobile_prizes mobile_totprizeamt = mobile_prizeamount mobile_totwithdrawals = mobile_withdrawals mobile_totwithdrawalamt = mobile_withdrawalamount mobile_savedays = mobile_saved ///
+, by(account)
 
 merge 1:1 account using `clean_subjects', nogen
 

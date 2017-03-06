@@ -43,8 +43,8 @@ graph set window fontfaceserif "`graphfont'"
 glo builddataflag = 1		 // Build combined dataset
 glo cleandataflag = 1		 // Clean combined dataset
 glo summaryflag = 1	 		 // Output summary stats
-glo estimateflag = 1         // Output regression tables
-glo figuresflag = 1			 // Output graphs and figures
+glo estimateflag = 0         // Output regression tables
+glo figuresflag = 0			 // Output graphs and figures
 
 /* Analysis options */
 
@@ -85,7 +85,7 @@ glo ysum5 "pref_avgindiff_0 pref_avggeometric_0 pref_avgexponential_0 pref_avghy
 /* Endline summary outcomes */
 
 glo ysum6 "mobile_totdeposits mobile_totdepositamt mobile_avgdepositamt mobile_totwithdrawalamt"
-glo ysum7 "akiba_trust_1 akiba_confidence_1 akiba_lotteryfair_1 akiba_family_1 akiba_prizegood_1 akiba_prizebad_1 akiba_continue_1 akiba_comprehension1_1 akiba_comprehension2_1 akiba_comprehension3_1"
+glo ysum7 "akiba_trust_1 akiba_confidence_1 akiba_lotteryfair_1 akiba_family_1 akiba_prizegood_1 akiba_prizebad_1 akiba_continue_1 akiba_rules_1"
 glo ysum8 "akiba_controlselect_1 akiba_lotteryselect_1 akiba_regretselect_1 lnakiba_controlsave_1 lnakiba_lotterysave_1 lnakiba_regretsave_1"
 glo ysum9 "gam_moretempted_1 gam_lesstempted_1 gam_moregamble_1 gam_lessgamble_1 self_saver_1 self_lucky_1 self_savingsfeel_1 self_nosavefeel_1"
 
@@ -125,37 +125,10 @@ di "Finished in `r(t1)' seconds."
 ** Notes **
 ***********
 
-Overview of results
-
-	Regret increases number of deposits (days and not more per day)
-	Lottery shows some evidence but perhaps underpowered
-	No effect on balance
-	Regret increases amount withdrew
-	Regret increases savings and usage of ROSCA
-	Regret increases self-reported gambling
-	Lottery/Regret increases lucky person
-	Lottery/Regret increases self-selection into regret group
-
-Possible explanations for results
-	Overweighting of probabilities
-	Samuelson '63: fallacy of large numbers
-	Benartzi Thaler: myopic loss aversion
-	Liquidity constraints
-	Lumpy gambling utility
-	Usage diminishes learning curve, improves trust, etc.
-
-
-Investigate result on ROSCA savings
-fix citations for capitalization
+project timeline
 do winnings affect endline savings/gambling?
-resps also withdrew more resulting in a lower total balance!
-why should people save more? have to provide evidence of this
 actually separate days saved and average deposits within day by not counting the additional days when taking the average
 we should analyze withdrawal activity
-differences with PAP
-Mention null effects on downstream outcomes (consumption, etc.)
-think about intertemporal consumer behavior; what do our results say about the prevailing model?
-
 can investigate more thoroughly how people saved during project period (time of day, week fixed effects, distance from reminder, etc.)
 how do we know when people attrited? is it before or after the end of savings? need for tsfill
 what the hell is 11111 2222 winning ticket?

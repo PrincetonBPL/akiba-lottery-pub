@@ -426,6 +426,11 @@ rename doyouhaveanycomplementscomplaint endline_comments
 
 rename endline_surveyid personid
 
+* Make variables compatible with older Stata versions
+
+encode endline_akibarules, gen(akiba_rules)
+drop endline_akibarules
+
 * Correcting error made with personid
 
 replace personid = 261993 if personid == 261668 & endline_firstname == "lucy"
