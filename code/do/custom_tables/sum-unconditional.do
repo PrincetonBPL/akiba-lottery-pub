@@ -66,10 +66,9 @@ foreach yvar in $sumvars {
 	/* Row Labels */
 
 	loc thisvarlabel: variable label `yvar' // Extracts label from row var
-	local varlabels "`varlabels' "`thisvarlabel'" " " "
-	loc statnames "`statnames' thisstat`count' thisstat`countse'"
+	local varlabels "`varlabels' "`thisvarlabel'" "
+	loc statnames "`statnames' thisstat`count'"
 	loc count = `count' + 2
-	loc countse = `count' + 1
 
 }
 

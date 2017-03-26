@@ -64,21 +64,21 @@ if $panelflag {
 	graph export "$fig_dir/line-balance.eps", replace
 	!epstopdf "$fig_dir/line-balance.eps"
 
-	graph twoway (line mobile_depositamount period if treatmentgroup == 1, color(gs0) lpattern(solid)) (line mobile_depositamount period if treatmentgroup == 2, color(gs0) lpattern(dash)) (line mobile_depositamount period if treatmentgroup == 3, color(gs0) lpattern(dot)), ytitle("Deposit amount") legend(order(1 "Control" 2 "Lottery" 3 "Regret")) graphregion(color(white))
-	graph export "$fig_dir/line-depositamount.eps", replace
-	!epstopdf "$fig_dir/line-depositamount.eps"
+	graph twoway (line mobile_deposits period if treatmentgroup == 1, color(gs0) lpattern(solid)) (line mobile_deposits period if treatmentgroup == 2, color(gs0) lpattern(dash)) (line mobile_deposits period if treatmentgroup == 3, color(gs0) lpattern(dot)), title("A: Average number of daily deposits made") ytitle("No. of deposits") legend(off) graphregion(color(white)) saving(line-deposits, replace)
 
-	graph twoway (line mobile_cumdepositamount period if treatmentgroup == 1, color(gs0) lpattern(solid)) (line mobile_cumdepositamount period if treatmentgroup == 2, color(gs0) lpattern(dash)) (line mobile_cumdepositamount period if treatmentgroup == 3, color(gs0) lpattern(dot)) (rcap ub_cumdepositamount lb_cumdepositamount period if treatmentgroup == 1 & period == 60, color(gs0)) (rcap ub_cumdepositamount lb_cumdepositamount period if treatmentgroup == 2 & period == 60, color(gs0)) (rcap ub_cumdepositamount lb_cumdepositamount period if treatmentgroup == 3 & period == 60, color(gs0)), ytitle("Amount deposited") legend(order(1 "Control" 2 "Lottery" 3 "Regret")) graphregion(color(white))
-	graph export "$fig_dir/line-cumdepositamount.eps", replace
-	!epstopdf "$fig_dir/line-cumdepositamount.eps"
+	graph twoway (line mobile_depositamount period if treatmentgroup == 1, color(gs0) lpattern(solid)) (line mobile_depositamount period if treatmentgroup == 2, color(gs0) lpattern(dash)) (line mobile_depositamount period if treatmentgroup == 3, color(gs0) lpattern(dot)), title("B: Average daily amount deposited") ytitle("Deposit amount") legend(order(1 "Control" 2 "Lottery" 3 "Regret")) graphregion(color(white)) saving(line-depositamount, replace)
 
-	graph twoway (line mobile_deposits period if treatmentgroup == 1, color(gs0) lpattern(solid)) (line mobile_deposits period if treatmentgroup == 2, color(gs0) lpattern(dash)) (line mobile_deposits period if treatmentgroup == 3, color(gs0) lpattern(dot)), ytitle("No. of deposits") legend(order(1 "Control" 2 "Lottery" 3 "Regret")) graphregion(color(white))
-	graph export "$fig_dir/line-deposits.eps", replace
-	!epstopdf "$fig_dir/line-deposits.eps"
+	graph twoway (line mobile_cumdeposits period if treatmentgroup == 1, color(gs0) lpattern(solid)) (line mobile_cumdeposits period if treatmentgroup == 2, color(gs0) lpattern(dash)) (line mobile_cumdeposits period if treatmentgroup == 3, color(gs0) lpattern(dot)) (rcap ub_cumdeposits lb_cumdeposits period if treatmentgroup == 1 & period == 60, color(gs0)) (rcap ub_cumdeposits lb_cumdeposits period if treatmentgroup == 2 & period == 60, color(gs0)) (rcap ub_cumdeposits lb_cumdeposits period if treatmentgroup == 3 & period == 60, color(gs0)), title("A: Cumulative number of deposits made") ytitle("No. of deposits") legend(off) graphregion(color(white)) saving(line-cumdeposits, replace)
 
-	graph twoway (line mobile_cumdeposits period if treatmentgroup == 1, color(gs0) lpattern(solid)) (line mobile_cumdeposits period if treatmentgroup == 2, color(gs0) lpattern(dash)) (line mobile_cumdeposits period if treatmentgroup == 3, color(gs0) lpattern(dot)) (rcap ub_cumdeposits lb_cumdeposits period if treatmentgroup == 1 & period == 60, color(gs0)) (rcap ub_cumdeposits lb_cumdeposits period if treatmentgroup == 2 & period == 60, color(gs0)) (rcap ub_cumdeposits lb_cumdeposits period if treatmentgroup == 3 & period == 60, color(gs0)), ytitle("No. of deposits") legend(order(1 "Control" 2 "Lottery" 3 "Regret")) graphregion(color(white))
-	graph export "$fig_dir/line-cumdeposits.eps", replace
-	!epstopdf "$fig_dir/line-cumdeposits.eps"
+	graph twoway (line mobile_cumdepositamount period if treatmentgroup == 1, color(gs0) lpattern(solid)) (line mobile_cumdepositamount period if treatmentgroup == 2, color(gs0) lpattern(dash)) (line mobile_cumdepositamount period if treatmentgroup == 3, color(gs0) lpattern(dot)) (rcap ub_cumdepositamount lb_cumdepositamount period if treatmentgroup == 1 & period == 60, color(gs0)) (rcap ub_cumdepositamount lb_cumdepositamount period if treatmentgroup == 2 & period == 60, color(gs0)) (rcap ub_cumdepositamount lb_cumdepositamount period if treatmentgroup == 3 & period == 60, color(gs0)), title("B: Cumulative amount deposited") ytitle("Amount deposited") legend(order(1 "Control" 2 "Lottery" 3 "Regret")) graphregion(color(white)) saving(line-cumdepositamount, replace)
+
+	gr combine line-deposits.gph line-depositamount.gph, row(1) col(1) xcommon ycommon xsize(6) ysize(8) graphregion(color(white))
+	gr export "$fig_dir/line-deposits.eps", replace
+	cap !epstopdf "$fig_dir/line-deposits.eps"
+
+	gr combine line-cumdeposits.gph line-cumdepositamount.gph, row(1) col(1) xcommon ycommon xsize(6) ysize(8) graphregion(color(white))
+	gr export "$fig_dir/line-cumdeposits.eps", replace
+	cap !epstopdf "$fig_dir/line-cumdeposits.eps"
 
 	/* Autoregressive plot */
 

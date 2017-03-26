@@ -59,8 +59,8 @@ glo USDconvertflag = 1 		 // Runs analysis in USD-PPP
 glo ppprate = (1/38.84) 	 // PPP exchange rate from KSH (2009-2013)
 
 glo laglength = 7			 // Lag length for panel analysis
-glo iterations = 1 		 // Number of iterations for calculating FWER adjusted p-values
-glo riterations = 1		 // Number of iterations for permutation test
+glo iterations = 10000 		 // Number of iterations for calculating FWER adjusted p-values
+glo riterations = 10000		 // Number of iterations for permutation test
 
 /* Regressands by category */
 
@@ -126,11 +126,8 @@ di "Finished in `r(t1)' seconds."
 ** Notes **
 ***********
 
-do never-users ruin our results? depends on whether we think they actually just never used the product or exclusion due to error
 project timeline
 do winnings affect endline savings/gambling?
-actually separate days saved and average deposits within day by not counting the additional days when taking the average
-we should analyze withdrawal activity
 can investigate more thoroughly how people saved during project period (time of day, week fixed effects, distance from reminder, etc.)
 how do we know when people attrited? is it before or after the end of savings? need for tsfill
 what the hell is 11111 2222 winning ticket?
