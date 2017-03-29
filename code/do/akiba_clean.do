@@ -497,7 +497,7 @@ use "$data_dir/clean/akiba_mobile.dta"
 
 la var period "Savings period"
 
-gen period_date = date(substr(time, 1, 10), "YMD")
+gen period_date = dofc(clock(time, "MD20Yhm"))
 format period_date %tdDD_Mon_YY
 la var period_date "Date of savings period"
 
@@ -637,6 +637,7 @@ collapse ///
 	(mean) mobile_finalbalance = mobile_finalbalance mobile_avgdeposits = mobile_deposits mobile_avgdepositamt = mobile_depositamount mobile_avgrefunds = mobile_refunds mobile_avgrefundamt = mobile_refundamount mobile_avgprizes = mobile_prizes mobile_avgprizeamt = mobile_prizeamount mobile_avgwithdrawals = mobile_withdrawals mobile_avgwithdrawalamt = mobile_withdrawalamount ///
 	(sum) mobile_totdeposits = mobile_deposits mobile_totdepositamt = mobile_depositamount mobile_totrefunds = mobile_refunds mobile_totrefundamt = mobile_refundamount mobile_totprizes = mobile_prizes mobile_totprizeamt = mobile_prizeamount mobile_totwithdrawals = mobile_withdrawals mobile_totwithdrawalamt = mobile_withdrawalamount mobile_savedays = mobile_saved ///
 	(max) mobile_nonuser = mobile_nonuser ///
+	(min) mobile_startdate = period_date
 , by(account)
 
 merge 1:1 account using `clean_subjects', nogen
@@ -653,6 +654,7 @@ foreach root in deposit refund prize withdrawal {
 la var mobile_finalbalance "Final balance"
 la var mobile_savedays "No. of days saved"
 la var mobile_nonuser "Never used mobile savings"
+la var mobile_startdate "Savings period start date"
 
 gen mobile_withdrew = mobile_totwithdrawals > 0 | ~mi(mobile_totwithdrawals)
 la var mobile_withdrew "Withdrew at day 30"

@@ -1,4 +1,4 @@
-\documentclass[11pt]{article}
+\documentclass[12pt]{article}
 \usepackage[margin=1.5in]{geometry}
 \usepackage[strict]{changepage}
 \usepackage{booktabs, threeparttable, adjustbox, tabularx, longtable}
@@ -21,23 +21,19 @@
 \renewcommand\thesection{\Roman{section}}
 \renewcommand\thesubsection{\Alph{subsection}}
 
-\makeatletter
-\newcommand*{\centerfloat}{\parindent \z@ \leftskip \z@ \@plus 1fil \@minus \textwidth \rightskip \leftskip \parfillskip \z@skip}
-\makeatother
-
 \newcommand{\specialcell}[2][c]{\begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
 
 \begin{document}
 
 \title{Using Lotteries to Encourage Saving: Experimental Evidence from Kenya}
 
-\author{Justin Abraham\thanks{Department of Psychology, Princeton University and the Busara Center for Behavioral Economics. \protect\href{mailto:justinra@princeton.edu}{justinra@princeton.edu}}, Merve Akbas\thanks{Aliya Financial Technologies. \protect\href{mailto:merve.akbas@duke.edu}{merve.akbas@duke.edu}}, Dan Ariely\thanks{Fuqua School of Business, Duke University. \protect\href{mailto:dan@danariely.com}{dan@danariely.com}}, and Chaning Jang\thanks{Department of Psychology, Princeton University and the Busara Center for Behavioral Economics. \protect\href{mailto:cjang@princeton.edu}{cjang@princeton.edu}}} % change author arrangement into squares
+\author{Justin Abraham\thanks{Department of Psychology, Princeton University and the Busara Center for Behavioral Economics. \protect\href{mailto:justinra@princeton.edu}{justinra@princeton.edu}}, Merve Akbas\thanks{Jet.com. \protect\href{mailto:merve.akbas@duke.edu}{merve.akbas@duke.edu}}, Dan Ariely\thanks{Fuqua School of Business, Duke University. \protect\href{mailto:dan@danariely.com}{dan@danariely.com}}, and Chaning Jang\thanks{Department of Psychology, Princeton University and the Busara Center for Behavioral Economics. \protect\href{mailto:cjang@princeton.edu}{cjang@princeton.edu}}}
 
 \maketitle
 
 \begin{abstract}
 
-	In this study, we evaluate the provision of lottery-linked deposit accounts (LLDA) -- savings products that incorporate stochastic returns to deposits. We provided a mobile savings product to 311 informal residents in Nairobi, Kenya and observe account activity over a 60-day period. We found that participants with LLDAs made 42\% more deposits on average over the project period than participants receiving a matched incentive. This increase in account activity is due to participants making more deposits per day in order to enter the lottery. We do not, however, observe any effects due to the lottery incentive on amount deposited over the project period. We show that when presented with potential winnings from previous days, participants with LLDAs increased self-reported gambling activity by 15\%. Our results suggest that the LLDA is a promising tool to improve savings among the poor and that product design has considerable implications on gambling behavior.
+	In this study, we evaluate the provision of lottery-linked deposit accounts (LLDA) -- savings products that incorporate stochastic returns to deposits -- against a standard, interest-bearing deposit account. We provided a mobile savings product to 311 informal residents in Nairobi, Kenya and observe account activity over a 60-day period. We found that participants with LLDAs made 42\% more deposits on average over the project period than participants receiving a matched incentive. This increase in account activity is due to participants making more deposits per day in order to enter the lottery. We do not, however, observe any effects due to the lottery incentive on amount deposited over the project period. We show that when presented with potential winnings from previous days, participants with LLDAs increased self-reported gambling activity by 15\%. Our results suggest that the LLDA is a promising tool to improve savings among the poor and that product design has considerable implications on gambling behavior.
 
 \end{abstract}
 
@@ -59,6 +55,8 @@
 
 	The present study is a lab and field experiment testing the effects of lottery-linked savings on savings behavior. We provided a mobile savings product to 311 informal residents in Nairobi, Kenya and observed account activity over a 60-day period. We minimized barriers to saving by utilizing Safaricom's \textit{Sambaza} mobile savings technology. This platform allowed us to collect detailed data on participant transactions and to examine savings behavior over time. Roughy one-third of our sample was randomly assigned a savings account which provided a fixed 5\% match daily to desposits made that day. A second group was assigned an account that yielded stochastic returns equal in expectation to the 5\% match through a lottery conducted on a daily basis. For each day a participant makes a non-zero deposit, they received a lottery ticket and an opportunity to win a prize instead of the fixed match. We compared the match and lottery groups to determine how LLDAs impact savings behavior. A third group received the same lottery-linked account with the additional feature that participants receive a lottery ticket every day regardless of saving but could not claim the prize until after making a deposit. The key feature of this ``regret'' treatment is that participants observe the lottery results and potential prize at the end of each day. We tested this treatment aginst the lottery treatment to determine whether experienced regret from being unable to claim a prize affects decisions to save.
 
+	% Literature on regret aversion in motivating behavior
+
 	We found that participants using LLDAs with the regret framing made 42\% more deposits on average over the project period than participants receiving the matched incentive. Moreover, this increase in account activity is due to participants making more deposits per day in order to enter the lottery. There were no significant differences in effects on saving between the regular LLDA and the LLDA with regret framing. Interestingly, we find no effect of LLDAs on total amount saved or on the size of each deposit. Participants made smaller, more frequent deposits compared to the control group. We find no evidence of the LLDA displacing savings from other sources. On gambling behavior, we find that 27\% participants in the regret framing self-report higher gambling activity compared to 12\% in the control group.
 
 	This study contributes to the literature as one of the first randomized evaluations examining the impact of LLDAs on saving behavior. Moreover, the study's unique experimental design allows us to identify dynamic effects -- participants make more frequent deposits to their accounts when given lottery-based returns. This result suggests that a non-pecuniary appeal of gambling, unrelated to prize amounts, may be enough to induce a change in savings behavior. LLDAs may thus improve utilization among existing account holders and be able to attract new savers to open formal savings accounts. Frequent deposits may also have long-term benefits by encouraging the formation of a savings habit \shortcite{alessie_saving_2009}. From a policy perspective, LLDAs may not be revenue neutral compared to matching if financial institutions incur greater transaction costs as a result of more frequent deposits.
@@ -71,7 +69,7 @@
 
 	\subsection{Context}
 
-		This study was conducted in conjunction with the Busara Center for Behavioral Economics in Nairobi with 311 participants residing in Kibera, one of Kenya's largest urban slums. Nearly 60\% of our sample is female with a median age of 28 years. Less than half of the participants in our sample reported that they are employed with only 5\% reported receiving a regular income. The median PPP-adjusted monthly income among those employed is USD 77.\footnote{We use a USD-KSH PPP conversion factor of 38.84.} Approximately 55\% of our sample saves regularly with a majority utilizing ROSCAs. Average monthly savings among these individuals amount to USD 23.
+		This study was conducted in conjunction with the Busara Center for Behavioral Economics in Nairobi with 311 participants residing in Kibera, one of Kenya's largest urban slums. Nearly 60\% of our sample is female with a median age of 28 years. Less than half of the participants in our sample reported that they are employed with only 5\% reported receiving a regular income. The median PPP-adjusted monthly income among those employed is USD 77.\footnote{We use a USD-KSH PPP conversion factor of 38.84 for 2013.} Approximately 55\% of our sample saves regularly with a majority utilizing ROSCAs. Average monthly savings among these individuals amount to USD 23.
 
 		Gaming has been legal in Kenya since 1966, but the ubiquity of mobile phone usage has allowed the recent popularity of mobile sports betting. SportPesa, one of the most popular mobile gambling services, reports over 800,000 registered users as of 2015 \shortcite{kemibaro_sportpesa_2015}. In our sample, 24\% of participants at baseline report that they have some problem with gambling. 11\% of participants report that they gamble at a casino, bet money at racetracks or sporting events, played the sweepstakes, or played cards for money daily or more frequently in the last 12 months.
 
@@ -104,21 +102,19 @@
 
 		At the end of our experiment, we returned participants' savings and accumulated incentives or winnings via an M-Pesa transfer. This M-Pesa transfer included the extra withdrawal fees needed to cash out an amount equal to the participant's full account balance. Therefore, participants paid no explicit fees to participate in our program.
 
-	\subsection{Treatment assignments}
+	\subsection{Treatment}
 
 		Participants enrolled in the savings program were randomized into one of three different incentive schemes. Tables \ref{tab:sum-ysumall} report summary statistics and balance across treatment groups for several baseline characteristics. We do not find a correlation between treatment assignment and these observable characteristics.
 
-			\subsubsection{Matched incentive savings}
+		\begin{enumerate}
 
-				Participants in the matched group participated in a savings program where they earned a 5\% matching contribution on any amount that they saved in a particular day. We take this group as our control group to be tested against the lottery incentives.
+			\item \textbf{Matched incentive savings:} Participants in the matched group participated in a savings program where they earned a 5\% matching contribution on any amount that they saved in a particular day. We take this group as our control group to be tested against the lottery incentives.
 
-			\subsubsection{Lottery-linked savings}
+			\item \textbf{Lottery-linked savings:} After saving a non-zero amount, participants earned a lottery ticket transmitted via SMS, which could win a cash prize in proportion to the amount they saved. A lottery ticket was a random sequence of four numbers between 1 and 9, inclusive. Each day, our administrative system randomly generated a winning sequence of four numbers. Prizes were awarded according to how well a participant's lottery numbers matched the winning numbers. If the first or second numbers matched, a 10\% match of savings was awarded. If \emph{both} the first and second numbers matched, a 100\% match of savings was awarded. Finally if all numbers matched, a prize of 200 times the daily savings was awarded. The earnings on this lottery ticket were equal in expectation to the 5\% match earned in the control group. Our system processed the matching of lottery numbers and entered winnings into the internal ledger. Participants could only earn one lottery ticket per day. We henceforth refer to this group as the \textsc{Lottery} group.
 
-				After saving a non-zero amount, participants earned a lottery ticket transmitted via SMS, which could win a cash prize in proportion to the amount they saved. A lottery ticket was a random sequence of four numbers between 1 and 9, inclusive. Each day, our administrative system randomly generated a winning sequence of four numbers. Prizes were awarded according to how well a participant's lottery numbers matched the winning numbers. If the first or second numbers matched, a 10\% match of savings was awarded. If \emph{both} the first and second numbers matched, a 100\% match of savings was awarded. Finally if all numbers matched, a prize of 200 times the daily savings was awarded. The earnings on this lottery ticket were equal in expectation to the 5\% match earned in the control group. Our system processed the matching of lottery numbers and entered winnings into the internal ledger. Participants could only earn one lottery ticket per day. We henceforth refer to this group as the \textsc{Lottery} group.
+			\item \textbf{Lottery-linked savings with regret:} This scheme is similar to the lottery treatment but participants in this third group were sent lottery tickets in their beginning-of-day text message. These tickets only became redeemable, however, after participants had saved a non-zero amount that day. Participants with winning lottery tickets who did not save that day did not win money from their lottery ticket. However, they were informed whether they would have won in their end-of-day message the next morning. We henceforth refer to this group as the \textsc{Regret} group.
 
-			\subsubsection{Lottery-linked savings with regret}
-
-				This scheme is similar to the lottery treatment but participants in this third group were sent lottery tickets in their beginning-of-day text message. These tickets only became redeemable, however, after participants had saved a non-zero amount that day. Participants with winning lottery tickets who did not save that day did not win money from their lottery ticket. However, they were informed whether they would have won in their end-of-day message the next morning. We henceforth refer to this group as the \textsc{Regret} group.
+		\end{enumerate}
 
 \section{Empirical Strategy\protect\footnote{We registered a pre-analysis plan documenting the experimental design, identification strategy, and outcomes of interest available at \url{https://www.socialscienceregistry.org/trials/893}. Project materials, including de-identified participant data, is available at \url{https://github.com/princetonbpl/akiba-lottery-pub}.}} \label{sec:est}
 
@@ -188,9 +184,11 @@
 
 	\subsection{LLDAs increase deposits made without increasing savings}
 
-		This section presents our main results on savings behavior, documented in Table \ref{tab:reg-mobile}. We find that participants in the \textsc{Regret} group made between 5-6 more deposit transactions ($\hat \beta = 5.71, p < 0.05$) compared to those receiving the fixed match. This effect is large, amounting to a 40\% increase over the average number of deposits in the control group. These results are further robust to the inclusion of control variables and FWER adjustment. We do not find strong evidence of an effect of the lottery incentive \textit{without} the regret component against either \textsc{Regret} or control group. Nevertheless, point estimates suggest that the lottery alone could increase deposits by as much as 33\% ($\hat \beta = 4.59, p < 0.10$) compared to the control. Table \ref{tab:reg-mde} displays the MDE for each outcome and shows that the present experimental design is powered to detect effects on savings larger than what we estimate for the \textsc{Lottery} group. A higher powered study might be able to pick up more subtle effects of the lottery incentive. Figure \ref{fig:line-cumdeposits} traces the cumulative path of deposits made over the savings period. Average deposits for the \textsc{Lottery} and \textsc{Regret} groups are greater than for the control group for all periods, and grows at a higher rate. We are able to statistically distinguish total values at the end of the 60-day period but the figure suggests the existence of a larger effect when examining longer time periods.
+		This section presents our main results on savings behavior, documented in Table \ref{tab:reg-mobile}. We find that participants in the \textsc{Regret} group made between 5-6 more deposit transactions ($\hat \beta = 5.71, p < 0.05$) compared to those receiving the fixed match. This effect is large, amounting to a 40\% increase over the average number of deposits in the control group. These results are further robust to the inclusion of control variables and FWER adjustment. We do not find strong evidence of an effect of the lottery incentive \textit{without} the regret component against either \textsc{Regret} or control group. Nevertheless, point estimates suggest that the lottery alone could increase deposits by as much as 33\% ($\hat \beta = 4.59, p < 0.10$) compared to the control. Table \ref{tab:reg-mde} displays the MDE for each outcome and shows that the present experimental design is powered to detect effects on savings larger than what we estimate for the \textsc{Lottery} group. A higher powered study might be able to pick up more subtle effects of the lottery incentive. Panel A of Figure \ref{fig:line-cumdeposits} traces the cumulative path of deposits made over the savings period. Average deposits for the \textsc{Lottery} and \textsc{Regret} groups are greater than for the control group for all periods, and grows at a higher rate. We are able to statistically distinguish total values at the end of the 60-day period but the figure suggests the existence of a larger effect when examining longer time periods.
 
-		While effects on number of deposits are acute, we find no effect of either treatment on total amount deposited over the project period. Figure \ref{fig:line-cumdepositamount} illustrates the cumulative deposit amounts, averaged by treatment group, over the 60-day period. We cannot distinguish total deposit amounts between any of the three incentive schemes. So while participants are making more deposits, the amount of each deposit is smaller on average than in the control group.
+		% resps also withdrew more resulting in a lower total balance!
+
+		While effects on number of deposits are acute, we find no effect of either treatment on total amount deposited over the project period. Panel B of Figure \ref{fig:line-cumdeposits} illustrates the cumulative deposit amounts, averaged by treatment group, over the 60-day period. We cannot distinguish total deposit amounts between any of the three incentive schemes. So while participants are making more deposits, the amount of each deposit is smaller on average than in the control group.
 
 		Our results are largely consistent with findings from previous randomized evaluations of lottery-based incentives on savings. \shortciteN{loibl_testing_2016}, examining features of the Individual Development Account program in the U.S., find no effect of LLDAs over a fixed match of equal expected value. The study posits that severe liquidity constraints in the sample rendered behavioral interventions ineffective. With a median monthly income of USD 77, households in our study may be similarly cash-strapped and unable to allocate a greater portion of their budget to savings. Lottery-based incentives applied to other domains -- including labor supply \shortcite{brune_effect_2015} and health-related behaviors \shortcite{kimmel_randomized_2012,bjorkman_nyqvist_using_2015} -- are found to have significant effects.
 
@@ -204,6 +202,8 @@
 		% Do they play because of non-divisible large expenditures like \shortciteN{herskowitz__2016} http://blogs.worldbank.org/impactevaluations/unmet-liquidity-needs-and-spread-sports-betting-guest-post-sylvan-herskowitz?
 
 		While we do not detect significant differences in deposits between the \textsc{Lottery} and \textsc{Regret} groups, our estimates point to the importance of regret aversion in supplementing the choice to play by saving. Regret aversion will motivate making deposits if our participants anticipated feeling ``loser regret'' from information that they could have won had they played \shortciteN{filiz-ozbay_lottery_2015}. This conforms to suggestive evidence from a cross-sectional study of Dutch lotteries that anticipated regret from winning but not playing relates to future decisions to enter the lottery \shortcite{zeelenberg_consequences_2004}.
+
+		% Should we expand this?
 
 	\subsection{LLDAs encourage informal saving}
 
@@ -222,9 +222,12 @@
 
 		% This may be an effective tool to encourage savings on the _extensive_ margin
 		% Can we target better? Working poor, emerging middle class, the present study's het effects
+		% Effects on downstream outcomes (consumption, etc.)
+		% Tighter accounting to track savings and expenditure
 
 \bibliographystyle{achicago}
 \bibliography{Lottery.bib}
+% fix citations
 
 \newpage
 
@@ -247,9 +250,9 @@
 	\begin{figure}[h]
 		\centering
 		\caption{Number of deposits and amount deposited over project period}
-		\centerfloat
-		\includegraphics[width=\textwidth]{../../figures/line-cumdeposits.pdf}
+		\includegraphics[height=0.85\textheight]{../../figures/line-cumdeposits.pdf}
 		\label{fig:line-cumdeposits}
+		\caption*{\footnotesize \emph{Notes:} Panel A plots the cumulative number of deposits made by the average participant over the 60-day savings period by treatment assignment. Panel B plots the cumulative amount deposited by the average participant. Error bars for the total number of deposits and total amount deposited by the end of the project are within one standard error of the mean.}
 	\end{figure}
 
 % Notes to self
@@ -274,34 +277,18 @@
 % 	Lumpy gambling utility (plausible but how do we distinguish from others?)
 % 	Usage diminishes learning curve, improves trust, etc. (can this be tested?)
 % 	Why only ROSCA and not formal savings?
-%
-%
-% fix citations for capitalization
-% resps also withdrew more resulting in a lower total balance!
-% why should people save more? have to provide evidence of this
+
 % differences with PAP
-% Mention null effects on downstream outcomes (consumption, etc.)
 % think about intertemporal consumer behavior; what do our results say about the prevailing model?
 
-% 	Talk about results
-
-% 		Effect on no. of deposits though no effect on total saved
-% 		Improves the streak of consecutive savings
-% 		Important in possibly encouraging habit-formation
-% 		Het effects on savings: no prior savings for deposits, female, single households for regret, older, educated, actual savings for educated, low income, low prior gambling, unemployed for regret, risk averse
-% 		Het effects on gambling: male, single for regret, educated for regret, prior gambling, unemployed
-% 		Trasaction-level dynamics: check whether habit formation varies across treatment groups
-% 		Misc: No effect on actual savings, increase in self-reported gambling behavior like \shortcite{brown_socio-economic_1992} \shortciteN{shawn_allen_cole_can_2014} \shortcite{maynard_consumer_2008}
 
 % 	Talk about contributions (how it solves shortcomings discussed in previous research)
 
 % 		Focus on a potentially important outcome (no. of deposits/streak) determining long-term savings behavior previously neglected in the literature
-% 		\textcolor{red}{Could briefly discuss links to habit-formation literature}
+% 		Could briefly discuss links to habit-formation literature
 % 		Less than 20\% of banked adults in Sub-Saharan Africa make more than 2 deposits in a month \shortcite{demirguc-kunt_global_2015}
 % 		Examine dynamic savings behavior rather than one-shot \shortcite{brune_effect_2015}
 % 		Lab-in-the-field allows joint investigation of parametrics in a natural setting
-
-% 	Talk about policy implications
 
 % \section{Consumer Choice Problem} \label{sec:model}
 

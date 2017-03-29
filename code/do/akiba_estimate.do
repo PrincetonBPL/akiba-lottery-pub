@@ -59,8 +59,8 @@ loc grouplist "ymobile ypanel ysave ygamble yakiba yselect yself" // ylottery
 
 loc ymobiledesc "Mobile savings by respondent"
 loc ypaneldesc "Mobile savings by period"
-loc ysavedesc "Self-reported savings behavior"
-loc ygambledesc "Gambling behavior"
+loc ysavedesc "Savings outside the study"
+loc ygambledesc "Gambling behavior outside the study"
 loc yakibadesc "Akiba SMART"
 loc yselectdesc "Group self-selection"
 loc ylotterydesc "Lottery usage"
