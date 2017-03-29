@@ -631,13 +631,13 @@ save "$data_dir/clean/akiba_long.dta", replace
 ** Subject-level data **
 ************************
 
-keep account mobile_*
+keep account period* mobile_*
 
 collapse ///
 	(mean) mobile_finalbalance = mobile_finalbalance mobile_avgdeposits = mobile_deposits mobile_avgdepositamt = mobile_depositamount mobile_avgrefunds = mobile_refunds mobile_avgrefundamt = mobile_refundamount mobile_avgprizes = mobile_prizes mobile_avgprizeamt = mobile_prizeamount mobile_avgwithdrawals = mobile_withdrawals mobile_avgwithdrawalamt = mobile_withdrawalamount ///
 	(sum) mobile_totdeposits = mobile_deposits mobile_totdepositamt = mobile_depositamount mobile_totrefunds = mobile_refunds mobile_totrefundamt = mobile_refundamount mobile_totprizes = mobile_prizes mobile_totprizeamt = mobile_prizeamount mobile_totwithdrawals = mobile_withdrawals mobile_totwithdrawalamt = mobile_withdrawalamount mobile_savedays = mobile_saved ///
 	(max) mobile_nonuser = mobile_nonuser ///
-	(min) mobile_startdate = period_date
+	(min) mobile_startdate = period_date ///
 , by(account)
 
 merge 1:1 account using `clean_subjects', nogen
