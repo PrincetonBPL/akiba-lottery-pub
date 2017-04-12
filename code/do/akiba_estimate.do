@@ -72,20 +72,28 @@ if $maineffectsflag {
 
 		loc root = substr("`group'", 2, .)
 		glo regvars "$`group'"
-		glo regpath "reg-`root'"
-		glo regtitle "Treatment effects -- ``group'desc'"
 
-		if ("`group'" == "ypanel") {
+		if ("`group'" != "ypanel") {
 
-			use "$data_dir/clean/akiba_long.dta", clear
-			do "$do_dir/custom_tables/reg-ols.do"
+			use "$data_dir/clean/akiba_wide.dta", clear
+
+			glo regpath "reg-`root'"
+			glo regtitle "Treatment effects -- ``group'desc'"
+			do "$do_dir/custom_tables/reg-fdr.do"
+
+			glo regpath "reg-fwer`root'"
+			glo regtitle "Treatment effects controlling the FWER -- ``group'desc'"
+			do "$do_dir/custom_tables/reg-fwer.do"
 
 		}
 
 		else {
 
-			use "$data_dir/clean/akiba_wide.dta", clear
-			do "$do_dir/custom_tables/reg-fwer.do"
+			use "$data_dir/clean/akiba_long.dta", clear
+
+			glo regpath "reg-`root'"
+			glo regtitle "Treatment effects -- ``group'desc'"
+			do "$do_dir/custom_tables/reg-fdr.do"
 
 		}
 

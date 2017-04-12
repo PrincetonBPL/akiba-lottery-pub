@@ -1,20 +1,20 @@
 \begin{table}[htbp]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \caption{Treatment effects -- Mobile savings by period} \label{tab:reg-panel} \maxsizebox*{\textwidth}{\textheight}{ \begin{threeparttable} \begin{tabular}{l*{8}{c}} \toprule
           &\multicolumn{3}{c}{No controls}&\multicolumn{3}{c}{With controls}&\multicolumn{2}{c}{Sample}\\\cmidrule(lr){2-4}\cmidrule(lr){5-7}\cmidrule(lr){8-9}
           &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}&\multicolumn{1}{c}{(5)}&\multicolumn{1}{c}{(6)}&\multicolumn{1}{c}{(7)}&\multicolumn{1}{c}{(8)}\\
-          &\multicolumn{1}{c}{Lottery}&\multicolumn{1}{c}{Regret}&\multicolumn{1}{c}{\specialcell{Difference\\\(p\)-value}}&\multicolumn{1}{c}{Lottery}&\multicolumn{1}{c}{Regret}&\multicolumn{1}{c}{\specialcell{Difference\\\(p\)-value}}&\multicolumn{1}{c}{\specialcell{Control Mean\\(SD)}}&\multicolumn{1}{c}{Obs.}\\
+          &\multicolumn{1}{c}{Lottery}&\multicolumn{1}{c}{Regret}&\multicolumn{1}{c}{\specialcell{Regret - \\Lottery}}&\multicolumn{1}{c}{Lottery}&\multicolumn{1}{c}{Regret}&\multicolumn{1}{c}{\specialcell{Regret - \\Lottery}}&\multicolumn{1}{c}{\specialcell{Control Mean\\(SD)}}&\multicolumn{1}{c}{Obs.}\\
 \midrule
-No. of deposits&0.08$^{*}$&0.09$^{**}$&     0.70&0.08$^{*}$&0.08$^{*}$&     0.94&     0.23&    18636\\
-          &   (0.04)&   (0.04)&         &   (0.04)&   (0.04)&         &   (0.51)&         \\
-          &         &         &         &         &         &         &         &         \\
-Made a deposit&0.07$^{*}$&0.08$^{**}$&     0.66&0.06$^{*}$&0.07$^{**}$&     0.78&     0.20&    18660\\
-          &   (0.03)&   (0.03)&         &   (0.03)&   (0.03)&         &   (0.40)&         \\
-          &         &         &         &         &         &         &         &         \\
-Amount deposited&    -0.01&    -0.03&     0.77&    -0.01&    -0.02&     0.68&     0.25&    18636\\
-          &   (0.06)&   (0.05)&         &   (0.05)&   (0.05)&         &   (1.03)&         \\
-          &         &         &         &         &         &         &         &         \\
-Amount withdrew&     0.01&0.03$^{**}$&     0.28&     0.01&0.03$^{**}$&     0.16&     0.02&    18636\\
-          &   (0.02)&   (0.01)&         &   (0.01)&   (0.01)&         &   (0.60)&         \\
-          &         &         &         &         &         &         &         &         \\
-\bottomrule \end{tabular} \begin{tablenotes}[flushleft] \footnotesize \item \emph{Notes:} Columns 1 - 2 report OLS estimates of the treatment effect. Columns 4 - 5 reports the estimates controlling for baseline covariates. Columns 3 and 6 report the \(p\)-values for tests of the equality of the two treatment effects. Standard errors are in parentheses. Observations are at the individual-period level. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level. \end{tablenotes} \end{threeparttable} } \end{table}
+No. of deposits&0.08$^{*}$&0.09$^{**}$&     0.02&0.08$^{*}$&0.08$^{*}$&     0.00&     0.23&    18636\\
+          &   (0.04)&   (0.04)&   (0.05)&   (0.04)&   (0.04)&   (0.05)&   (0.51)&         \\
+          &   [0.16]&[0.03]$^{**}$&   [1.00]&   [0.20]&[0.07]$^{*}$&   [1.00]&         &         \\
+Made a deposit&0.07$^{*}$&0.08$^{**}$&     0.02&0.06$^{*}$&0.07$^{**}$&     0.01&     0.20&    18660\\
+          &   (0.03)&   (0.03)&   (0.04)&   (0.03)&   (0.03)&   (0.04)&   (0.40)&         \\
+          &   [0.16]&[0.03]$^{**}$&   [1.00]&   [0.20]&[0.07]$^{*}$&   [1.00]&         &         \\
+Amount deposited&    -0.01&    -0.03&    -0.01&    -0.01&    -0.02&    -0.02&     0.25&    18636\\
+          &   (0.06)&   (0.05)&   (0.05)&   (0.05)&   (0.05)&   (0.05)&   (1.03)&         \\
+          &   [0.68]&   [0.16]&   [1.00]&   [0.84]&   [0.17]&   [1.00]&         &         \\
+Amount withdrew&     0.01&0.03$^{**}$&     0.02&     0.01&0.03$^{**}$&     0.02&     0.02&    18636\\
+          &   (0.02)&   (0.01)&   (0.02)&   (0.01)&   (0.01)&   (0.02)&   (0.60)&         \\
+          &   [0.62]&[0.03]$^{**}$&   [1.00]&   [0.84]&[0.07]$^{*}$&   [1.00]&         &         \\
+\bottomrule \end{tabular} \begin{tablenotes}[flushleft] \footnotesize \item \emph{Notes:} Columns 1 - 2 report OLS estimates of the treatment effect. Columns 4 - 5 reports the estimates controlling for baseline covariates. Columns 3 and 6 report the \(p\)-values for tests of the equality of the two treatment effects. Standard errors are in parentheses and FDR-corrected minimum \(q\)-values are in brackets. Observations are at the individual level. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level. Stars on the coefficient estimates reflect unadjusted \(p\)-values. \end{tablenotes} \end{threeparttable} } \end{table}
 
-% File produced by reg-ols.do with /n/homeserver2/user2a/justinra/repos/akiba-lottery-pub/data/clean/akiba_long.dta on 22:00:25 28 Mar 2017 by user justinra on Stata 13.1 with seed X71d1d353b37e281e006fa26738e26f4500044a1c
+% File produced by reg-fwer.do with /Users/Justin/Repos/akiba-lottery-pub/data/clean/akiba_long.dta on 14:45:40 12 Apr 2017 by user Justin on Stata 13.1 with seed X53d8cd0fc43f462544a474abacbdd93d00044a8f
