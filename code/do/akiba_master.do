@@ -44,7 +44,7 @@ graph set window fontfaceserif "`graphfont'"
 glo builddataflag = 1		 // Build combined dataset
 glo cleandataflag = 1		 // Clean combined dataset
 glo summaryflag = 1	 		 // Output summary stats
-glo estimateflag = 1         // Output regression tables
+glo estimateflag = 0         // Output regression tables
 glo figuresflag = 1			 // Output graphs and figures
 
 /* Analysis options */
@@ -126,6 +126,7 @@ di "Finished in `r(t1)' seconds."
 ** Notes **
 ***********
 
+is there adaptation over time?
 project timeline
 do winnings affect endline savings/gambling?
 can investigate more thoroughly how people saved during project period (time of day, week fixed effects, distance from reminder, etc.)
