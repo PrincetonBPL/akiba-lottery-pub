@@ -126,7 +126,8 @@ di "Finished in `r(t1)' seconds."
 ** Notes **
 ***********
 
-is there adaptation over time?
+disentangle regret aversion (+) and experience (-)
+is there adaptation over time? test for description experience gap, if so then is it experience or repetition? might it shrink within the first few days? there is a slowdown in the cdf
 project timeline
 do winnings affect endline savings/gambling?
 can investigate more thoroughly how people saved during project period (time of day, week fixed effects, distance from reminder, etc.)
