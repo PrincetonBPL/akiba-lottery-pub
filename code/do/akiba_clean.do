@@ -546,7 +546,7 @@ la var mobile_matches "No. of matches"
 /* Merge with subjects data */
 
 merge m:1 account using `clean_subjects', keep(2 3) // Why are there 24 unmatched from subjects? They're not in the raw ledger data and didn't use account
-
+e
 /* Create balanced panel for days without account activity */
 
 replace period = 1 if _merge == 2
@@ -560,7 +560,7 @@ la var mobile_nonuser "Never used mobile savings"
 
 /* Set mobile savings variables to 0 for days without account activity */
 
-foreach var of varlist mobile_*amount mobile_deposits mobile_refunds mobile_prizes mobile_withdrawals mobile_matches {
+foreach var of varlist mobile_*amount mobile_deposits mobile_refunds mobile_prizes mobile_withdrawals {
 
 	replace `var' = 0 if mi(treatmentgroup)
 
@@ -604,7 +604,7 @@ la var mobile_withindeposits "No. of deposits on days saved"
 gen mobile_matched = mobile_matches > 0 & ~mi(mobile_matches)
 la var mobile_matched "Matching ticket"
 
-gen mobile_awarded = mobile_matched == 1 & mobile_saved == 1
+gen mobile_awarded = mobile_matched == 1 & mobile_saved == 1 & control == 0
 la var mobile_awarded "Awarded prize"
 
 foreach v of varlist mobile_balance mobile_finalbalance mobile_*amount {
@@ -643,6 +643,9 @@ collapse ///
 merge 1:1 account using `clean_subjects', nogen
 
 foreach root in deposit refund prize withdrawal {
+
+	gen mobile_no`root's = mobile_tot`root's == 0
+	la var mobile_no`root's "No `root's made"
 
 	la var mobile_avg`root's "Daily avg. no. of `root's"
 	la var mobile_avg`root'amt "Daily avg. `root' amt."

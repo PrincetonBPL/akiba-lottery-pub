@@ -121,9 +121,9 @@ if $panelflag {
 		gen ub2 = M3 + (M4 * 1.96)
 		gen lb2 = M3 - (M4 * 1.96)
 
-		gr tw (line M1 period, color(gs0) lpattern(solid)) (line ub1 period, color(gs0) lpattern(dash)) (line lb1 period, color(gs0) lpattern(dash)), title("A: Effect of lottery over time", color(gs0) size(medsmall)) ytitle("Effect size") legend(off) graphregion(color(white)) saving(line-timeeffectlottery, replace)
+		gr tw (rarea ub1 lb1 period, color(gs12) sort) (line M1 period, color(gs0) lpattern(solid)), title("A: Effect of lottery over time", color(gs0) size(medsmall)) ytitle("Effect size") legend(off) graphregion(color(white)) saving(line-timeeffectlottery, replace)
 
-		gr tw (line M3 period, color(gs0) lpattern(solid)) (line ub2 period, color(gs0) lpattern(dash)) (line lb2 period, color(gs0) lpattern(dash)), title("B: Effect of regret over time", color(gs0) size(medsmall)) ytitle("Effect size") legend(off) graphregion(color(white)) saving(line-timeeffectregret, replace)
+		gr tw (rarea ub2 lb2 period, color(gs12) sort) (line M3 period, color(gs0) lpattern(solid)), title("B: Effect of regret over time", color(gs0) size(medsmall)) ytitle("Effect size") legend(off) graphregion(color(white)) saving(line-timeeffectregret, replace)
 
 		gr combine line-timeeffectlottery.gph line-timeeffectregret.gph, row(1) col(1) xcommon xsize(6) ysize(8) graphregion(color(white))
 		gr export "$fig_dir/line-time`yvar'.eps", replace
