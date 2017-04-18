@@ -546,7 +546,7 @@ la var mobile_matches "No. of matches"
 /* Merge with subjects data */
 
 merge m:1 account using `clean_subjects', keep(2 3) // Why are there 24 unmatched from subjects? They're not in the raw ledger data and didn't use account
-e
+
 /* Create balanced panel for days without account activity */
 
 replace period = 1 if _merge == 2
@@ -607,6 +607,26 @@ la var mobile_matched "Matching ticket"
 gen mobile_awarded = mobile_matched == 1 & mobile_saved == 1 & control == 0
 la var mobile_awarded "Awarded prize"
 
+/* Outcomes for early-late periods */
+
+gen mobile_earlydeposits = mobile_deposits if period <= 30
+la var mobile_earlydeposits "No. of deposits ($\leq$ 30 days)"
+
+gen mobile_earlydepositamount = mobile_depositamount if period <= 30
+la var mobile_earlydepositamount "Amount deposited ($\leq$ 30 days)"
+
+gen mobile_earlysaved = mobile_saved if period <= 30
+la var mobile_earlysaved "Made a deposit ($\leq$ 30 days)"
+
+gen mobile_latedeposits = mobile_deposits if period > 30
+la var mobile_latedeposits "No. of deposits (> 30 days)"
+
+gen mobile_latedepositamount = mobile_depositamount if period > 30
+la var mobile_latedepositamount "Made a deposit (> 30 days)"
+
+gen mobile_latesaved = mobile_saved if period > 30
+la var mobile_latesaved "Amount deposited (> 30 days)"
+
 foreach v of varlist mobile_balance mobile_finalbalance mobile_*amount {
 
 	if $USDconvertflag replace `v' = `v' * $ppprate
@@ -634,8 +654,8 @@ save "$data_dir/clean/akiba_long.dta", replace
 keep account period* mobile_*
 
 collapse ///
-	(mean) mobile_finalbalance = mobile_finalbalance mobile_avgdeposits = mobile_deposits mobile_avgdepositamt = mobile_depositamount mobile_avgrefunds = mobile_refunds mobile_avgrefundamt = mobile_refundamount mobile_avgprizes = mobile_prizes mobile_avgprizeamt = mobile_prizeamount mobile_avgwithdrawals = mobile_withdrawals mobile_avgwithdrawalamt = mobile_withdrawalamount ///
-	(sum) mobile_totdeposits = mobile_deposits mobile_totdepositamt = mobile_depositamount mobile_totrefunds = mobile_refunds mobile_totrefundamt = mobile_refundamount mobile_totprizes = mobile_prizes mobile_totprizeamt = mobile_prizeamount mobile_totwithdrawals = mobile_withdrawals mobile_totwithdrawalamt = mobile_withdrawalamount mobile_savedays = mobile_saved ///
+	(mean) mobile_finalbalance = mobile_finalbalance mobile_avgdeposits = mobile_deposits mobile_avgdepositamt = mobile_depositamount mobile_avgrefunds = mobile_refunds mobile_avgrefundamt = mobile_refundamount mobile_avgprizes = mobile_prizes mobile_avgprizeamt = mobile_prizeamount mobile_avgwithdrawals = mobile_withdrawals mobile_avgwithdrawalamt = mobile_withdrawalamount mobile_earlyavgdeposits = mobile_earlydeposits mobile_lateavgdeposits = mobile_latedeposits ///
+	(sum) mobile_totdeposits = mobile_deposits mobile_totdepositamt = mobile_depositamount mobile_totrefunds = mobile_refunds mobile_totrefundamt = mobile_refundamount mobile_totprizes = mobile_prizes mobile_totprizeamt = mobile_prizeamount mobile_totwithdrawals = mobile_withdrawals mobile_totwithdrawalamt = mobile_withdrawalamount mobile_savedays = mobile_saved mobile_earlytotdeposits = mobile_earlydeposits mobile_earlytotdepositamt = mobile_earlydepositamount mobile_earlysavedays = mobile_earlysaved mobile_latetotdeposits = mobile_latedeposits mobile_latetotdepositamt = mobile_latedepositamount mobile_latesavedays = mobile_latesaved ///
 	(max) mobile_nonuser = mobile_nonuser ///
 	(min) mobile_startdate = period_date ///
 , by(account)
@@ -654,11 +674,6 @@ foreach root in deposit refund prize withdrawal {
 
 }
 
-la var mobile_finalbalance "Final balance"
-la var mobile_savedays "No. of days saved"
-la var mobile_nonuser "Never used mobile savings"
-la var mobile_startdate "Savings period start date"
-
 gen mobile_withdrew = mobile_totwithdrawals > 0 | ~mi(mobile_totwithdrawals)
 la var mobile_withdrew "Withdrew at day 30"
 
@@ -670,6 +685,21 @@ foreach v of varlist mobile_finalbalance mobile_*amt {
 	la var ln`v' "`loglabel'"
 
 }
+
+la var mobile_earlytotdeposits "Total no. of deposits ($\leq$ 30 days)"
+la var mobile_earlytotdepositamt "Total deposit amt. ($\leq$ 30 days)"
+la var mobile_earlysavedays "No. of days saved ($\leq$ 30 days)"
+la var mobile_earlyavgdeposits "Daily avg. no. of deposits ($\leq$ 30 days)"
+
+la var mobile_latetotdeposits "Total no. of deposits (> 30 days)"
+la var mobile_latetotdepositamt "Total deposit amt. (> 30 days)"
+la var mobile_latesavedays "No. of days saved (> 30 days)"
+la var mobile_lateavgdeposits "Daily avg. no. of deposits (> 30 days)"
+
+la var mobile_finalbalance "Final balance"
+la var mobile_savedays "No. of days saved"
+la var mobile_nonuser "Never used mobile savings"
+la var mobile_startdate "Savings period start date"
 
 /* Save subjects dataset */
 

@@ -1,0 +1,20 @@
+\begin{table}[htbp]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \caption{Treatment effects with randomization inference -- Mobile savings by respondent ($\>$ 30 days)} \label{tab:ri-late} \maxsizebox*{\textwidth}{\textheight}{ \begin{threeparttable} \begin{tabular}{l*{8}{c}} \toprule
+          &\multicolumn{3}{c}{No controls}&\multicolumn{3}{c}{With controls}&\multicolumn{2}{c}{Sample}\\\cmidrule(lr){2-4}\cmidrule(lr){5-7}\cmidrule(lr){8-9}
+          &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}&\multicolumn{1}{c}{(5)}&\multicolumn{1}{c}{(6)}&\multicolumn{1}{c}{(7)}&\multicolumn{1}{c}{(8)}\\
+          &\multicolumn{1}{c}{Lottery}&\multicolumn{1}{c}{Regret}&\multicolumn{1}{c}{\specialcell{Difference\\\(p\)-value}}&\multicolumn{1}{c}{Lottery}&\multicolumn{1}{c}{Regret}&\multicolumn{1}{c}{\specialcell{Difference\\\(p\)-value}}&\multicolumn{1}{c}{\specialcell{Control Mean\\(SD)}}&\multicolumn{1}{c}{Obs.}\\
+\midrule
+Total no. of deposits ($\>$ 30 days)&     2.02&     2.63&0.00$^{***}$&     2.07&     2.20&     1.00&     5.18&      311\\
+          &   (1.27)&   (1.26)&         &   (1.40)&   (1.28)&         &   (7.56)&         \\
+          &         &         &         &         &         &         &         &         \\
+No. of days saved ($\>$ 30 days)&     1.99&     2.38&0.00$^{***}$&     1.88&     2.01&     1.00&     4.36&      311\\
+          &   (1.02)&   (1.05)&         &   (1.07)&   (1.06)&         &   (6.36)&         \\
+          &         &         &         &         &         &         &         &         \\
+Daily avg. no. of deposits ($\>$ 30 days)&     0.07&     0.09&0.00$^{***}$&     0.07&     0.07&     1.00&     0.17&      311\\
+          &   (0.04)&   (0.04)&         &   (0.05)&   (0.04)&         &   (0.25)&         \\
+          &         &         &         &         &         &         &         &         \\
+Total deposit amt. ($\>$ 30 days)&     0.38&     0.05&0.00$^{***}$&     0.70&     0.06&     1.00&     5.88&      311\\
+          &   (1.68)&   (1.48)&         &   (1.77)&   (1.46)&         &  (11.43)&         \\
+          &         &         &         &         &         &         &         &         \\
+\bottomrule \end{tabular} \begin{tablenotes}[flushleft] \footnotesize \item \emph{Notes:} Columns 1 - 2 report OLS estimates of the treatment effect. Columns 4 - 5 reports the estimates controlling for baseline covariates. Stars on the coefficient estimates reflect \(p\)-values obtained from Monte Carlo approximations of exact tests of the treatment effect with 1 permutations. Columns 3 and 6 report the \(p\)-values for permutation tests of the equality of the two treatment effects. Standard errors are in parentheses. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level. \end{tablenotes} \end{threeparttable} } \end{table}
+
+% File produced by reg-ri.do with /Users/Justin/Repos/akiba-lottery-pub/data/clean/akiba_wide.dta on 22:52:51 17 Apr 2017 by user Justin on Stata 13.1 with seed X676024803626262da547984bf7815cb300041109

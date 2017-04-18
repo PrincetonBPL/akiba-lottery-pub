@@ -1,0 +1,20 @@
+\begin{table}[htbp]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \caption{Treatment effects controlling the FWER -- Mobile savings by respondent ($\leq$ 30 days)} \label{tab:reg-fwerearly} \maxsizebox*{\textwidth}{\textheight}{ \begin{threeparttable} \begin{tabular}{l*{8}{c}} \toprule
+          &\multicolumn{3}{c}{No controls}&\multicolumn{3}{c}{With controls}&\multicolumn{2}{c}{Sample}\\\cmidrule(lr){2-4}\cmidrule(lr){5-7}\cmidrule(lr){8-9}
+          &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}&\multicolumn{1}{c}{(5)}&\multicolumn{1}{c}{(6)}&\multicolumn{1}{c}{(7)}&\multicolumn{1}{c}{(8)}\\
+          &\multicolumn{1}{c}{Lottery}&\multicolumn{1}{c}{Regret}&\multicolumn{1}{c}{\specialcell{Difference\\\(p\)-value}}&\multicolumn{1}{c}{Lottery}&\multicolumn{1}{c}{Regret}&\multicolumn{1}{c}{\specialcell{Difference\\\(p\)-value}}&\multicolumn{1}{c}{\specialcell{Control Mean\\(SD)}}&\multicolumn{1}{c}{Obs.}\\
+\midrule
+Total no. of deposits ($\leq$ 30 days)&2.56$^{*}$&3.08$^{**}$&     0.74&2.46$^{*}$&2.56$^{*}$&     0.95&     8.48&      311\\
+          &   (1.40)&   (1.35)&         &   (1.43)&   (1.34)&         &   (8.74)&         \\
+          &[0.00]$^{***}$&[0.00]$^{***}$&         &[0.00]$^{***}$&[0.00]$^{***}$&         &         &         \\
+No. of days saved ($\leq$ 30 days)&1.94$^{*}$&2.56$^{**}$&     0.62&     1.67&2.18$^{*}$&     0.68&     7.42&      311\\
+          &   (1.16)&   (1.15)&         &   (1.15)&   (1.15)&         &   (7.61)&         \\
+          &[0.00]$^{***}$&[0.00]$^{***}$&         &[0.00]$^{***}$&[0.00]$^{***}$&         &         &         \\
+Daily avg. no. of deposits ($\leq$ 30 days)&0.09$^{*}$&0.10$^{**}$&     0.74&0.08$^{*}$&0.09$^{*}$&     0.95&     0.28&      311\\
+          &   (0.05)&   (0.05)&         &   (0.05)&   (0.04)&         &   (0.29)&         \\
+          &[0.00]$^{***}$&[0.00]$^{***}$&         &[0.00]$^{***}$&[0.00]$^{***}$&         &         &         \\
+Total deposit amt. ($\leq$ 30 days)&    -1.17&    -1.65&     0.74&    -1.02&    -1.52&     0.71&     8.99&      311\\
+          &   (2.07)&   (1.85)&         &   (1.84)&   (1.69)&         &  (17.18)&         \\
+          &   [1.00]&   [1.00]&         &   [1.00]&[0.00]$^{***}$&         &         &         \\
+\bottomrule \end{tabular} \begin{tablenotes}[flushleft] \footnotesize \item \emph{Notes:} Columns 1 - 2 report OLS estimates of the treatment effect. Columns 4 - 5 reports the estimates controlling for baseline covariates. Columns 3 and 6 report the \(p\)-values for tests of the equality of the two treatment effects. Standard errors are in parentheses and FWER adjusted \(p\)-values are in brackets. Observations are at the individual level. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level. Stars on the coefficient estimates reflect unadjusted \(p\)-values. \end{tablenotes} \end{threeparttable} } \end{table}
+
+% File produced by reg-fwer.do with /Users/Justin/Repos/akiba-lottery-pub/data/clean/akiba_wide.dta on 22:52:04 17 Apr 2017 by user Justin on Stata 13.1 with seed Xf55105a47795965f9f1f196f7765c1d200043913

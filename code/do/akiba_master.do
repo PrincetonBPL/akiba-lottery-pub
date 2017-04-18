@@ -65,6 +65,8 @@ glo riterations = 10000		 // Number of iterations for permutation test
 /* Regressands by category */
 
 glo ymobile "mobile_totdeposits mobile_savedays mobile_avgdeposits mobile_totdepositamt mobile_totwithdrawalamt"
+glo yearly "mobile_earlytotdeposits mobile_earlysavedays mobile_earlyavgdeposits mobile_earlytotdepositamt"
+glo ylate "mobile_latetotdeposits mobile_latesavedays mobile_lateavgdeposits mobile_latetotdepositamt"
 glo ypanel "mobile_deposits mobile_saved mobile_depositamount mobile_withdrawalamount"
 glo ysave "save_monthlysave_1 save_mpesa_1 save_monthlyrosca_1 save_dorosca_1"
 glo ygamble "gam_moregamble_1 gam_lessgamble_1 gam_moretempted_1 gam_lesstempted_1"

@@ -4,7 +4,9 @@
 ** Input: akiba_wide.dta, akiba_long.dta
 ** Output: Regression tables
 
+///////////////////////////////////////////////
 /* Control variables demeaned and interacted */
+///////////////////////////////////////////////
 
 foreach v in $controlvars {
 
@@ -26,7 +28,9 @@ foreach v in $controlvars {
 
 }
 
+///////////////
 /* Attrition */
+///////////////
 
 if $attritionflag {
 
@@ -53,11 +57,15 @@ use "$data_dir/clean/akiba_wide.dta", clear
 
 }
 
+///////////////////////
 /* Treatment effects */
+///////////////////////
 
-loc grouplist "ymobile ypanel ysave ygamble yakiba yselect yself" // ylottery
+loc grouplist "ymobile yearly ylate ypanel ysave ygamble yakiba yselect yself" // ylottery
 
 loc ymobiledesc "Mobile savings by respondent"
+loc yearlydesc "Mobile savings by respondent ($\leq$ 30 days)"
+loc ylatedesc "Mobile savings by respondent (> 30 days)"
 loc ypaneldesc "Mobile savings by period"
 loc ysavedesc "Savings outside the study"
 loc ygambledesc "Gambling behavior outside the study"
@@ -101,7 +109,9 @@ if $maineffectsflag {
 
 }
 
+////////////////////////////////////////
 /* Exact test of the treatment effect */
+////////////////////////////////////////
 
 if $riflag {
 
@@ -138,7 +148,9 @@ if $riflag {
 
 }
 
-/* Heterogeneous effects */
+/////////////////////////////////////
+/* Heterogeneous treatment effects */
+/////////////////////////////////////
 
 if $heteffectsflag {
 

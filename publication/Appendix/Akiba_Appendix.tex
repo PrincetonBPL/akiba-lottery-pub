@@ -117,6 +117,8 @@
 	\subsection{Average treatment effects}
 
 		\input{../../tables/reg-mobile.tex}
+        \input{../../tables/reg-early.tex}
+        \input{../../tables/reg-late.tex}
 		\input{../../tables/reg-panel.tex}
 		\input{../../tables/reg-save.tex}
 		\input{../../tables/reg-gamble.tex}
@@ -126,22 +128,25 @@
 
 	\clearpage
 
-    % \subsection{Average treatment effects with FWER correction}
-    %
-    %     \input{../../tables/reg-fwermobile.tex}
-    %     \input{../../tables/reg-fwerpanel.tex}
-    %     \input{../../tables/reg-fwersave.tex}
-    %     \input{../../tables/reg-fwergamble.tex}
-    %     \input{../../tables/reg-fwerakiba.tex}
-    %     \input{../../tables/reg-fwerself.tex}
-    %     \input{../../tables/reg-fwerselect.tex}
-    %     \input{../../tables/reg-lottery.tex}
-    %
-    % \clearpage
+    \subsection{Average treatment effects with FWER correction}
+
+        \input{../../tables/reg-fwermobile.tex}
+        \input{../../tables/reg-fwerearly.tex}
+        \input{../../tables/reg-fwerlate.tex}
+        \input{../../tables/reg-fwersave.tex}
+        \input{../../tables/reg-fwergamble.tex}
+        \input{../../tables/reg-fwerakiba.tex}
+        \input{../../tables/reg-fwerself.tex}
+        \input{../../tables/reg-fwerselect.tex}
+        \input{../../tables/reg-lottery.tex}
+
+    \clearpage
 
     \subsection{Average treatment effects with randomization inference}
 
         \input{../../tables/ri-mobile.tex}
+        \input{../../tables/ri-early.tex}
+        \input{../../tables/ri-late.tex}
         \input{../../tables/ri-panel.tex}
         \input{../../tables/ri-save.tex}
         \input{../../tables/ri-gamble.tex}
@@ -151,7 +156,7 @@
 
     \clearpage
 
-	\subsection{Heterogeneous effects}
+	\subsection{Heterogeneous treatment effects}
 
 		\input{../../tables/het-lottery.tex}
 		\input{../../tables/het-regret.tex}
@@ -177,12 +182,17 @@
 
 	\clearpage
 
-	\subsection{Panel treatment effects}
-
-		\input{../../tables/panel-ar.tex}
-		\input{../../tables/panel-dl.tex}
+	\subsection{Autoregressive model}
 
 	\clearpage
+
+    \subsection{Finite distributed lag model}
+
+    \clearpage
+
+    \subsection{Baseline correlates of savings}
+
+    \clearpage
 
 \section{Visualization}
 
@@ -215,7 +225,7 @@
 
 		\begin{figure}[h]
 		\centering
-		\caption{Average daily balance}
+		\caption{Daily balance averaged over all participants}
 		\centerfloat
 		\includegraphics[width=\textwidth]{../../figures/line-balance.pdf}
 		\end{figure}
