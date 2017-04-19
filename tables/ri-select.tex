@@ -3,24 +3,24 @@
           &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}&\multicolumn{1}{c}{(5)}&\multicolumn{1}{c}{(6)}&\multicolumn{1}{c}{(7)}&\multicolumn{1}{c}{(8)}\\
           &\multicolumn{1}{c}{Lottery}&\multicolumn{1}{c}{Regret}&\multicolumn{1}{c}{\specialcell{Difference\\\(p\)-value}}&\multicolumn{1}{c}{Lottery}&\multicolumn{1}{c}{Regret}&\multicolumn{1}{c}{\specialcell{Difference\\\(p\)-value}}&\multicolumn{1}{c}{\specialcell{Control Mean\\(SD)}}&\multicolumn{1}{c}{Obs.}\\
 \midrule
-Select control group&    -0.13&    -0.08&0.00$^{***}$&    -0.10&    -0.03&0.00$^{***}$&     0.41&      284\\
+Select control group&-0.13$^{*}$&    -0.08&     0.45&    -0.10&    -0.03&     0.35&     0.41&      284\\
           &   (0.07)&   (0.07)&         &   (0.07)&   (0.07)&         &   (0.50)&         \\
           &         &         &         &         &         &         &         &         \\
-Select lottery group&     0.02&    -0.11&0.00$^{***}$&    -0.01&    -0.17&     1.00&     0.55&      284\\
+Select lottery group&     0.02&    -0.11&0.08$^{*}$&    -0.01&-0.17$^{**}$&0.05$^{**}$&     0.55&      284\\
           &   (0.07)&   (0.07)&         &   (0.08)&   (0.07)&         &   (0.50)&         \\
           &         &         &         &         &         &         &         &         \\
-Select regret group&     0.12&     0.19&0.00$^{***}$&     0.11&     0.20&0.00$^{***}$&     0.03&      284\\
+Select regret group&0.12$^{**}$&     0.19&     0.14&0.11$^{**}$&0.20$^{***}$&     0.11&     0.03&      284\\
           &   (0.04)&   (0.05)&         &   (0.04)&   (0.05)&         &   (0.18)&         \\
           &         &         &         &         &         &         &         &         \\
-Save with control&     5.28&    -7.75&0.00$^{***}$&     3.88&    -5.72&0.00$^{***}$&    39.12&      283\\
+Save with control&     5.28&    -7.75&0.05$^{**}$&     3.88&    -5.72&     0.15&    39.12&      283\\
           &   (7.45)&   (5.88)&         &   (8.04)&   (7.11)&         &  (50.63)&         \\
           &         &         &         &         &         &         &         &         \\
-Save with lottery&     4.60&   -10.11&0.00$^{***}$&     2.66&    -9.24&0.00$^{***}$&    41.39&      283\\
+Save with lottery&     4.60&   -10.11&0.05$^{**}$&     2.66&    -9.24&     0.13&    41.39&      283\\
           &   (8.71)&   (6.28)&         &   (8.82)&   (7.52)&         &  (54.98)&         \\
           &         &         &         &         &         &         &         &         \\
-Save with regret&     1.57&    -7.17&     1.00&    -0.78&    -8.37&     1.00&    35.22&      283\\
+Save with regret&     1.57&    -7.17&     0.21&    -0.78&    -8.37&     0.32&    35.22&      283\\
           &   (7.84)&   (6.36)&         &   (8.81)&   (7.77)&         &  (54.85)&         \\
           &         &         &         &         &         &         &         &         \\
-\bottomrule \end{tabular} \begin{tablenotes}[flushleft] \footnotesize \item \emph{Notes:} Columns 1 - 2 report OLS estimates of the treatment effect. Columns 4 - 5 reports the estimates controlling for baseline covariates. Stars on the coefficient estimates reflect \(p\)-values obtained from Monte Carlo approximations of exact tests of the treatment effect with 1 permutations. Columns 3 and 6 report the \(p\)-values for permutation tests of the equality of the two treatment effects. Standard errors are in parentheses. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level. \end{tablenotes} \end{threeparttable} } \end{table}
+\bottomrule \end{tabular} \begin{tablenotes}[flushleft] \footnotesize \item \emph{Notes:} Columns 1 - 2 report OLS estimates of the treatment effect. Columns 4 - 5 reports the estimates controlling for baseline covariates. Stars on the coefficient estimates reflect \(p\)-values obtained from Monte Carlo approximations of exact tests of the treatment effect with 10000 permutations. Columns 3 and 6 report the \(p\)-values for permutation tests of the equality of the two treatment effects. Standard errors are in parentheses. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level. \end{tablenotes} \end{threeparttable} } \end{table}
 
-% File produced by reg-ri.do with /Users/Justin/Repos/akiba-lottery-pub/data/clean/akiba_wide.dta on 22:52:58 17 Apr 2017 by user Justin on Stata 13.1 with seed Xa687f3d80959c74867e1dbbd2c3a273700044271
+% File produced by reg-ri.do with /n/homeserver2/user2a/justinra/repos/akiba-lottery-pub/data/clean/akiba_wide.dta on 12:54:01 18 Apr 2017 by user justinra on Stata 13.1 with seed Xf7f1af934e9d2c7be0b90b3f211ce9ae00040484
