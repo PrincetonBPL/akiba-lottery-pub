@@ -154,7 +154,7 @@ if $riflag {
 
 if $heteffectsflag {
 
-	glo yvars "mobile_totdeposits mobile_avgdeposits mobile_savedays gam_moregamble_1"
+	glo yvars "mobile_totdeposits mobile_totdepositamt save_dorosca_1 gam_moregamble_1"
 	glo hetvars "$xhet"
 	glo control "control"
 
