@@ -296,13 +296,45 @@ if $panelflag {
 
 }
 
+/////////////////////////////////////
 /* Minimum detectable effect sizes */
+/////////////////////////////////////
 
 glo regvars "$ynull"
 glo regpath "reg-mde"
 glo regtitle "Minimum detectable effect sizes"
 do "$do_dir/custom_tables/reg-mde.do"
 
+/////////////////////////////////////////////
 /* Baseline correlates of savings behavior */
+/////////////////////////////////////////////
 
-/* Testing for time trends and fixed effects */
+use "$data_dir/clean/akiba_wide.dta", clear
+
+loc varlist = "$xcor"
+loc length: list sizeof varlist
+
+foreach xvar of varlist $xcor {
+
+	eststo, pre(num): reg mobile_totdeposits `xvar' if control == 1, vce(cl surveyid)
+
+		estadd loc ar2 = string(e(r2_a), "%9.2f")
+		estadd loc fstat = string(e(F), "%9.2f")
+
+	eststo, pre(amt): reg mobile_totdepositamt `xvar' if control == 1, vce(cl surveyid)
+
+		estadd loc ar2 = string(e(r2_a), "%9.2f")
+		estadd loc fstat = string(e(F), "%9.2f")
+
+}
+
+loc prehead "\begin{table}[htbp]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \caption{Baseline correlates of number of deposits made} \label{tab:reg-cortotdeposits} \maxsizebox*{\textwidth}{\textheight}{ \begin{threeparttable} \begin{tabular}{l*{`length'}{c}} \toprule"
+loc postfoot "\bottomrule \end{tabular} \begin{tablenotes}[flushleft] \footnotesize \item \emph{Notes:} @note \end{tablenotes} \end{threeparttable} } \end{table}"
+loc footnote "This table reports estimates of `length' univariate regressions of number of deposits made on preference parameters estimated in the lab. Standard errors are clustered at the participant level and reported in parentheses. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level."
+esttab num* using "$tab_dir/reg-cortotdeposits", alignment(c) obslast nobaselevels nomtitle label b(%9.2f) se(%9.2f) sfmt(%9.2f) scalars("ar2 Adjusted R2" "fstat F-statistic") nogap star(* 0.10 ** 0.05 *** 0.01) prehead("`prehead'") postfoot("`postfoot'") note("`footnote'") se compress booktabs replace
+
+loc prehead "\begin{table}[htbp]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \caption{Baseline correlates of amount deposited} \label{tab:reg-cortotdepositamt} \maxsizebox*{\textwidth}{\textheight}{ \begin{threeparttable} \begin{tabular}{l*{`length'}{c}} \toprule"
+loc postfoot "\bottomrule \end{tabular} \begin{tablenotes}[flushleft] \footnotesize \item \emph{Notes:} @note \end{tablenotes} \end{threeparttable} } \end{table}"
+loc footnote "This table reports estimates of `length' univariate regressions of amount deposited on preference parameters estimated in the lab. Standard errors are clustered at the participant level and reported in parentheses. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level."
+esttab amt* using "$tab_dir/reg-cortotdepositamt", alignment(c) obslast nobaselevels nomtitle label b(%9.2f) se(%9.2f) sfmt(%9.2f) scalars("ar2 Adjusted R2" "fstat F-statistic") nogap star(* 0.10 ** 0.05 *** 0.01) prehead("`prehead'") postfoot("`postfoot'") note("`footnote'") se compress booktabs replace
+eststo clear

@@ -94,7 +94,8 @@ glo ysum9 "gam_moretempted_1 gam_lesstempted_1 gam_moregamble_1 gam_lessgamble_1
 
 /* Regressors */
 
-glo xhet "mobile_noprizes demo_female_0 demo_young_0 demo_stdschool_0 demo_formschool_0 demo_married_0 demo_haschild_0 save_dosave_0 labor_medianinc_0 labor_employed_0 labor_selfemployed_0 labor_hasdependant_0 labor_isdependant_0 pref_riskaverse_0 pref_medianloc_0 pref_medianindiff_0 gam_mediancpgi_z_0"
+glo xhet "demo_female_0 demo_young_0 demo_stdschool_0 demo_formschool_0 demo_married_0 demo_haschild_0 save_dosave_0 labor_medianinc_0 labor_employed_0 labor_selfemployed_0 labor_hasdependant_0 labor_isdependant_0 pref_riskaverse_0 pref_medianloc_0 pref_medianindiff_0 gam_mediancpgi_z_0"
+glo xcor "pref_avgindiff_0 pref_avggeometric_0 pref_avgexponential_0 pref_avghyperbolic_0 pref_station_0 pref_decrimp_0 pref_crra_0 pref_locscore_z_0"
 
 *************
 ** Program **
@@ -128,7 +129,6 @@ di "Finished in `r(t1)' seconds."
 ** Notes **
 ***********
 
-why are there more lottery tickets for regret? bug? tickets depend on play? then why does interest have them too?
 disentangle regret aversion (+) and experience (-)
 is there adaptation over time? test for description experience gap, if so then is it experience or repetition? might it shrink within the first few days? there is a slowdown in the cdf
 project timeline
