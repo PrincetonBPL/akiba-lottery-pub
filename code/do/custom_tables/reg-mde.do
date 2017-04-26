@@ -84,8 +84,8 @@ loc prehead_n "\begin{table}[htbp]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1
 loc postfoot "\bottomrule \end{tabular} \begin{tablenotes}[flushleft] \footnotesize \item @note \end{tablenotes} \end{threeparttable} } \end{table}"
 loc footnote "\emph{Notes:} Column 1 reports the minimum detectable effect sizes of the lottery treatment compared to control on the row variables with \(\alpha\) = 0.05 and 0.8 power. Columns 2 - 3 report the control group means and SDs and size of the analytic sample respectively."
 
-esttab col* using "$tab_dir/$regpath.tex", booktabs cells(none) nogap mtitle("Lottery" "\specialcell{Control Mean\\(SD)}" "N") stats(`statnames', labels(`varlabels')) note("`footnote'") prehead("`prehead'") postfoot("`postfoot'") compress replace
-esttab col* using "$tab_dir/$regpath-n.tex", booktabs cells(none) nogap mtitle("Lottery" "\specialcell{Control Mean\\(SD)}" "N") stats(`statnames', labels(`varlabels')) prehead("`prehead_n'") postfoot("`postfoot'") compress replace
+esttab col* using "$tab_dir/$regpath.tex", booktabs cells(none) nogap mtitle("Lottery MDE" "\specialcell{Control Mean\\(SD)}" "N") stats(`statnames', labels(`varlabels')) note("`footnote'") prehead("`prehead'") postfoot("`postfoot'") compress replace
+esttab col* using "$tab_dir/$regpath-n.tex", booktabs cells(none) nogap mtitle("Lottery MDE" "\specialcell{Control Mean\\(SD)}" "N") stats(`statnames', labels(`varlabels')) prehead("`prehead_n'") postfoot("`postfoot'") compress replace
 
 eststo clear
 

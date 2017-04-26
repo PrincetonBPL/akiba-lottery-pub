@@ -36,7 +36,7 @@ if $attritionflag {
 
 use "$data_dir/clean/akiba_wide.dta", clear
 
-	eststo: reg attr lottery regret, vce(r)
+	eststo: reg endline lottery regret, vce(r)
 
 		test lottery = regret
 		estadd scalar Diff_p = round(r(p), 0.01)
