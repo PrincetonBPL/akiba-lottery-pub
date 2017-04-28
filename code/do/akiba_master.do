@@ -44,8 +44,8 @@ graph set window fontfaceserif "`graphfont'"
 glo builddataflag = 1		 // Build combined dataset
 glo cleandataflag = 1		 // Clean combined dataset
 glo summaryflag = 1	 		 // Output summary stats
-glo estimateflag = 0         // Output regression tables
-glo figuresflag = 0			 // Output graphs and figures
+glo estimateflag = 1         // Output regression tables
+glo figuresflag = 1			 // Output graphs and figures
 
 /* Analysis options */
 
@@ -129,14 +129,12 @@ di "Finished in `r(t1)' seconds."
 ** Notes **
 ***********
 
-disentangle regret aversion (+) and experience (-)
+quantile regression?
+do winnings affect endline savings/gambling? disentangle regret aversion (+) and experience of winning (-), unable to?
 is there adaptation over time? test for description experience gap, if so then is it experience or repetition? might it shrink within the first few days? there is a slowdown in the cdf
 project timeline
-do winnings affect endline savings/gambling?
 can investigate more thoroughly how people saved during project period (time of day, week fixed effects, distance from reminder, etc.)
 how do we know when people attrited? is it before or after the end of savings? need for tsfill
 what the hell is 11111 2222 winning ticket?
 discrepancy in prizes and savings in a day?
-refunds with KSH 150 limit?
-test for time trend/FE (perhaps learning by doing)
 Could people just have saved with interest and bought regular lottery tickets?
