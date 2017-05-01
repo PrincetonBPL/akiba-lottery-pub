@@ -129,9 +129,12 @@ di "Finished in `r(t1)' seconds."
 ** Notes **
 ***********
 
-quantile regression?
-do winnings affect endline savings/gambling? disentangle regret aversion (+) and experience of winning (-), unable to?
-is there adaptation over time? test for description experience gap, if so then is it experience or repetition? might it shrink within the first few days? there is a slowdown in the cdf
+het effects for rosca savings
+quantile regression? allows to look at the distribution of effects for continuous outcomes (no of deposits, savings)
+do winnings affect endline savings/gambling? disentangle regret aversion (+) and experience of winning (-), unable to because in the subject-level, savings and prizes are co-determined, must use panel. regress outcomes on matches. regress outcomes on size of match.
+For lottery and regret, does winning/losing affect future savings? A test of gambling/hot hand fallacy. Only able to test in panel data.
+For regret, does experiencing winning without claiming prize affect future savings? A test of regret aversion. Only able to test in panel data.
+is there adaptation over time? test for description experience gap, if so then is it experience or repetition? might it shrink within the first few days? there is a slowdown in the cdf. find a statistical test for this
 project timeline
 can investigate more thoroughly how people saved during project period (time of day, week fixed effects, distance from reminder, etc.)
 how do we know when people attrited? is it before or after the end of savings? need for tsfill

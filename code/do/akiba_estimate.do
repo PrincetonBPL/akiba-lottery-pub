@@ -188,7 +188,7 @@ if $heteffectsflag {
 
 		loc columns = 0
 
-		foreach yvar in mobile_totdeposits mobile_avgdeposits mobile_savedays gam_moregamble_1 {
+		foreach yvar in mobile_totdeposits mobile_avgdeposits mobile_savedays save_dorosca_1 gam_moregamble_1 {
 
 			eststo: reg `yvar' lottery LX`xvar' regret RX`xvar' `xvar', vce(r)
 
@@ -218,7 +218,7 @@ if $heteffectsflag {
 
 	}
 
-	foreach yvar in mobile_totdeposits mobile_avgdeposits mobile_savedays gam_moregamble_1 {
+	foreach yvar in mobile_totdeposits mobile_avgdeposits mobile_savedays save_dorosca_1 gam_moregamble_1 {
 
 		eststo, prefix(horse): reg `yvar' lottery regret `righthand' `fillmiss', vce(r)
 

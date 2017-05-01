@@ -524,16 +524,16 @@ la var mobile_netamount "Net transaction amount"
 /* Transaction types */
 
 ren type_deposit mobile_deposits
-la var mobile_deposits "No. of deposits"
+la var mobile_deposits "No. of deposits made"
 
 ren type_refund mobile_refunds
-la var mobile_refunds "No. of refunds"
+la var mobile_refunds "No. of refunds made"
 
 ren type_prize mobile_prizes
-la var mobile_prizes "No. of prizes"
+la var mobile_prizes "No. of prizes won"
 
 ren type_withdrawal mobile_withdrawals
-la var mobile_withdrawals "No. of withdrawals"
+la var mobile_withdrawals "No. of withdrawals made"
 
 /* Lottery tickets */
 
@@ -541,7 +541,7 @@ la var participantticket "Ticket no."
 la var winningticket "Winning ticket no."
 
 ren matchtype mobile_matches
-la var mobile_matches "No. of matches"
+la var mobile_matches "No. of matches on ticket"
 
 /* Merge with subjects data */
 
@@ -595,7 +595,7 @@ la var mobile_cumdepositamount "Cumulative deposit amount"
 bysort account: gen mobile_cumdeposits = sum(mobile_deposits)
 la var mobile_cumdeposits "Cumulative deposits made"
 
-/* Misc. mobile savings outcomes */
+/* Daily mobile savings activity */
 
 gen mobile_saved = mobile_depositamount > 0 & ~mi(mobile_depositamount)
 la var mobile_saved "Made a deposit"
@@ -700,7 +700,7 @@ la var mobile_lateavgdeposits "Daily avg. no. of deposits (> 30 days)"
 
 la var mobile_finalbalance "Final balance"
 la var mobile_savedays "No. of days saved"
-la var mobile_totmatches "No. of hypothetical lottery wins"
+la var mobile_totmatches "No. of hypothetical and realized lottery wins"
 la var mobile_nonuser "Never used mobile savings"
 la var mobile_startdate "Savings period start date"
 
