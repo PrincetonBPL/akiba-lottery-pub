@@ -20,7 +20,14 @@
 	xratio mul
 	/xp exch def
 	Slrgb setrgbcolor
-	xp yp .5 0 360 arc fill
+	newpath
+	xp yp moveto
+	xp Slw add yp
+	lineto
+	currentlinecap
+	1 setlinecap
+	stroke
+	setlinecap
 } def
 /Sln {
 	yratio mul
@@ -108,15 +115,16 @@
 	/y0 exch def
 	xratio mul
 	/x0 exch def
-	newpath x0 y0 moveto x0 y1 lineto x1 y1 lineto x1 y0 lineto x0 y0 lineto closepath
 	sfill 1 eq {
 		Ssrgb setrgbcolor
-		gsave
+		x0 y0 moveto
+		x0 y1 lineto x1 y1 lineto x1 y0 lineto x0 y0 lineto
 		fill
-		grestore
 	} if
 	Slw setlinewidth
 	Slrgb setrgbcolor
+	x0 y0 moveto
+	x0 y1 lineto x1 y1 lineto x1 y0 lineto x0 y0 lineto
 	stroke
 } def
 /Sellipse {
@@ -129,19 +137,22 @@
 	/y exch def
 	xratio mul
 	/x exch def
-	/savematrix matrix currentmatrix def
-	x y translate
-	xrad yrad scale
-	0 0 1 0 360 arc
-	savematrix setmatrix
 	sfill 1 eq {
 		Ssrgb setrgbcolor
-		gsave
+		/savematrix matrix currentmatrix def
+		x y translate
+		xrad yrad scale
+		0 0 1 0 360 arc
+		savematrix setmatrix
 		fill
-		grestore
 	} if
 	Slw setlinewidth
 	Slrgb setrgbcolor
+		/savematrix matrix currentmatrix def
+		x y translate
+		xrad yrad scale
+		0 0 1 0 360 arc
+		savematrix setmatrix
 	stroke
 } def
 /Stri {
@@ -163,16 +174,13 @@
 	/xleft exch def
 	xcen add
 	/xright exch def
-	newpath xcen ytop moveto xright ybot lineto xleft ybot lineto xcen ytop lineto closepath
 	sfill 1 eq {
 		Ssrgb setrgbcolor
-		gsave
-		fill
-		grestore
+		xcen ytop moveto xright ybot lineto xleft ybot lineto xcen ytop lineto fill
 	} if
 	Slw setlinewidth
 	Slrgb setrgbcolor
-	stroke
+	xcen ytop moveto xright ybot lineto xleft ybot lineto xcen ytop lineto stroke
 } def
 /Soldtri {
 	/sfill exch def
@@ -193,16 +201,13 @@
 	/x3 x0 def
 	y0 r add
 	/y3 exch def
-	newpath x1 y1 moveto x2 y2 lineto x3 y3 lineto x1 y1 lineto closepath
 	sfill 1 eq {
 		Ssrgb setrgbcolor
-		gsave
-		fill
-		grestore
+		x1 y1 moveto x2 y2 lineto x3 y3 lineto x1 y1 lineto fill
 	} if
 	Slw setlinewidth
 	Slrgb setrgbcolor
-	stroke
+	x1 y1 moveto x2 y2 lineto x3 y3 lineto x1 y1 lineto stroke
 } def
 /Sdia {
 	/sfill exch def
@@ -224,16 +229,13 @@
 	/x3 x def
 	y r add
 	/y3 exch def
-	newpath x0 y0 moveto x1 y1 lineto x2 y2 lineto x3 y3 lineto x0 y0 lineto closepath
-	sfill 1 eq {
+	sfill 1 eq  {
 		Ssrgb setrgbcolor
-		gsave
-		fill
-		grestore
+		x0 y0 moveto x1 y1 lineto x2 y2 lineto x3 y3 lineto x0 y0 lineto fill
 	} if
 	Slw setlinewidth
 	Slrgb setrgbcolor
-	stroke
+	x0 y0 moveto x1 y1 lineto x2 y2 lineto x3 y3 lineto x0 y0 lineto stroke
 } def
 /Scc {
 	/sfill exch def
@@ -243,16 +245,13 @@
 	/y0 exch def
 	xratio mul
 	/x0 exch def
-	x0 y0 r0 0 360 arc closepath
 	sfill 1 eq {
 		Ssrgb setrgbcolor
-		gsave
-		fill
-		grestore
+		x0 y0 r0 0 360 arc fill
 	} if
 	Slw setlinewidth
 	Slrgb setrgbcolor
-	stroke
+	x0 y0 r0 0 360 arc stroke
 } def
 /Spie {
 	/sfill exch def
@@ -264,15 +263,14 @@
 	/y exch def
 	xratio mul
 	/x exch def
-	newpath x y moveto x y r a0 a1 arc closepath
 	sfill 1 eq {
 		Ssrgb setrgbcolor
-		gsave
+		newpath x y moveto x y r a0 a1 arc closepath
 		fill
-		grestore
 	} if
 	Slw setlinewidth
 	Slrgb setrgbcolor
+	newpath x y moveto x y r a0 a1 arc closepath
 	stroke
 } def
 /Splu {
@@ -392,27 +390,27 @@
 /Ssrgb {1.000 1.000 1.000} def
 /Slw 0.576 def
 0 0 31999 23272 1 Srect
-3158 5223 31184 22457 1 Srect
+3157 5222 31184 22457 1 Srect
 /Slrgb {0.000 0.000 0.000} def
 /Strgb {0.000 0.000 0.000} def
 /Slw 0.864 def
 /Slrgb {0.918 0.949 0.953} def
-3158 5735 31184 5735 Sln
+3157 5734 31184 5734 Sln
 /Slw 0.576 def
 /Slrgb {0.000 0.000 0.000} def
 /Slw 0.864 def
 /Slrgb {0.918 0.949 0.953} def
-3158 11138 31184 11138 Sln
+3157 11138 31184 11138 Sln
 /Slw 0.576 def
 /Slrgb {0.000 0.000 0.000} def
 /Slw 0.864 def
 /Slrgb {0.918 0.949 0.953} def
-3158 16542 31184 16542 Sln
+3157 16541 31184 16541 Sln
 /Slw 0.576 def
 /Slrgb {0.000 0.000 0.000} def
 /Slw 0.864 def
 /Slrgb {0.918 0.949 0.953} def
-3158 21945 31184 21945 Sln
+3157 21945 31184 21945 Sln
 /Slw 0.576 def
 /Slrgb {0.000 0.000 0.000} def
 /Slw 0.864 def
@@ -473,70 +471,70 @@
 25807 12429 26272 12428 Sln
 26505 12428 26970 12428 Sln
 /Ssrgb {0.200 0.200 0.200} def
-3670 17735 3670 10365 Sln
+3669 17735 3669 10365 Sln
 3492 10365 Sm
-3848 10365 Sl
+3847 10365 Sl
 3492 17735 Sm
-3848 17735 Sl
-5353 15008 5353 9468 Sln
+3847 17735 Sl
+5352 15008 5352 9468 Sln
 5175 9468 Sm
-5531 9468 Sl
+5530 9468 Sl
 5175 15008 Sm
-5531 15008 Sl
-7734 16863 7734 10367 Sln
-7556 10367 Sm
+5530 15008 Sl
+7734 16862 7734 10367 Sln
+7557 10367 Sm
 7912 10367 Sl
-7556 16863 Sm
-7912 16863 Sl
-9969 13242 9969 6521 Sln
+7557 16862 Sm
+7912 16862 Sl
+9968 13242 9968 6521 Sln
 9791 6521 Sm
-10147 6521 Sl
+10146 6521 Sl
 9791 13242 Sm
-10147 13242 Sl
+10146 13242 Sl
 19265 15930 19265 8522 Sln
-19087 8522 Sm
+19088 8522 Sm
 19443 8522 Sl
-19087 15930 Sm
+19088 15930 Sm
 19443 15930 Sl
 27025 14272 27025 9022 Sln
-26847 9022 Sm
+26848 9022 Sm
 27203 9022 Sl
-26847 14272 Sm
+26848 14272 Sm
 27203 14272 Sl
-3670 15319 3670 9983 Sln
-3492 9983 Sm
-3848 9983 Sl
-3492 15319 Sm
-3848 15319 Sl
-5353 15717 5353 8721 Sln
-5175 8721 Sm
-5531 8721 Sl
+3669 15318 3669 9982 Sln
+3492 9982 Sm
+3847 9982 Sl
+3492 15318 Sm
+3847 15318 Sl
+5352 15717 5352 8720 Sln
+5175 8720 Sm
+5530 8720 Sl
 5175 15717 Sm
-5531 15717 Sl
-7734 20329 7734 12266 Sln
-7556 12266 Sm
-7912 12266 Sl
-7556 20329 Sm
+5530 15717 Sl
+7734 20329 7734 12265 Sln
+7557 12265 Sm
+7912 12265 Sl
+7557 20329 Sm
 7912 20329 Sl
-9969 14405 9969 8042 Sln
+9968 14405 9968 8042 Sln
 9791 8042 Sm
-10147 8042 Sl
+10146 8042 Sl
 9791 14405 Sm
-10147 14405 Sl
-19265 16106 19265 8757 Sln
-19087 8757 Sm
-19443 8757 Sl
-19087 16106 Sm
-19443 16106 Sl
-27025 15415 27025 9442 Sln
-26847 9442 Sm
-27203 9442 Sl
-26847 15415 Sm
-27203 15415 Sl
+10146 14405 Sl
+19265 16105 19265 8756 Sln
+19088 8756 Sm
+19443 8756 Sl
+19088 16105 Sm
+19443 16105 Sl
+27025 15414 27025 9441 Sln
+26848 9441 Sm
+27203 9441 Sl
+26848 15414 Sm
+27203 15414 Sl
 /Slw 0.576 def
-3158 5223 3158 22457 Sln
-3158 5735 2835 5735 Sln
-2431 5735 0
+3157 5222 3157 22457 Sln
+3157 5734 2834 5734 Sln
+2430 5734 0
 /Helvetica-0 findfont 808 yratio mul scalefont setfont
 (-20) stringwidth pop add
 2 div xratio div
@@ -547,8 +545,8 @@ dup 4 3 roll exch 90.000 cos mul sub 3 1 roll 90.000 sin mul sub 2 copy
 (-20) stringwidth pop xratio div
 dup 4 3 roll exch 90.000 cos mul add 3 1 roll 90.000 sin mul add 2 copy
 pop pop pop pop
-3158 11138 2835 11138 Sln
-2431 11138 0
+3157 11138 2834 11138 Sln
+2430 11138 0
 /Helvetica-0 findfont 808 yratio mul scalefont setfont
 (0) stringwidth pop add
 2 div xratio div
@@ -559,8 +557,8 @@ dup 4 3 roll exch 90.000 cos mul sub 3 1 roll 90.000 sin mul sub 2 copy
 (0) stringwidth pop xratio div
 dup 4 3 roll exch 90.000 cos mul add 3 1 roll 90.000 sin mul add 2 copy
 pop pop pop pop
-3158 16542 2835 16542 Sln
-2431 16542 0
+3157 16541 2834 16541 Sln
+2430 16541 0
 /Helvetica-0 findfont 808 yratio mul scalefont setfont
 (20) stringwidth pop add
 2 div xratio div
@@ -571,8 +569,8 @@ dup 4 3 roll exch 90.000 cos mul sub 3 1 roll 90.000 sin mul sub 2 copy
 (20) stringwidth pop xratio div
 dup 4 3 roll exch 90.000 cos mul add 3 1 roll 90.000 sin mul add 2 copy
 pop pop pop pop
-3158 21945 2835 21945 Sln
-2431 21945 0
+3157 21945 2834 21945 Sln
+2430 21945 0
 /Helvetica-0 findfont 808 yratio mul scalefont setfont
 (40) stringwidth pop add
 2 div xratio div
@@ -583,7 +581,7 @@ dup 4 3 roll exch 90.000 cos mul sub 3 1 roll 90.000 sin mul sub 2 copy
 (40) stringwidth pop xratio div
 dup 4 3 roll exch 90.000 cos mul add 3 1 roll 90.000 sin mul add 2 copy
 pop pop pop pop
-1542 13840 0
+1541 13840 0
 /Helvetica-0 findfont 808 yratio mul scalefont setfont
 (Effect point estimate) stringwidth pop add
 2 div xratio div
@@ -594,9 +592,9 @@ dup 4 3 roll exch 90.000 cos mul sub 3 1 roll 90.000 sin mul sub 2 copy
 (Effect point estimate) stringwidth pop xratio div
 dup 4 3 roll exch 90.000 cos mul add 3 1 roll 90.000 sin mul add 2 copy
 pop pop pop pop
-3158 5223 31184 5223 Sln
-3670 5223 3670 4899 Sln
-3670 4172 0
+3157 5222 31184 5222 Sln
+3669 5222 3669 4899 Sln
+3669 4172 0
 /Helvetica-0 findfont 808 yratio mul scalefont setfont
 (0) stringwidth pop add
 2 div xratio div
@@ -607,7 +605,7 @@ dup 4 3 roll exch 0.000 cos mul sub 3 1 roll 0.000 sin mul sub 2 copy
 (0) stringwidth pop xratio div
 dup 4 3 roll exch 0.000 cos mul add 3 1 roll 0.000 sin mul add 2 copy
 pop pop pop pop
-10420 5223 10420 4899 Sln
+10420 5222 10420 4899 Sln
 10420 4172 0
 /Helvetica-0 findfont 808 yratio mul scalefont setfont
 (1) stringwidth pop add
@@ -619,7 +617,7 @@ dup 4 3 roll exch 0.000 cos mul sub 3 1 roll 0.000 sin mul sub 2 copy
 (1) stringwidth pop xratio div
 dup 4 3 roll exch 0.000 cos mul add 3 1 roll 0.000 sin mul add 2 copy
 pop pop pop pop
-17171 5223 17171 4899 Sln
+17171 5222 17171 4899 Sln
 17171 4172 0
 /Helvetica-0 findfont 808 yratio mul scalefont setfont
 (2) stringwidth pop add
@@ -631,8 +629,8 @@ dup 4 3 roll exch 0.000 cos mul sub 3 1 roll 0.000 sin mul sub 2 copy
 (2) stringwidth pop xratio div
 dup 4 3 roll exch 0.000 cos mul add 3 1 roll 0.000 sin mul add 2 copy
 pop pop pop pop
-23922 5223 23922 4899 Sln
-23922 4172 0
+23921 5222 23921 4899 Sln
+23921 4172 0
 /Helvetica-0 findfont 808 yratio mul scalefont setfont
 (3) stringwidth pop add
 2 div xratio div
@@ -643,7 +641,7 @@ dup 4 3 roll exch 0.000 cos mul sub 3 1 roll 0.000 sin mul sub 2 copy
 (3) stringwidth pop xratio div
 dup 4 3 roll exch 0.000 cos mul add 3 1 roll 0.000 sin mul add 2 copy
 pop pop pop pop
-30672 5223 30672 4899 Sln
+30672 5222 30672 4899 Sln
 30672 4172 0
 /Helvetica-0 findfont 808 yratio mul scalefont setfont
 (4) stringwidth pop add
@@ -667,22 +665,22 @@ dup 4 3 roll exch 0.000 cos mul sub 3 1 roll 0.000 sin mul sub 2 copy
 dup 4 3 roll exch 0.000 cos mul add 3 1 roll 0.000 sin mul add 2 copy
 pop pop pop pop
 /Ssrgb {1.000 1.000 1.000} def
-10248 1094 24095 2600 1 Srect
+10130 1093 24211 2599 1 Srect
 /Slw 0.864 def
-10597 1847 13622 1847 Sln
-17783 1847 18248 1847 Sln
-18481 1847 18946 1847 Sln
-19179 1847 19645 1847 Sln
-19877 1847 20343 1847 Sln
-20576 1847 20809 1847 Sln
-14107 1564 2 copy
+10479 1846 13504 1846 Sln
+17889 1846 18354 1846 Sln
+18587 1846 19052 1846 Sln
+19285 1846 19750 1846 Sln
+19983 1846 20448 1846 Sln
+20681 1846 20914 1846 Sln
+13989 1563 2 copy
 /fntsize {/Helvetica-0 findfont exch scalefont setfont } def
 0.000 808
 (Lottery) Stxtl
 (Lottery) stringwidth pop xratio div
 dup 4 3 roll exch 0.000 cos mul add 3 1 roll 0.000 sin mul add 2 copy
 pop pop pop pop
-21294 1564 2 copy
+21399 1563 2 copy
 /fntsize {/Helvetica-0 findfont exch scalefont setfont } def
 0.000 808
 (Regret) Stxtl

@@ -45,7 +45,7 @@ use "$data_dir/clean/akiba_wide.dta", clear
 		estadd scalar Joint_p = round(r(p), 0.01)
 
 
-	loc prehead "\begin{table}[htbp]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \caption{Attrition by treatment group} \label{tab:reg-attr} \maxsizebox*{\paperwidth}{\paperheight}{ \begin{threeparttable} \begin{tabular}{l*{1}{c}} \toprule"
+	loc prehead "\begin{table}[htbp]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \caption{Attrition by treatment group} \label{tab:reg-attr} \maxsizebox*{\textwidth}{\textheight}{ \begin{threeparttable} \begin{tabular}{l*{1}{c}} \toprule"
 	loc postfoot "\bottomrule \end{tabular} \begin{tablenotes}[flushleft] \footnotesize \item \emph{Notes:} @note \end{tablenotes} \end{threeparttable} } \end{table}"
 	loc footnote "This table reports a regression of selection on each of the treatment arms. Standard errors are in parentheses. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level."
 	esttab using "$tab_dir/reg-attr", alignment(c) ar2 nobaselevels nonum nogap label b(%9.2f) se(%9.2f) sfmt(%9.2f) scalars("Diff_p Difference p-value" "Joint_p Joint p-value") star(* 0.10 ** 0.05 *** 0.01) note("`footnote'") prehead("`prehead'") postfoot("`postfoot'") se compress booktabs replace
@@ -205,7 +205,7 @@ if $heteffectsflag {
 
 		}
 
-		loc prehead "\begin{table}[htbp]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \caption{Heterogeneous effects - Primary outcomes by `xvarlab'} \label{tab:het-`xvar'} \maxsizebox*{\paperwidth}{\paperheight}{ \begin{threeparttable} \begin{tabular}{l*{`columns'}{c}} \toprule"
+	loc prehead "\begin{table}[htbp]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \caption{Heterogeneous effects - Primary outcomes by `xvarlab'} \label{tab:het-`xvar'} \maxsizebox*{\textwidth}{\textheight}{ \begin{threeparttable} \begin{tabular}{l*{`columns'}{c}} \toprule"
 		loc postfoot "\bottomrule \end{tabular} \begin{tablenotes}[flushleft] \footnotesize \item \emph{Notes:} @note \end{tablenotes} \end{threeparttable} } \end{table}"
 		loc footnote "This table reports OLS estimates of the treatment effect and its interaction with baseline. Standard errors are in parentheses. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level. We also report the \(p\)-values for joint tests on the direct treatment effect conditional on the baseline covariate $= 1$."
 
@@ -239,6 +239,37 @@ if $heteffectsflag {
 /* Panel analysis */
 
 if $panelflag {
+
+	use "$data_dir/clean/akiba_long.dta", clear
+	sort surveyid period
+
+	eststo: reg mobile_saved L(1/$laglength).mobile_awarded if control == 0, vce(cl surveyid)
+	eststo: reg mobile_deposits L(1/$laglength).mobile_awarded if control == 0, vce(cl surveyid)
+	eststo: reg mobile_depositamount L(1/$laglength).mobile_awarded if control == 0, vce(cl surveyid)
+
+	loc prehead "\begin{table}[htbp]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \caption{Regression of savings activity on lagged lottery results} \label{tab:reg-panelawards} \maxsizebox*{\textwidth}{\textheight}{ \begin{threeparttable} \begin{tabular}{l*{3}{c}} \toprule"
+	loc postfoot "\bottomrule \end{tabular} \begin{tablenotes}[flushleft] \footnotesize \item \emph{Notes:} @note \end{tablenotes} \end{threeparttable} } \end{table}"
+	loc footnote "This table reports estimates of a distributed lag model with a lag length of $laglength. Standard errors are in parentheses. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level."
+	esttab using "$tab_dir/reg-panelawards", alignment(c) ar2 nobaselevels obslast nogap label b(%9.2f) se(%9.2f) sfmt(%9.2f) star(* 0.10 ** 0.05 *** 0.01) note("`footnote'") prehead("`prehead'") postfoot("`postfoot'") se compress booktabs replace
+	eststo clear
+
+	file open tex using "$tab_dir/reg-panelawards.tex", write append
+	file write tex _n "% File produced by akiba-estimate.do with `c(filename)' on `c(current_time)' `c(current_date)' by user `c(username)' on Stata `c(version)' with seed `c(seed)'"
+	file close tex
+
+	eststo: reg mobile_saved L(1/$laglength).mobile_saved L(1/$laglength).mobile_matched L(1/$laglength).mobile_awarded if regret == 1, vce(cl surveyid)
+	eststo: reg mobile_deposits L(1/$laglength).mobile_saved L(1/$laglength).mobile_matched L(1/$laglength).mobile_awarded if regret == 1, vce(cl surveyid)
+	eststo: reg mobile_depositamount L(1/$laglength).mobile_saved L(1/$laglength).mobile_matched L(1/$laglength).mobile_awarded if regret == 1, vce(cl surveyid)
+
+	loc prehead "\begin{table}[htbp]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \caption{Regression of savings activity on lottery results and prizes awarded} \label{tab:reg-regretaversion} \maxsizebox*{\textwidth}{\textheight}{ \begin{threeparttable} \begin{tabular}{l*{3}{c}} \toprule"
+	loc postfoot "\bottomrule \end{tabular} \begin{tablenotes}[flushleft] \footnotesize \item \emph{Notes:} @note \end{tablenotes} \end{threeparttable} } \end{table}"
+	loc footnote "This table reports estimates of a distributed lag model with a lag length of $laglength. Standard errors are in parentheses. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level."
+	esttab using "$tab_dir/reg-regretaversion", alignment(c) ar2 nobaselevels obslast nogap label b(%9.2f) se(%9.2f) sfmt(%9.2f) star(* 0.10 ** 0.05 *** 0.01) note("`footnote'") prehead("`prehead'") postfoot("`postfoot'") se compress booktabs replace
+	eststo clear
+
+	file open tex using "$tab_dir/reg-regretaversion.tex", write append
+	file write tex _n "% File produced by akiba-estimate.do with `c(filename)' on `c(current_time)' `c(current_date)' by user `c(username)' on Stata `c(version)' with seed `c(seed)'"
+	file close tex
 
 	* use "$data_dir/clean/akiba_long.dta", clear
 
@@ -274,7 +305,7 @@ if $panelflag {
 	* estadd loc fe "Period"
 	* estadd loc cl "Individual"
 
-	* loc prehead "\begin{table}[htbp]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \caption{Autoregressive model} \label{tab:panel-ar} \maxsizebox*{\paperwidth}{\paperheight}{ \begin{threeparttable} \begin{tabular}{l*{3}{c}} \toprule"
+* loc prehead "\begin{table}[htbp]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \caption{Autoregressive model} \label{tab:panel-ar} \maxsizebox*{\textwidth}{\textheight}{ \begin{threeparttable} \begin{tabular}{l*{3}{c}} \toprule"
 	* loc postfoot "\bottomrule \end{tabular} \begin{tablenotes}[flushleft] \footnotesize \item \emph{Notes:} @note \end{tablenotes} \end{threeparttable} } \end{table}"
 	* loc footnote "This table reports estimates of an AR model of savings with a lag length of $laglength across each treatment arm. Standard errors are in parentheses. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level."
 	* esttab using "$tab_dir/panel-ar", alignment(c) ar2 nobaselevels label b(%9.2f) se(%9.2f) sfmt(%9.2f) scalars("treat Treatment" "Joint_p Joint p-value" "fe Fixed effects" "cl Cluster") nogap star(* 0.10 ** 0.05 *** 0.01) prehead("`prehead'") postfoot("`postfoot'") note("`footnote'") se compress booktabs replace
@@ -288,7 +319,7 @@ if $panelflag {
 
 	* }
 
-	* loc prehead "\begin{table}[htbp]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \caption{Distributed lag model} \label{tab:panel-dl} \maxsizebox*{\paperwidth}{\paperheight}{ \begin{threeparttable} \begin{tabular}{l*{3}{c}} \toprule"
+* loc prehead "\begin{table}[htbp]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \caption{Distributed lag model} \label{tab:panel-dl} \maxsizebox*{\textwidth}{\textheight}{ \begin{threeparttable} \begin{tabular}{l*{3}{c}} \toprule"
 	* loc postfoot "\bottomrule \end{tabular} \begin{tablenotes}[flushleft] \footnotesize \item \emph{Notes:} @note \end{tablenotes} \end{threeparttable} } \end{table}"
 	* loc footnote "This table reports estimates of a distributed lag model with a lag length of $laglength. Standard errors are in parentheses. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level."
 	* esttab using "$tab_dir/panel-dl", alignment(c) ar2 nobaselevels label b(%9.2f) se(%9.2f) sfmt(%9.2f) scalars("fe Fixed effects" "cl Cluster") nogap star(* 0.10 ** 0.05 *** 0.01) prehead("`prehead'") postfoot("`postfoot'") note("`footnote'") se compress booktabs replace
@@ -299,6 +330,8 @@ if $panelflag {
 /////////////////////////////////////
 /* Minimum detectable effect sizes */
 /////////////////////////////////////
+
+use "$data_dir/clean/akiba_wide.dta", clear
 
 glo regvars "$ynull"
 glo regpath "reg-mde"
