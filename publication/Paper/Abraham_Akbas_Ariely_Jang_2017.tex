@@ -1,5 +1,5 @@
 \documentclass[12pt]{article}
-\usepackage[margin=1.5in]{geometry}
+\usepackage[paperwidth=8.5in,paperheight=11in,margin=1.25in]{geometry}
 \usepackage[strict]{changepage}
 \usepackage{booktabs, threeparttable, adjustbox, tabularx, longtable}
 \usepackage{amsmath, amssymb, amsthm, bbm}
@@ -87,6 +87,7 @@
 		Gaming has been legal in Kenya since 1966, but the ubiquity of mobile phone usage has allowed the recent popularity of mobile sports betting. SportPesa, one of the most popular mobile gambling services, reports over 800,000 registered users as of 2015 \shortcite{kemibaro_sportpesa_2015}. In our sample, 24\% of participants at baseline report that they have some problem with gambling. 11\% of participants report that they gamble at a casino, bet money at racetracks or sporting events, played the sweepstakes, or played cards for money daily or more frequently in the last 12 months.
 
 		% discuss pilot study
+		% what are savings like in this context? talk about informal savings and risk sharing
 
 	\subsection{Data collection}
 
@@ -138,23 +139,24 @@
 
 	\subsection{Treatment effect}
 
-		We use the following econometric specification for basic identification of the treatment effect.
+		We use the following reduced-form specification to estimate the treatment effect of lottery incentives on participant outcomes.
 
 		\begin{equation} \label{eq:teffect}
-			Y_{i,t=1} = \beta_{0} + \beta_{1}\text{\textsc{Lottery}}_{i} + \beta_{2}\text{\textsc{Regret}}_{i} + \varepsilon_{i}
+			Y_{i} = \beta_{0} + \beta_{1}\text{\textsc{Lottery}}_{i} + \beta_{2}\text{\textsc{Regret}}_{i} + \varepsilon_{i}
 		\end{equation}
 
-		$Y_{i,t=1}$ refers to the outcome variables for individual $i$ at endline, \textsc{Lottery}$_i$ indicates assignment to the \textsc{Lottery} group, and \textsc{Regret}$_i$ indicates assignment to the lottery with regret framing group. The omitted group is the matched group. We test $\beta_{1} = 0$ and $\beta_{2} = 0$ to identify the effects of the lottery and lottery with regret framing relative to the matched group. We additionally test $\beta_{2} - \beta_{1} = 0$ for differential effects between the two lottery treatments.
+		$Y_{i}$ refers to the outcome variables for individual $i$ measured after the end of the savings program. \textsc{Lottery}$_i$ indicates assignment to the \textsc{Lottery} group and \textsc{Regret}$_i$ indicates assignment to the lottery with regret framing group. The omitted group is the fixed match group. We test $\beta_{1} = 0$ and $\beta_{2} = 0$ to identify the effects of the lottery and lottery with regret framing relative to the matched group. We additionally test $\beta_{2} - \beta_{1} = 0$ for differential effects between the two lottery treatments. Standard errors are clustered at the individual level.
 
-		To improve precision, we will also apply covariate adjustment with baseline indicators\footnote{We include as control variables 1. Participant is female, 2. Participant is younger than 30 years old, 3. Participant completed primary school, 4. Participant is married, 5. Participant has at least one child dependant, 6. Participant uses a savings account, and 7. Above median CPGI score} in $\mathbf{X}_i$. We obtain the covariate-adjusted treatment effect estimate by estimating Equation \ref{eq:teffect} including the demeaned vector $\mathbf{\dot X}_{i} = \mathbf{X}_{i} - \mathbf{\bar X}_{i}$ as an additive term and as an interaction with the treatment indicator.
+		To improve precision, we will also apply covariate adjustment with a vector of baseline indicators.\footnote{We include as control variables 1. Participant is female, 2. Participant is younger than 30 years old, 3. Participant completed primary school, 4. Participant is married, 5. Participant has at least one child dependant, 6. Participant uses a savings account, and 7. Above median CPGI score} We obtain the covariate-adjusted treatment effect estimate by estimating Equation \ref{eq:teffect} including the demeaned covariate vector $\mathbf{\dot X}_{i} = \mathbf{X}_{i} - \mathbf{\bar X}_{i}$ as an additive term and as an interaction with the treatment indicator.
 
-		\begin{equation} \label{eq:controls}
-			Y_{i,t=1} = \beta_{0} + \beta_{1}\text{\textsc{Lottery}}_{i} + \beta_{2}\text{\textsc{Regret}}_{i} + \mathbf{\dot X}'_i \gamma_{0} + \text{\textsc{Lottery}}_{i} \mathbf{\dot X}'_i \gamma_{1} + \text{\textsc{Regret}}_{i} \mathbf{\dot X}'_i \gamma_{2} + \varepsilon_{i}
-		\end{equation}
+		\begin{equation} \begin{split} \label{eq:controls}
+			Y_{i} = & \beta_{0} + \beta_{1}\text{\textsc{Lottery}}_{i} + \beta_{2}\text{\textsc{Regret}}_{i} + \mathbf{\dot X}'_i \gamma_{0} \\
+					& + \text{\textsc{Lottery}}_{i} \mathbf{\dot X}'_i \gamma_{1} + \text{\textsc{Regret}}_{i} \mathbf{\dot X}'_i \gamma_{2} + \varepsilon_{i}
+		\end{split} \end{equation}
 
-		The set of indicators partitions our sample so that our estimate remains unbiased for the average treatment effect \shortcite{lin_agnostic_2013}. We will report treatment effect estimates with and without covariate adjustment.
+		The set of indicators partitions our sample so that our estimate remains unbiased for the average treatment effect \shortcite{lin_agnostic_2013}. As in Equation \ref{eq:teffect}, we test $\beta_{1} = 0$ and $\beta_{2} = 0$ to identify the effects of the lottery and lottery with regret framing relative to the matched group and test $\beta_{2} - \beta_{1} = 0$ for differential effects between the two lottery treatments. Standard errors are clustered at the individual level. We stress that Equation \ref{eq:teffect} is our preferred specification and report results with covariate adjustment for robustness.
 
-		We might expect that the errors of each outcome variable are correlated. Instead of estimating these equations separately, we can estimate the system of seemingly unrelated regressions (SUR) to improve the precision of the coefficient estimates \shortcite{zellner_efficient_1962}. SUR estimation is equivalent to OLS when the error terms are in fact uncorrelated between regressions or when each equation contains the same set of regressors. We perform joint estimation over outcome families for Equation \ref{eq:teffect} and Equation \ref{eq:controls} separately.
+		We might expect that the errors of each outcome variable are correlated. Instead of estimating these equations separately, we estimate the system of seemingly unrelated regressions (SUR) to improve the precision of the coefficient estimates \shortcite{zellner_efficient_1962}. SUR estimation is equivalent to OLS when the error terms are in fact uncorrelated between regressions or when each equation contains the same set of regressors. We perform joint estimation over outcome families for Equation \ref{eq:teffect} and Equation \ref{eq:controls} separately.
 
 		Given that our survey instrument included several items related to a single behavior or dimension, we calculate sharpened $q$-values within each outcome family following \shortcite{benjamini_adaptive_2006} to control the false discovery rate (FDR). Rather than specifying a single $q$, we report the minimum $q$-value at which each hypothesis is rejected, following \shortcite{anderson_multiple_2008}. We apply this correction over outcome variables in each family and separately for each hypothesis test. We report both standard $p$-values and minimum $q$-values in our analysis.
 
@@ -162,28 +164,27 @@
 
 	\subsection{Heterogeneous treatment effects}
 
-		We explore the extent to which the savings program produces heterogeneous treatment effects. We use the following specification for this analysis.
+		We analyze the extent to which the savings program produced heterogeneous treatment effects with the following specification.
 
 		\begin{equation} \begin{split}
-		y_{i,t=1} = & \beta_{0} + \beta_{1}\text{LOTTERY}_{i} + \beta_{2}\text{REGRET}_{i} \\
-					& + \gamma_{1}(\text{LOTTERY}_{i} \times x_{i,t=0}) + \gamma_{2}(\text{REGRET}_{i} \times x_{i,t=0}) \\
-					& + \gamma_{3}x_{i,t=0} + \delta y_{i,t=0} + \varepsilon_{i}
+		Y_{i} = & \beta_{0} + \beta_{1}\text{\textsc{Lottery}}_{i} + \beta_{2}\text{\textsc{Regret}}_{i} + \delta_{0}x_{i} \\
+					& + \delta_{1}(\text{\textsc{Lottery}}_{i} \times x_{i}) + \delta_{2}(\text{\textsc{Regret}}_{i} \times x_{i}) + \varepsilon_{i}
 		\end{split} \label{eq:heteffect} \end{equation}
 
-		$x_{i,t=0}$ is the dimension of heterogeneity measured at baseline. $\gamma_{1}$ and $\gamma_{2}$ respectively identify the heterogeneous treatment effects of the lottery and lottery with regret framing relative to when $x_{i,t=0} = 0$. We estimate this model with the following baseline variables:
+		$x_{i}$ is the binary dimension of heterogeneity measured before treatment assignment. $\delta_{1}$ and $\delta_{2}$ respectively identify the heterogeneous treatment effects of the lottery and lottery with regret framing relative to $x_{i} = 0$. Standard errors are clustered at the individual level. We estimate this model with the following baseline variables as $x_{i}$.
 
-		\begin{enumerate}
-		\item Gender
-		\item Marriage status
-		\item Below age 30
-		\item Completed std. 8
-		\item Uses a savings account
-		\item Above median monthly income
-		\item Employment status
-		\item Median CPGI score
-		\item Risk aversion
-		\item Temporal discounting
-		\end{enumerate}
+			\begin{enumerate}
+			\item Gender
+			\item Marriage status
+			\item Below age 30
+			\item Completed std. 8
+			\item Uses a savings account
+			\item Above median monthly income
+			\item Employment status
+			\item Above median CPGI score
+			\item Constant relative risk aversion
+			\item Above median indifference point
+			\end{enumerate}
 
 	\subsection{Minimum detectable effects}
 
@@ -197,11 +198,32 @@
 
 		% MDE for het effects? why not for all null outcomes?
 
+	\subsection{Time-dependent treatment effects}
+
+		Using detailed daily transaction data, we can estimate treatment effects of the LLDAs conditional on the time elapsed since the start of the savings program. We estimate day-specific effects with the following specification.
+
+		\begin{equation} \begin{split}
+		Y_{i,t} = & \beta_{0} + \beta_{1}\text{\textsc{Lottery}}_{i} + \beta_{2}\text{\textsc{Regret}}_{i} \\
+					& + \sum_{t=2}^{60} \bigg [ \zeta_{t} \tau_{t} + \eta_{t}(\text{\textsc{Lottery}}_{i} \times \tau_{t}) + \theta_{t}(\text{\textsc{Regret}}_{i} \times \tau_{t}) \bigg ] \\
+					& + \varepsilon_{i}
+		\end{split} \label{eq:timedummy} \end{equation}
+
+		$Y_{i, t}$ is the outcome for individual $i$ at period $t$, \textsc{Lottery}$_i$ indicates assignment to the \textsc{Lottery} group, and \textsc{Regret}$_i$ indicates assignment to the lottery with regret framing group. $\tau_t$ is an indicator taking the value 1 in period $t$. The omitted group is the control group at $t=1$. $\beta_1 + \eta_t$ and $\beta_1 + \theta_t$ are the effects of \textsc{Lottery} and \textsc{Regret}, respectively, at period $t$. Standard errors are clustered at the individual level.
+
+		We will also estimate a model that interacts the treatment indicators with a linear time trend.
+
+		\begin{equation} \begin{split}
+		Y_{i,t} = & \beta_{0} + \beta_{1}\text{\textsc{Lottery}}_{i} + \beta_{2}\text{\textsc{Regret}}_{i} + \lambda_{0}t \\
+					& + \lambda_{1}(\text{\textsc{Lottery}}_{i} \times t) + \lambda_{2}(\text{\textsc{Regret}}_{i} \times t) + \varepsilon_{i}
+		\end{split} \label{eq:timelinear} \end{equation}
+
+		In this equation, $t$ is the number of days since the start of the savings program. $\lambda_1$ is the marginal effect of the lottery incentive with respect to days elapsed. $\lambda_2$ is the marginal effect of lottery with regret framing. We test the hypotheses $\lambda_1 = 0$ and $\lambda_2 = 0$; that the effects of the lottery bonuses are constant as a function of time.  Standard errors are clustered at the individual level.
+
 \section{Results} \label{sec:results}
 
 	% perhaps discuss baseline balance and attrition under this section
 
-	\subsection{LLDAs increase deposits made without increasing savings}
+	\subsection{LLDAs increase number of deposits without increasing savings}
 
 		This section presents our main results on savings behavior, documented in Table \ref{tab:reg-mobile}. We find that participants in the \textsc{Regret} group made between 5-6 more deposit transactions ($\hat \beta = 5.71, p < 0.05$) over the entire project period compared to those receiving the fixed match. This effect is large, amounting to a 40\% increase over the average number of deposits in the control group. These results are further robust to the inclusion of control variables and FWER adjustment. We do not find strong evidence of an effect of the lottery incentive \textit{without} the regret component against either \textsc{Regret} or control group. Nevertheless, point estimates suggest that the lottery alone could increase deposits by as much as 33\% ($\hat \beta = 4.59, p < 0.10$) compared to the control. Table \ref{tab:reg-mde} displays the MDE for each outcome and shows that the present experimental design is powered to detect effects on savings larger than what we estimate for the \textsc{Lottery} group. A higher powered study might be able to pick up more subtle effects of the lottery incentive. Panel A of Figure \ref{fig:line-cumdeposits} traces the cumulative path of deposits made over the savings period. Average deposits for the \textsc{Lottery} and \textsc{Regret} groups are greater than for the control group for all periods, and grows at a higher rate. We are able to statistically distinguish total values at the end of the 60-day period but the figure suggests the existence of a larger effect when examining longer time periods.
 
@@ -287,6 +309,7 @@
 	% \input{../../tables/reg-self.tex}
 	\input{../../tables/reg-mde.tex}
 	% \input{../../tables/het-regret.tex}
+	\input{../../tables/reg-timetrend.tex}
 
 	% add effects over time
 	% add differences to PAP
@@ -302,14 +325,14 @@
 		\caption*{\footnotesize \emph{Notes:} Panel A plots the cumulative number of deposits made by the average participant over the 60-day savings period by treatment assignment. Panel B plots the cumulative amount deposited by the average participant. Error bars for the total number of deposits and total amount deposited by the end of the project are within one standard error of the mean.}
 	\end{figure}
 
-	% \begin{figure}[h]
-	% \centering
-	% \caption{Effects over time -- Number of deposits}
-	% \centerfloat
-	% \includegraphics[width=\textwidth]{../../figures/line-timemobile_deposits.pdf}
-	% \caption*{\footnotesize \emph{Notes:} Panel A plots the treatment effect of \textsc{Lottery} on number of deposits as a function of savings period. Panel B plots the treatment effect of \textsc{Regret} on number of deposits as a function of savings period. Shaded areas represent 95\% confidence regions.}
-	% \end{figure}
-	%
+	\begin{figure}[h]
+	\centering
+	\caption{Effects over time -- Number of deposits}
+	\centerfloat
+	\includegraphics[width=\textwidth]{../../figures/line-timemobile_deposits.pdf}
+	\caption*{\footnotesize \emph{Notes:} Panel A plots the treatment effect of \textsc{Lottery} on number of deposits as a function of savings period. Panel B plots the treatment effect of \textsc{Regret} on number of deposits as a function of savings period. Shaded areas represent 95\% confidence regions.}
+	\end{figure}
+
 	% \begin{figure}[h]
 	% \centering
 	% \caption{Effects over time -- Amount deposited}

@@ -48,7 +48,7 @@ use "$data_dir/clean/akiba_wide.dta", clear
 	loc prehead "\begin{table}[htbp]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \caption{Attrition by treatment group} \label{tab:reg-attr} \maxsizebox*{\textwidth}{\textheight}{ \begin{threeparttable} \begin{tabular}{l*{1}{c}} \toprule"
 	loc postfoot "\bottomrule \end{tabular} \begin{tablenotes}[flushleft] \footnotesize \item \emph{Notes:} @note \end{tablenotes} \end{threeparttable} } \end{table}"
 	loc footnote "This table reports a regression of selection on each of the treatment arms. Standard errors are in parentheses. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level."
-	esttab using "$tab_dir/reg-attr", alignment(c) ar2 nobaselevels nonum nogap label b(%9.2f) se(%9.2f) sfmt(%9.2f) scalars("Diff_p Difference p-value" "Joint_p Joint p-value") star(* 0.10 ** 0.05 *** 0.01) note("`footnote'") prehead("`prehead'") postfoot("`postfoot'") se compress booktabs replace
+	esttab using "$tab_dir/reg-attr", alignment(c) ar2 nobaselevels nonum nogap label obslast b(%9.2f) se(%9.2f) sfmt(%9.2f) scalars("Diff_p Difference p-value" "Joint_p Joint p-value") star(* 0.10 ** 0.05 *** 0.01) note("`footnote'") prehead("`prehead'") postfoot("`postfoot'") se compress booktabs replace
 	eststo clear
 
 	file open tex using "$tab_dir/reg-attr.tex", write append
@@ -236,9 +236,11 @@ if $heteffectsflag {
 
 }
 
-/* Panel analysis */
-
 if $panelflag {
+
+	///////////////////////////
+	/* Distributed lag model */
+	///////////////////////////
 
 	use "$data_dir/clean/akiba_long.dta", clear
 	sort surveyid period
@@ -271,59 +273,28 @@ if $panelflag {
 	file write tex _n "% File produced by akiba-estimate.do with `c(filename)' on `c(current_time)' `c(current_date)' by user `c(username)' on Stata `c(version)' with seed `c(seed)'"
 	file close tex
 
-	* use "$data_dir/clean/akiba_long.dta", clear
+	//////////////////////////////////////
+	/* Time-dependent treatment effects */
+	//////////////////////////////////////
 
-	* sort period account
+	foreach yvar of varlist mobile_deposits mobile_depositamount {
 
-	* eststo: xtreg mobile_saved L(1/$laglength).mobile_saved if control, fe i(period) vce(cl surveyid)
-	* mat A_b = e(b)'
-	* mat A_se = e(se)'
+		eststo: reg `yvar' i.treatmentgroup##c.period, vce(cl surveyid)
 
-	* testparm L(1/$laglength).mobile_saved
-	* estadd scalar Joint_p = round(r(p), 0.01)
-	* estadd loc treat "Interest"
-	* estadd loc fe "Period"
-	* estadd loc cl "Individual"
+		test 2.treatmentgroup#c.period = 3.treatmentgroup#c.period
+		estadd loc pdiff = string(r(p), "%9.3f")
 
-	* eststo: xtreg mobile_saved L(1/$laglength).mobile_saved if lottery, fe i(period) vce(cl surveyid)
-	* mat B_b = e(b)'
-	* mat B_se = e(se)'
+	}
 
-	* testparm L(1/$laglength).mobile_saved
-	* estadd scalar Joint_p = round(r(p), 0.01)
-	* estadd loc treat "Lottery"
-	* estadd loc fe "Period"
-	* estadd loc cl "Individual"
+loc prehead "\begin{table}[htbp]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \caption{Treatment effects conditional on days elapsed} \label{tab:reg-timetrend} \maxsizebox*{\textwidth}{\textheight}{ \begin{threeparttable} \begin{tabular}{l*{2}{c}} \toprule"
+	loc postfoot "\bottomrule \end{tabular} \begin{tablenotes}[flushleft] \footnotesize \item \emph{Notes:} @note \end{tablenotes} \end{threeparttable} } \end{table}"
+	loc footnote "This table reports a regression of savings activity on treatment indicators and a linear time trend. The unit of observation is individual-period. Standard errors are in parentheses and clustered at the individual level. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level."
+	esttab using "$tab_dir/reg-timetrend", alignment(c) ar2 nobaselevels nonum nogap label obslast b(%9.3f) se(%9.3f) sfmt(%9.3f) scalars("pdiff Lottery $\times$ period = Regret $\times$ period \(p\)-value") star(* 0.10 ** 0.05 *** 0.01) note("`footnote'") prehead("`prehead'") postfoot("`postfoot'") se compress booktabs replace
+	eststo clear
 
-	* eststo: xtreg mobile_saved L(1/$laglength).mobile_saved if regret, fe i(period) vce(cl surveyid)
-	* mat C_b = e(b)'
-	* mat C_se = e(se)'
-
-	* testparm L(1/$laglength).mobile_saved
-	* estadd scalar Joint_p = round(r(p), 0.01)
-	* estadd loc treat "Regret"
-	* estadd loc fe "Period"
-	* estadd loc cl "Individual"
-
-* loc prehead "\begin{table}[htbp]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \caption{Autoregressive model} \label{tab:panel-ar} \maxsizebox*{\textwidth}{\textheight}{ \begin{threeparttable} \begin{tabular}{l*{3}{c}} \toprule"
-	* loc postfoot "\bottomrule \end{tabular} \begin{tablenotes}[flushleft] \footnotesize \item \emph{Notes:} @note \end{tablenotes} \end{threeparttable} } \end{table}"
-	* loc footnote "This table reports estimates of an AR model of savings with a lag length of $laglength across each treatment arm. Standard errors are in parentheses. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level."
-	* esttab using "$tab_dir/panel-ar", alignment(c) ar2 nobaselevels label b(%9.2f) se(%9.2f) sfmt(%9.2f) scalars("treat Treatment" "Joint_p Joint p-value" "fe Fixed effects" "cl Cluster") nogap star(* 0.10 ** 0.05 *** 0.01) prehead("`prehead'") postfoot("`postfoot'") note("`footnote'") se compress booktabs replace
-	* eststo clear
-
-	* foreach yvar in mobile_saved mobile_depositamount {
-
-	* 	eststo: xtreg `yvar' L(1/$laglength).mobile_saved L(1/$laglength).mobile_matched L(1/$laglength).mobile_awarded if ~control, absorb(period) vce(cl surveyid)
-	* 	estadd loc fe "Day"
-	* 	estadd loc cl "Individual"
-
-	* }
-
-* loc prehead "\begin{table}[htbp]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \caption{Distributed lag model} \label{tab:panel-dl} \maxsizebox*{\textwidth}{\textheight}{ \begin{threeparttable} \begin{tabular}{l*{3}{c}} \toprule"
-	* loc postfoot "\bottomrule \end{tabular} \begin{tablenotes}[flushleft] \footnotesize \item \emph{Notes:} @note \end{tablenotes} \end{threeparttable} } \end{table}"
-	* loc footnote "This table reports estimates of a distributed lag model with a lag length of $laglength. Standard errors are in parentheses. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level."
-	* esttab using "$tab_dir/panel-dl", alignment(c) ar2 nobaselevels label b(%9.2f) se(%9.2f) sfmt(%9.2f) scalars("fe Fixed effects" "cl Cluster") nogap star(* 0.10 ** 0.05 *** 0.01) prehead("`prehead'") postfoot("`postfoot'") note("`footnote'") se compress booktabs replace
-	* eststo clear
+	file open tex using "$tab_dir/reg-timetrend.tex", write append
+	file write tex _n "% File produced by akiba-estimate.do with `c(filename)' on `c(current_time)' `c(current_date)' by user `c(username)' on Stata `c(version)' with seed `c(seed)'"
+	file close tex
 
 }
 
