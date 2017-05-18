@@ -79,8 +79,9 @@
 
 \section{Summary statistics}
 
-	\subsection{Baseline variables}
+	\subsection{Balance checks on baseline variables}
 
+        \input{../../tables/tab-balance.tex}
 		\input{../../tables/sum-ysum1.tex}
 		\input{../../tables/sum-ysum2.tex}
 		\input{../../tables/sum-ysum3.tex}
@@ -89,7 +90,28 @@
 
 	\clearpage
 
-	\subsection{Endline variables}
+    \subsection{Balance checks on endline sample}
+
+    	\input{../../tables/sum-eltreat1.tex}
+    	\input{../../tables/sum-eltreat2.tex}
+    	\input{../../tables/sum-eltreat3.tex}
+    	\input{../../tables/sum-eltreat4.tex}
+        \input{../../tables/sum-eltreat5.tex}
+
+	\clearpage
+
+    \subsection{Comparison of endline sample and attrited observations}
+
+    	\input{../../tables/reg-attr.tex}
+    	\input{../../tables/sum-attr1.tex}
+    	\input{../../tables/sum-attr2.tex}
+    	\input{../../tables/sum-attr3.tex}
+    	\input{../../tables/sum-attr4.tex}
+        \input{../../tables/sum-attr5.tex}
+
+    \clearpage
+
+	\subsection{Summary of endline variables}
 
 		\input{../../tables/tab-lottery-final.tex}
 		\input{../../tables/tab-select.tex}
@@ -97,23 +119,6 @@
 		\input{../../tables/sum-ysum7.tex}
 		\input{../../tables/sum-ysum8.tex}
 		\input{../../tables/sum-ysum9.tex}
-
-	\clearpage
-
-\section{Attrition}
-
-	\input{../../tables/tab-balance.tex}
-
-	\input{../../tables/reg-attr.tex}
-	\input{../../tables/sum-attr1.tex}
-	\input{../../tables/sum-attr2.tex}
-	\input{../../tables/sum-attr3.tex}
-	\input{../../tables/sum-attr4.tex}
-
-	\input{../../tables/sum-attrtreat1.tex}
-	\input{../../tables/sum-attrtreat2.tex}
-	\input{../../tables/sum-attrtreat3.tex}
-	\input{../../tables/sum-attrtreat4.tex}
 
 	\clearpage
 
@@ -143,7 +148,6 @@
         \input{../../tables/reg-fwerakiba.tex}
         \input{../../tables/reg-fwerself.tex}
         \input{../../tables/reg-fwerselect.tex}
-        \input{../../tables/reg-lottery.tex}
 
     \clearpage
 
@@ -186,6 +190,8 @@
 		\input{../../tables/het-pref_medianindiff_0.tex}
 
 	\clearpage
+
+\section{Misc. analysis}
 
     \subsection{Finite distributed lag model}
 

@@ -17,7 +17,7 @@ gen x = 1
 gen y = 1
 
 forval i = 1/`columns' {
-	eststo col`i': reg x y
+	qui eststo col`i': reg x y
 }
 
 loc count = 1
@@ -31,7 +31,7 @@ use "$data_dir/clean/akiba_wide.dta", clear
 
 foreach yvar in $sumvars {
 
-	sum `yvar', d
+	qui sum `yvar', d
 	loc mean = `r(mean)'
 	loc sd = `r(sd)'
 	loc med = `r(p50)'
@@ -39,28 +39,11 @@ foreach yvar in $sumvars {
 	loc max = `r(max)'
 	loc N = `r(N)'
 
-	/* Column 1: Mean */
-
-	estadd loc thisstat`count' = round(`mean', 0.01): col1
-
-	/* Column 2: SD */
-
-	estadd loc thisstat`count' = round(`sd', 0.01): col2
-
-	/* Column 3: Median */
-
-	estadd loc thisstat`count' = round(`med', 0.01): col3
-
-	/* Column 4: Min */
-
-	estadd loc thisstat`count' = round(`min', 0.01): col4
-
-	/* Column 5: Max */
-
-	estadd loc thisstat`count' = round(`max', 0.01): col5
-
-	/* Column 6: N */
-
+	estadd loc thisstat`count' = string(`mean', "%9.2f"): col1
+	estadd loc thisstat`count' = string(`sd', "%9.2f"): col2
+	estadd loc thisstat`count' = string(`med', "%9.2f"): col3
+	estadd loc thisstat`count' = string(`min', "%9.2f"): col4
+	estadd loc thisstat`count' = string(`max', "%9.2f"): col5
 	estadd loc thisstat`count' = `N': col6
 
 	/* Row Labels */
@@ -78,7 +61,7 @@ loc prehead "\begin{table}[htbp]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\
 loc postfoot "\bottomrule \end{tabular} \begin{tablenotes}[flushleft] \footnotesize \item \emph{Notes:} @note \end{tablenotes} \end{threeparttable} } \end{table}"
 loc footnote "This table reports unconditional summary statistics for each row variable."
 
-esttab col* using "$tab_dir/$sumpath.tex", booktabs cells(none) nonum nogap mtitle("Mean" "SD" "Median" "Min" "Max" "N") stats(`statnames', labels(`varlabels')) note("`footnote'") prehead("`prehead'") postfoot("`postfoot'") compress wrap replace
+esttab col* using "$tab_dir/$sumpath.tex", booktabs cells(none) nonum nogap mtitle("Mean" "SD" "Median" "Min." "Max." "Obs.") stats(`statnames', labels(`varlabels')) note("`footnote'") prehead("`prehead'") postfoot("`postfoot'") compress wrap replace
 
 eststo clear
 

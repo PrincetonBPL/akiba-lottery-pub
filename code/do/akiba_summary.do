@@ -30,6 +30,22 @@ file open tex using "$tab_dir/tab-select.tex", write append
 file write tex _n "% File produced by akiba_summary.do with `c(filename)' on `c(current_time)' `c(current_date)' by user `c(username)' on Stata `c(version)' with seed `c(seed)'"
 file close tex
 
+/* Unified summary statistics */
+
+glo sumvars "$ysum1 $ysum2 $ysum3"
+
+glo sumtitle "Baseline balance check by treatment group"
+glo sumpath "sum-ysumall"
+do "$do_dir/custom_tables/sum-treat.do"
+
+glo sumtitle "Baseline balance check by attrition status"
+glo sumpath "sum-attrall"
+do "$do_dir/custom_tables/sum-participation.do"
+
+glo sumtitle "Baseline balance check by treatment group for endline sample"
+glo sumpath "sum-eltreatall"
+do "$do_dir/custom_tables/sum-eltreat.do"
+
 /* Summary statistics across groups */
 
 forval i = 1/5 {
@@ -37,35 +53,19 @@ forval i = 1/5 {
 	loc trunc "ysum`i'"
 	glo sumvars $`trunc'
 
-	glo sumtitle "Summary statistics by treatment group"
+	glo sumtitle "Baseline balance check by treatment group"
 	glo sumpath "sum-ysum`i'"
 	do "$do_dir/custom_tables/sum-treat.do"
 
-	glo sumtitle "Summary statistics by attrition"
+	glo sumtitle "Baseline balance check by attrition status"
 	glo sumpath "sum-attr`i'"
 	do "$do_dir/custom_tables/sum-participation.do"
 
-	glo sumtitle "Summary statistics of attriters by treatment group"
-	glo sumpath "sum-attrtreat`i'"
-	do "$do_dir/custom_tables/sum-attrtreat.do"
+	glo sumtitle "Baseline balance check by treatment group for endline sample"
+	glo sumpath "sum-eltreat`i'"
+	do "$do_dir/custom_tables/sum-eltreat.do"
 
 }
-
-/* Unified summary statistics */
-
-glo sumvars "$ysum1 $ysum2 $ysum3"
-
-glo sumtitle "Summary statistics by treatment group"
-glo sumpath "sum-ysumall"
-do "$do_dir/custom_tables/sum-treat.do"
-
-glo sumtitle "Summary statistics by attrition"
-glo sumpath "sum-attrall"
-do "$do_dir/custom_tables/sum-participation.do"
-
-glo sumtitle "Summary statistics of attriters by treatment group"
-glo sumpath "sum-attrtreatall"
-do "$do_dir/custom_tables/sum-attrtreat.do"
 
 /* Unconditional summary statistics */
 

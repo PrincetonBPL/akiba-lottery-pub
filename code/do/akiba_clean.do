@@ -152,7 +152,14 @@ la var labor_monthlyinc_1 "Monthly income"
 
 forval i = 0/1 {
 
-	if $USDconvertflag replace labor_monthlyinc_`i' = labor_monthlyinc_`i' * $ppprate
+	if $USDconvertflag {
+
+		replace labor_monthlyinc_`i' = labor_monthlyinc_`i' * $ppprate
+		loc pppla "`:var la labor_monthlyinc_`i'' (USD PPP)"
+		la var labor_monthlyinc_`i' "`pppla'"
+
+	}
+
 	gen lnlabor_monthlyinc_`i' = asinh(labor_monthlyinc_`i')
 	la var lnlabor_monthlyinc_`i' "Log monthly income"
 
@@ -207,10 +214,13 @@ forval i = 0/1 {
 
 	if $USDconvertflag {
 
-		replace save_monthlysave_`i' = save_monthlysave_`i' * $ppprate
-		replace save_mpesa_`i' = save_mpesa_`i' * $ppprate
-		replace save_monthlyrosca_`i' = save_monthlyrosca_`i' * $ppprate
-		replace save_othersavings_`i' = save_othersavings_`i' * $ppprate
+		foreach var of varlist save_monthlysave_`i' save_mpesa_`i' save_monthlyrosca_`i' save_othersavings_`i' {
+
+			replace `var' = `var' * $ppprate
+			loc pppla "`:var la `var'' (USD PPP)"
+			la var `var' "`pppla'"
+
+		}
 
 	}
 
@@ -308,12 +318,6 @@ la var pref_indiff2_0 "Indiff. point (0 wk. - 4 wk.)"
 la var pref_indiff3_0 "Indiff. point (0 wk. - 12 wk.)"
 la var pref_indiff4_0 "Indiff. point (2 wk. - 4 wk.)"
 
-foreach v of varlist gam_wtp_0 pref_indiff* pref_*amount {
-
-	if $USDconvertflag replace `v' = `v' * $ppprate
-
-}
-
 forval i = 1/4 {
 
 	loc varlab: var la pref_indiff`i'_0
@@ -358,6 +362,18 @@ la var pref_decrimp_0 "Decreasing impatience"
 
 ren MPLRT pref_MPLRT
 ren influence pref_influence
+
+foreach v of varlist gam_wtp_0 pref_indiff* pref_*amount {
+
+	if $USDconvertflag {
+
+		replace `v' = `v' * $ppprate
+		loc pppla "`:var la `v'' (USD PPP)"
+		la var `v' "`pppla'"
+
+	}
+
+}
 
 /* Risk aversion */
 
@@ -478,7 +494,14 @@ foreach v of varlist akiba_trust_1 akiba_confidence_1 self_savingsfeel_1 self_no
 
 foreach v of varlist akiba_*save_1 {
 
-	if $USDconvertflag replace `v' = `v' * $ppprate
+	if $USDconvertflag {
+
+		replace `v' = `v' * $ppprate
+		loc pppla "`: var la `v'' (USD PPP)"
+		la var `v' "`pppla'"
+
+	}
+
 	gen ln`v' = asinh(`v')
 	loc loglabel : var label `v'
 	loc loglabel = "Log " + lower("`loglabel'")
@@ -621,17 +644,24 @@ gen mobile_earlysaved = mobile_saved if period <= 30
 la var mobile_earlysaved "Made a deposit ($\leq$ 30 days)"
 
 gen mobile_latedeposits = mobile_deposits if period > 30
-la var mobile_latedeposits "No. of deposits (> 30 days)"
+la var mobile_latedeposits "No. of deposits ($>$ 30 days)"
 
 gen mobile_latedepositamount = mobile_depositamount if period > 30
-la var mobile_latedepositamount "Made a deposit (> 30 days)"
+la var mobile_latedepositamount "Made a deposit ($>$ 30 days)"
 
 gen mobile_latesaved = mobile_saved if period > 30
-la var mobile_latesaved "Amount deposited (> 30 days)"
+la var mobile_latesaved "Amount deposited ($>$ 30 days)"
 
 foreach v of varlist mobile_balance mobile_finalbalance mobile_*amount {
 
-	if $USDconvertflag replace `v' = `v' * $ppprate
+	if $USDconvertflag {
+
+		replace `v' = `v' * $ppprate
+		loc pppla "`:var la `v'' (USD PPP)"
+		la var `v' "`pppla'"
+
+	}
+
 	gen ln`v' = asinh(`v')
 	loc loglabel : var label `v'
 	loc loglabel = "Log " + lower("`loglabel'")
@@ -693,10 +723,10 @@ la var mobile_earlytotdepositamt "Total deposit amt. ($\leq$ 30 days)"
 la var mobile_earlysavedays "No. of days saved ($\leq$ 30 days)"
 la var mobile_earlyavgdeposits "Daily avg. no. of deposits ($\leq$ 30 days)"
 
-la var mobile_latetotdeposits "Total no. of deposits (> 30 days)"
-la var mobile_latetotdepositamt "Total deposit amt. (> 30 days)"
-la var mobile_latesavedays "No. of days saved (> 30 days)"
-la var mobile_lateavgdeposits "Daily avg. no. of deposits (> 30 days)"
+la var mobile_latetotdeposits "Total no. of deposits ($>$ 30 days)"
+la var mobile_latetotdepositamt "Total deposit amt. ($>$ 30 days)"
+la var mobile_latesavedays "No. of days saved ($>$ 30 days)"
+la var mobile_lateavgdeposits "Daily avg. no. of deposits ($>$ 30 days)"
 
 la var mobile_finalbalance "Final balance"
 la var mobile_savedays "No. of days saved"

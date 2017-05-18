@@ -17,7 +17,7 @@ gen x = 1
 gen y = 1
 
 forval i = 1/`columns' {
-	eststo col`i': reg x y
+	qui eststo col`i': reg x y
 }
 
 loc count = 1
@@ -32,29 +32,24 @@ use "$data_dir/clean/akiba_wide.dta", clear
 
 foreach yvar in $sumvars {
 
-	/* Column 1: Completed Mean */
+	qui reg `yvar' endline, vce(cl surveyid)
+	loc N = e(N)
 
-	sum `yvar' if ~attrit
-	loc N = `r(N)'
-	pstar, b(`r(mean)') se(`r(sd)') pstar prec(2)
+	/* Column 1: Completed - attrited */
 
+	pstar endline, prec(2)
 	estadd loc thisstat`count' = "`r(bstar)'": col1
-	estadd loc thisstat`countse' = "`r(sestar)' `N' ": col1
+	estadd loc thisstat`countse' = "`r(sestar)'": col1
 
-	/* Column 2: Attrition Mean */
+	/* Column 2: Completed Mean */
 
-	sum `yvar' if attrit
-	loc N = `r(N)'
-	pstar, b(`r(mean)') se(`r(sd)') pstar prec(2)
+	qui sum `yvar' if endline == 1
+	estadd loc thisstat`count' = string(r(mean), "%9.2f"): col2
+	estadd loc thisstat`countse' = "(" + string(r(sd), "%9.2f") + ")": col2
 
-	estadd loc thisstat`count' = "`r(bstar)'": col2
-	estadd loc thisstat`countse' = "`r(sestar)' `N' ": col2
+	/* Column 3: Observations */
 
-	/* Column 3: Complete - Attrition */
-
-	ttest `yvar', by(endline)
-	pstar, p(`r(p)') pstar pnopar prec(2)
-	estadd loc thisstat`count' = "`r(pstar)'": col3
+	estadd loc thisstat`count' = `N': col3
 
 	/* Row Labels */
 
@@ -70,9 +65,9 @@ foreach yvar in $sumvars {
 
 loc prehead "\begin{table}[htbp]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \caption{$sumtitle} \label{tab:$sumpath} \maxsizebox*{\textwidth}{\textheight}{ \begin{threeparttable} \begin{tabular}{l*{`columns'}{c}} \toprule"
 loc postfoot "\bottomrule \end{tabular} \begin{tablenotes}[flushleft] \footnotesize \item \emph{Notes:} @note \end{tablenotes} \end{threeparttable} } \end{table}"
-loc footnote "The first two columns report means of each row variable by observation status at endline. SD are in parentheses with sample size. The last column report the \emph{p}-value for a difference of means \emph{t}-test between each group. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level."
+loc footnote "Column 1 reports the difference of means between participants who completed endline and those who attrited. Standard errors are in parentheses. Column 2 reports the mean among participants at endline with SD in parentheses. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level."
 
-esttab col* using "$tab_dir/$sumpath.tex", booktabs cells(none) nonum nogap mgroups("Mean (SD)" "\specialcell{Difference \\ \emph{p}-value}", pattern(1 0 0 1 0) prefix(\multicolumn{@span}{c}{) suffix(}) span erepeat(\cmidrule(lr){@span})) mtitle("Complete" "Attrition" "\specialcell{Complete -\\Attrition}") stats(`statnames', labels(`varlabels')) note("`footnote'") prehead("`prehead'") postfoot("`postfoot'") compress replace
+esttab col* using "$tab_dir/$sumpath.tex", booktabs cells(none) nogap mtitle("\specialcell{Completed -\\attrited}" "\specialcell{Mean (SD)\\of completed}" "Obs.") stats(`statnames', labels(`varlabels')) note("`footnote'") prehead("`prehead'") postfoot("`postfoot'") compress replace
 
 eststo clear
 

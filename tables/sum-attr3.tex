@@ -1,17 +1,17 @@
-\begin{table}[htbp]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \caption{Summary statistics by attrition} \label{tab:sum-attr3} \maxsizebox*{\textwidth}{\textheight}{ \begin{threeparttable} \begin{tabular}{l*{3}{c}} \toprule
-          &\multicolumn{3}{c}{Mean (SD)}\\\cmidrule(lr){2-4}
-          &\multicolumn{1}{c}{Complete}&\multicolumn{1}{c}{Attrition}&\multicolumn{1}{c}{\specialcell{Complete -\\Attrition}}\\
+\begin{table}[htbp]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \caption{Baseline balance check by attrition status} \label{tab:sum-attr3} \maxsizebox*{\textwidth}{\textheight}{ \begin{threeparttable} \begin{tabular}{l*{3}{c}} \toprule
+          &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}\\
+          &\multicolumn{1}{c}{\specialcell{Completed -\\attrited}}&\multicolumn{1}{c}{\specialcell{Mean (SD)\\of completed}}&\multicolumn{1}{c}{Obs.}\\
 \midrule
-Currently saves&     0.54&     0.59&     0.62\\
-          &(0.50) 284 &(0.50) 27 &         \\
-Total savings last mo.&    50.91&    47.23&     0.82\\
-          &(80.23) 284 &(101.83) 27 &         \\
-Currently saves with ROSCA&     0.60&     0.63&     0.78\\
-          &(0.49) 284 &(0.49) 27 &         \\
-ROSCA savings last mo.&    14.57&    20.26&     0.26\\
-          &(24.05) 284 &(34.03) 27 &         \\
-M-Pesa savings last mo.&    10.29&    12.39&     0.85\\
-          &(55.00) 284 &(49.63) 27 &         \\
-\bottomrule \end{tabular} \begin{tablenotes}[flushleft] \footnotesize \item \emph{Notes:} The first two columns report means of each row variable by observation status at endline. SD are in parentheses with sample size. The last column report the \emph{p}-value for a difference of means \emph{t}-test between each group. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level. \end{tablenotes} \end{threeparttable} } \end{table}
+Currently saves&    -0.05&     0.54&      311\\
+          &   (0.10)&   (0.50)&         \\
+Total savings last mo. (USD PPP)&     3.68&    50.91&      311\\
+          &  (19.87)&  (80.23)&         \\
+Currently saves with ROSCA&    -0.03&     0.60&      311\\
+          &   (0.10)&   (0.49)&         \\
+ROSCA savings last mo. (USD PPP)&    -5.70&    14.57&      311\\
+          &   (6.60)&  (24.05)&         \\
+M-Pesa savings last mo. (USD PPP)&    -2.10&    10.29&      311\\
+          &   (9.95)&  (55.00)&         \\
+\bottomrule \end{tabular} \begin{tablenotes}[flushleft] \footnotesize \item \emph{Notes:} Column 1 reports the difference of means between participants who completed endline and those who attrited. Standard errors are in parentheses. Column 2 reports the mean among participants at endline with SD in parentheses. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level. \end{tablenotes} \end{threeparttable} } \end{table}
 
-% File produced by sum-participation.do with /n/homeserver2/user2a/justinra/repos/akiba-lottery-pub/data/clean/akiba_wide.dta on 19:26:10  4 May 2017 by user justinra on Stata 13.1 with seed X53d8cd0fc43f462544a474abacbdd93d00044a8f
+% File produced by sum-participation.do with /Users/Justin/Repos/akiba-lottery-pub/data/clean/akiba_wide.dta on 15:12:42 18 May 2017 by user Justin on Stata 13.1 with seed X53d8cd0fc43f462544a474abacbdd93d00044a8f

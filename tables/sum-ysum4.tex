@@ -1,15 +1,15 @@
-\begin{table}[htbp]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \caption{Summary statistics by treatment group} \label{tab:sum-ysum4} \maxsizebox*{\textwidth}{\textheight}{ \begin{threeparttable} \begin{tabular}{l*{6}{c}} \toprule
-          &\multicolumn{3}{c}{Mean (SD, N)}&\multicolumn{3}{c}{\specialcell{Difference\\\emph{p}-value}}\\\cmidrule(lr){2-4}\cmidrule(lr){5-7}
-          &\multicolumn{1}{c}{Control}&\multicolumn{1}{c}{Lottery}&\multicolumn{1}{c}{Regret}&\multicolumn{1}{c}{\specialcell{Lottery -\\Control}}&\multicolumn{1}{c}{\specialcell{Regret -\\Control}}&\multicolumn{1}{c}{\specialcell{Lottery -\\Regret}}\\
+\begin{table}[htbp]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \caption{Baseline balance check by treatment group} \label{tab:sum-ysum4} \maxsizebox*{\textwidth}{\textheight}{ \begin{threeparttable} \begin{tabular}{l*{5}{c}} \toprule
+          &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}&\multicolumn{1}{c}{(5)}\\
+          &\multicolumn{1}{c}{\specialcell{Lottery -\\Control}}&\multicolumn{1}{c}{\specialcell{Regret -\\Control}}&\multicolumn{1}{c}{\specialcell{Lottery -\\Regret}}&\multicolumn{1}{c}{\specialcell{Control mean\\(SD)}}&\multicolumn{1}{c}{Obs.}\\
 \midrule
-Weighted index of gambling frequency&    -0.00&    -0.08&    -0.13&     0.62&     0.32&     0.71\\
-          &(1.00) 105&(1.21) 103&(0.89) 103&         &         &         \\
-Canadian Problem Gambling Index&     3.18&     2.74&     2.31&     0.41&0.08$^{*}$&     0.37\\
-          &(3.98) 105&(3.70) 103&(3.15) 103&         &         &         \\
-Standardized CPGI&    -0.00&    -0.11&    -0.22&     0.41&0.08$^{*}$&     0.37\\
-          &(1.00) 105&(0.93) 103&(0.79) 103&         &         &         \\
-WTP for lottery&     0.57&     0.56&     0.53&     0.79&     0.28&     0.42\\
-          &(0.28) 105&(0.29) 103&(0.30) 103&         &         &         \\
-\bottomrule \end{tabular} \begin{tablenotes}[flushleft] \footnotesize \item \emph{Notes:} The first three columns report means of each row variable for each treatment group. SD are in parentheses with sample size. The last three columns report the \emph{p}-value for a difference of means \emph{t}-test between each group. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level. \end{tablenotes} \end{threeparttable} } \end{table}
+Weighted index of gambling frequency&    -0.08&    -0.13&     0.06&    -0.00&      311\\
+          &   (0.15)&   (0.13)&   (0.15)&   (1.00)&         \\
+Canadian Problem Gambling Index&    -0.44&-0.87$^{*}$&     0.43&     3.18&      311\\
+          &   (0.53)&   (0.50)&   (0.48)&   (3.98)&         \\
+Standardized CPGI&    -0.11&-0.22$^{*}$&     0.11&    -0.00&      311\\
+          &   (0.13)&   (0.12)&   (0.12)&   (1.00)&         \\
+WTP for lottery (USD PPP)&    -0.01&    -0.04&     0.03&     0.57&      311\\
+          &   (0.04)&   (0.04)&   (0.04)&   (0.28)&         \\
+\bottomrule \end{tabular} \begin{tablenotes}[flushleft] \footnotesize \item \emph{Notes:} The first three columns report the difference of means across treatment groups with SEs in parentheses. Column 4 reports the mean of the control group with SD in parentheses. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level. \end{tablenotes} \end{threeparttable} } \end{table}
 
-% File produced by sum-treat.do with /n/homeserver2/user2a/justinra/repos/akiba-lottery-pub/data/clean/akiba_wide.dta on 19:26:11  4 May 2017 by user justinra on Stata 13.1 with seed X53d8cd0fc43f462544a474abacbdd93d00044a8f
+% File produced by sum-treat.do with /Users/Justin/Repos/akiba-lottery-pub/data/clean/akiba_wide.dta on 15:12:42 18 May 2017 by user Justin on Stata 13.1 with seed X53d8cd0fc43f462544a474abacbdd93d00044a8f

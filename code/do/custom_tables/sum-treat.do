@@ -10,14 +10,14 @@ clear all
 eststo clear
 estimates drop _all
 
-loc columns = 6 //Change number of columns
+loc columns = 5 //Change number of columns
 
 set obs 10
 gen x = 1
 gen y = 1
 
 forval i = 1/`columns' {
-	eststo col`i': reg x y
+	qui eststo col`i': reg x y
 }
 
 loc count = 1
@@ -32,53 +32,48 @@ use "$data_dir/clean/akiba_wide.dta", clear
 
 foreach yvar in $sumvars {
 
-	/* Column 1: Control Mean */
+	qui reg `yvar' lottery regret, vce(cl surveyid)
+	est sto reg
+	loc N = e(N)
 
-	sum `yvar' if control
-	loc N = `r(N)'
-	pstar, b(`r(mean)') se(`r(sd)') pstar prec(2)
+	/* Column 1: Lottery - Control */
 
-	estadd loc thisstat`count' = "`r(bstar)'": col1
-	estadd loc thisstat`countse' = "`r(sestar)' `N'": col1
+	est res reg
 
-	/* Column 2: Lottery Mean */
+	pstar lottery, prec(2)
+	estadd loc thisstat`count' = r(bstar): col1
+	estadd loc thisstat`countse' = r(sestar): col1
 
-	sum `yvar' if lottery
-	loc N = `r(N)'
-	pstar, b(`r(mean)') se(`r(sd)') pstar prec(2)
+	/* Column 2: Regret - Control */
 
-	estadd loc thisstat`count' = "`r(bstar)'": col2
-	estadd loc thisstat`countse' = "`r(sestar)' `N'": col2
+	est res reg
 
-	/* Column 3: Regret Mean */
+	pstar regret, prec(2)
+	estadd loc thisstat`count' = r(bstar): col2
+	estadd loc thisstat`countse' = r(sestar): col2
 
-	sum `yvar' if regret
-	loc N = `r(N)'
-	pstar, b(`r(mean)') se(`r(sd)') pstar prec(2)
+	/* Column 3: Lottery - Regret */
 
-	estadd loc thisstat`count' = "`r(bstar)'": col3
-	estadd loc thisstat`countse' = "`r(sestar)' `N'": col3
+	est res reg
+	qui lincom lottery - regret
+	loc b = r(estimate)
+	loc se = r(se)
+	loc p = r(p)
 
-	/* Column 4: Lottery - Control */
+	pstar, b(`b') se(`se') p(`p') prec(2)
+	estadd loc thisstat`count' = r(bstar): col3
+	estadd loc thisstat`countse' = r(sestar): col3
 
-	ttest `yvar' if ~regret, by(lottery)
+	/* Column 4: Control mean */
 
-	pstar, p(`r(p)') pstar pnopar prec(2)
-	estadd loc thisstat`count' = "`r(pstar)'": col4
+	qui su `yvar' if control == 1
+	estadd loc thisstat`count' = string(r(mean), "%9.2f"): col4
+	estadd loc thisstat`countse' = "(" + string(r(sd), "%9.2f") + ")": col4
 
-	/* Column 5: Regret - Control */
+	/* Column 5: Observations */
 
-	ttest `yvar' if ~lottery, by(regret)
-
-	pstar, p(`r(p)') pstar pnopar prec(2)
-	estadd loc thisstat`count' = "`r(pstar)'": col5
-
-	/* Column 6: Lottery - Regret */
-
-	ttest `yvar' if ~control, by(lottery)
-
-	pstar, p(`r(p)') pstar pnopar prec(2)
-	estadd loc thisstat`count' = "`r(pstar)'": col6
+	est res reg
+	estadd loc thisstat`count' = `N': col5
 
 	/* Row Labels */
 
@@ -94,9 +89,9 @@ foreach yvar in $sumvars {
 
 loc prehead "\begin{table}[htbp]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \caption{$sumtitle} \label{tab:$sumpath} \maxsizebox*{\textwidth}{\textheight}{ \begin{threeparttable} \begin{tabular}{l*{`columns'}{c}} \toprule"
 loc postfoot "\bottomrule \end{tabular} \begin{tablenotes}[flushleft] \footnotesize \item \emph{Notes:} @note \end{tablenotes} \end{threeparttable} } \end{table}"
-loc footnote "The first three columns report means of each row variable for each treatment group. SD are in parentheses with sample size. The last three columns report the \emph{p}-value for a difference of means \emph{t}-test between each group. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level."
+loc footnote "The first three columns report the difference of means across treatment groups with SEs in parentheses. Column 4 reports the mean of the control group with SD in parentheses. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level."
 
-esttab col* using "$tab_dir/$sumpath.tex", booktabs cells(none) nonum nogap mgroups("Mean (SD, N)" "\specialcell{Difference\\\emph{p}-value}", pattern(1 0 0 1 0 0) prefix(\multicolumn{@span}{c}{) suffix(}) span erepeat(\cmidrule(lr){@span})) mtitle("Control" "Lottery" "Regret" "\specialcell{Lottery -\\Control}" "\specialcell{Regret -\\Control}" "\specialcell{Lottery -\\Regret}") stats(`statnames', labels(`varlabels')) note("`footnote'") prehead("`prehead'") postfoot("`postfoot'") compress wrap replace
+esttab col* using "$tab_dir/$sumpath.tex", booktabs cells(none) nogap mtitle("\specialcell{Lottery -\\Control}" "\specialcell{Regret -\\Control}" "\specialcell{Lottery -\\Regret}" "\specialcell{Control mean\\(SD)}" "Obs.") stats(`statnames', labels(`varlabels')) note("`footnote'") prehead("`prehead'") postfoot("`postfoot'") compress wrap replace
 
 eststo clear
 
