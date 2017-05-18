@@ -134,11 +134,10 @@ do winnings affect endline savings/gambling? disentangle regret aversion (+) and
 	For regret, does experiencing winning without claiming prize affect future savings? A test of regret aversion. Only able to test in panel data.
 	To test fallacy, check lit
 
+make wall of tables simpler
 quantile regression? allows to look at the distribution of effects for continuous outcomes (no of deposits, savings)
 is there adaptation over time? test for description experience gap, if so then is it experience or repetition? might it shrink within the first few days? there is a slowdown in the cdf. find a statistical test for this
 project timeline
 can investigate more thoroughly how people saved during project period (time of day, week fixed effects, distance from reminder, etc.)
-how do we know when people attrited? is it before or after the end of savings? need for tsfill
 what the hell is 11111 2222 winning ticket?
 discrepancy in prizes and savings in a day?
-Could people just have saved with interest and bought regular lottery tickets?

@@ -286,10 +286,10 @@ if $panelflag {
 
 	}
 
-loc prehead "\begin{table}[htbp]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \caption{Treatment effects conditional on days elapsed} \label{tab:reg-timetrend} \maxsizebox*{\textwidth}{\textheight}{ \begin{threeparttable} \begin{tabular}{l*{2}{c}} \toprule"
+	loc prehead "\begin{table}[htbp]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \caption{Treatment effects conditional on days elapsed} \label{tab:reg-timetrend} \maxsizebox*{\textwidth}{\textheight}{ \begin{threeparttable} \begin{tabular}{l*{2}{c}} \toprule"
 	loc postfoot "\bottomrule \end{tabular} \begin{tablenotes}[flushleft] \footnotesize \item \emph{Notes:} @note \end{tablenotes} \end{threeparttable} } \end{table}"
 	loc footnote "This table reports a regression of savings activity on treatment indicators and a linear time trend. The unit of observation is individual-period. Standard errors are in parentheses and clustered at the individual level. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level."
-	esttab using "$tab_dir/reg-timetrend", alignment(c) ar2 nobaselevels nonum nogap label obslast b(%9.3f) se(%9.3f) sfmt(%9.3f) scalars("pdiff Lottery $\times$ period = Regret $\times$ period \(p\)-value") star(* 0.10 ** 0.05 *** 0.01) note("`footnote'") prehead("`prehead'") postfoot("`postfoot'") se compress booktabs replace
+	esttab using "$tab_dir/reg-timetrend", alignment(c) ar2 nobaselevels nogap label obslast b(%9.3f) se(%9.3f) sfmt(%9.3f) scalars("pdiff Lottery $\times$ period = Regret $\times$ period \(p\)-value") star(* 0.10 ** 0.05 *** 0.01) note("`footnote'") prehead("`prehead'") postfoot("`postfoot'") se compress booktabs replace
 	eststo clear
 
 	file open tex using "$tab_dir/reg-timetrend.tex", write append
