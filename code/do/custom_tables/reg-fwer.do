@@ -38,24 +38,19 @@ restore
 
 loc varindex = 1
 
-gen treat = regret
-
-stepdown reg ($regvars) treat lottery, iter($iterations)
+stepdown reg ($regvars) regret if lottery == 0, iter($iterations) options(cluster(surveyid))
 mat A = r(p)
 matlist A
 
-stepdown reg ($regvars) treat lottery $controlvars, iter($iterations)
+stepdown reg ($regvars) regret $controlvars if lottery == 0, iter($iterations) options(cluster(surveyid))
 mat C = r(p)
 matlist C
 
-drop treat
-gen treat = lottery
-
-stepdown reg ($regvars) treat regret, iter($iterations)
+stepdown reg ($regvars) lottery if regret == 0, iter($iterations) options(cluster(surveyid))
 mat B = r(p)
 matlist B
 
-stepdown reg ($regvars) treat regret $controlvars, iter($iterations)
+stepdown reg ($regvars) lottery $controlvars if regret == 0, iter($iterations) options(cluster(surveyid))
 mat D = r(p)
 matlist D
 

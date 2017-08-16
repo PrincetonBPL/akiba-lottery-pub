@@ -1,5 +1,5 @@
-*! version 1.0.0  27may2013
-*stepdown reg (hap1 sat1) treat spillover if ~purecontrol, options(r cluster(village)) iter(100) 
+*! version 12jul2017 by JA to allow p = 1
+*stepdown reg (hap1 sat1) treat spillover if ~purecontrol, options(r cluster(village)) iter(100)
 program define stepdown, rclass
 	gettoken cmd 0 : 0
 	gettoken depvars 0 : 0, parse("(") match(par)
@@ -7,10 +7,10 @@ program define stepdown, rclass
 	gettoken treat varlist : varlist
 
 	local weights "[`weight' `exp']"
-	
+
 	dis "depvars: `depvars'; treat: `treat'; varlist: `varlist'; weights: `weights'; options: `options'; iter: `iter'; controlstems: `controlstems'"
 
-quietly { 
+quietly {
 if "`iter'" == "" {
 	local iter 100
 	dis "Number of iterations not specified; `iter' assumed."
@@ -22,8 +22,8 @@ if "`type'" == "" {
 	}
 
 set seed 1073741823
-	
-* generate variables to store actual and simulated t-stats/p-vals 
+
+* generate variables to store actual and simulated t-stats/p-vals
 local counter = 1
 tempvar varname tstat act_pval tstatsim pvalsim pvals
 
@@ -52,7 +52,7 @@ foreach x of varlist `depvars' {
     local counter = `counter' + 1
 }
 
-sum treat 
+sum treat
 local cutoff = `r(mean)'
 
 local numvars = `counter' - 1
@@ -64,7 +64,7 @@ gen `porder' = _n in 1/`numvars'
 gsort `act_pval'
 
 * generate the variable that will contain the simulated (placebo) treatments
-tempvar simtreatment simtreatment_uni 
+tempvar simtreatment simtreatment_uni
 gen byte `simtreatment' = .
 gen float `simtreatment_uni' = .
 local count = 1
@@ -88,9 +88,15 @@ quietly {
 				local controlvars "`controlvars' `depvar'`x'"
 			}
 		}
-		`cmd' `depvar' `simtreatment' `varlist' `controlvars' `if' `in' `weights', `options'
-    	replace `tstatsim' = abs(_b[`simtreatment']/_se[`simtreatment']) in `lhsvar'
-        replace `pvalsim' = 2*ttail(e(N),abs(`tstatsim')) in `lhsvar'
+
+		cap {
+			`cmd' `depvar' `simtreatment' `varlist' `controlvars' `if' `in' `weights', `options'
+			replace `tstatsim' = abs(_b[`simtreatment']/_se[`simtreatment']) in `lhsvar'
+		    replace `pvalsim' = 2*ttail(e(N),abs(`tstatsim')) in `lhsvar'
+		}
+		if _rc {
+			replace `pvalsim' = 1 in `lhsvar'
+		}
     }
 	* in this section we perform the "step down" procedure that replaces simulated p-vals with the minimum of the set of simulated p-vals associated with outcomes that had actual p-vals greater than or equal to the one being replaced.  For each outcome, we keep count of how many times the ultimate simulated p-val is less than the actual observed p-val.
     local countdown `numvars'
@@ -130,5 +136,5 @@ return matrix p = `finalmatrix'
 cap drop `tstatsim' `pvalsim' `simtreatment'*
 } //quietly
 
-end 
+end
 exit
