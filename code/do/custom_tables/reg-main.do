@@ -115,7 +115,7 @@ foreach yvar in $regvars {
 	/* Row Labels */
 
 	loc thisvarlabel: variable label `yvar'
-	local varlabels "`varlabels' "`thisvarlabel'" " " " " "
+	local varlabels "`varlabels' "`thisvarlabel'" " " "
 	loc statnames "`statnames' thisstat`count' thisstat`countse'"
 	loc count = `count' + 2
 	loc countse = `count' + 1
