@@ -26,7 +26,7 @@
 
 \begin{document}
 
-\title{Using Lotteries to Encourage Saving: Experimental Evidence from Kenya}
+\title{Using Lotteries to Encourage Saving: Experimental Evidence from Kenya\protect\footnote{This study was pre-registered with the AEA RCT registry (AEARCTR-0000893). Files for replication are available at \url{https://github.com/princetonbpl/akiba-lottery-pub}.}}
 
 	\author{Justin Abraham\thanks{Department of Psychology, Princeton University and the Busara Center for Behavioral Economics. \protect\href{mailto:justinra@princeton.edu}{justinra@princeton.edu}}, Merve Akbas\thanks{Jet.com. \protect\href{mailto:merve.akbas@duke.edu}{merve.akbas@duke.edu}}, Dan Ariely\thanks{Fuqua School of Business, Duke University. \protect\href{mailto:dan@danariely.com}{dan@danariely.com}}, and Chaning Jang\thanks{Department of Psychology, Princeton University and the Busara Center for Behavioral Economics. \protect\href{mailto:cjang@princeton.edu}{cjang@princeton.edu}}} % add funding statement and ethics
 
@@ -50,17 +50,22 @@
 
 	How might lotteries induce savings? Preferences for skewed returns are well-documented, so the use of lottery-like structures may play a viable role in incentivizing savings. Models departing from expected utility theory incorporate the overweighting of small probabilities \shortcite{kahneman_advances_1992} and attention to salient payoffs \shortcite{bordalo_salience_2012} in order to account for seemingly risk-loving behavior among risk-averse individuals. Research on preferences for skewness have produced a litany of potential explanations for this phenomenon.\footnote{This paper does not discern between these competing explanations but introduces them as a framework for interpreting results.} One broad strand of the literature understands the overweighting of long-odds as a result of persistent preferences for such gambles. Playing the lottery may provide excitement from taking risks and a chance to win a large payoff \shortcite{conlisk_utility_1993}. Similarly, aversion to anticipated regret from foregoing a big prize could drive gambling behavior \shortcite{loomes_regret_1982,zeelenberg_consequences_2004}. Credit-constrained households may also rely on lotteries to save for large, indivisible expenditures \shortcite{kwang_why_1965,herskowitz_gambling_2016}. Alternatively, preferences for gambling may result from bias in subjective probabilities vis-\`{a}-vis true probabilities. The biased weighting of probabilities implies more fickle preferences for gambling that vanish with exposure to information and repeated choice \shortcite{hertwig_descriptionexperience_2009}.
 
+    % two types: biases in subjective probabilities or preference for skewness
+        % bias hypothesis predicts that people can learn over time
+        % preference hypothesis predicts no learning
 	% explain and elaborate hot-hand and gambler's fallacy
 	% Extensive research has tried to explain the higher demand for lotteries and gambling among people with lower income. One approach allows individuals to use subjective probability weighting to over-weight low probability events, e.g. rank-dependent expected utility theory (Quiggin, 1982); cumulative prospect theory (Tversky and Kahneman, 1992). Another approach, skewness, allows utility to depend upon both absolute and relative wealth so that lotteries offer an opportunity to move up in terms of relative wealth (Shefrin and Statman, 2000). Crossley et al. (2011) suggest that people can use lotteries to convexify their budget sets.
+    % what is the link to regret aversion? the first point has to do with risk attitudes the second point has to do with violations of independence
 
 	Literature on the demand for LLDAs is extensive, but evidence of a causal effect on savings behavior is limited. Two recent experimental studies provide evidence of a positive effect of stochastic returns on saving for the future. \shortciteN{atalay_savings_2014} conducted an online portfolio-choice experiment that resulted in participants saving an additional 12 percentage points more with lottery-linked and regular savings than with regular savings alone. Notably, participants who saw an increase in total savings shifted away from lottery expenditures and consumption rather than from regular savings. \shortciteN{filiz-ozbay_lottery_2015} found participants are more likely to delay payments with lottery-like returns compared to guaranteed interest of equivalent expected value. This finding suggests that lottery-linked schemes can be designed to be revenue neutral in expectation for account providers while still promoting savings. Outside the laboratory, evidence surrounding LLDAs is more limited and diverges somewhat from those findings. \shortciteN{loibl_testing_2016} conducted a randomized evaluation of IDAs in the U.S. that incorporated a lottery-based savings match. That study found no significant effect of the program relative to guaranteed matching, even when it was bundled with reminder calls and frequent deposit deadlines. They attribute the result to liquidity constraints among their sample, which potentially precluded the benefits of behavioral interventions.
 
 	% check out brune literature review for empirical evidence in labor, medicine, etc.
 	% Discuss \shortcite{dizon_leveraging_2016}
+    % is it reasonable to assume banks are risk neutral?
 
 	The present study is a lab and field experiment testing the effects of lottery-linked savings on savings behavior. We provided a mobile savings product to 311 informal residents in Nairobi, Kenya and observed account activity over a 60-day period. We minimized barriers to saving by utilizing Safaricom's \textit{Sambaza} mobile savings technology. This platform allowed us to collect detailed data on participant transactions and to examine savings behavior over time. Roughy one-third of our sample was randomly assigned a savings account which provided a fixed 5\% match daily to desposits made that day. A second group was assigned an account that yielded stochastic returns equal in expectation to the 5\% match through a lottery conducted on a daily basis. For each day a participant makes a non-zero deposit, they received a lottery ticket and an opportunity to win a prize instead of the fixed match. We compared the match and lottery groups to determine how LLDAs impact savings behavior. A third group received the same lottery-linked account with the additional feature that participants receive a lottery ticket every day regardless of saving but could not claim the prize until after making a deposit. The key feature of this ``regret'' treatment is that participants observe the lottery results and potential prize at the end of each day. We tested this treatment aginst the lottery treatment to determine whether experienced regret from being unable to claim a prize affects decisions to save.
 
-	% Literature on regret aversion in motivating behavior
+	% Literature on regret aversion in motivating behavior (Machina paradox)
 
 	We found that participants using LLDAs with the regret framing made 42\% more deposits on average over the project period than participants receiving the matched incentive. Moreover, this increase in account activity is due to participants making more deposits per day in order to enter the lottery. There were no significant differences in effects on saving between the regular LLDA and the LLDA with regret framing. Interestingly, we find no effect of LLDAs on total amount saved or on the size of each deposit. Participants made smaller, more frequent deposits compared to the control group. We find no evidence of the LLDA displacing savings from other sources. On gambling behavior, we find that 27\% participants in the regret framing self-report higher gambling activity compared to 12\% in the control group.
 
@@ -117,6 +122,9 @@
 
 		All participants completed the savings program by August 2014. In September 2014, we called participants and conducted an endline survey that included questions on outside savings, gambling activity, and program feedback. We obtained endline surveys for all but 27 of the 311 participants. Table \ref{tab:tab-balance} reports the final sample size and attrition between baseline and endline surveys. In Table \ref{tab:reg-attr}, we find no evidence that selection at endline correlates with treatment assignment.
 
+		\input{../../tables/tab-balance-final.tex}
+		\input{../../tables/reg-attr.tex}
+
 	\subsection{Mobile savings program}
 
 		We implemented our 60-day mobile-phone savings program over Safaricom's \textit{Sambaza} airtime sharing service. Using \textit{Sambaza}, Safaricom users can send airtime to each other free of charge. Participants saved into our program by sending airtime to a designated project phone that held the airtime in an account for each user.
@@ -141,7 +149,9 @@
 
 		\end{enumerate}
 
-\section{Empirical Strategy\protect\footnote{We registered an analysis plan documenting the experimental design, identification strategy, and outcomes of interest \shortcite{abraham_using_2015}. Files for replication are available at \url{https://github.com/princetonbpl/akiba-lottery-pub}.}} \label{sec:est}
+		\input{../../tables/sum-ysumall.tex}
+
+\section{Empirical Strategy} \label{sec:est}
 
 	\subsection{Treatment effect}
 
@@ -200,7 +210,7 @@
 			MDE_{\hat \beta} = (t_{1-\kappa} + t_{\alpha/2}) \times SE(\hat \beta)
 		\label{eq:mde} \end{equation}
 
-		This metric is the smallest effect that would have been detectable given our current sample size. Commonly used in experimental design, we calculate MDEs \textit{ex post facto} with $\alpha = 0.05$ and 0.80 power for each pairwise comparison of our treatments and for comparisons of the treatment effect across dimensions of heterogeneity.
+		This metric is the smallest effect that would have been detectable given our current sample size. Commonly used in experimental design, we calculate MDEs \textit{ex post} with $\alpha = 0.05$ and 0.80 power for each pairwise comparison of our treatments and for comparisons of the treatment effect across dimensions of heterogeneity.
 
 		% MDE for het effects? why not for all null outcomes?
 
@@ -227,7 +237,7 @@
 
 \section{Results} \label{sec:results}
 
-	% perhaps discuss baseline balance and attrition under this section
+	% perhaps discuss baseline balance and attrition and empirical lottery results under this section
 
 	\subsection{LLDAs increase number of deposits without increasing savings}
 
@@ -235,6 +245,27 @@
 
 		% resps also withdrew more resulting in a lower total balance, possibly funded deposits with withdrawals
 		% results using daily level model are consistent
+
+		\begin{figure}[h]
+			\centering
+			\caption{Number of deposits and amount deposited over project period}
+			\includegraphics[height=0.85\textheight]{../../figures/line-cumdeposits.pdf}
+			\label{fig:line-cumdeposits}
+			\caption*{\footnotesize \emph{Notes:} Panel A plots the cumulative number of deposits made by the average participant over the 60-day savings period by treatment assignment. Panel B plots the cumulative amount deposited by the average participant. Error bars for the total number of deposits and total amount deposited by the end of the project are within one standard error of the mean.}
+		\end{figure}
+
+		\input{../../tables/tab-lottery-final.tex}
+		\input{../../tables/reg-mobile.tex}
+		\input{../../tables/reg-save.tex}
+		\input{../../tables/reg-mde.tex}
+
+		% \input{../../tables/tab-select.tex}
+
+		% \input{../../tables/reg-self.tex}
+
+		% \input{../../tables/het-regret.tex}
+
+		% add differences to PAP
 
 		While effects on number of deposits are acute, we find no effect of either treatment on total amount deposited over the project period. Panel B of Figure \ref{fig:line-cumdeposits} illustrates the cumulative deposit amounts, averaged by treatment group, over the 60-day period. We cannot distinguish total deposit amounts between any of the three incentive schemes. So while participants are making more deposits, the amount of each deposit is smaller on average than in the control group.
 
@@ -264,6 +295,25 @@
 		% we do not find evidence that this decreases (except afte rthe first few days)
 		% this has been documented in the lab with small stakes and repeated decisions. erev demonstrates that people who take median 15 (weber 2007 17) with replacement are less likely to overweight rare events. also erev speculates that this is through experience with the rare event and demonstrates it. alternatively, overweighting of recent evidence. does winning affect decision to play in this study?
 
+		\input{../../tables/reg-timetrend.tex}
+		% add effects over time
+
+		\begin{figure}[h]
+		\centering
+		\caption{Effects over time -- Number of deposits}
+		\centerfloat
+		\includegraphics[width=\textwidth]{../../figures/line-timemobile_deposits.pdf}
+		\caption*{\footnotesize \emph{Notes:} Panel A plots the treatment effect of \textsc{Lottery} on number of deposits as a function of savings period. Panel B plots the treatment effect of \textsc{Regret} on number of deposits as a function of savings period. Shaded areas represent 95\% confidence regions.}
+		\end{figure}
+
+		% \begin{figure}[h]
+		% \centering
+		% \caption{Effects over time -- Amount deposited}
+		% \centerfloat
+		% \includegraphics[width=\textwidth]{../../figures/line-timemobile_depositamount.pdf}
+		% \caption*{\footnotesize \emph{Notes:} Panel A plots the treatment effect of \textsc{Lottery} on amount deposited as a function of savings period. Panel B plots the treatment effect of \textsc{Regret} on amount deposited as a function of savings period. Shaded areas represent 95\% confidence regions.}
+		% \end{figure}
+
 	\subsection{No effect of winning on savings}
 
 		% ambiguous effect of winning more (more frequently) because of experience (Ever) and regret aversion (Dutch)
@@ -281,6 +331,7 @@
 		\shortciteN{cookson_when_2016} offered individuals in Nebraska access to an LLDA and observed cash withdrawals at casinos as a measure of gambling behavior. They find reductions in transactions between 7-15\% accredit the effect to attribute-based substition of casino gambling with the LLDA. One important difference in the savings program from the present study is the bundling of the account with an anti-gambling campaign. Such a feature may have counteracted external gambling associated with the LLDA and could explain the difference in our findings.
 
 		% interrogate this more rigorously ^
+		\input{../../tables/reg-gamble.tex}
 
 \section{Conclusion} \label{sec:conclusion}
 
@@ -301,53 +352,6 @@
 \bibliographystyle{achicago}
 \bibliography{Lottery.bib}
 % fix citations
-
-\newpage
-
-\textbf{Appendix}
-
-	\input{../../tables/tab-balance.tex}
-	\input{../../tables/reg-attr.tex}
-	\input{../../tables/tab-lottery-final.tex}
-	\input{../../tables/sum-ysumall.tex}
-	\input{../../tables/reg-mobile.tex}
-	% \input{../../tables/tab-select.tex}
-	\input{../../tables/reg-save.tex}
-	\input{../../tables/reg-gamble.tex}
-	% \input{../../tables/reg-self.tex}
-	\input{../../tables/reg-mde.tex}
-	% \input{../../tables/het-regret.tex}
-	\input{../../tables/reg-timetrend.tex}
-
-	% add effects over time
-	% add differences to PAP
-
-
-	\clearpage
-
-	\begin{figure}[h]
-		\centering
-		\caption{Number of deposits and amount deposited over project period}
-		\includegraphics[height=0.85\textheight]{../../figures/line-cumdeposits.pdf}
-		\label{fig:line-cumdeposits}
-		\caption*{\footnotesize \emph{Notes:} Panel A plots the cumulative number of deposits made by the average participant over the 60-day savings period by treatment assignment. Panel B plots the cumulative amount deposited by the average participant. Error bars for the total number of deposits and total amount deposited by the end of the project are within one standard error of the mean.}
-	\end{figure}
-
-	\begin{figure}[h]
-	\centering
-	\caption{Effects over time -- Number of deposits}
-	\centerfloat
-	\includegraphics[width=\textwidth]{../../figures/line-timemobile_deposits.pdf}
-	\caption*{\footnotesize \emph{Notes:} Panel A plots the treatment effect of \textsc{Lottery} on number of deposits as a function of savings period. Panel B plots the treatment effect of \textsc{Regret} on number of deposits as a function of savings period. Shaded areas represent 95\% confidence regions.}
-	\end{figure}
-
-	% \begin{figure}[h]
-	% \centering
-	% \caption{Effects over time -- Amount deposited}
-	% \centerfloat
-	% \includegraphics[width=\textwidth]{../../figures/line-timemobile_depositamount.pdf}
-	% \caption*{\footnotesize \emph{Notes:} Panel A plots the treatment effect of \textsc{Lottery} on amount deposited as a function of savings period. Panel B plots the treatment effect of \textsc{Regret} on amount deposited as a function of savings period. Shaded areas represent 95\% confidence regions.}
-	% \end{figure}
 
 % Notes to self
 
@@ -397,5 +401,6 @@
 % JPE
 % how important to discuss non-sig het effects? at least display the tests for a select number of het effects
 % finish reading the Brune paper
+% which journal to submit? check references and adjust accordingly
 
 \end{document}

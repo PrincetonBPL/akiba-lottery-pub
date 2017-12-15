@@ -1,7 +1,7 @@
 ** Title: akiba_master.do
 ** Author: Justin Abraham
 ** Desc: Master do file for re-creating dataset and running analysis
-** New users must change filepaths to point to your local repository (Needs fix).
+** New users must change filepaths to point to your local repository
 
 version 13.1
 
@@ -32,7 +32,7 @@ cap cd "$project_dir"
 
 /* Typeface for graphics */
 
-local graphfont "CMU Serif"
+loc graphfont "CMU Serif"
 
 graph set eps fontface "`graphfont'"
 graph set eps fontfaceserif "`graphfont'"
@@ -59,8 +59,8 @@ glo USDconvertflag = 1 		 // Runs analysis in USD-PPP
 glo ppprate = (1/38.84) 	 // PPP exchange rate from KSH (2009-2013)
 
 glo laglength = 7			 // Lag length for panel analysis
-glo iterations = 10 		 // Number of iterations for calculating FWER adjusted p-values
-glo riterations = 10		 // Number of iterations for permutation test
+glo iterations = 10000 		 // Number of iterations for calculating FWER adjusted p-values
+glo riterations = 10000		 // Number of iterations for permutation test
 
 /* Regressands by category */
 
