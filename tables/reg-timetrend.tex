@@ -1,5 +1,6 @@
-\begin{table}[htbp]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \caption{Treatment effects conditional on days elapsed} \label{tab:reg-timetrend} \maxsizebox*{\textwidth}{\textheight}{ \begin{threeparttable} \begin{tabular}{l*{2}{c}} \toprule
-                &\multicolumn{1}{c}{No. of deposits made}&\multicolumn{1}{c}{Amount deposited}\\
+\begin{table}[h]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \caption{Treatment effects conditional on days elapsed} \label{tab:reg-timetrend} \maxsizebox*{\textwidth}{\textheight}{ \begin{threeparttable} \begin{tabular}{l*{2}{c}} \toprule
+                &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}\\
+                &\multicolumn{1}{c}{No. of deposits made}&\multicolumn{1}{c}{Amount deposited (USD PPP)}\\
 \midrule
 Lottery         &    0.109\sym{**} &   -0.044         \\
                 &  (0.052)         &  (0.085)         \\
@@ -19,4 +20,4 @@ Lottery $\times$ period = Regret $\times$ period \(p\)-value&    0.682         &
 Observations    &    18636         &    18636         \\
 \bottomrule \end{tabular} \begin{tablenotes}[flushleft] \footnotesize \item \emph{Notes:} This table reports a regression of savings activity on treatment indicators and a linear time trend. The unit of observation is individual-period. Standard errors are in parentheses and clustered at the individual level. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level. \end{tablenotes} \end{threeparttable} } \end{table}
 
-% File produced by akiba-estimate.do with /n/homeserver2/user2a/justinra/repos/akiba-lottery-pub/data/clean/akiba_long.dta on 05:15:46  5 May 2017 by user justinra on Stata 13.1 with seed X5bb6ae93308b2d352ee7dfc7cd4b6be9000440c1
+% File produced by akiba-estimate.do with /n/homeserver2/user2a/justinra/repos/akiba-lottery-pub/data/clean/akiba_long.dta on 16:19:47 15 Dec 2017 by user justinra on Stata 13.1 with seed Xc5362149d72a408fd4231343457643a900042553

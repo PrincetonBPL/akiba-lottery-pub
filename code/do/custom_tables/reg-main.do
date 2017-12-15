@@ -84,14 +84,6 @@ foreach yvar in $regvars {
 
 }
 
-/* FDR correction */
-
-forval i = 1/3 {
-
-	qui minq P`i', q("Q`i'") step(0.01)
-
-}
-
 /* Fill table cells */
 
 loc varindex = 1
@@ -103,14 +95,10 @@ foreach yvar in $regvars {
 		loc b = B`i'[`varindex', 1]
 		loc se = SE`i'[`varindex', 1]
 		loc p = P`i'[`varindex', 1]
-		loc q = Q`i'[`varindex', 1]
 
 		pstar, b(`b') se(`se') p(`p') prec(2)
 		estadd loc thisstat`count' = "`r(bstar)'": col`i'
 		estadd loc thisstat`countse' = "`r(sestar)'": col`i'
-
-		pstar, p(`q') prec(2) pbracket pstar
-		estadd local thisstat`countp' = "`r(pstar)'": col`i'
 
 	}
 
@@ -128,7 +116,7 @@ foreach yvar in $regvars {
 
 	loc thisvarlabel: variable label `yvar'
 	local varlabels "`varlabels' "`thisvarlabel'" " " " " "
-	loc statnames "`statnames' thisstat`count' thisstat`countse' thisstat`countp'"
+	loc statnames "`statnames' thisstat`count' thisstat`countse'"
 	loc count = `count' + 2
 	loc countse = `count' + 1
 	loc ++varindex
