@@ -379,7 +379,7 @@ foreach v of varlist gam_wtp_0 pref_indiff* pref_*amount {
 
 gen pref_crra_0 = MPLChoice
 recode pref_crra_0 (1=3.45971) (2=2.31018) (3=0.933116) (4=0.602097) (5=0.249306) (6=0)
-la var pref_crra_0 "Constant relative risk aversion"
+la var pref_crra_0 "Coefficient of relative risk aversion"
 
 xtile pref_riskaverse_0 = pref_crra_0, n(2)
 replace pref_riskaverse_0 = pref_riskaverse_0 - 1

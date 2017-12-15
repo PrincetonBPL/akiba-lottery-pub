@@ -87,6 +87,10 @@ if $maineffectsflag {
 
 			glo regpath "reg-`root'"
 			glo regtitle "Treatment effects -- ``group'desc'"
+			do "$do_dir/custom_tables/reg-main.do"
+
+			glo regpath "reg-fdr`root'"
+			glo regtitle "Treatment effects controlling the FDR -- ``group'desc'"
 			do "$do_dir/custom_tables/reg-fdr.do"
 
 			glo regpath "reg-fwer`root'"
@@ -101,7 +105,7 @@ if $maineffectsflag {
 
 			glo regpath "reg-`root'"
 			glo regtitle "Treatment effects -- ``group'desc'"
-			do "$do_dir/custom_tables/reg-fdr.do"
+			do "$do_dir/custom_tables/reg-main.do"
 
 		}
 
