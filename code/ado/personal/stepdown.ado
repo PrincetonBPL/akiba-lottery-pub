@@ -52,7 +52,7 @@ foreach x of varlist `depvars' {
     local counter = `counter' + 1
 }
 
-sum treat
+sum `treat'
 local cutoff = `r(mean)'
 
 local numvars = `counter' - 1

@@ -54,8 +54,6 @@ stepdown reg ($regvars) lottery $controlvars if regret == 0, iter($iterations) o
 mat D = r(p)
 matlist D
 
-drop treat
-
 /* SUR */
 
 foreach yvar in $regvars {
