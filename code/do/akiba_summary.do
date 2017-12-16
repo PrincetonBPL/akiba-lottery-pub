@@ -32,7 +32,7 @@ file close tex
 
 /* Unified summary statistics */
 
-glo sumvars "$ysum1 $ysum2 $ysum3"
+glo sumvars "demo_female_0 demo_age_0 demo_stdschool_0 demo_married_0 demo_children_0 pref_crra_0 pref_locscore_0 labor_monthlyinc_0 labor_employed_0 save_dosave_0 save_monthlysave_0 save_dorosca_0 save_monthlyrosca_0"
 
 glo sumtitle "Baseline balance check by treatment group"
 glo sumpath "sum-ysumall"
