@@ -52,20 +52,20 @@ foreach yvar in $regvars {
 
 	/* Column 3: Lottery vs Regret */
 
-	/* qui reg `yvar' regret if treated, vce(cl surveyid)
+	qui reg `yvar' regret if treated, vce(cl surveyid)
 
 	loc mde = (`t1' + `t2') * _se[regret]
-	estadd loc thisstat`count' = string(`mde', "%9.2f"): col3 */
+	estadd loc thisstat`count' = string(`mde', "%9.2f"): col2
 
 	/* Column 4: Control Mean */
 
 	qui sum `yvar' if control
-	estadd loc thisstat`count' = string(`r(mean)', "%9.2f"): col2
-	estadd loc thisstat`countse' = "(" + string(`r(sd)', "%9.2f") + ")": col2
+	estadd loc thisstat`count' = string(`r(mean)', "%9.2f"): col3
+	estadd loc thisstat`countse' = "(" + string(`r(sd)', "%9.2f") + ")": col3
 
 	/* Column 5: N */
 
-	estadd loc thisstat`count' = ``yvar'_N': col3
+	estadd loc thisstat`count' = ``yvar'_N': col4
 
 	/* Row Labels */
 
@@ -82,7 +82,7 @@ foreach yvar in $regvars {
 loc prehead "\begin{table}[h]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \caption{$regtitle} \label{tab:$regpath} \maxsizebox*{\textwidth}{\textheight}{ \begin{threeparttable} \begin{tabular}{l*{`columns'}{c}} \toprule"
 loc prehead_n "\begin{table}[h]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \label{tab:$regpath} \maxsizebox*{\textwidth}{\textheight}{ \begin{threeparttable} \begin{tabular}{l*{`columns'}{c}} \toprule"
 loc postfoot "\bottomrule \end{tabular} \begin{tablenotes}[flushleft] \footnotesize \item @note \end{tablenotes} \end{threeparttable} } \end{table}"
-loc footnote "\emph{Notes:} Column 1 reports the minimum detectable effect sizes of the lottery treatment compared to control on the row variables with \(\alpha\) = 0.05 and 0.8 power. Columns 2 - 3 report the control group means and SDs and size of the analytic sample respectively."
+loc footnote "\emph{Notes:} Columns 1 and 2 report the minimum detectable effect sizes of the lottery treatment compared to control and the regret treatment against the lottery, respectively, with \(\alpha\) = 0.05 and 0.8 power. Columns 3--4 report the control group means and SDs and size of the analytic sample."
 
 esttab col* using "$tab_dir/$regpath.tex", booktabs cells(none) nogap mtitle("Lottery MDE" "\specialcell{Control Mean\\(SD)}" "N") stats(`statnames', labels(`varlabels')) note("`footnote'") prehead("`prehead'") postfoot("`postfoot'") compress replace
 esttab col* using "$tab_dir/$regpath-n.tex", booktabs cells(none) nogap mtitle("Lottery MDE" "\specialcell{Control Mean\\(SD)}" "N") stats(`statnames', labels(`varlabels')) prehead("`prehead_n'") postfoot("`postfoot'") compress replace
