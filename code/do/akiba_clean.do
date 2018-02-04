@@ -177,16 +177,16 @@ gen save_dosave_0 = 2 - labsaving_yesno
 la var save_dosave_0 "Currently saves"
 
 ren labtot_save_pastmonth save_monthlysave_0
-la var save_monthlysave_0 "Total savings last mo."
+la var save_monthlysave_0 "Total savings last month"
 
 ren endline_totalsavings_pastmonth save_monthlysave_1
-la var save_monthlysave_1 "Total savings last mo."
+la var save_monthlysave_1 "Total savings last month"
 
 ren labtot_save_MPESA save_mpesa_0
-la var save_mpesa_0 "M-Pesa savings last mo."
+la var save_mpesa_0 "M-Pesa savings last month"
 
 ren endline_mpesa save_mpesa_1
-la var save_mpesa_1 "M-Pesa savings last mo."
+la var save_mpesa_1 "M-Pesa savings last month"
 
 recode labrosca_yesno (1 = 1) (2 = 0) (nonm = .), gen(save_dorosca_0)
 la var save_dorosca_0 "Currently saves with ROSCA"
@@ -197,16 +197,16 @@ replace save_dorosca_1 = save_dorosca_1 - 1
 la var save_dorosca_1 "Currently saves with ROSCA"
 
 ren labrosca_monthly save_monthlyrosca_0
-la var save_monthlyrosca_0 "ROSCA savings last mo."
+la var save_monthlyrosca_0 "ROSCA savings last month"
 
 gen save_monthlyrosca_1 = real(endline_ROSCA_monthly)
-la var save_monthlyrosca_1 "ROSCA savings last mo."
+la var save_monthlyrosca_1 "ROSCA savings last month"
 
 gen save_othersavings_0 = save_monthlysave_0 - save_monthlyrosca_0 - save_mpesa_0
-la var save_othersavings_0 "Other savings last mo."
+la var save_othersavings_0 "Other savings last month"
 
 gen save_othersavings_1 = save_monthlysave_1 - save_monthlyrosca_1 - save_mpesa_1
-la var save_othersavings_1 "Other savings last mo."
+la var save_othersavings_1 "Other savings last month"
 
 forval i = 0/1 {
 
@@ -228,16 +228,16 @@ forval i = 0/1 {
 	la var save_propincome_`i' "Monthly savings rate"
 
 	gen lnsave_monthlysave_`i' = asinh(save_monthlysave_`i')
-	la var lnsave_monthlysave_`i' "Log total savings last mo."
+	la var lnsave_monthlysave_`i' "Log total savings last month"
 
 	gen lnsave_mpesa_`i' = asinh(save_mpesa_`i')
-	la var lnsave_mpesa_`i' "Log M-Pesa savings last mo."
+	la var lnsave_mpesa_`i' "Log M-Pesa savings last month"
 
 	gen lnsave_monthlyrosca_`i' = asinh(save_monthlyrosca_`i')
-	la var lnsave_monthlyrosca_`i' "Log ROSCA savings last mo."
+	la var lnsave_monthlyrosca_`i' "Log ROSCA savings last month"
 
 	gen lnsave_othersavings_`i' = asinh(save_othersavings_`i')
-	la var lnsave_othersavings_`i' "Log other savings last mo."
+	la var lnsave_othersavings_`i' "Log other savings last month"
 
 }
 
@@ -700,9 +700,9 @@ foreach root in deposit refund prize withdrawal {
 	la var mobile_no`root's "No `root's made"
 
 	la var mobile_avg`root's "Daily avg. no. of `root's"
-	la var mobile_avg`root'amt "Daily avg. `root' amt."
+	la var mobile_avg`root'amt "Daily avg. `root' amount"
 	la var mobile_tot`root's "Total no. of `root's"
-	la var mobile_tot`root'amt "Total `root' amt."
+	la var mobile_tot`root'amt "Total `root' amount"
 
 }
 
@@ -719,12 +719,12 @@ foreach v of varlist mobile_finalbalance mobile_*amt {
 }
 
 la var mobile_earlytotdeposits "Total no. of deposits ($\leq$ 30 days)"
-la var mobile_earlytotdepositamt "Total deposit amt. ($\leq$ 30 days)"
+la var mobile_earlytotdepositamt "Total deposit amount ($\leq$ 30 days)"
 la var mobile_earlysavedays "No. of days saved ($\leq$ 30 days)"
 la var mobile_earlyavgdeposits "Daily avg. no. of deposits ($\leq$ 30 days)"
 
 la var mobile_latetotdeposits "Total no. of deposits ($>$ 30 days)"
-la var mobile_latetotdepositamt "Total deposit amt. ($>$ 30 days)"
+la var mobile_latetotdepositamt "Total deposit amount ($>$ 30 days)"
 la var mobile_latesavedays "No. of days saved ($>$ 30 days)"
 la var mobile_lateavgdeposits "Daily avg. no. of deposits ($>$ 30 days)"
 

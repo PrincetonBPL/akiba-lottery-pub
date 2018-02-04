@@ -12,14 +12,14 @@ clear
 eststo clear
 estimates drop _all
 
-loc columns = 3
+loc columns = 4
 
 set obs 10
 gen x = 1
 gen y = 1
 
 forval i = 1/`columns' {
-	eststo col`i': reg x y
+	qui eststo col`i': reg x y
 }
 
 loc count = 1				// Cell first line

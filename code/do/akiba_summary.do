@@ -34,15 +34,15 @@ file close tex
 
 glo sumvars "demo_female_0 demo_age_0 demo_stdschool_0 demo_married_0 demo_children_0 pref_crra_0 pref_locscore_0 labor_monthlyinc_0 labor_employed_0 save_dosave_0 save_monthlysave_0 save_dorosca_0 save_monthlyrosca_0"
 
-glo sumtitle "Baseline balance check by treatment group"
+glo sumtitle "Baseline balance by treatment group"
 glo sumpath "sum-ysumall"
 do "$do_dir/custom_tables/sum-treat.do"
 
-glo sumtitle "Baseline balance check by attrition status"
+glo sumtitle "Baseline balance by attrition status"
 glo sumpath "sum-attrall"
 do "$do_dir/custom_tables/sum-participation.do"
 
-glo sumtitle "Baseline balance check by treatment group for endline sample"
+glo sumtitle "Baseline balance by treatment group for endline sample"
 glo sumpath "sum-eltreatall"
 do "$do_dir/custom_tables/sum-eltreat.do"
 
