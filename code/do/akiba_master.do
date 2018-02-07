@@ -141,3 +141,4 @@ project timeline
 can investigate more thoroughly how people saved during project period (time of day, week fixed effects, distance from reminder, etc.)
 what the hell is 11111 2222 winning ticket?
 discrepancy in prizes and savings in a day?
+will probably have to account for serial correlation if estimating a time series model

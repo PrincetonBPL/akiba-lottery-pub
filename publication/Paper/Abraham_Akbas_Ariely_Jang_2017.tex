@@ -9,7 +9,12 @@
 \usepackage{pdflscape}
 \usepackage{placeins}
 \usepackage{xcolor}
-\usepackage{newcent}
+
+\usepackage{tgschola}
+% \usepackage{lmodern}
+% \usepackage{tgtermes}
+
+\fontfamily{qcs}
 
 \linespread{1.1}
 \urlstyle{tt}
@@ -31,7 +36,7 @@
 
 \title{\textsc{Using Lotteries to Encourage Saving: Experimental Evidence from Kenya}\protect\footnote{This study was pre-registered with the AEA RCT registry (AEARCTR-0000893). Files for replication are available at \url{https://github.com/princetonbpl/akiba-lottery-pub}.}}
 
-	\author{Justin Abraham\thanks{University of California, San Diego. \protect\href{mailto:jabraham@ucsd.edu}{\nolinkurl{jabraham@ucsd.edu}}.}, Merve Akbas\thanks{Jet.com. \protect\href{mailto:merve.akbas@duke.edu}{\nolinkurl{merve.akbas@duke.edu}}.}, Dan Ariely\thanks{Duke University. \protect\href{mailto:dan@danariely.com}{\nolinkurl{dan@danariely.com}}.}, and Chaning Jang\thanks{The Busara Center for Behavioral Economics. \protect\href{mailto:chaning.jang@busaracenter.org}{\nolinkurl{chaning.jang@busaracenter.org}}.}} % add funding statement and ethics and thanks
+	\author{Justin Abraham\thanks{Department of Economics, University of California, San Diego. \protect\href{mailto:jabraham@ucsd.edu}{\nolinkurl{jabraham@ucsd.edu}}.}, Merve Akbas\thanks{Department of Economics, Duke University. \protect\href{mailto:merve.akbas@duke.edu}{\nolinkurl{merve.akbas@duke.edu}}.}, Dan Ariely\thanks{Fuqua School of Business, Duke University. \protect\href{mailto:dan@danariely.com}{\nolinkurl{dan@danariely.com}}.}, and Chaning Jang\thanks{The Busara Center for Behavioral Economics. \protect\href{mailto:chaning.jang@busaracenter.org}{\nolinkurl{chaning.jang@busaracenter.org}}.}} % add funding statement and ethics and thanks
 
 	\maketitle
 
@@ -58,7 +63,7 @@
 	% The demand for PLS and for gambling in general coupled with risk-averse behavior (e.g. seeking insurance) is well-documented
     % Recently legal in the US
 
-	How might lotteries induce savings? Preferences for skewed returns are well-documented, so the use of lottery-like structures may play a viable role in incentivizing savings. Models departing from expected utility theory incorporate the overweighting of small probabilities \shortcite{kahneman_advances_1992} and attention to salient payoffs \shortcite{bordalo_salience_2012} in order to account for seemingly risk-loving behavior among risk-averse individuals. Research on preferences for skewness have produced a litany of potential explanations for this phenomenon.\footnote{This paper does not discern between these competing explanations but introduces them as a framework for interpreting results.} One broad strand of the literature understands the overweighting of long-odds as a result of persistent preferences for such gambles. Playing the lottery may provide excitement from taking risks and a chance to win a large payoff \shortcite{conlisk_utility_1993}. Similarly, aversion to anticipated regret from foregoing a big prize could drive gambling behavior \shortcite{loomes_regret_1982,zeelenberg_consequences_2004}. Credit-constrained households may also rely on lotteries to save for large, indivisible expenditures \shortcite{kwang_why_1965,herskowitz_gambling_2016}. Alternatively, preferences for gambling may result from bias in subjective probabilities vis-\`{a}-vis true probabilities. The biased weighting of probabilities implies more fickle preferences for gambling that vanish with exposure to information and repeated choice \shortcite{hertwig_descriptionexperience_2009}.
+	How might lotteries induce savings? Preferences for skewed returns are well-documented, so the use of lottery-like structures may play a viable role in incentivizing savings. Models departing from expected utility theory incorporate the overweighting of small probabilities \shortcite{kahneman_advances_1992} and attention to salient payoffs \shortcite{bordalo_salience_2012} in order to account for seemingly risk-loving behavior among risk-averse individuals. Research on preferences for skewness have produced a litany of potential explanations for this phenomenon.\footnote{This paper does not discern between these competing explanations but introduces them as a framework for interpreting results.} One broad strand of the literature understands the overweighting of long-odds as a result of persistent preferences for such gambles. Playing the lottery may provide excitement from taking risks and a chance to win a large payoff \shortcite{conlisk_utility_1993}. Similarly, aversion to anticipated regret from foregoing a big prize could drive gambling behavior \shortcite{loomes_regret_1982,zeelenberg_consequences_2004}. Credit-constrained households may also rely on lotteries to save for large, indivisible expenditures \shortcite{kwang_why_1965,herskowitz_gambling_2016}. Alternatively, preferences for gambling may result from bias in subjective probabilities vis-\`{a}-vis true probabilities. The biased weighting of probabilities implies more fickle gambling behavior that depend on exposure to information and repeated choice \shortcite{hertwig_descriptionexperience_2009}.
 
     % two types: biases in subjective probabilities or preference for skewness
         % bias hypothesis predicts that people can learn over time "debiasing"
@@ -190,17 +195,6 @@
 
 		% We control for the family-wise error rate (FWER) to correct for multiple inference. We compute adjusted $p$-values within each category of outcome variables using the free step-down resampling method \shortcite{westfall_resampling-based_1993,anderson_multiple_2008}. This approach sets the size of the test to exactly the desired crticial value. For each variable, we apply the procedure with 10,000 iterations and report both unadjusted and adjusted $p$-values.
 
-	\subsection{Heterogeneous treatment effects}
-
-		We analyze the extent to which the savings program produced heterogeneous treatment effects with the following specification.
-
-		\begin{equation} \begin{split}
-		Y_{i} = & \beta_{0} + \beta_{1}\text{\textsc{Lottery}}_{i} + \beta_{2}\text{\textsc{Regret}}_{i} + \delta_{0}x_{i} \\
-					& + \delta_{1}(\text{\textsc{Lottery}}_{i} \times x_{i}) + \delta_{2}(\text{\textsc{Regret}}_{i} \times x_{i}) + \varepsilon_{i}
-		\end{split} \label{eq:heteffect} \end{equation}
-
-		$x_{i}$ is the binary dimension of heterogeneity measured before treatment assignment. $\delta_{1}$ and $\delta_{2}$ respectively identify the heterogeneous treatment effects of the lottery and lottery with regret framing relative to $x_{i} = 0$. Standard errors are clustered at the individual level. We estimate this model with the following baseline variables as $x_{i}$: gender, marriage status, below age 30, completed std. 8, uses a savings account, above median monthly income, employment status, above median CPGI score, coefficient of relative risk aversion, above median indifference point.
-
 	\subsection{Minimum detectable effects}
 
 		To determine whether our null findings identify the absence of a true effect or signify a lack of statistical power, we report the minimum detectable effect size (MDE) for each outcome.
@@ -212,6 +206,17 @@
 		This metric is the smallest effect that would have been detectable given our current sample size. Commonly used in experimental design, we calculate MDEs \textit{ex post} with $\alpha = 0.05$ and 0.80 power for each pairwise comparison of our treatments and for comparisons of the treatment effect across dimensions of heterogeneity.
 
 		% MDE for het effects? why not for all null outcomes?
+
+	\subsection{Heterogeneous treatment effects}
+
+		We analyze the extent to which the savings program produced heterogeneous treatment effects with the following specification.
+
+		\begin{equation} \begin{split}
+		Y_{i} = & \beta_{0} + \beta_{1}\text{\textsc{Lottery}}_{i} + \beta_{2}\text{\textsc{Regret}}_{i} + \delta_{0}x_{i} \\
+					& + \delta_{1}(\text{\textsc{Lottery}}_{i} \times x_{i}) + \delta_{2}(\text{\textsc{Regret}}_{i} \times x_{i}) + \varepsilon_{i}
+		\end{split} \label{eq:heteffect} \end{equation}
+
+		$x_{i}$ is the binary dimension of heterogeneity measured before treatment assignment. $\delta_{1}$ and $\delta_{2}$ respectively identify the heterogeneous treatment effects of the lottery and lottery with regret framing relative to $x_{i} = 0$. Standard errors are clustered at the individual level. We estimate this model with the following baseline variables as $x_{i}$: gender, marriage status, below age 30, completed std. 8, uses a savings account, above median monthly income, employment status, above median CPGI score, coefficient of relative risk aversion, above median indifference point.
 
 	\subsection{Time-dependent treatment effects}
 
@@ -281,7 +286,7 @@
 		% Do they play because of non-divisible large expenditures like \shortciteN{herskowitz__2016} http://blogs.worldbank.org/impactevaluations/unmet-liquidity-needs-and-spread-sports-betting-guest-post-sylvan-herskowitz?
 		% \shortcite{dizon_leveraging_2016} it doesn't matter the level of risk, effect is in fact higher if lottery component is smaller
 
-		While we do not detect significant differences in deposits between the \textsc{Lottery} and \textsc{Regret} groups, our estimates point to the importance of regret aversion in supplementing the choice to play by saving. Regret aversion will motivate making deposits if our participants anticipated feeling ``loser regret'' from information that they could have won had they played \shortciteN{filiz-ozbay_lottery_2015}. This conforms to suggestive evidence from a cross-sectional study of Dutch lotteries that anticipated regret from winning but not playing relates to future decisions to enter the lottery \shortcite{zeelenberg_consequences_2004}.
+		While we do not detect significant differences in deposits between the \textsc{Lottery} and \textsc{Regret} groups, our estimates point to the importance of regret aversion in supplementing the choice to play by saving. Regret aversion will motivate making deposits if our participants anticipated feeling ``loser regret'' from information that they could have won had they played \shortcite{filiz-ozbay_lottery_2015}. This conforms to suggestive evidence from a cross-sectional study of Dutch lotteries that anticipated regret from winning but not playing relates to future decisions to enter the lottery \shortcite{zeelenberg_consequences_2004}.
 
 		% Should we expand this? likely omit
 
@@ -328,7 +333,7 @@
 
 \section{Conclusion} \label{sec:conclusion}
 
-		By taking advantage of savers' preference for gambling, stochastic incentive schemes like PLS represent a promising policy tool to overcome behavioral barriers to saving. This study conducts a randomized evaluation of a PLS with informal residents in Nairobi, Kenya. Utilizing a mobile savings platform, we randomly assign respondents to a savings account with a certain, matching incentive, a lottery incentive, and a lottery incentive with feedback on \textit{ex post} potential lottery winnings. We set the fixed match equivalent in expectation to the lottery prize so that comparing he two groups identifies the effect of stochastic incentives compared to deterministic incentives holding amount constant. After observing account transactions over a 60-day savings period, we find that participants in the \textsc{Regret} group made between 5-6 more deposit transactions than the matched payments group without a corresponding increase in amount saved. These results suggest that savers are making more deposits in order to ``play'' and experience a non-pecuniary benefit from the lottery. We further find that participants in the \textsc{Regret} group are more likely to report increased gambling after the the end of the savings program.
+		By taking advantage of savers' preference for gambling, stochastic incentive schemes like PLS represent a promising policy tool to overcome behavioral barriers to saving. We conducted a randomized experiment testing a PLS product with informal residents in Nairobi, Kenya. Utilizing a mobile savings platform, we randomly assign respondents to a savings account with a certain, matching incentive, a lottery incentive, and a lottery incentive with feedback on ex post potential lottery winnings. We set the fixed match equivalent in expectation to the lottery prize so that comparing he two groups identifies the effect of stochastic incentives compared to deterministic incentives holding amount constant. After observing account transactions over a 60-day savings period, we find that participants in the \textsc{Regret} group made between 5-6 more deposit transactions than the matched payments group without a corresponding increase in amount saved. These results suggest that savers are making more deposits in order to ``play'' and experience a non-pecuniary benefit from the lottery. We further find that participants in the \textsc{Regret} group are more likely to report increased gambling after the the end of the savings program.
 
 		If PLS increase deposits but are ineffective at increasing a key outcome like savings, are they still useful from a policy perspective? If playing the lottery is appealing to potential savers, PLS may be able to attract new savers to open  accounts. PLS can also improve utilization among existing account holders. Frequent deposits may have long-term benefits by encouraging the formation of a savings habit \shortcite{alessie_saving_2009}. Compared to a fixed match, lottery incentives may not be revenue neutral if financial institutions incur greater transaction costs as a result of more frequent deposits. If PLS contribute to problem gambling, the program is potentially welfare-decreasing for poor households already susceptible to costly gambling behavior. Additional program components, like an anti-gambling campaign, could diminish adverse effects on outside gambling. Overall, we document important differences between PLS and fixed-incentive schemes when it comes to encouraging savings and show that product design is crucial in determining welfare implications.
 
