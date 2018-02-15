@@ -635,22 +635,22 @@ la var mobile_awarded "Awarded prize"
 /* Outcomes for early-late periods */
 
 gen mobile_earlydeposits = mobile_deposits if period <= 30
-la var mobile_earlydeposits "No. of deposits ($\leq$ 30 days)"
+la var mobile_earlydeposits "No. of deposits (before 30 days)"
 
 gen mobile_earlydepositamount = mobile_depositamount if period <= 30
-la var mobile_earlydepositamount "Amount deposited ($\leq$ 30 days)"
+la var mobile_earlydepositamount "Amount deposited (before 30 days)"
 
 gen mobile_earlysaved = mobile_saved if period <= 30
-la var mobile_earlysaved "Made a deposit ($\leq$ 30 days)"
+la var mobile_earlysaved "Made a deposit (before 30 days)"
 
 gen mobile_latedeposits = mobile_deposits if period > 30
-la var mobile_latedeposits "No. of deposits ($>$ 30 days)"
+la var mobile_latedeposits "No. of deposits (after 30 days)"
 
 gen mobile_latedepositamount = mobile_depositamount if period > 30
-la var mobile_latedepositamount "Made a deposit ($>$ 30 days)"
+la var mobile_latedepositamount "Made a deposit (after 30 days)"
 
 gen mobile_latesaved = mobile_saved if period > 30
-la var mobile_latesaved "Amount deposited ($>$ 30 days)"
+la var mobile_latesaved "Amount deposited (after 30 days)"
 
 foreach v of varlist mobile_balance mobile_finalbalance mobile_*amount {
 
@@ -706,6 +706,9 @@ foreach root in deposit refund prize withdrawal {
 
 }
 
+gen mobile_anydeposit = mobile_totdeposits > 0
+la var mobile_anydeposit "Made at least one deposit"
+
 gen mobile_withdrew = mobile_totwithdrawals > 0 | ~mi(mobile_totwithdrawals)
 la var mobile_withdrew "Withdrew at day 30"
 
@@ -718,15 +721,15 @@ foreach v of varlist mobile_finalbalance mobile_*amt {
 
 }
 
-la var mobile_earlytotdeposits "Total no. of deposits ($\leq$ 30 days)"
-la var mobile_earlytotdepositamt "Total deposit amount ($\leq$ 30 days)"
-la var mobile_earlysavedays "No. of days saved ($\leq$ 30 days)"
-la var mobile_earlyavgdeposits "Daily avg. no. of deposits ($\leq$ 30 days)"
+la var mobile_earlytotdeposits "Total no. of deposits (before 30 days)"
+la var mobile_earlytotdepositamt "Total deposit amount (before 30 days)"
+la var mobile_earlysavedays "No. of days saved (before 30 days)"
+la var mobile_earlyavgdeposits "Daily avg. no. of deposits (before 30 days)"
 
-la var mobile_latetotdeposits "Total no. of deposits ($>$ 30 days)"
-la var mobile_latetotdepositamt "Total deposit amount ($>$ 30 days)"
-la var mobile_latesavedays "No. of days saved ($>$ 30 days)"
-la var mobile_lateavgdeposits "Daily avg. no. of deposits ($>$ 30 days)"
+la var mobile_latetotdeposits "Total no. of deposits (after 30 days)"
+la var mobile_latetotdepositamt "Total deposit amount (after 30 days)"
+la var mobile_latesavedays "No. of days saved (after 30 days)"
+la var mobile_lateavgdeposits "Daily avg. no. of deposits (after 30 days)"
 
 la var mobile_finalbalance "Final balance"
 la var mobile_savedays "No. of days saved"

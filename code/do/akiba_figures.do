@@ -61,18 +61,18 @@ if $panelflag {
 
 	foreach root in depositamount deposits cumdepositamount cumdeposits balance {
 
-		gen ub_`root' = mobile_`root' + sem_`root'
-		gen lb_`root' = mobile_`root' - sem_`root'
+		gen ub_`root' = mobile_`root' + 1.96*sem_`root'
+		gen lb_`root' = mobile_`root' - 1.96*sem_`root'
 
 	}
 
-	graph twoway (line mobile_balance period if treatmentgroup == 1, color(gs0) lpattern(solid)) (line mobile_balance period if treatmentgroup == 2, color(gs0) lpattern(dash)) (line mobile_balance period if treatmentgroup == 3, color(gs0) lpattern(dot)), ytitle("Balance") legend(order(1 "Control" 2 "Lottery" 3 "Regret")) graphregion(color(white))
+	graph twoway (line mobile_balance period if treatmentgroup == 1, color(gs0) lpattern(solid)) (line mobile_balance period if treatmentgroup == 2, color(gs0) lpattern(dash)) (line mobile_balance period if treatmentgroup == 3, color(gs0) lpattern(dot)), ytitle("Balance (USD PPP)") legend(order(1 "Control" 2 "Lottery" 3 "Regret")) graphregion(color(white))
 	graph export "$fig_dir/line-balance.eps", replace
 	!epstopdf "$fig_dir/line-balance.eps"
 
 	graph twoway (line mobile_deposits period if treatmentgroup == 1, color(gs0) lpattern(solid)) (line mobile_deposits period if treatmentgroup == 2, color(gs0) lpattern(dash)) (line mobile_deposits period if treatmentgroup == 3, color(gs0) lpattern(dot)), title("A: Average number of daily deposits made", color(gs0) size(medsmall)) ytitle("No. of deposits") legend(off) graphregion(color(white)) ylabel(,glcolor(gs14)) saving("$fig_dir/line-deposits", replace)
 
-	graph twoway (line mobile_depositamount period if treatmentgroup == 1, color(gs0) lpattern(solid)) (line mobile_depositamount period if treatmentgroup == 2, color(gs0) lpattern(dash)) (line mobile_depositamount period if treatmentgroup == 3, color(gs0) lpattern(dot)), title("B: Average daily amount deposited", color(gs0) size(medsmall)) ytitle("Deposit amount") legend(order(1 "Control" 2 "Lottery" 3 "Regret")) graphregion(color(white)) ylabel(,glcolor(gs14)) saving("$fig_dir/line-depositamount", replace)
+	graph twoway (line mobile_depositamount period if treatmentgroup == 1, color(gs0) lpattern(solid)) (line mobile_depositamount period if treatmentgroup == 2, color(gs0) lpattern(dash)) (line mobile_depositamount period if treatmentgroup == 3, color(gs0) lpattern(dot)), title("B: Average daily amount deposited", color(gs0) size(medsmall)) ytitle("Deposit amount (USD PPP)") legend(order(1 "Control" 2 "Lottery" 3 "Regret")) graphregion(color(white)) ylabel(,glcolor(gs14)) saving("$fig_dir/line-depositamount", replace)
 
 	graph twoway (line mobile_cumdeposits period if treatmentgroup == 1, color(gs0) lpattern(solid)) (line mobile_cumdeposits period if treatmentgroup == 2, color(gs0) lpattern(dash)) (line mobile_cumdeposits period if treatmentgroup == 3, color(gs0) lpattern(dot)) (rcap ub_cumdeposits lb_cumdeposits period if treatmentgroup == 1 & period == 60, color(gs0)) (rcap ub_cumdeposits lb_cumdeposits period if treatmentgroup == 2 & period == 60, color(gs0)) (rcap ub_cumdeposits lb_cumdeposits period if treatmentgroup == 3 & period == 60, color(gs0)), title("A: Cumulative number of deposits made", color(gs0) size(medsmall)) ytitle("No. of deposits") legend(off) graphregion(color(white)) ylabel(,glcolor(gs14)) saving("$fig_dir/line-cumdeposits", replace)
 

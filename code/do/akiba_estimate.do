@@ -64,8 +64,8 @@ use "$data_dir/clean/akiba_wide.dta", clear
 loc grouplist "ymobile yearly ylate ypanel ysave ygamble yakiba yselect yself" // ylottery
 
 loc ymobiledesc "Mobile savings by respondent"
-loc yearlydesc "Mobile savings by respondent ($\leq$ 30 days)"
-loc ylatedesc "Mobile savings by respondent (> 30 days)"
+loc yearlydesc "Mobile savings by respondent (before 30 days)"
+loc ylatedesc "Mobile savings by respondent (after 30 days)"
 loc ypaneldesc "Mobile savings by period"
 loc ysavedesc "Savings with other products"
 loc ygambledesc "Gambling"
