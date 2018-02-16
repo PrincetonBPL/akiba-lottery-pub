@@ -12,7 +12,7 @@ clear
 eststo clear
 estimates drop _all
 
-loc columns = 8
+loc columns = 5
 
 set obs 10
 gen x = 1
@@ -29,8 +29,7 @@ loc countp = `countse' + 1  // Cell third line
 loc statnames "" 			// Added scalars to be filled
 loc varlabels "" 			// Labels for row vars to be filled
 
-loc surlist1 ""				// List of stored estimates for SUR
-loc surlist2 ""				// List of stored estimates for SUR with controls
+loc surlist ""				// List of stored estimates for SUR
 
 restore
 
@@ -40,21 +39,14 @@ foreach yvar in $regvars {
 
 	qui reg `yvar' lottery regret
 	est store o_`yvar'
-	loc surlist1 "`surlist1' o_`yvar'"
+	loc surlist "`surlist' o_`yvar'"
 
 	loc `yvar'_N = e(N)
 
-	qui reg `yvar' lottery regret $controlvars
-	est store c_`yvar'
-	loc surlist2 "`surlist2' c_`yvar'"
-
 }
 
-suest `surlist1', vce(cl surveyid)
-est store sur1
-
-suest `surlist2', vce(cl surveyid)
-est store sur2
+suest `surlist', vce(cl surveyid)
+est store sur
 
 /* Hypothesis tests */
 
@@ -62,7 +54,7 @@ loc varindex = 1
 loc varlist "$regvars"
 loc length: list sizeof varlist
 
-forval i = 1/6 {
+forval i = 1/3 {
 
 	mat def B`i' = J(`length', 1, .)
 	mat def SE`i' = J(`length', 1, .)
@@ -75,26 +67,10 @@ foreach yvar in $regvars {
 	loc H1 = "[o_`yvar'_mean]lottery"
 	loc H2 = "[o_`yvar'_mean]regret"
 	loc H3 = "[o_`yvar'_mean]regret - [o_`yvar'_mean]lottery"
-	loc H4 = "[c_`yvar'_mean]lottery"
-	loc H5 = "[c_`yvar'_mean]regret"
-	loc H6 = "[c_`yvar'_mean]regret - [c_`yvar'_mean]lottery"
 
- 	est restore sur1
+ 	est restore sur
 
 	forval i = 1/3 {
-
-		qui lincom `H`i''
-		mat def B`i'[`varindex', 1] = r(estimate)
-		mat def SE`i'[`varindex', 1] = r(se)
-
-		qui test `H`i'' = 0
-		mat def P`i'[`varindex', 1] = r(p)
-
-	}
-
-	est restore sur2
-
-	forval i = 4/6 {
 
 		qui lincom `H`i''
 		mat def B`i'[`varindex', 1] = r(estimate)
@@ -111,7 +87,7 @@ foreach yvar in $regvars {
 
 /* FDR correction */
 
-forval i = 1/6 {
+forval i = 1/3 {
 
 	qui minq P`i', q("Q`i'") step(0.01)
 
@@ -123,7 +99,7 @@ loc varindex = 1
 
 foreach yvar in $regvars {
 
-	forval i = 1/6 {
+	forval i = 1/3 {
 
 		loc b = B`i'[`varindex', 1]
 		loc se = SE`i'[`varindex', 1]
@@ -139,15 +115,15 @@ foreach yvar in $regvars {
 
 	}
 
-	/* Column 7: Control Mean */
+	/* Column 4: Control Mean */
 
 	qui sum `yvar' if control == 1
-	estadd loc thisstat`count' = string(`r(mean)', "%9.2f"): col7
-	estadd loc thisstat`countse' = "(" + string(`r(sd)', "%9.2f") + ")": col7
+	estadd loc thisstat`count' = string(`r(mean)', "%9.2f"): col4
+	estadd loc thisstat`countse' = "(" + string(`r(sd)', "%9.2f") + ")": col4
 
-	/* Column 8: N */
+	/* Column 5: N */
 
-	estadd loc thisstat`count' = ``yvar'_N': col8
+	estadd loc thisstat`count' = ``yvar'_N': col5
 
 	/* Row Labels */
 
@@ -166,13 +142,13 @@ foreach yvar in $regvars {
 loc prehead "\begin{table}[h]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \caption{$regtitle} \label{tab:$regpath} \maxsizebox*{\textwidth}{\textheight}{ \begin{threeparttable} \begin{tabular}{l*{`columns'}{c}} \toprule"
 loc prehead_n "\begin{table}[h]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \label{tab:$regpath} \maxsizebox*{0.90\textwidth}{0.90\textheight}{ \begin{threeparttable} \begin{tabular}{l*{`columns'}{c}} \toprule"
 loc postfoot "\bottomrule \end{tabular} \begin{tablenotes}[flushleft] \footnotesize \item @note \end{tablenotes} \end{threeparttable} } \end{table}"
-loc footnote "\emph{Notes:} Columns 1--2 report OLS estimates of the treatment effect. Columns 4--5 reports the estimates controlling for baseline covariates. Columns 3 and 6 report the \(p\)-values for tests of the equality of the two treatment effects. Standard errors are in parentheses and FDR-corrected minimum \(q\)-values are in brackets. Observations are at the individual level. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level. Stars on the coefficient estimates reflect unadjusted \(p\)-values."
+loc footnote "\emph{Notes:} Columns 1--3 report OLS estimates of the treatment effect. Column 3 reports the \(p\)-values for tests of the equality of the two treatment effects. Standard errors are in parentheses and FDR-corrected minimum \(q\)-values are in brackets. Observations are at the individual level. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level. Stars on the coefficient estimates reflect unadjusted \(p\)-values."
 
-esttab col* using "$tab_dir/$regpath.tex", booktabs cells(none) nogap mgroups("No controls" "With controls" "Sample", pattern(1 0 0 1 0 0 1) prefix(\multicolumn{@span}{c}{) suffix(}) span erepeat(\cmidrule(lr){@span})) mtitle("Lottery" "Regret" "\specialcell{Regret-\\Lottery}" "Lottery" "Regret" "\specialcell{Regret-\\Lottery}" "\specialcell{Control Mean\\(SD)}" "Obs.") stats(`statnames', labels(`varlabels')) note("`footnote'") prehead("`prehead'") postfoot("`postfoot'") compress replace
-esttab col* using "$tab_dir/$regpath-n.tex", booktabs cells(none) nogap mgroups("No controls" "With controls" "Sample", pattern(1 0 0 1 0 0 1) prefix(\multicolumn{@span}{c}{) suffix(}) span erepeat(\cmidrule(lr){@span})) mtitle("Lottery" "Regret" "\specialcell{Regret-\\Lottery}" "Lottery" "Regret" "\specialcell{Regret-\\Lottery}" "\specialcell{Control Mean\\(SD)}" "Obs.") stats(`statnames', labels(`varlabels')) prehead("`prehead_n'") postfoot("`postfoot'") compress replace
+esttab col* using "$tab_dir/$regpath.tex", booktabs cells(none) nogap mgroups("Effect estimates" "Sample", pattern(1 0 0 1 0) prefix(\multicolumn{@span}{c}{) suffix(}) span erepeat(\cmidrule(lr){@span})) mtitle("Lottery" "Regret" "\specialcell{Regret-\\Lottery}" "\specialcell{Control Mean\\(SD)}" "Obs.") stats(`statnames', labels(`varlabels')) note("`footnote'") prehead("`prehead'") postfoot("`postfoot'") compress replace
+esttab col* using "$tab_dir/$regpath-n.tex", booktabs cells(none) nogap mgroups("Effect estimates" "Sample", pattern(1 0 0 1 0) prefix(\multicolumn{@span}{c}{) suffix(}) span erepeat(\cmidrule(lr){@span})) mtitle("Lottery" "Regret" "\specialcell{Regret-\\Lottery}" "\specialcell{Control Mean\\(SD)}" "Obs.") stats(`statnames', labels(`varlabels')) prehead("`prehead_n'") postfoot("`postfoot'") compress replace
 
 eststo clear
 
 file open tex using "$tab_dir/$regpath.tex", write append
-file write tex _n "% File produced by reg-fwer.do with `c(filename)' on `c(current_time)' `c(current_date)' by user `c(username)' on Stata `c(version)' with seed `c(seed)'"
+file write tex _n "% File produced by reg-fdr.do with `c(filename)' on `c(current_time)' `c(current_date)' by user `c(username)' on Stata `c(version)' with seed `c(seed)'"
 file close tex
