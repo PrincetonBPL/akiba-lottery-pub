@@ -61,7 +61,7 @@ use "$data_dir/clean/akiba_wide.dta", clear
 /* Treatment effects */
 ///////////////////////
 
-loc grouplist "ymobile yearly ylate ypanel ysave ygamble yakiba yselect yself" // ylottery
+loc grouplist "ymobile yearly ylate ypanel ysave ygamble yakiba ycons yselect yself" // ylottery
 
 loc ymobiledesc "Mobile savings by respondent"
 loc yearlydesc "Mobile savings by respondent (before 30 days)"
@@ -70,6 +70,7 @@ loc ypaneldesc "Mobile savings by period"
 loc ysavedesc "Savings with other products"
 loc ygambledesc "Gambling"
 loc yakibadesc "Akiba SMART"
+loc yconsdesc "Expenditure"
 loc yselectdesc "Group self-selection"
 loc ylotterydesc "Lottery usage"
 loc yselfdesc "Self-perceptions"

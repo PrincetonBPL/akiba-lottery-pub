@@ -469,9 +469,28 @@ la var akiba_lotterysave_1 "Save with lottery"
 gen akiba_regretsave_1 = real(endline_plan3save)
 la var akiba_regretsave_1 "Save with regret"
 
+gen akiba_lotteryeffect_1 = akiba_lotterysave_1 - akiba_controlsave_1
+la var akiba_lotteryeffect_1 "Perceived effect of lottery"
+
+gen akiba_regreteffect_1 = akiba_regretsave_1 - akiba_controlsave_1
+la var akiba_regreteffect_1 "Perceived effect of regret"
+
 ren endline_comments akiba_comments_1
 ren endline_moneyspent akiba_spent_1
 ren endline_fam_friends_howoften akiba_familyspec_1
+
+gen akiba_spentfood_1 = strpos(lower(akiba_spent_1), "food") if ~mi(akiba_spent_1)
+la var akiba_spentfood_1 "Spent balance on food"
+gen akiba_spentschool_1 = strpos(lower(akiba_spent_1), "school") if ~mi(akiba_spent_1)
+la var akiba_spentschool_1 "Spent balance on school"
+gen akiba_spentbus_1 = strpos(lower(akiba_spent_1), "business") if ~mi(akiba_spent_1)
+la var akiba_spentbus_1 "Spent balance on business"
+gen akiba_spentdura_1 = strpos(lower(akiba_spent_1), "cloth") | strpos(lower(akiba_spent_1), "furniture") | strpos(lower(akiba_spent_1), "chick") | strpos(lower(akiba_spent_1), "tank") | strpos(lower(akiba_spent_1), "mirro") if ~mi(akiba_spent_1)
+la var akiba_spentdura_1 "Spent balance on durable goods"
+gen akiba_spentdebt_1 = strpos(lower(akiba_spent_1), "paid") | strpos(lower(akiba_spent_1), "paying") | strpos(lower(akiba_spent_1), "rent") | strpos(lower(akiba_spent_1), "debt") | strpos(lower(akiba_spent_1), "utilit") if ~mi(akiba_spent_1)
+la var akiba_spentdebt_1 "Spent balance on repaying loans"
+gen akiba_spentsave_1 = strpos(lower(akiba_spent_1), "saving") | strpos(lower(akiba_spent_1), "merry") if ~mi(akiba_spent_1)
+la var akiba_spentsave_1 "Saved balance"
 
 replace endline_fam_friends = trim(itrim(lower(endline_fam_friends)))
 encode endline_fam_friends, gen(akiba_family_1)
@@ -492,7 +511,7 @@ foreach v of varlist akiba_trust_1 akiba_confidence_1 self_savingsfeel_1 self_no
 
 }
 
-foreach v of varlist akiba_*save_1 {
+foreach v of varlist akiba_controlsave_1 akiba_lotterysave_1 akiba_regretsave_1 akiba_lotteryeffect_1 akiba_regreteffect_1 {
 
 	if $USDconvertflag {
 

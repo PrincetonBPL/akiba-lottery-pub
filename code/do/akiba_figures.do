@@ -144,6 +144,10 @@ if $panelflag {
 
 	}
 
+	//////////////////////////
+	// Schedule of deposits //
+	//////////////////////////
+
 	/* Autoregressive plot */
 
 	* use "$data_dir/clean/akiba_long.dta", clear

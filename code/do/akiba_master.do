@@ -71,7 +71,8 @@ glo ypanel "mobile_deposits mobile_saved mobile_depositamount mobile_withdrawala
 glo ysave "save_monthlysave_1 save_mpesa_1 save_monthlyrosca_1 save_dorosca_1"
 glo ygamble "gam_moregamble_1 gam_lessgamble_1 gam_moretempted_1 gam_lesstempted_1"
 glo yakiba "akiba_trust_z_1 akiba_confidence_z_1 akiba_family_1 akiba_continue_1"
-glo yselect "akiba_controlselect_1 akiba_lotteryselect_1 akiba_regretselect_1 akiba_controlsave_1 akiba_lotterysave_1 akiba_regretsave_1"
+glo ycons "akiba_spentfood_1 akiba_spentschool_1 akiba_spentbus_1 akiba_spentdura_1 akiba_spentdebt_1 akiba_spentsave_1"
+glo yselect "akiba_controlselect_1 akiba_lotteryselect_1 akiba_regretselect_1 akiba_lotteryeffect_1 akiba_regreteffect_1"
 glo ylottery "akiba_lotteryfair_z_1 akiba_prizegood_z_1 akiba_prizebad_z_1"
 glo yself "self_saver_z_1 self_lucky_z_1 self_savingsfeel_z_1 self_nosavefeel_z_1"
 glo ynull "$ymobile $ysave gam_moregamble_1"
@@ -133,12 +134,11 @@ do winnings affect endline savings/gambling? disentangle regret aversion (+) and
 	For lottery and regret, does winning/losing affect future savings? A test of gambling/hot hand fallacy. Only able to test in panel data.
 	For regret, does experiencing winning without claiming prize affect future savings? A test of regret aversion. Only able to test in panel data.
 	To test fallacy, check lit
+	two sources of variation: seeing potential winnings and experience of winning: reg savings regretXwinning with lags
+	will probably have to account for serial correlation if estimating a time series model
 
-make wall of tables simpler
-quantile regression? allows to look at the distribution of effects for continuous outcomes (no of deposits, savings)
 is there adaptation over time? test for description experience gap, if so then is it experience or repetition? might it shrink within the first few days? there is a slowdown in the cdf. find a statistical test for this
 project timeline
-can investigate more thoroughly how people saved during project period (time of day, week fixed effects, distance from reminder, etc.)
+can investigate more thoroughly how people saved during project period (time of day, week fixed effects, distance from reminder, etc.) bunching after/before lottery/reminder/endofday by group
 what the hell is 11111 2222 winning ticket?
 discrepancy in prizes and savings in a day?
-will probably have to account for serial correlation if estimating a time series model
