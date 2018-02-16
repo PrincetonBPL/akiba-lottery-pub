@@ -89,6 +89,10 @@ if $maineffectsflag {
 			glo regtitle "Treatment effects -- ``group'desc'"
 			do "$do_dir/custom_tables/reg-main.do"
 
+			glo regpath "reg-cov`root'"
+			glo regtitle "Covariate-adjusted treatment effects -- ``group'desc'"
+			do "$do_dir/custom_tables/reg-cov.do"
+
 			glo regpath "reg-fdr`root'"
 			glo regtitle "Treatment effects controlling the FDR -- ``group'desc'"
 			do "$do_dir/custom_tables/reg-fdr.do"
@@ -209,7 +213,7 @@ if $heteffectsflag {
 
 		}
 
-	loc prehead "\begin{table}[h]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \caption{Heterogeneous effects - Primary outcomes by `xvarlab'} \label{tab:het-`xvar'} \maxsizebox*{\textwidth}{\textheight}{ \begin{threeparttable} \begin{tabular}{l*{`columns'}{c}} \toprule"
+	loc prehead "\begin{table}[h]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \caption{Heterogeneous effects -- Primary outcomes by `xvarlab'} \label{tab:het-`xvar'} \maxsizebox*{\textwidth}{\textheight}{ \begin{threeparttable} \begin{tabular}{l*{`columns'}{c}} \toprule"
 		loc postfoot "\bottomrule \end{tabular} \begin{tablenotes}[flushleft] \footnotesize \item \emph{Notes:} @note \end{tablenotes} \end{threeparttable} } \end{table}"
 		loc footnote "This table reports OLS estimates of the treatment effect and its interaction with baseline. Standard errors are in parentheses. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level. We also report the \(p\)-values for joint tests on the direct treatment effect conditional on the baseline covariate $= 1$."
 

@@ -1,4 +1,5 @@
 \documentclass[11pt]{article}
+
 \usepackage[a4paper,margin=1.5in]{geometry}
 \usepackage[strict]{changepage}
 \usepackage{booktabs, threeparttable, adjustbox, tabularx, longtable}
@@ -9,13 +10,11 @@
 \usepackage{pdflscape}
 \usepackage{placeins}
 \usepackage{xcolor}
-
 \usepackage{tgschola}
 % \usepackage{lmodern}
 % \usepackage{tgtermes}
 
 \fontfamily{qcs}
-
 \linespread{1.1}
 \urlstyle{tt}
 
@@ -36,9 +35,9 @@
 
 \title{\textsc{Using Lotteries to Encourage Saving: Experimental Evidence from Kenya}\protect\footnote{This study was pre-registered with the AEA RCT registry (AEARCTR-0000893). Files for replication are available at \url{https://github.com/princetonbpl/akiba-lottery-pub}.}}
 
-	\author{Justin Abraham\thanks{Department of Economics. University of California, San Diego. \protect\href{mailto:jabraham@ucsd.edu}{\nolinkurl{jabraham@ucsd.edu}}.}, Merve Akbas\thanks{Department of Economics. Duke University. \protect\href{mailto:merve.akbas@duke.edu}{\nolinkurl{merve.akbas@duke.edu}}.}, Dan Ariely\thanks{Fuqua School of Business. Duke University. \protect\href{mailto:dan@danariely.com}{\nolinkurl{dan@danariely.com}}.}, and Chaning Jang\thanks{The Busara Center for Behavioral Economics. \protect\href{mailto:chaning.jang@busaracenter.org}{\nolinkurl{chaning.jang@busaracenter.org}}.}} % add funding statement and ethics and thanks
+\author{Justin Abraham\thanks{Department of Economics. University of California, San Diego. \protect\href{mailto:jabraham@ucsd.edu}{\nolinkurl{jabraham@ucsd.edu}}.}, Merve Akbas\thanks{Department of Economics. Duke University. \protect\href{mailto:merve.akbas@duke.edu}{\nolinkurl{merve.akbas@duke.edu}}.}, Dan Ariely\thanks{Fuqua School of Business. Duke University. \protect\href{mailto:dan@danariely.com}{\nolinkurl{dan@danariely.com}}.}, and Chaning Jang\thanks{The Busara Center for Behavioral Economics. \protect\href{mailto:chaning.jang@busaracenter.org}{\nolinkurl{chaning.jang@busaracenter.org}}.}} % add funding statement and ethics and thanks
 
-	\maketitle
+\maketitle
 
 	\begin{abstract}
 
@@ -249,7 +248,7 @@
 		% resps also withdrew more resulting in a lower total balance, possibly funded deposits with withdrawals
 		% results using daily level model are consistent
 
-		\begin{figure}[h]
+		\begin{figure}[ht]
 			\caption{Number of deposits and amount deposited over project period}
 			\includegraphics[height=0.85\textheight]{../../figures/line-cumdeposits.pdf}
 			\label{fig:line-cumdeposits}
@@ -300,13 +299,13 @@
 		\input{../../tables/reg-timetrend.tex}
 		% add effects over time
 
-		\begin{figure}[h]
+		\begin{figure}[ht]
 		\caption{Effects over time -- Number of deposits}
 		\includegraphics[width=\textwidth]{../../figures/line-timemobile_deposits.pdf}
 		\caption*{\footnotesize \emph{Notes:} Panel A plots the treatment effect of \textsc{Lottery} on number of deposits as a function of savings period. Panel B plots the treatment effect of \textsc{Regret} on number of deposits as a function of savings period. Shaded areas represent 95\% confidence regions.}
 		\end{figure}
 
-		% \begin{figure}[h]
+		% \begin{figure}[ht]
 		% \caption{Effects over time -- Amount deposited}
 		% \includegraphics[width=\textwidth]{../../figures/line-timemobile_depositamount.pdf}
 		% \caption*{\footnotesize \emph{Notes:} Panel A plots the treatment effect of \textsc{Lottery} on amount deposited as a function of savings period. Panel B plots the treatment effect of \textsc{Regret} on amount deposited as a function of savings period. Shaded areas represent 95\% confidence regions.}

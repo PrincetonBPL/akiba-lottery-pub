@@ -1,33 +1,33 @@
 \documentclass[11pt]{article}
+
+\usepackage[a4paper,margin=1in]{geometry}
 \usepackage[strict]{changepage}
-\usepackage{longtable}
+\usepackage{booktabs, threeparttable, adjustbox, tabularx, longtable}
+\usepackage{amsmath, amssymb, amsthm, bbm}
+\usepackage{hyperref, achicago}
+\usepackage{caption, graphicx}
+\usepackage{secdot, sectsty}
 \usepackage{pdflscape}
-\usepackage{booktabs}
-\usepackage{tabularx}
-\usepackage{geometry}
 \usepackage{placeins}
-\usepackage{caption}
-\usepackage{hyperref}
-\usepackage{graphicx}
-\usepackage{threeparttable}
-\usepackage{adjustbox}
+\usepackage{xcolor}
+\usepackage{tgschola}
 
-\makeatletter
-\newcommand*{\centerfloat}{%
-  \parindent \z@
-  \leftskip \z@ \@plus 1fil \@minus \textwidth
-  \rightskip\leftskip
-  \parfillskip \z@skip}
-\makeatother
+\fontfamily{qcs}
+\linespread{1}
+\urlstyle{tt}
 
-\newcommand{\specialcell}[2][c]{%
-  \begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
+\allsectionsfont{\rmfamily}
+\sectionfont{\normalsize}
+\subsectionfont{\normalsize\selectfont}
+\subsubsectionfont{\normalfont\normalsize\selectfont\itshape}
+
+\newcommand{\specialcell}[2][c]{\begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
 
 \begin{document}
 
-\title{Using Lotteries to Encourage Saving: Supplemental Appendix\thanks{For online publication only.}}
+\title{\textsc{Using Lotteries to Encourage Saving: Supplemental Appendix}\protect\footnote{This study was pre-registered with the AEA RCT registry (AEARCTR-0000893). Files for replication are available at \url{https://github.com/princetonbpl/akiba-lottery-pub}.}}
 
-\author{Justin Abraham\thanks{Department of Psychology, Princeton University and the Busara Center for Behavioral Economics. \protect\href{mailto:justinra@princeton.edu}{justinra@princeton.edu}}, Merve Akbas\thanks{Jet.com. \protect\href{mailto:merve.akbas@duke.edu}{merve.akbas@duke.edu}}, Dan Ariely\thanks{Fuqua School of Business, Duke University. \protect\href{mailto:dan@danariely.com}{dan@danariely.com}}, and Chaning Jang\thanks{Department of Psychology, Princeton University and the Busara Center for Behavioral Economics. \protect\href{mailto:cjang@princeton.edu}{cjang@princeton.edu}}} % change author arrangement into squares
+\author{Justin Abraham\thanks{Department of Economics. University of California, San Diego. \protect\href{mailto:jabraham@ucsd.edu}{\nolinkurl{jabraham@ucsd.edu}}.}, Merve Akbas\thanks{Department of Economics. Duke University. \protect\href{mailto:merve.akbas@duke.edu}{\nolinkurl{merve.akbas@duke.edu}}.}, Dan Ariely\thanks{Fuqua School of Business. Duke University. \protect\href{mailto:dan@danariely.com}{\nolinkurl{dan@danariely.com}}.}, and Chaning Jang\thanks{The Busara Center for Behavioral Economics. \protect\href{mailto:chaning.jang@busaracenter.org}{\nolinkurl{chaning.jang@busaracenter.org}}.}} % add funding statement and ethics and thanks
 
 \maketitle
 
@@ -76,17 +76,15 @@
 
     \subsection{Savings account information}
 
-        \begin{figure}[h]
+        \begin{figure}[ht]
         \centering
         \caption{Savings card for lottery group (front)}
-        \centerfloat
         \includegraphics[width=0.75\textwidth]{../../figures/id_front.pdf}
         \end{figure}
 
-        \begin{figure}[h]
+        \begin{figure}[ht]
         \centering
         \caption{Savings card for lottery group (back)}
-        \centerfloat
         \includegraphics[width=0.75\textwidth]{../../figures/id_back.pdf}
         \end{figure}
 
@@ -140,79 +138,53 @@
 
 	\clearpage
 
-\section{Description of variables}
+% \section{Description of variables}
+%
+% 	We estimate treatment effects on measured savings behavior. The main outcome variables we are interested in are:
+%
+% 		\begin{enumerate}
+% 		\item Average savings over the entire study period.
+% 		\item Average savings over the first and second 30-day period.
+% 		\item Average number of active days and average number of transactions.
+% 		\item Average length of the streaks, i.e. the highest number of consecutive days with a positive daily balance for each person.
+% 		\end{enumerate}
+%
+% 	Aside from the overall savings behavior, we additionally estimate the effect of the program on:
+%
+% 		\begin{enumerate}
+% 		\item Amount withdrawn mid-project
+% 		\item Monthly savings
+% 		\item Whether subject saves
+% 		\item Monthly M-Pesa savings
+% 		\item Whether subject saves with a ROSCA
+% 		\item Temptation to gamble
+% 		\item Gambling behavior
+% 		\item How often subject discussed savings program with family and friends
+% 		\item Trust in the savings program
+% 		\item Satisfaction with saving behavior in the program
+% 		\item Continuation with the savings program
+% 		\item Self-perception as a saver
+% 		\item Trust in the savings program
+% 		\end{enumerate}
 
-	We estimate treatment effects on measured savings behavior. The main outcome variables we are interested in are:
-
-		\begin{enumerate}
-		\item Average savings over the entire study period.
-		\item Average savings over the first and second 30-day period.
-		\item Average number of active days and average number of transactions.
-		\item Average length of the streaks, i.e. the highest number of consecutive days with a positive daily balance for each person.
-		\end{enumerate}
-
-	Aside from the overall savings behavior, we additionally estimate the effect of the program on:
-
-		\begin{enumerate}
-		\item Amount withdrawn mid-project
-		\item Monthly savings
-		\item Whether subject saves
-		\item Monthly M-Pesa savings
-		\item Whether subject saves with a ROSCA
-		\item Temptation to gamble
-		\item Gambling behavior
-		\item How often subject discussed savings program with family and friends
-		\item Trust in the savings program
-		\item Satisfaction with saving behavior in the program
-		\item Continuation with the savings program
-		\item Self-perception as a saver
-		\item Trust in the savings program
-		\end{enumerate}
-            
 \section{Summary statistics}
 
-	\subsection{Balance checks on baseline variables}
+	\subsection{Balance checks}
 
-        \input{../../tables/tab-balance.tex}
-		\input{../../tables/sum-ysum1.tex}
-		\input{../../tables/sum-ysum2.tex}
-		\input{../../tables/sum-ysum3.tex}
-		\input{../../tables/sum-ysum4.tex}
-		\input{../../tables/sum-ysum5.tex}
+        \input{../../tables/sum-ysumall}
+        \input{../../tables/sum-eltreatall}
+        \input{../../tables/tab-select-final.tex}
+        \input{../../tables/tab-lottery-final.tex}
 
 	\clearpage
 
-    \subsection{Balance checks on endline sample}
+    \subsection{Sample attrition}
 
-    	\input{../../tables/sum-eltreat1.tex}
-    	\input{../../tables/sum-eltreat2.tex}
-    	\input{../../tables/sum-eltreat3.tex}
-    	\input{../../tables/sum-eltreat4.tex}
-        \input{../../tables/sum-eltreat5.tex}
-
-	\clearpage
-
-    \subsection{Comparison of endline sample and attrited observations}
-
-    	\input{../../tables/reg-attr.tex}
-    	\input{../../tables/sum-attr1.tex}
-    	\input{../../tables/sum-attr2.tex}
-    	\input{../../tables/sum-attr3.tex}
-    	\input{../../tables/sum-attr4.tex}
-        \input{../../tables/sum-attr5.tex}
+        \input{../../tables/tab-balance-final.tex}
+        \input{../../tables/reg-attr.tex}
+        \input{../../tables/sum-attrall.tex}
 
     \clearpage
-
-	\subsection{Summary of endline variables}
-
-		\input{../../tables/tab-lottery-final.tex}
-		\input{../../tables/tab-select.tex}
-		\input{../../tables/sum-ysum6.tex}
-		\input{../../tables/sum-ysum7.tex}
-		\input{../../tables/sum-ysum8.tex}
-		\input{../../tables/sum-ysum9.tex}
-
-	\clearpage
 
 \section{Treatment effects}
 
@@ -243,6 +215,19 @@
 
     \clearpage
 
+    \subsection{Covariate-adjusted treatment effects}
+
+        \input{../../tables/reg-covmobile.tex}
+        \input{../../tables/reg-covearly.tex}
+        \input{../../tables/reg-covlate.tex}
+        \input{../../tables/reg-covsave.tex}
+        \input{../../tables/reg-covgamble.tex}
+        \input{../../tables/reg-covakiba.tex}
+        \input{../../tables/reg-covself.tex}
+        \input{../../tables/reg-covselect.tex}
+
+    \clearpage
+
     \subsection{Average treatment effects with randomization inference}
 
         \input{../../tables/ri-mobile.tex}
@@ -259,8 +244,8 @@
 
 	\subsection{Heterogeneous treatment effects}
 
-		\input{../../tables/het-lottery.tex}
-		\input{../../tables/het-regret.tex}
+		% \input{../../tables/het-lottery.tex}
+		% \input{../../tables/het-regret.tex}
 		\input{../../tables/het-demo_children_0.tex}
 		\input{../../tables/het-demo_married_0.tex}
 		\input{../../tables/het-demo_female_0.tex}
@@ -283,30 +268,29 @@
 
 	\clearpage
 
-\section{Misc. analysis}
-
-    \subsection{Finite distributed lag model}
-
-        \input{../../tables/reg-panelawards.tex}
-        \input{../../tables/reg-regretaversion.tex}
-
-    \clearpage
-
-    \subsection{Baseline correlates of savings}
-
-        \input{../../tables/reg-cortotdeposits.tex}
-        \input{../../tables/reg-cortotdepositamt.tex}
-
-    \clearpage
+% \section{Misc. analysis}
+%
+%     \subsection{Finite distributed lag model}
+%
+%         \input{../../tables/reg-panelawards.tex}
+%         \input{../../tables/reg-regretaversion.tex}
+%
+%     \clearpage
+%
+%     \subsection{Baseline correlates of savings}
+%
+%         \input{../../tables/reg-cortotdeposits.tex}
+%         \input{../../tables/reg-cortotdepositamt.tex}
+%
+%     \clearpage
 
 \section{Visualization}
 
 	\subsection{Main treatment effects by risk aversion}
 
-		\begin{figure}[h]
+		\begin{figure}[ht]
 		\centering
 		\caption{Treatment effect by risk aversion: Total deposits made}
-		\centerfloat
 		\includegraphics[width=\textwidth]{../../figures/line-mobile_totdepositsbyrisk.pdf}
 		\end{figure}
 
@@ -314,24 +298,21 @@
 
 	\subsection{Savings behavior over project period}
 
-		\begin{figure}[h]
+		\begin{figure}[ht]
 		\centering
 		\caption{Number of daily deposits}
-		\centerfloat
 		\includegraphics[width=\textwidth]{../../figures/line-deposits.pdf}
 		\end{figure}
 
-		\begin{figure}[h]
+		\begin{figure}[ht]
 		\centering
 		\caption{Cumulative number of deposits}
-		\centerfloat
 		\includegraphics[width=\textwidth]{../../figures/line-cumdeposits.pdf}
 		\end{figure}
 
-		\begin{figure}[h]
+		\begin{figure}[ht]
 		\centering
 		\caption{Daily balance averaged over all participants}
-		\centerfloat
 		\includegraphics[width=\textwidth]{../../figures/line-balance.pdf}
 		\end{figure}
 
@@ -339,32 +320,28 @@
 
 	\subsection{Panel treatment effects}
 
-        \begin{figure}[h]
+        \begin{figure}[ht]
         \centering
         \caption{Effects over time -- Number of deposits}
-        \centerfloat
         \includegraphics[width=\textwidth]{../../figures/line-timemobile_deposits.pdf}
         \end{figure}
 
-        \begin{figure}[h]
+        \begin{figure}[ht]
         \centering
         \caption{Effects over time -- Amount deposited}
-        \centerfloat
         \includegraphics[width=\textwidth]{../../figures/line-timemobile_depositamount.pdf}
         \end{figure}
 
-		\begin{figure}[h]
-		\centering
-		\caption{Autoregressive model - Saved on day t}
-		\centerfloat
-		\includegraphics[width=\textwidth]{../../figures/line-ar.pdf}
-		\end{figure}
-
-		\begin{figure}[h]
-		\centering
-		\caption{Distributed lag model - Saved on day t}
-		\centerfloat
-		\includegraphics[width=\textwidth]{../../figures/line-dl.pdf}
-		\end{figure}
+		% \begin{figure}[ht]
+		% \centering
+		% \caption{Autoregressive model - Saved on day t}
+		% \includegraphics[width=\textwidth]{../../figures/line-ar.pdf}
+		% \end{figure}
+        %
+		% \begin{figure}[ht]
+		% \centering
+		% \caption{Distributed lag model - Saved on day t}
+		% \includegraphics[width=\textwidth]{../../figures/line-dl.pdf}
+		% \end{figure}
 
 \end{document}

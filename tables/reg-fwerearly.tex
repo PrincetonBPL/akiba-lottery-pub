@@ -1,20 +1,20 @@
-\begin{table}[h]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \caption{Treatment effects controlling the FWER -- Mobile savings by respondent (before 30 days)} \label{tab:reg-fwerearly} \maxsizebox*{\textwidth}{\textheight}{ \begin{threeparttable} \begin{tabular}{l*{8}{c}} \toprule
-          &\multicolumn{3}{c}{No controls}&\multicolumn{3}{c}{With controls}&\multicolumn{2}{c}{Sample}\\\cmidrule(lr){2-4}\cmidrule(lr){5-7}\cmidrule(lr){8-9}
-          &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}&\multicolumn{1}{c}{(5)}&\multicolumn{1}{c}{(6)}&\multicolumn{1}{c}{(7)}&\multicolumn{1}{c}{(8)}\\
-          &\multicolumn{1}{c}{Lottery}&\multicolumn{1}{c}{Regret}&\multicolumn{1}{c}{\specialcell{Difference\\\(p\)-value}}&\multicolumn{1}{c}{Lottery}&\multicolumn{1}{c}{Regret}&\multicolumn{1}{c}{\specialcell{Difference\\\(p\)-value}}&\multicolumn{1}{c}{\specialcell{Control Mean\\(SD)}}&\multicolumn{1}{c}{Obs.}\\
+\begin{table}[h]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \caption{Treatment effects controlling the FWER -- Mobile savings by respondent (before 30 days)} \label{tab:reg-fwerearly} \maxsizebox*{\textwidth}{\textheight}{ \begin{threeparttable} \begin{tabular}{l*{5}{c}} \toprule
+          &\multicolumn{3}{c}{Effect estimates}&\multicolumn{2}{c}{Sample}\\\cmidrule(lr){2-4}\cmidrule(lr){5-6}
+          &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}&\multicolumn{1}{c}{(5)}\\
+          &\multicolumn{1}{c}{Lottery}&\multicolumn{1}{c}{Regret}&\multicolumn{1}{c}{\specialcell{Difference\\\(p\)-value}}&\multicolumn{1}{c}{\specialcell{Control Mean\\(SD)}}&\multicolumn{1}{c}{Obs.}\\
 \midrule
-Total no. of deposits (before 30 days)&2.56$^{*}$&3.08$^{**}$&     0.74&2.46$^{*}$&2.56$^{*}$&     0.95&     8.48&      311\\
-          &   (1.40)&   (1.35)&         &   (1.43)&   (1.34)&         &   (8.74)&         \\
-          &   [0.15]&[0.05]$^{*}$&         &   [0.19]&   [0.13]&         &         &         \\
-No. of days saved (before 30 days)&1.94$^{*}$&2.56$^{**}$&     0.62&     1.67&2.18$^{*}$&     0.68&     7.42&      311\\
-          &   (1.16)&   (1.15)&         &   (1.15)&   (1.15)&         &   (7.61)&         \\
-          &   [0.18]&[0.06]$^{*}$&         &   [0.28]&   [0.13]&         &         &         \\
-Daily avg. no. of deposits (before 30 days)&0.09$^{*}$&0.10$^{**}$&     0.74&0.08$^{*}$&0.09$^{*}$&     0.95&     0.28&      311\\
-          &   (0.05)&   (0.05)&         &   (0.05)&   (0.04)&         &   (0.29)&         \\
-          &   [0.15]&[0.05]$^{*}$&         &   [0.19]&   [0.13]&         &         &         \\
-Total deposit amount (before 30 days)&    -1.17&    -1.65&     0.74&    -1.02&    -1.52&     0.71&     8.99&      311\\
-          &   (2.07)&   (1.85)&         &   (1.84)&   (1.69)&         &  (17.18)&         \\
-          &   [0.59]&   [0.41]&         &   [0.61]&   [0.41]&         &         &         \\
-\bottomrule \end{tabular} \begin{tablenotes}[flushleft] \footnotesize \item \emph{Notes:} Columns 1--2 report OLS estimates of the treatment effect. Columns 4--5 reports the estimates controlling for baseline covariates. Columns 3 and 6 report the \(p\)-values for tests of the equality of the two treatment effects. Standard errors are in parentheses and FWER adjusted \(p\)-values are in brackets. Observations are at the individual level. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level. Stars on the coefficient estimates reflect unadjusted \(p\)-values. \end{tablenotes} \end{threeparttable} } \end{table}
+Total no. of deposits (before 30 days)&2.56$^{*}$&3.08$^{**}$&     0.74&     8.48&      311\\
+          &   (1.40)&   (1.35)&         &   (8.74)&         \\
+          &   [0.20]&[0.00]$^{***}$&         &         &         \\
+No. of days saved (before 30 days)&1.94$^{*}$&2.56$^{**}$&     0.62&     7.42&      311\\
+          &   (1.16)&   (1.15)&         &   (7.61)&         \\
+          &   [0.20]&[0.00]$^{***}$&         &         &         \\
+Daily avg. no. of deposits (before 30 days)&0.09$^{*}$&0.10$^{**}$&     0.74&     0.28&      311\\
+          &   (0.05)&   (0.05)&         &   (0.29)&         \\
+          &   [0.20]&[0.00]$^{***}$&         &         &         \\
+Total deposit amount (before 30 days)&    -1.17&    -1.65&     0.74&     8.99&      311\\
+          &   (2.07)&   (1.85)&         &  (17.18)&         \\
+          &   [0.80]&   [0.40]&         &         &         \\
+\bottomrule \end{tabular} \begin{tablenotes}[flushleft] \footnotesize \item \emph{Notes:} Columns 1--3 report OLS estimates of the treatment effect. Standard errors are in parentheses and FWER adjusted \(p\)-values are in brackets. Observations are at the individual level. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level. Stars on the coefficient estimates reflect unadjusted \(p\)-values. \end{tablenotes} \end{threeparttable} } \end{table}
 
-% File produced by reg-fwer.do with /n/homeserver2/user2a/justinra/repos/akiba-lottery-pub/data/clean/akiba_wide.dta on 03:42:48 15 Feb 2018 by user justinra on Stata 13.1 with seed X71d1d353b37e281e006fa26738e26f4500044a1c
+% File produced by reg-fwer.do with /Users/Justin/Repos/akiba-lottery-pub/data/clean/akiba_wide.dta on 22:20:03 15 Feb 2018 by user Justin on Stata 13.1 with seed X27e0a1708256a41cdeaf4038df2ac2a9000400f4
