@@ -24,7 +24,6 @@ forval i = 1/`columns' {
 
 loc count = 1				// Cell first line
 loc countse = `count' + 1	// Cell second line
-loc countp = `countse' + 1  // Cell third line
 
 loc statnames "" 			// Added scalars to be filled
 loc varlabels "" 			// Labels for row vars to be filled
@@ -80,11 +79,10 @@ foreach yvar in $regvars {
 	/* Row Labels */
 
 	loc thisvarlabel: variable label `yvar' // Extracts label from row var
-	local varlabels "`varlabels' "`thisvarlabel'" " " " " "
-	loc statnames "`statnames' thisstat`count' thisstat`countse' thisstat`countp'"
-	loc count = `count' + 3
+	local varlabels "`varlabels' "`thisvarlabel'" " " "
+	loc statnames "`statnames' thisstat`count' thisstat`countse'"
+	loc count = `count' + 2
 	loc countse = `count' + 1
-	loc countp = `countse' + 1
 
 }
 
@@ -93,7 +91,7 @@ foreach yvar in $regvars {
 loc prehead "\begin{table}[h]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \caption{$regtitle} \label{tab:$regpath} \maxsizebox*{\textwidth}{\textheight}{ \begin{threeparttable} \begin{tabular}{l*{`columns'}{c}} \toprule"
 loc prehead_n "\begin{table}[h]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \label{tab:$regpath} \maxsizebox*{\textwidth}{\textheight}{ \begin{threeparttable} \begin{tabular}{l*{`columns'}{c}} \toprule"
 loc postfoot "\bottomrule \end{tabular} \begin{tablenotes}[flushleft] \footnotesize \item @note \end{tablenotes} \end{threeparttable} } \end{table}"
-loc footnote "\emph{Notes:} Columns 1--3 report OLS estimates of the treatment effect. Standard errors are in parentheses and were calculated under permutation of the treatment assignment. Columns 4--5 report the mean and SD of the control group and the number observations, respectively. Observations are at the individual level. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level."
+loc footnote "\emph{Notes:} Columns 1--2 report OLS estimates of the treatment effect. Standard errors are in parentheses and were calculated under permutation of the treatment assignment. Columns 4--5 report the mean and SD of the control group and the number observations, respectively. Observations are at the individual level. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level."
 
 esttab col* using "$tab_dir/$regpath.tex", booktabs cells(none) nogap mgroups("Effect estimates" "Sample", pattern(1 0 0 1 0) prefix(\multicolumn{@span}{c}{) suffix(}) span erepeat(\cmidrule(lr){@span})) mtitle("Lottery" "Regret" "\specialcell{Regret-\\Lottery}" "\specialcell{Control Mean\\(SD)}" "Obs.") stats(`statnames', labels(`varlabels')) note("`footnote'") prehead("`prehead'") postfoot("`postfoot'") compress replace
 esttab col* using "$tab_dir/$regpath-n.tex", booktabs cells(none) nogap mgroups("Effect estimates" "Sample", pattern(1 0 0 1 0) prefix(\multicolumn{@span}{c}{) suffix(}) span erepeat(\cmidrule(lr){@span})) mtitle("Lottery" "Regret" "\specialcell{Regret-\\Lottery}" "\specialcell{Control Mean\\(SD)}" "Obs.") stats(`statnames', labels(`varlabels')) prehead("`prehead_n'") postfoot("`postfoot'") compress replace

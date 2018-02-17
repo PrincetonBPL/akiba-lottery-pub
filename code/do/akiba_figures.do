@@ -148,87 +148,13 @@ if $panelflag {
 	// Schedule of deposits //
 	//////////////////////////
 
-	/* Autoregressive plot */
+	use "$data_dir/clean/akiba_mobile.dta", clear
 
-	* use "$data_dir/clean/akiba_long.dta", clear
+	gen dailytime = hms(hh(clock(time, "MD20Yhm")), mm(clock(time, "MD20Yhm")), ss(clock(time, "MD20Yhm")))
 
-	* areg Saved_Day L(1/$laglength).Saved_Day if control, absorb(day) cl(surveyid)
+	hist dailytime if type_deposit & dailytime, kdensity width(1800000) xtitle("Time") lwidth(thin) lcolor(gs1) fcolor(gs9) kdenopts(lwidth(medium) lcolor(gs1)) ylabel(, glwidth(vthin) glcolor(black)) xlabel(0(7200000)86400000, format(%tcHH:MM) angle(330)) graphregion(color(white))
 
-	* loc k = e(rank)
-	* mat V = e(V)
-	* mat A_b = e(b)'
-	* mat A_se = J(`k',1,-9999)
-	* forval i = 1/`k' {
-	* 	mat A_se[`i', 1] = sqrt(V[`i', `i'])
-	* }
-
-	* areg Saved_Day L(1/$laglength).Saved_Day if lottery, absorb(day) cl(surveyid)
-
-	* loc k = e(rank)
-	* mat V = e(V)
-	* mat B_b = e(b)'
-	* mat B_se = J(`k',1,-9999)
-	* forval i = 1/`k' {
-	* 	mat B_se[`i', 1] = sqrt(V[`i', `i'])
-	* }
-
-	* areg Saved_Day L(1/$laglength).Saved_Day if regret, absorb(day) cl(surveyid)
-
-	* loc k = e(rank)
-	* mat V = e(V)
-	* mat C_b = e(b)'
-	* mat C_se = J(`k',1,-9999)
-	* forval i = 1/`k' {
-	* 	mat C_se[`i', 1] = sqrt(V[`i', `i'])
-	* }
-
-	* foreach matr in A_b A_se B_b B_se C_b C_se {
-	* 	svmat `matr'
-	* }
-
-	* keep A_b A_se B_b B_se C_b C_se
-	* gen lag = _n
-	* drop if lag > $laglength
-
-	* foreach i in A B C {
-
-	* 	gen `i'_hici = `i'_b + 1.96*`i'_se
-	* 	gen `i'_loci = `i'_b - 1.96*`i'_se
-
-	* }
-
-	* graph twoway (line A_b lag) (line B_b lag) (line C_b lag), ytitle("Likelihood of saving") xtitle("Lag in days") legend(order(1 "Control" 2 "Lottery" 3 "Regret")) graphregion(color(white))
-	* graph export "$fig_dir/line-ar.eps", replace
-
-	* /Distributed lag plot */
-
-	* use "$data_dir/clean/akiba_long.dta", clear
-
-	* areg Saved_Day L(1/$laglength).Won_Day L(1/$laglength).Regret_Day L(1/$laglength).Lost_Day if ~control, absorb(day) cl(surveyid)
-
-	* loc k = e(rank)
-	* mat V = e(V)
-	* mat B = e(b)'
-	* mat SE = J(`k',1,-9999)
-	* forval i = 1/`k' {
-	* 	mat SE[`i', 1] = sqrt(V[`i', `i'])
-	* }
-
-	* svmat B
-	* svmat SE
-	* keep B SE
-	* gen lag = _n
-	* gen day_type = 0
-
-	* replace day_type = 1 if lag > $laglength & lag <= 2*$laglength
-	* replace lag = lag - $laglength if lag > $laglength & lag <= 2*$laglength
-
-	* replace day_type = 2 if lag > 2*$laglength & lag <= 3*$laglength
-	* replace lag = lag - 2*$laglength if lag > 2*$laglength & lag <= 3*$laglength
-
-	* drop if lag > $laglength
-
-	* graph twoway (line B lag if day_type == 0) (line B lag if day_type == 1) (line B lag if day_type == 2), ytitle("Likelihood of saving") xtitle("Lag in days") legend(order(1 "Won prize" 2 "Won without saving" 3 "Lost with saving")) graphregion(color(white))
-	* graph export "$fig_dir/line-dl.eps", replace
+	gr export "$fig_dir/hist-deposits.eps", replace
+	cap noi !epstopdf "$fig_dir/hist-deposits.eps"
 
 }
