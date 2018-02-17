@@ -100,7 +100,6 @@
 } def
 /Srect {
 	/sfill exch def
-	/sstroke exch def
 	yratio mul
 	/y1 exch def
 	xratio mul
@@ -110,12 +109,18 @@
 	xratio mul
 	/x0 exch def
 	newpath x0 y0 moveto x0 y1 lineto x1 y1 lineto x1 y0 lineto x0 y0 lineto closepath
-	sfill Sfill
-	sstroke Sstroke
+	sfill 1 eq {
+		Ssrgb setrgbcolor
+		gsave
+		fill
+		grestore
+	} if
+	Slw setlinewidth
+	Slrgb setrgbcolor
+	stroke
 } def
 /Sellipse {
 	/sfill exch def
-	/sstroke exch def
 	yratio mul
 	/yrad exch def
 	xratio mul
@@ -129,12 +134,18 @@
 	xrad yrad scale
 	0 0 1 0 360 arc
 	savematrix setmatrix
-	sfill Sfill
-	sstroke Sstroke
+	sfill 1 eq {
+		Ssrgb setrgbcolor
+		gsave
+		fill
+		grestore
+	} if
+	Slw setlinewidth
+	Slrgb setrgbcolor
+	stroke
 } def
 /Stri {
 	/sfill exch def
-	/sstroke exch def
 	xratio mul
 	/r exch def
 	yratio mul
@@ -153,8 +164,15 @@
 	xcen add
 	/xright exch def
 	newpath xcen ytop moveto xright ybot lineto xleft ybot lineto xcen ytop lineto closepath
-	sfill Sfill
-	sstroke Sstroke
+	sfill 1 eq {
+		Ssrgb setrgbcolor
+		gsave
+		fill
+		grestore
+	} if
+	Slw setlinewidth
+	Slrgb setrgbcolor
+	stroke
 } def
 /Soldtri {
 	/sfill exch def
@@ -188,7 +206,6 @@
 } def
 /Sdia {
 	/sfill exch def
-	/sstroke exch def
 	xratio mul
 	/r exch def
 	yratio mul
@@ -207,13 +224,19 @@
 	/x3 x def
 	y r add
 	/y3 exch def
-	newpath x0 y0 moveto x1 y1 lineto x2 y2 lineto x3 y3 lineto closepath
-	sfill Sfill
-	sstroke Sstroke
+	newpath x0 y0 moveto x1 y1 lineto x2 y2 lineto x3 y3 lineto x0 y0 lineto closepath
+	sfill 1 eq {
+		Ssrgb setrgbcolor
+		gsave
+		fill
+		grestore
+	} if
+	Slw setlinewidth
+	Slrgb setrgbcolor
+	stroke
 } def
 /Scc {
 	/sfill exch def
-	/sstroke exch def
 	xratio mul
 	/r0 exch def
 	yratio mul
@@ -221,12 +244,18 @@
 	xratio mul
 	/x0 exch def
 	x0 y0 r0 0 360 arc closepath
-	sfill Sfill
-	sstroke Sstroke
+	sfill 1 eq {
+		Ssrgb setrgbcolor
+		gsave
+		fill
+		grestore
+	} if
+	Slw setlinewidth
+	Slrgb setrgbcolor
+	stroke
 } def
 /Spie {
 	/sfill exch def
-	/salign exch def
 	/a1 exch def
 	/a0 exch def
 	xratio mul
@@ -235,40 +264,16 @@
 	/y exch def
 	xratio mul
 	/x exch def
-	/Pie {
-		x y moveto x y r a0 a1 arc closepath
-	} def
-	newpath Pie
-	sfill Sfill
+	newpath x y moveto x y r a0 a1 arc closepath
+	sfill 1 eq {
+		Ssrgb setrgbcolor
+		gsave
+		fill
+		grestore
+	} if
+	Slw setlinewidth
 	Slrgb setrgbcolor
-	salign 0 eq {
-		gsave
-		Slw 2 mul setlinewidth
-		clip
-		stroke
-		grestore
-	} if
-	salign 1 eq {
-		Slw setlinewidth
-		stroke
-	} if
-	salign 2 eq {
-		gsave
-		Slw 2 mul setlinewidth
-		strokepath
-		pathbbox
-		/ury exch def
-		/urx exch def
-		/lly exch def
-		/llx exch def
-		newpath llx lly moveto llx ury lineto urx ury lineto urx lly lineto closepath
-		Pie
-		eoclip
-		newpath Pie
-		stroke
-		grestore
-	} if
-	newpath
+	stroke
 } def
 /Splu {
 	xratio mul
@@ -335,80 +340,6 @@
 	/x exch def
 	x y PL
 } def
-/Sarr {
-	/sfill exch def
-	xratio mul
-	/r exch def
-	yratio mul
-	/y exch def
-	xratio mul
-	/x exch def
-	y r add
-	/ytop exch def
-	y r sub
-	/ybot exch def
-	gsave
-	Slrgb setrgbcolor
-	sfill 0 eq {
-		r 2 mul 3 div dup
-		x exch sub
-		/xleft exch def
-		x add
-		/xright exch def
-		newpath xleft y moveto x ytop lineto xright y lineto x ytop moveto x ybot lineto
-		Lcs
-		1 setlinejoin
-	} {
-		r 2 div dup
-		x exch sub
-		/xleft exch def
-		x add
-		/xright exch def
-		newpath xleft y moveto x ytop lineto xright y lineto x ytop closepath moveto x ybot lineto
-		gsave
-		fill
-		grestore
-	} ifelse
-	Slw setlinewidth
-	stroke
-	grestore
-} def
-/Spipe {
-	xratio mul
-	/r exch def
-	yratio mul
-	/y exch def
-	xratio mul
-	/x exch def
-	y r sub
-	/y0 exch def
-	y r add
-	/y1 exch def
-	x y0 M x y1 L
-} def
-/Sv {
-	xratio mul
-	/r exch def
-	yratio mul
-	/y0 exch def
-	xratio mul
-	/x0 exch def
-	/xcen x0 def
-	y0 r add
-	/ytop exch def
-	r 2 div
-	y0 exch sub
-	/ybot exch def
-	r 3 sqrt 2 div mul dup
-	xcen exch sub
-	/xleft exch def
-	xcen add
-	/xright exch def
-	newpath xleft ytop moveto xcen ybot lineto xright ytop lineto
-	Slw setlinewidth
-	Slrgb setrgbcolor
-	stroke
-} def
 /Lcs {
 	currentlinecap
 	1 setlinecap
@@ -422,43 +353,17 @@
 /Sep {
 	/sfill exch def
 	closepath
-	/salign exch def
+	sfill 1 eq  {
+		Ssrgb setrgbcolor
+		gsave
+		fill
+		grestore
+	} if
+	Slw setlinewidth
+	Slrgb setrgbcolor
 	Lcs
-	salign 0 eq {
-		sfill Sfill
-		gsave
-		Slw 2 mul setlinewidth
-		clip
-		Slrgb setrgbcolor
-		stroke
-		grestore
-	} if
-	salign 1 eq {
-		sfill Sfill
-		Slw setlinewidth
-		Slrgb setrgbcolor
-		stroke
-	} if
-	salign 2 eq {
-		gsave
-		Slw 2 mul setlinewidth
-		Slrgb setrgbcolor
-		stroke
-		grestore
-		sfill Sfill
-	} if
-	newpath
+	stroke
 	Lcr
-} def
-/Stransrot {
-	/anglep exch def
-	yratio mul
-	/y exch def
-	xratio mul
-	/x exch def
-	x y translate
-	anglep rotate
-	x neg y neg translate
 } def
 /cp {currentpoint} def 
 /M {moveto} def 
@@ -482,32 +387,12 @@
 /Slw 0.120 def
 0.918 0.949 0.953 setrgbcolor
 0 0 396.000 288.000 Sbgfill
-/Sfill {
-	/sfill exch def
-	sfill 1 eq {
-		Ssrgb setrgbcolor
-		gsave
-		fill
-		grestore
-	} if
-} def
-/Sstroke {
-	/sstroke exch def
-	sstroke 1 eq {
-		Slw setlinewidth
-		Slrgb setrgbcolor
-		stroke
-	} if
-	newpath
-} def
 /Slrgb {1.000 1.000 1.000} def
 /Strgb {1.000 1.000 1.000} def
 /Ssrgb {1.000 1.000 1.000} def
 /Slw 0.576 def
-0 0 31999 23272 0 1 Srect
-23 23 31976 23249 1 0 Srect
-3158 3862 31184 22457 0 1 Srect
-3181 3885 31161 22434 1 0 Srect
+0 0 31999 23272 1 Srect
+3158 3862 31184 22457 1 Srect
 /Slrgb {0.000 0.000 0.000} def
 /Strgb {0.000 0.000 0.000} def
 /Slw 0.432 def
@@ -530,98 +415,52 @@
 /Slw 0.576 def
 /Ssrgb {0.565 0.565 0.565} def
 /Slrgb {0.063 0.063 0.063} def
-3948 3862 4505 3896 0 1 Srect
-3971 3885 4482 3873 1 0 Srect
-4505 3862 5062 3892 0 1 Srect
-4528 3885 5039 3869 1 0 Srect
-5062 3862 5618 3866 0 1 Srect
-5085 3885 5595 3843 1 0 Srect
-5618 3862 6175 3875 0 1 Srect
-5641 3885 6152 3852 1 0 Srect
-6175 3862 6732 3888 0 1 Srect
-6198 3885 6709 3865 1 0 Srect
-6732 3862 7289 3879 0 1 Srect
-6755 3885 7266 3856 1 0 Srect
-8402 3862 8959 3871 0 1 Srect
-8425 3885 8936 3848 1 0 Srect
-8959 3862 9516 3883 0 1 Srect
-8982 3885 9493 3860 1 0 Srect
-9516 3862 10073 3875 0 1 Srect
-9539 3885 10050 3852 1 0 Srect
-10073 3862 10629 3883 0 1 Srect
-10096 3885 10606 3860 1 0 Srect
-10629 3862 11186 3926 0 1 Srect
-10652 3885 11163 3903 1 0 Srect
-11186 3862 11743 4070 0 1 Srect
-11209 3885 11720 4047 1 0 Srect
-11743 3862 12300 4096 0 1 Srect
-11766 3885 12277 4073 1 0 Srect
-12300 3862 12856 4134 0 1 Srect
-12323 3885 12833 4111 1 0 Srect
-12856 3862 13413 13352 0 1 Srect
-12879 3885 13390 13329 1 0 Srect
-13413 3862 13970 21252 0 1 Srect
-13436 3885 13947 21229 1 0 Srect
-13970 3862 14527 4674 0 1 Srect
-13993 3885 14504 4651 1 0 Srect
-14527 3862 15083 4381 0 1 Srect
-14550 3885 15060 4358 1 0 Srect
-15083 3862 15640 4313 0 1 Srect
-15106 3885 15617 4290 1 0 Srect
-15640 3862 16197 4436 0 1 Srect
-15663 3885 16174 4413 1 0 Srect
-16197 3862 16754 4835 0 1 Srect
-16220 3885 16731 4812 1 0 Srect
-16754 3862 17310 4117 0 1 Srect
-16777 3885 17287 4094 1 0 Srect
-17310 3862 17867 4262 0 1 Srect
-17333 3885 17844 4239 1 0 Srect
-17867 3862 18424 4194 0 1 Srect
-17890 3885 18401 4171 1 0 Srect
-18424 3862 18981 4092 0 1 Srect
-18447 3885 18958 4069 1 0 Srect
-18981 3862 19537 4143 0 1 Srect
-19004 3885 19514 4120 1 0 Srect
-19537 3862 20094 4253 0 1 Srect
-19560 3885 20071 4230 1 0 Srect
-20094 3862 20651 4381 0 1 Srect
-20117 3885 20628 4358 1 0 Srect
-20651 3862 21208 4219 0 1 Srect
-20674 3885 21185 4196 1 0 Srect
-21208 3862 21764 4172 0 1 Srect
-21231 3885 21741 4149 1 0 Srect
-21764 3862 22321 4206 0 1 Srect
-21787 3885 22298 4183 1 0 Srect
-22321 3862 22878 4198 0 1 Srect
-22344 3885 22855 4175 1 0 Srect
-22878 3862 23435 4266 0 1 Srect
-22901 3885 23412 4243 1 0 Srect
-23435 3862 23991 4283 0 1 Srect
-23458 3885 23968 4260 1 0 Srect
-23991 3862 24548 4317 0 1 Srect
-24014 3885 24525 4294 1 0 Srect
-24548 3862 25105 4308 0 1 Srect
-24571 3885 25082 4285 1 0 Srect
-25105 3862 25662 4389 0 1 Srect
-25128 3885 25639 4366 1 0 Srect
-25662 3862 26218 4517 0 1 Srect
-25685 3885 26195 4494 1 0 Srect
-26218 3862 26775 4372 0 1 Srect
-26241 3885 26752 4349 1 0 Srect
-26775 3862 27332 4406 0 1 Srect
-26798 3885 27309 4383 1 0 Srect
-27332 3862 27889 4291 0 1 Srect
-27355 3885 27866 4268 1 0 Srect
-27889 3862 28445 4198 0 1 Srect
-27912 3885 28422 4175 1 0 Srect
-28445 3862 29002 4126 0 1 Srect
-28468 3885 28979 4103 1 0 Srect
-29002 3862 29559 4024 0 1 Srect
-29025 3885 29536 4001 1 0 Srect
-29559 3862 30116 3947 0 1 Srect
-29582 3885 30093 3924 1 0 Srect
-30116 3862 30672 3888 0 1 Srect
-30139 3885 30649 3865 1 0 Srect
+3948 3862 4505 3896 1 Srect
+4505 3862 5062 3892 1 Srect
+5062 3862 5618 3866 1 Srect
+5618 3862 6175 3875 1 Srect
+6175 3862 6732 3888 1 Srect
+6732 3862 7289 3879 1 Srect
+8402 3862 8959 3871 1 Srect
+8959 3862 9516 3883 1 Srect
+9516 3862 10073 3875 1 Srect
+10073 3862 10629 3883 1 Srect
+10629 3862 11186 3926 1 Srect
+11186 3862 11743 4070 1 Srect
+11743 3862 12300 4096 1 Srect
+12300 3862 12856 4134 1 Srect
+12856 3862 13413 13352 1 Srect
+13413 3862 13970 21252 1 Srect
+13970 3862 14527 4674 1 Srect
+14527 3862 15083 4381 1 Srect
+15083 3862 15640 4313 1 Srect
+15640 3862 16197 4436 1 Srect
+16197 3862 16754 4835 1 Srect
+16754 3862 17310 4117 1 Srect
+17310 3862 17867 4262 1 Srect
+17867 3862 18424 4194 1 Srect
+18424 3862 18981 4092 1 Srect
+18981 3862 19537 4143 1 Srect
+19537 3862 20094 4253 1 Srect
+20094 3862 20651 4381 1 Srect
+20651 3862 21208 4219 1 Srect
+21208 3862 21764 4172 1 Srect
+21764 3862 22321 4206 1 Srect
+22321 3862 22878 4198 1 Srect
+22878 3862 23435 4266 1 Srect
+23435 3862 23991 4283 1 Srect
+23991 3862 24548 4317 1 Srect
+24548 3862 25105 4308 1 Srect
+25105 3862 25662 4389 1 Srect
+25662 3862 26218 4517 1 Srect
+26218 3862 26775 4372 1 Srect
+26775 3862 27332 4406 1 Srect
+27332 3862 27889 4291 1 Srect
+27889 3862 28445 4198 1 Srect
+28445 3862 29002 4126 1 Srect
+29002 3862 29559 4024 1 Srect
+29559 3862 30116 3947 1 Srect
+30116 3862 30672 3888 1 Srect
 /Slw 0.864 def
 3948 3881 Sm
 4037 3882 Sl
