@@ -137,7 +137,7 @@ do winnings affect endline savings/gambling? disentangle regret aversion (+) and
 	two sources of variation: seeing potential winnings and experience of winning: reg savings regretXwinning with lags
 	will probably have to account for serial correlation if estimating a time series model
 
-is there adaptation over time? test for description experience gap, if so then is it experience or repetition? might it shrink within the first few days? there is a slowdown in the cdf. find a statistical test for this
+is there adaptation over time? test for description experience gap, if so then is it experience or repetition or regret? might it shrink within the first few days? there is a slowdown in the cdf. find a statistical test for this
 project timeline
 can investigate more thoroughly how people saved during project period (time of day, week fixed effects, distance from reminder, etc.) bunching after/before lottery/reminder/endofday by group
 what the hell is 11111 2222 winning ticket?
