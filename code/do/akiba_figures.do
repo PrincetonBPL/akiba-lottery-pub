@@ -158,7 +158,7 @@ if $panelflag {
 
 	gen dailytime = hms(hh(clock(time, "MD20Yhm")), mm(clock(time, "MD20Yhm")), ss(clock(time, "MD20Yhm")))
 
-	tw (hist dailytime if type_deposit & treatmentgroup == 1, frac width(1800000) lwidth(thin) lcolor(gs1) fcolor(none)) (hist dailytime if type_deposit & treatmentgroup == 2, frac width(1800000) lwidth(thin) lcolor(gs1) fcolor(gs10)) (hist dailytime if type_deposit & treatmentgroup == 3, frac width(1800000) lwidth(thin) lcolor(gs1) fcolor(gs2)), xtitle("Time") ylabel(, glwidth(vthin) glcolor(gs14)) xlabel(0(7200000)86400000, format(%tcHH:MM) angle(330)) graphregion(color(white)) legend(order(1 "Control" 2 "Lottery" 3 "Regret"))
+	tw (hist dailytime if type_deposit & treatmentgroup == 1, frac width(1800000) lwidth(thin) lcolor(gs1) fcolor(none)) (hist dailytime if type_deposit & treatmentgroup == 2, frac width(1800000) lwidth(thin) lcolor(gs1) fcolor(gs12)) (hist dailytime if type_deposit & treatmentgroup == 3, frac width(1800000) lwidth(thin) lcolor(gs1) fcolor(gs2)), xtitle("Time") ylabel(, glwidth(vthin) glcolor(gs14)) xlabel(0(7200000)86400000, format(%tcHH:MM) angle(330)) graphregion(color(white)) legend(order(1 "Control" 2 "Lottery" 3 "Regret"))
 
 	gr export "$fig_dir/hist-deposits.eps", replace
 	cap noi !epstopdf "$fig_dir/hist-deposits.eps"
