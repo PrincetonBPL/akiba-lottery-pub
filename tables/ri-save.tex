@@ -1,16 +1,16 @@
-\begin{table}[h]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \caption{Treatment effects with randomization inference -- Savings with other products} \label{tab:ri-save} \maxsizebox*{\textwidth}{\textheight}{ \begin{threeparttable} \begin{tabular}{l*{5}{c}} \toprule
+\begin{table}[h]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \caption{Treatment effects with randomization inference -- Savings outside the project} \label{tab:ri-save} \maxsizebox*{\textwidth}{\textheight}{ \begin{threeparttable} \begin{tabular}{l*{5}{c}} \toprule
           &\multicolumn{3}{c}{Effect estimates}&\multicolumn{2}{c}{Sample}\\\cmidrule(lr){2-4}\cmidrule(lr){5-6}
           &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}&\multicolumn{1}{c}{(5)}\\
           &\multicolumn{1}{c}{Lottery}&\multicolumn{1}{c}{Regret}&\multicolumn{1}{c}{\specialcell{Regret-\\Lottery}}&\multicolumn{1}{c}{\specialcell{Control Mean\\(SD)}}&\multicolumn{1}{c}{Obs.}\\
 \midrule
-Total savings last month (USD PPP)&    18.45&   -17.87&     0.10&    80.31&      284\\
+Total savings last month (USD PPP)&    18.45&   -17.87&0.00$^{***}$&    80.31&      284\\
           &  (25.24)&  (14.70)&         & (112.74)&         \\
-M-Pesa savings last month (USD PPP)&    -5.42&    -6.71&     0.83&    20.42&      284\\
+M-Pesa savings last month (USD PPP)&    -5.42&    -6.71&     1.00&    20.42&      284\\
           &   (6.36)&   (5.51)&         &  (44.67)&         \\
-ROSCA savings last month (USD PPP)&     1.48&     7.37&     0.41&    22.24&      283\\
+ROSCA savings last month (USD PPP)&     1.48&     7.37&     0.40&    22.24&      283\\
           &   (6.78)&   (6.82)&         &  (42.18)&         \\
-Currently saves with ROSCA&    -0.02&0.14$^{**}$&0.03$^{**}$&     0.54&      284\\
+Currently saves with ROSCA&    -0.02&     0.14&0.00$^{***}$&     0.54&      284\\
           &   (0.07)&   (0.07)&         &   (0.50)&         \\
 \bottomrule \end{tabular} \begin{tablenotes}[flushleft] \footnotesize \item \emph{Notes:} Columns 1--2 report OLS estimates of the treatment effect. Standard errors are in parentheses and were calculated under permutation of the treatment assignment. Columns 4--5 report the mean and SD of the control group and the number observations, respectively. Observations are at the individual level. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level. \end{tablenotes} \end{threeparttable} } \end{table}
 
-% File produced by reg-ri.do with /n/homeserver2/user2a/justinra/repos/akiba-lottery-pub/data/clean/akiba_wide.dta on 06:49:43 19 Feb 2018 by user justinra on Stata 13.1 with seed Xc551b353a37a4ac92224fac198b926b600041f41
+% File produced by reg-ri.do with /Users/Justin/Repos/akiba-lottery-pub/data/clean/akiba_wide.dta on 12:24:57 19 Feb 2018 by user Justin on Stata 13.1 with seed Xdf4b2f7038b13fbcdfe5f58c66fe855900041142

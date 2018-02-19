@@ -149,7 +149,7 @@ if $panelflag {
 	//////////////////////////
 
 	use "$data_dir/clean/akiba_mobile.dta", clear
-	merge m:m account using "$data_dir/clean/akiba_subjects.dta", keepusing(attrit treat_type endline_treatmenttype)
+	merge m:m account using "$data_dir/clean/akiba_subjects.dta", keep(3) keepusing(attrit treat_type endline_treatmenttype) nogen
 
 	recode attrit (1 = 0) (0 = 1) (nonm = .), gen(endline)
 	gen treatmatch = trim(itrim(lower(treat_type))) == trim(itrim(lower(endline_treatmenttype))) if endline
@@ -159,8 +159,11 @@ if $panelflag {
 	gen dailytime = hms(hh(clock(time, "MD20Yhm")), mm(clock(time, "MD20Yhm")), ss(clock(time, "MD20Yhm")))
 
 	tw (hist dailytime if type_deposit & treatmentgroup == 1, frac width(1800000) lwidth(thin) lcolor(gs1) fcolor(none)) (hist dailytime if type_deposit & treatmentgroup == 2, frac width(1800000) lwidth(thin) lcolor(gs1) fcolor(gs12)) (hist dailytime if type_deposit & treatmentgroup == 3, frac width(1800000) lwidth(thin) lcolor(gs1) fcolor(gs2)), xtitle("Time") ylabel(, glwidth(vthin) glcolor(gs14)) xlabel(0(7200000)86400000, format(%tcHH:MM) angle(330)) graphregion(color(white)) legend(order(1 "Control" 2 "Lottery" 3 "Regret"))
-
 	gr export "$fig_dir/hist-deposits.eps", replace
 	cap noi !epstopdf "$fig_dir/hist-deposits.eps"
+
+	tw (hist dailytime if type_deposit & inrange(dailytime, 25200000, 36000000) & treatmentgroup == 1, frac width(360000) lwidth(thin) lcolor(gs1) fcolor(none)) (hist dailytime if type_deposit & inrange(dailytime, 25200000, 36000000) & treatmentgroup == 2, frac width(360000) lwidth(thin) lcolor(gs1) fcolor(gs12)) (hist dailytime if type_deposit & inrange(dailytime, 25200000, 36000000) & treatmentgroup == 3, frac width(360000) lwidth(thin) lcolor(gs1) fcolor(gs2)), xtitle("Time") ylabel(, glwidth(vthin) glcolor(gs14)) xlabel(25200000(720000)36000000,format(%tcHH:MM) angle(330)) graphregion(color(white)) legend(order(1 "Control" 2 "Lottery" 3 "Regret"))
+	gr export "$fig_dir/hist-zoomdeposits.eps", replace
+	cap noi !epstopdf "$fig_dir/hist-zoomdeposits.eps"
 
 }

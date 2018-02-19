@@ -39,7 +39,7 @@
 
 \appendix
 
-\section{Experimental materials}
+\section{Experimental Materials}
 
     \subsection{Consent form}
 
@@ -261,7 +261,7 @@
 % 		\item Trust in the savings program
 % 		\end{enumerate}
 
-\section{Summary statistics}
+\section{Summary Statistics}
 
 	\subsection{Balance checks}
 
@@ -280,7 +280,7 @@
 
     \clearpage
 
-\section{Treatment effects}
+\section{Treatment Effects}
 
 	% \subsection{Average treatment effects}
     %
@@ -366,21 +366,19 @@
 
 	\clearpage
 
-% \section{Misc. analysis}
-%
-%     \subsection{Finite distributed lag model}
-%
-%         \input{../../tables/reg-panelawards.tex}
-%         \input{../../tables/reg-regretaversion.tex}
-%
-%     \clearpage
-%
-    \subsection{Baseline correlates of savings}
+\section{Time Series}
 
-        \input{../../tables/reg-cortotdeposits.tex}
-        \input{../../tables/reg-cortotdepositamt.tex}
+    \input{../../tables/reg-timetrend.tex}
+    \input{../../tables/reg-regretaversion.tex}
 
-    \clearpage
+\clearpage
+
+\section{Baseline Savings Correlates}
+
+    \input{../../tables/reg-cortotdeposits.tex}
+    \input{../../tables/reg-cortotdepositamt.tex}
+
+\clearpage
 
 \section{Visualization}
 
@@ -388,7 +386,7 @@
 
 		\begin{figure}[ht]
 		\centering
-		\caption{Treatment effect by risk aversion: Total deposits made}
+		\caption{Treatment effect by risk aversion -- Total deposits made}
 		\includegraphics[width=\textwidth]{../../figures/line-mobile_totdepositsbyrisk.pdf}
 		\end{figure}
 
@@ -400,7 +398,7 @@
         \centering
         \caption{Timing of deposits}
         \includegraphics[width=\textwidth]{../../figures/hist-deposits.pdf}
-        \caption*{\footnotesize \emph{Notes:} This figure plots the empirical distribution of timing of all deposits over the project period. Each bin spans 30 minutes with a height equal to the fraction of all deposits within each treatment group. Participants received an end-of-day message at 8:00 that reported how much the participant saved the previous day, how much the participant earned through a matching contribution or winnings, and their total balance. An hour later, participants received a beginning-of-day message encouraging them to save that day.}
+        \caption*{\footnotesize \emph{Notes:} This figure plots the empirical distribution of timing of all deposits over the project period. Each bin spans 30 minutes with a height equal to the fraction of all deposits within each treatment group. Participants received the first SMS at 8:00 that summarized how much the participant saved the previous day, how much the participant earned through a matching contribution or winnings, and their total balance. An hour later, participants received a second SMS encouraging them to save that day. Participants in \textsc{Regret} received a new lottery ticket with the second message.}
         \end{figure}
 
 		\begin{figure}[ht]

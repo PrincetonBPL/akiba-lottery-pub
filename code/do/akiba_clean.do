@@ -426,10 +426,10 @@ la var self_nosavefeel_1 "How did you feel not saving?"
 ********************
 
 ren endline_akibatrust akiba_trust_1
-la var akiba_trust_1 "How much do you trust AKIBA SMART?"
+la var akiba_trust_1 "How much do you trust Akiba Smart?"
 
 ren endline_akibaconfidence akiba_confidence_1
-la var akiba_confidence_1 "What is your confidence in AKIBA SMART?"
+la var akiba_confidence_1 "What is your confidence in Akiba Smart?"
 
 ren endline_lotterytrust akiba_lotteryfair_1
 replace akiba_lotteryfair_1 = . if control
@@ -537,7 +537,7 @@ save `clean_subjects', replace
 
 use "$data_dir/clean/akiba_mobile.dta"
 
-la var period "Savings period"
+la var period "Period"
 
 gen period_date = dofc(clock(time, "MD20Yhm"))
 format period_date %tdDD_Mon_YY

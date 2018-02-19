@@ -1,26 +1,14 @@
-\begin{table}[h]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \caption{Regression of savings activity on lagged lottery results} \label{tab:reg-panelawards} \maxsizebox*{\textwidth}{\textheight}{ \begin{threeparttable} \begin{tabular}{l*{3}{c}} \toprule
-                &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}\\
-                &\multicolumn{1}{c}{Made a deposit}&\multicolumn{1}{c}{No. of deposits made}&\multicolumn{1}{c}{Amount deposited (USD PPP)}\\
+\begin{table}[ht]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \caption{Regression of savings activity on lagged lottery results} \label{tab:reg-panelawards} \maxsizebox*{\textwidth}{\textheight}{ \begin{threeparttable} \begin{tabular}{l*{3}{c}} \toprule
+                &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}\\
+                &\multicolumn{1}{c}{No. of deposits made}&\multicolumn{1}{c}{Amount deposited (USD PPP)}\\
 \midrule
-L.Awarded prize &     0.29\sym{***}&     0.35\sym{***}&     0.24\sym{***}\\
-                &   (0.02)         &   (0.03)         &   (0.05)         \\
-L2.Awarded prize&     0.28\sym{***}&     0.32\sym{***}&     0.26\sym{***}\\
-                &   (0.02)         &   (0.03)         &   (0.05)         \\
-L3.Awarded prize&     0.25\sym{***}&     0.28\sym{***}&     0.23\sym{***}\\
-                &   (0.02)         &   (0.03)         &   (0.05)         \\
-L4.Awarded prize&     0.28\sym{***}&     0.32\sym{***}&     0.24\sym{***}\\
-                &   (0.02)         &   (0.03)         &   (0.04)         \\
-L5.Awarded prize&     0.25\sym{***}&     0.26\sym{***}&     0.20\sym{***}\\
-                &   (0.02)         &   (0.03)         &   (0.04)         \\
-L6.Awarded prize&     0.25\sym{***}&     0.29\sym{***}&     0.23\sym{***}\\
-                &   (0.02)         &   (0.03)         &   (0.04)         \\
-L7.Awarded prize&     0.19\sym{***}&     0.23\sym{***}&     0.13\sym{***}\\
-                &   (0.02)         &   (0.03)         &   (0.03)         \\
-Constant        &     0.16\sym{***}&     0.18\sym{***}&     0.13\sym{***}\\
-                &   (0.01)         &   (0.02)         &   (0.02)         \\
+L.Awarded prize &     0.48\sym{***}&     0.35\sym{***}\\
+                &   (0.03)         &   (0.04)         \\
+Constant        &     0.28\sym{***}&     0.21\sym{***}\\
+                &   (0.02)         &   (0.02)         \\
 \midrule
-Adjusted \(R^{2}\)&    0.163         &    0.135         &    0.049         \\
-Observations    &    10918         &    10918         &    10918         \\
-\bottomrule \end{tabular} \begin{tablenotes}[flushleft] \footnotesize \item \emph{Notes:} This table reports estimates of a distributed lag model with a lag length of 7. Standard errors are in parentheses. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level. \end{tablenotes} \end{threeparttable} } \end{table}
+Adjusted \(R^{2}\)&    0.035         &    0.011         \\
+Observations    &    12154         &    12154         \\
+\bottomrule \end{tabular} \begin{tablenotes}[flushleft] \footnotesize \item \emph{Notes:} This table reports estimates of a distributed lag model with a lag length of 1. Standard errors are in parentheses. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level. \end{tablenotes} \end{threeparttable} } \end{table}
 
-% File produced by akiba-estimate.do with /n/homeserver2/user2a/justinra/repos/akiba-lottery-pub/data/clean/akiba_long.dta on 07:31:53 19 Feb 2018 by user justinra on Stata 13.1 with seed X148d7873983cbab146cfd6c3f6771e1900043266
+% File produced by akiba-estimate.do with /Users/Justin/Repos/akiba-lottery-pub/data/clean/akiba_long.dta on 12:25:13 19 Feb 2018 by user Justin on Stata 13.1 with seed X32b3301a224bcb612cd99bbd84ad23ad0004026c

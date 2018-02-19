@@ -58,7 +58,7 @@ glo heteffectsflag = 1       // Analyze heterogenous treatment effects
 glo USDconvertflag = 1 		 // Runs analysis in USD-PPP
 glo ppprate = (1/38.84) 	 // PPP exchange rate from KSH (2009-2013)
 
-glo laglength = 7			 // Lag length for panel analysis
+glo laglength = 1			 // Lag length for panel analysis
 glo iterations = 10000 		 // Number of iterations for calculating FWER adjusted p-values
 glo riterations = 10000		 // Number of iterations for permutation test
 
