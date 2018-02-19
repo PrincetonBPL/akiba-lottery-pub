@@ -99,7 +99,7 @@ if $maineffectsflag {
 			do "$do_dir/custom_tables/reg-fdr.do"
 
 			glo regpath "reg-fwer`root'"
-			glo regtitle "Treatment effects controlling the FWER -- ``group'desc'"
+			glo regtitle "Treatment effects -- ``group'desc'"
 			do "$do_dir/custom_tables/reg-fwer.do"
 
 		}
