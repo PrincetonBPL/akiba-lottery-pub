@@ -161,13 +161,13 @@
 
 	\subsection{Treatment} \label{sec:treat}
 
-		Participants enrolled in the savings program were randomized into one of three different incentive schemes. Tables \ref{tab:sum-ysumall} reports summary statistics and tests for balance across treatment groups of several pre-treatment characteristics. We find no correlation between treatment assignment and these observable characteristics.
+		Participants enrolled in the savings program were randomized into one of three different incentive schemes. Tables \ref{tab:sum-ysumall} reports summary statistics and tests for balance across treatment groups of several pre-treatment characteristics. We find no overall  correlation between treatment assignment and these observable characteristics.\footnote{We account for the correlation of treatment to usage of a savings account in Section \ref{sec:est}.}
 
 		\begin{enumerate} \setlength{\itemsep}{1pt}
 
 			\item \textit{Matched incentive savings:} Participants in the matched group earned a 5\% matching contribution on any amount that they saved on a particular day. This amount of the incentive and the participants' current balance were reported every morning via SMS. We take this group as our control group.
 
-			\item \textit{Prize-linked savings:} After saving a non-zero amount, participants earned a lottery ticket transmitted via SMS, which could win a cash prize in proportion to the amount they saved. A lottery ticket was a random sequence of four numbers between 1 and 9, inclusive. Each morning, our administrative system randomly generated a winning sequence of four numbers. Prizes were awarded according to how well a participant's lottery numbers matched the winning numbers. If the first or second numbers matched, a 10\% match of savings was awarded. If \emph{both} the first and second numbers matched, a 100\% match of savings was awarded. Finally if all numbers matched, a prize of 200 times the daily savings was awarded. The expected earnings on this lottery ticket were equal to the 5\% match earned in the control group---i.e. the payoffs were equivalent but by a mean-preserving increase in risk. Table \ref{tab:tab-lottery} summarizes the observed and expected probabilities of each type of lottery match. Participants could only earn one lottery ticket per day. Our system entered winnings into the internal ledger and reported lottery results via SMS if participants in this group made a deposit. We henceforth refer to this group as the \textsc{Lottery} group.
+			\item \textit{Prize-linked savings:} After saving a non-zero amount, participants earned a lottery ticket transmitted via SMS, which could win a cash prize in proportion to the amount they saved. A lottery ticket was a random sequence of four numbers between 1 and 9, inclusive. Each morning, our administrative system randomly generated a winning sequence of four numbers. Prizes were awarded according to how well a participant's lottery numbers matched the winning numbers. If the first or second numbers matched, a 10\% match of savings was awarded. If \emph{both} the first and second numbers matched, a 100\% match of savings was awarded. Finally if all numbers matched, a prize of 200 times the daily savings was awarded. The expected earnings on this lottery ticket were equal to the 5\% match earned in the control group---i.e. the payoffs were equivalent but by a mean-preserving increase in risk. Participants could only earn one lottery ticket per day. Our system entered winnings into the internal ledger and reported lottery results via SMS if participants in this group made a deposit. We henceforth refer to this group as the \textsc{Lottery} group.
 
 			\item \textit{Prize-linked savings with feedback:} This scheme is identical to the lottery treatment except participants in this third group received lottery tickets with the first SMS message of the day regardless of deposits made. These tickets only became redeemable after participants had made a deposit before that day's lottery results were announced. Participants with winning lottery tickets who did not save could not claim the prize but received feedback on the lottery results daily. We henceforth refer to this group as the \textsc{Regret} group.
 
@@ -176,8 +176,6 @@
 		\input{../../tables/sum-ysumall.tex}
 
 		\clearpage
-
-		\input{../../tables/tab-lottery-final.tex}
 
 \section{Empirical Strategy} \label{sec:est}
 
@@ -191,7 +189,7 @@
 
 		$Y_{i}$ refers to the outcome variables for individual $i$ measured after the end of the savings program. \textsc{Lottery}$_i$ indicates assignment to the \textsc{Lottery} group and \textsc{Regret}$_i$ indicates assignment to the lottery with regret framing group. The omitted group is the control group. We test $\beta_{1} = 0$ and $\beta_{2} = 0$ to identify the effects of the lottery and lottery with feedback relative to the matched group. We additionally test $\beta_{2} - \beta_{1} = 0$ for differential effects between the two lottery treatments. Standard errors are clustered at the individual level.
 
-		To improve precision, we will also apply covariate adjustment with a vector of baseline indicators.\footnote{We include as control variables 1. Participant is female, 2. Participant is younger than 30 years old, 3. Participant completed primary school, 4. Participant is married, 5. Participant has at least one child dependant, 6. Participant uses a savings account, and 7. Above median CPGI score} We obtain the covariate-adjusted treatment effect estimate by estimating Equation \ref{eq:teffect} including the demeaned covariate vector $\mathbf{\dot X}_{i} = \mathbf{X}_{i} - \mathbf{\bar X}_{i}$ as an additive term and as an interaction with the treatment indicator.
+		To improve precision and control for potential selection bias, we apply covariate adjustment with a vector of baseline indicators.\footnote{We include as control variables 1. Participant is female, 2. Participant is younger than 30 years old, 3. Participant completed primary school, 4. Participant is married, 5. Participant has at least one child dependant, 6. Participant uses a savings account, and 7. Above median CPGI score.} We obtain the covariate-adjusted treatment effect estimate by estimating Equation \ref{eq:teffect} including the demeaned covariate vector $\mathbf{\dot X}_{i} = \mathbf{X}_{i} - \mathbf{\bar X}_{i}$ as an additive term and as an interaction with the treatment indicator.
 
 		\begin{equation} \begin{split} \label{eq:controls}
 			Y_{i} = & \beta_{0} + \beta_{1}\text{\textsc{Lottery}}_{i} + \beta_{2}\text{\textsc{Regret}}_{i} + \mathbf{\dot X}'_i \gamma_{0} \\
@@ -221,7 +219,7 @@
 
 	\subsection{Heterogeneous treatment effects}
 
-		We analyze the extent to which the savings program produced heterogeneous treatment effects with the following specification.
+		We analyze the extent to which the savings program produced heterogeneous treatment effects with the following specification.\footnote{This is a slight abuse of notation as $\beta$ denotes a different parameter than those in the previous regressions.}
 
 		\begin{equation} \begin{split}
 		Y_{i} = & \beta_{0} + \beta_{1}\text{\textsc{Lottery}}_{i} + \beta_{2}\text{\textsc{Regret}}_{i} + \delta_{0}x_{i} \\
@@ -239,7 +237,10 @@
 					& + \lambda_{1}(\text{\textsc{Lottery}}_{i} \times t) + \lambda_{2}(\text{\textsc{Regret}}_{i} \times t) + \varepsilon_{i}
 		\end{split} \label{eq:timelinear} \end{equation}
 
-		In this equation, $t$ is the number of days since the start of the savings program. $\lambda_1$ is the marginal effect of the lottery incentive with respect to days elapsed. $\lambda_2$ is the marginal effect of lottery with feedback. We test the hypotheses $\lambda_1 = 0$ and $\lambda_2 = 0$---that the effects of the PLS are constant as a function of time. Standard errors are clustered at the individual level.
+		In this equation, $t$ is the number of days since the start of the savings program and $Y_{i,t}$ denotes whether participant $i$ made a deposit at period $t$. We also estimate this equation for $Y_{i,t}$ as the amount deposited in period $t$. $\lambda_1$ is the marginal effect of the lottery incentive on $Y_{i,t}$ with respect to days elapsed. $\lambda_2$ is the marginal effect of lottery with feedback. We test the hypotheses $\lambda_1 = 0$ and $\lambda_2 = 0$---that the effects of the PLS are constant as a function of time. Standard errors are clustered at the individual level.
+
+		% time trend could be quadratic -- u-shaped effects
+		% graph suggests a some decay function
 
 		% We estimate day-specific effects with the following specification.
 		%
@@ -250,21 +251,25 @@
 		%
 		% $Y_{i, t}$ is the outcome for individual $i$ at period $t$, \textsc{Lottery}$_i$ indicates assignment to the \textsc{Lottery} group, and \textsc{Regret}$_i$ indicates assignment to the \textsc{Regret} group. $\tau_t$ is an indicator taking the value 1 in period $t$. The omitted group is the control group at $t=1$. We can interpret the value of $\beta_1 + \eta_t$ and $\beta_1 + \theta_t$ as the effects of \textsc{Lottery} and \textsc{Regret}, respectively, at period $t$. Standard errors are clustered at the individual level.
 
-	\subsection{Testing the effect of experience on saving}
+	\subsection{Testing for regret aversion}
 
-		% effect may or may not vary over time. does effect depend on experience of winning (hot hand, gamblers) or regret?
+		We can leverage exogeneity of the lottery results to formulate a test of regret aversion. If participants are saving in response to experienced regret of foregoing the prize, we would expect to see an additional effect of winning the lottery beyond the average treatment effect. Let $Y_{i,t}$ denote having made a deposit or the amount deposited by participant $i$ in period $t$. $\text{\textsc{Regret}}_{i}$ is the treatment indicator and $\text{Win}_{i,t}$ is an indicator for having a winning lottery ticket announced in period $t$ and earned in period $t-1$.
+
+		\begin{equation} \begin{split}
+		Y_{i,t} = & \pi_{0} + \pi_{1}\text{\textsc{Regret}}_{i} + \pi_{2}(\text{\textsc{Regret}}_{i} \times \text{Win}_{i,t}) + \omega t + \varepsilon_{i}
+		\end{split} \label{eq:lag} \end{equation}
+
+		$\pi_1$ is the marginal effect of \textsc{Regret} for participants who did not win the lottery in period $t$ while $\pi_2$ is the effect among winners. The control group is the comparison group. We omit the indicator for having won the lottery in the control group since those participants did not enter into the drawing. We test the null hypothesis of no regret aversion, $\pi_2 = 0$.
 
 \section{Results} \label{sec:results}
 
-	% perhaps discuss baseline balance and attrition and empirical lottery results under this section
-
 	\subsection{PLS with feedback increases number of deposits without increasing savings}
 
-		We find that participants in the \textsc{Regret} group made between 5-6 more deposit transactions ($\hat \beta = 5.71, p < 0.05$) over the entire project period compared to those receiving the match incentive. This effect is large, amounting to a 40\% increase over the average number of deposits in the control group. These results are further robust to the inclusion of control variables and significant at the 10\% level with FWER adjustment. Table \ref{tab:reg-fwermobile} documents the highlighted results on savings. We do not find strong evidence of an effect of the lottery incentive \textit{without} the regret component against either \textsc{Regret} or control group. Nevertheless, point estimates suggest that the lottery alone could increase deposits by as much as 33\% ($\hat \beta = 4.59, p < 0.10$) compared to the control. Panel A of Figure \ref{fig:line-cumdeposits} traces the cumulative path of deposits made over the savings period. Average deposits for the \textsc{Lottery} and \textsc{Regret} groups are greater than for the control group for all periods, and grows at a higher rate. We are able to statistically distinguish total values at the end of the 60-day period for \textsc{Regret} and not for \textsc{Lottery}.
+		By the end of the project, the median participant in the control group contributed USD 3.86 to the mobile savings account over 8 transactions. The total saved by the control group amounts to less than 5\% of the median monthly income (USD 77.24). Compared to median monthly savings at baseline (USD 22.91), this result is surprising given the high 5\% rate of return on deposits. Table \ref{tab:tab-lottery} compares the lottery results with the expected probabilities of each type of lottery match.
 
-		Table \ref{tab:reg-mde} displays the MDE for each outcome and shows that the present experimental design is powered to detect effects on savings larger than what we estimate for the \textsc{Lottery} group. It is likely then that null effects are due to a lack of statistical power and not due to an absence of a true effect.
+		\input{../../tables/tab-lottery-final.tex}
 
-		% resps also withdrew more resulting in a lower total balance, possibly funded deposits with withdrawals
+		We find that participants in the \textsc{Regret} group made between 5-6 more deposit transactions ($\hat \beta = 5.71, p < 0.05$) over the entire project period compared to those receiving the match incentive. Table \ref{tab:reg-fwermobile} reports the moderately sized effect; it is a 0.38 SD increase over the average number of deposits in the control group. This result is further robust to the inclusion of control variables and significant at the 10\% level with FWER adjusted $p$-values. We do not find strong evidence of an effect of the lottery incentive alone against either \textsc{Regret} or the control group ($p < 0.10$), but estimates suggest that the magnitude of this treatment effect is comparable to that of \textsc{Regret}. Panel A of Figure \ref{fig:line-cumdeposits} traces the cumulative path of deposits made over the savings period. Average deposits for the \textsc{Lottery} and \textsc{Regret} groups are greater than for the control group for all periods, and grows at a higher rate. We are able to statistically distinguish total values at the end of the 60-day period for \textsc{Regret} and not for \textsc{Lottery}. Table \ref{tab:reg-mde} displays the minimum detectable effect sizes for each outcome and shows that the present experimental design is powered to detect effects only larger than what we estimate for the \textsc{Lottery} group. A larger sample size may thus be required to reject null effects of \textsc{Lottery} at the 5\% level.
 
 		\input{../../tables/reg-fwermobile.tex}
 
@@ -278,6 +283,10 @@
 		\clearpage
 
 		While effects on number of deposits are acute, we find no effect of either treatment on total amount deposited over the project period. Panel B of Figure \ref{fig:line-cumdeposits} illustrates the cumulative deposit amounts, averaged by treatment group, over the 60-day period. We cannot distinguish total deposit amounts between any of the three incentive schemes. So while participants are making more deposits, the amount of each deposit is smaller on average than in the control group.
+
+
+		% resps also withdrew more resulting in a lower total balance, possibly funded deposits with withdrawals
+
 
 		Our results are largely consistent with findings from previous randomized evaluations of lottery-based incentives on savings. \shortciteN{loibl_testing_2016}, examining features of the Individual Development Account program in the U.S., find no effect of PLS over certain returns of equal expected value. The study posits that severe liquidity constraints in the sample rendered behavioral interventions ineffective. With a median monthly income of USD 77, households in our study may be similarly cash-strapped and unable to allocate a greater portion of their budget to savings. Lottery-based incentives applied to other domains---including labor supply \shortcite{brune_effect_2015} and health-related behaviors \shortcite{kimmel_randomized_2012,bjorkman_nyqvist_using_2015}---are found to have significant effects.
 
@@ -312,6 +321,8 @@
 		\includegraphics[width=\textwidth]{../../figures/hist-deposits.pdf}
 		\caption*{\footnotesize \emph{Notes:} This figure plots the empirical distribution of timing of all deposits over the project period. Each bin spans 30 minutes with a height equal to the fraction of all deposits within each treatment group. Participants received the first SMS at 8:00 that summarized how much the participant saved the previous day, how much the participant earned through a matching contribution or winnings, and their total balance. An hour later, participants received a second SMS encouraging them to save that day. Participants in \textsc{Regret} received a new lottery ticket with the second message.}
 		\end{figure}
+
+		\input{../../tables/reg-regretaversion.tex}
 
 		% what if this is just an endowment effect of holding the lottery ticket?
 		% look at timing to see if transactions are after getting yesterdays results or after getting todays ticket
@@ -393,6 +404,7 @@
 %   Regret people withdraw more when given opportunity
 %
 %   The effect occurs right after the lottery results are announced, and alot after receiving the ticket.
+%   We can't rule out endowment effect but regret aversion is still driving results.
 %
 % 	Lottery/Regret increases lucky person: hot hands, actually might make subjective bias worse
 % 	Lottery/Regret increases self-selection into regret group: evidence of consumer demand from behavior _and_ self-report, but no desire to continue program and didn't tell friends or family

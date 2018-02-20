@@ -51,14 +51,12 @@ glo figuresflag = 1			 // Output graphs and figures
 
 glo attritionflag = 1		 // Attrition analysis
 glo maineffectsflag = 1      // Analyze main treatment effects
-glo panelflag = 1			 // Transaction analysis with panel
 glo riflag = 1				 // Randomization inference
 glo heteffectsflag = 1       // Analyze heterogenous treatment effects
 
 glo USDconvertflag = 1 		 // Runs analysis in USD-PPP
 glo ppprate = (1/38.84) 	 // PPP exchange rate from KSH (2009-2013)
 
-glo laglength = 1			 // Lag length for panel analysis
 glo iterations = 10000 		 // Number of iterations for calculating FWER adjusted p-values
 glo riterations = 10000		 // Number of iterations for permutation test
 
@@ -129,16 +127,3 @@ di "Finished in `r(t1)' seconds."
 /**********
 ** Notes **
 ***********
-
-do winnings affect endline savings/gambling? disentangle regret aversion (+) and experience of winning (-), unable to because in the subject-level, savings and prizes are co-determined, must use panel. regress outcomes on matches. regress outcomes on size of match.
-	For lottery and regret, does winning/losing affect future savings? A test of gambling/hot hand fallacy. Only able to test in panel data.
-	For regret, does experiencing winning without claiming prize affect future savings? A test of regret aversion. Only able to test in panel data.
-	To test fallacy, check lit
-	two sources of variation: seeing potential winnings and experience of winning: reg savings regretXwinning with lags
-	will probably have to account for serial correlation if estimating a time series model
-
-is there adaptation over time? test for description experience gap, if so then is it experience or repetition or regret? might it shrink within the first few days? there is a slowdown in the cdf. find a statistical test for this
-project timeline
-can investigate more thoroughly how people saved during project period (time of day, week fixed effects, distance from reminder, etc.) bunching after/before lottery/reminder/endofday by group
-what the hell is 11111 2222 winning ticket?
-discrepancy in prizes and savings in a day?

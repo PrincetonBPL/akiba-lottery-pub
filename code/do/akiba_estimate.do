@@ -63,9 +63,9 @@ use "$data_dir/clean/akiba_wide.dta", clear
 
 loc grouplist "ymobile yearly ylate ypanel ysave ygamble yakiba ycons yselect yself" // ylottery
 
-loc ymobiledesc "Mobile savings by respondent"
-loc yearlydesc "Mobile savings by respondent (before 30 days)"
-loc ylatedesc "Mobile savings by respondent (after 30 days)"
+loc ymobiledesc "Mobile savings"
+loc yearlydesc "Mobile savings (before 30 days)"
+loc ylatedesc "Mobile savings (after 30 days)"
 loc ypaneldesc "Mobile savings by period"
 loc ysavedesc "Savings outside the project"
 loc ygambledesc "Gambling"
@@ -201,7 +201,7 @@ if $heteffectsflag {
 
 			eststo: reg `yvar' lottery LX`xvar' regret RX`xvar' `xvar', vce(r)
 
-			sum `yvar' if control
+			qui sum `yvar' if control
 			estadd scalar ymean = round(r(mean), 0.01)
 
 			test lottery + LX`xvar' = 0
@@ -214,7 +214,7 @@ if $heteffectsflag {
 
 		}
 
-	loc prehead "\begin{table}[ht]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \caption{Heterogeneous effects -- Primary outcomes by `xvarlab'} \label{tab:het-`xvar'} \maxsizebox*{\textwidth}{\textheight}{ \begin{threeparttable} \begin{tabular}{l*{`columns'}{c}} \toprule"
+		loc prehead "\begin{table}[ht]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \caption{Heterogeneous effects -- Primary outcomes by `xvarlab'} \label{tab:het-`xvar'} \maxsizebox*{\textwidth}{\textheight}{ \begin{threeparttable} \begin{tabular}{l*{`columns'}{c}} \toprule"
 		loc postfoot "\bottomrule \end{tabular} \begin{tablenotes}[flushleft] \footnotesize \item \emph{Notes:} @note \end{tablenotes} \end{threeparttable} } \end{table}"
 		loc footnote "This table reports OLS estimates of the treatment effect and its interaction with baseline. Standard errors are in parentheses. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level. We also report the \(p\)-values for joint tests on the direct treatment effect conditional on the baseline covariate $= 1$."
 
@@ -231,7 +231,7 @@ if $heteffectsflag {
 
 		eststo, prefix(horse): reg `yvar' lottery regret `righthand' `fillmiss', vce(r)
 
-		sum `yvar' if control
+		qui sum `yvar' if control
 		estadd scalar ymean = round(r(mean), 0.01)
 
 	}
@@ -245,20 +245,25 @@ if $heteffectsflag {
 
 }
 
-///////////////////////////
-/* Distributed lag model */
-///////////////////////////
+//////////////////////////////////////
+/* Test regret aversion using panel */
+//////////////////////////////////////
 
 use "$data_dir/clean/akiba_long.dta", clear
 sort surveyid period
 
-eststo: reg mobile_deposits L(1/$laglength).mobile_saved L(1/$laglength).mobile_matched L(1/$laglength).mobile_awarded if regret == 1, vce(cl surveyid)
-eststo: reg mobile_depositamount L(1/$laglength).mobile_saved L(1/$laglength).mobile_matched L(1/$laglength).mobile_awarded if regret == 1, vce(cl surveyid)
+gen RxW = (regret == 1 & mobile_matched == 1)
+la var RxW "Regret $\times$ Won prize"
 
-loc prehead "\begin{table}[ht]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \caption{Regression of savings activity on lottery results and prizes awarded} \label{tab:reg-regretaversion} \maxsizebox*{\textwidth}{\textheight}{ \begin{threeparttable} \begin{tabular}{l*{3}{c}} \toprule"
+eststo: reg mobile_saved regret RxW period if lottery == 0, vce(cl surveyid)
+
+	qui sum mobile_saved if control == 1
+	estadd scalar ymean = round(r(mean), 0.01)
+
+loc prehead "\begin{table}[ht]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \caption{Regression of deposits on treatment and lottery results} \label{tab:reg-regretaversion} \maxsizebox*{\textwidth}{\textheight}{ \begin{threeparttable} \begin{tabular}{l*{2}{c}} \toprule"
 loc postfoot "\bottomrule \end{tabular} \begin{tablenotes}[flushleft] \footnotesize \item \emph{Notes:} @note \end{tablenotes} \end{threeparttable} } \end{table}"
-loc footnote "This table reports estimates of a distributed lag model with a lag length of $laglength. Standard errors are in parentheses. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level."
-esttab using "$tab_dir/reg-regretaversion", alignment(c) ar2 nobaselevels obslast nogap label b(%9.2f) se(%9.2f) sfmt(%9.2f) star(* 0.10 ** 0.05 *** 0.01) note("`footnote'") prehead("`prehead'") postfoot("`postfoot'") se compress booktabs replace
+loc footnote "This table reports estimates of a regression of saving on the regret treatment and lottery results. The unit of observation is individual-by-period. Standard errors are in parentheses and clustered at the individual level. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level."
+esttab using "$tab_dir/reg-regretaversion", alignment(c) ar2 nobaselevels obslast nogap label nonum b(%9.2f) se(%9.2f) sfmt(%9.2f) scalars("ymean Control mean") star(* 0.10 ** 0.05 *** 0.01) note("`footnote'") prehead("`prehead'") postfoot("`postfoot'") se compress booktabs replace
 eststo clear
 
 file open tex using "$tab_dir/reg-regretaversion.tex", write append
@@ -269,17 +274,13 @@ file close tex
 /* Time-dependent treatment effects */
 //////////////////////////////////////
 
-foreach yvar of varlist mobile_deposits mobile_depositamount {
+eststo: reg mobile_saved i.treatmentgroup##c.period, vce(cl surveyid)
+test 2.treatmentgroup#c.period = 3.treatmentgroup#c.period
 
-	eststo: reg `yvar' i.treatmentgroup##c.period, vce(cl surveyid)
-	test 2.treatmentgroup#c.period = 3.treatmentgroup#c.period
-
-}
-
-loc prehead "\begin{table}[ht]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \caption{Treatment effects interacted with a linear time trend} \label{tab:reg-timetrend} \maxsizebox*{\textwidth}{\textheight}{ \begin{threeparttable} \begin{tabular}{l*{2}{c}} \toprule"
+loc prehead "\begin{table}[ht]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \caption{Time-dependent treatment effects on deposits} \label{tab:reg-timetrend} \maxsizebox*{\textwidth}{\textheight}{ \begin{threeparttable} \begin{tabular}{l*{2}{c}} \toprule"
 loc postfoot "\bottomrule \end{tabular} \begin{tablenotes}[flushleft] \footnotesize \item \emph{Notes:} @note \end{tablenotes} \end{threeparttable} } \end{table}"
-loc footnote "This table reports a regression of savings activity on treatment indicators and a linear time trend. The unit of observation is individual-period. Standard errors are in parentheses and clustered at the individual level. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level."
-esttab using "$tab_dir/reg-timetrend", alignment(c) ar2 nobaselevels nogap label obslast b(%9.3f) se(%9.3f) sfmt(%9.3f) star(* 0.10 ** 0.05 *** 0.01) note("`footnote'") prehead("`prehead'") postfoot("`postfoot'") se compress booktabs replace
+loc footnote "This table reports a regression of savings activity on treatment indicators and a linear time trend. The unit of observation is individual-by-period. Standard errors are in parentheses and clustered at the individual level. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level."
+esttab using "$tab_dir/reg-timetrend", alignment(c) ar2 nobaselevels nogap label obslast nonum b(%9.3f) se(%9.3f) sfmt(%9.3f) star(* 0.10 ** 0.05 *** 0.01) note("`footnote'") prehead("`prehead'") postfoot("`postfoot'") se compress booktabs replace
 eststo clear
 
 file open tex using "$tab_dir/reg-timetrend.tex", write append
@@ -308,7 +309,7 @@ loc length: list sizeof varlist
 
 foreach xvar of varlist $xcor {
 
-	eststo, pre(num): reg mobile_totdeposits `xvar' if control == 1, vce(cl surveyid)
+	eststo, pre(num): reg mobile_saved `xvar' if control == 1, vce(cl surveyid)
 
 		estadd loc ar2 = string(e(r2_a), "%9.2f")
 		estadd loc fstat = string(e(F), "%9.2f")

@@ -646,7 +646,7 @@ gen mobile_withindeposits = mobile_deposits if mobile_saved == 1
 la var mobile_withindeposits "No. of deposits on days saved"
 
 gen mobile_matched = mobile_matches > 0 & ~mi(mobile_matches)
-la var mobile_matched "Matching ticket"
+la var mobile_matched "Winning ticket"
 
 gen mobile_awarded = mobile_matched == 1 & mobile_saved == 1 & control == 0
 la var mobile_awarded "Awarded prize"
