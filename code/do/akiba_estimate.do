@@ -331,3 +331,13 @@ loc postfoot "\bottomrule \end{tabular} \begin{tablenotes}[flushleft] \footnotes
 loc footnote "This table reports estimates of `length' univariate regressions of amount deposited on preference parameters estimated in the lab. Standard errors are clustered at the participant level and reported in parentheses. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level."
 esttab amt* using "$tab_dir/reg-cortotdepositamt", alignment(c) obslast nobaselevels nomtitle label b(%9.2f) se(%9.2f) sfmt(%9.2f) scalars("ar2 Adjusted R2" "fstat F-statistic") nogap star(* 0.10 ** 0.05 *** 0.01) prehead("`prehead'") postfoot("`postfoot'") note("`footnote'") se compress booktabs replace
 eststo clear
+
+//////////////////////////////
+/* Test for lottery payoffs */
+//////////////////////////////
+
+use "$data_dir/clean/akiba_long.dta", clear
+
+recode mobile_matches (0 = 0) (1 = 0.1) (2 = 1) (4 = 200), gen(mobile_pctmatch)
+loc ev_pctmatch = (0*(8/9)^4) + (0.1*(2/9)) + (1*(1/9)^2) + (200*(1/9)^4)
+ttest mobile_pctmatch = `ev_pctmatch'

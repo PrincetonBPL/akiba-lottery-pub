@@ -587,7 +587,7 @@ la var mobile_matches "No. of matches on ticket"
 
 /* Merge with subjects data */
 
-merge m:1 account using `clean_subjects', keep(2 3) // Why are there 24 unmatched from subjects? They're not in the raw ledger data and didn't use account
+merge m:1 account using `clean_subjects', keep(2 3) // 24 unmatched didn't use account, 12 matched didn't deposit
 
 /* Create balanced panel for days without account activity */
 
