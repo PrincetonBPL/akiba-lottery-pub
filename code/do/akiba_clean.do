@@ -155,8 +155,6 @@ forval i = 0/1 {
 	if $USDconvertflag {
 
 		replace labor_monthlyinc_`i' = labor_monthlyinc_`i' * $ppprate
-		loc pppla "`:var la labor_monthlyinc_`i'' (USD PPP)"
-		la var labor_monthlyinc_`i' "`pppla'"
 
 	}
 
@@ -217,8 +215,6 @@ forval i = 0/1 {
 		foreach var of varlist save_monthlysave_`i' save_mpesa_`i' save_monthlyrosca_`i' save_othersavings_`i' {
 
 			replace `var' = `var' * $ppprate
-			loc pppla "`:var la `var'' (USD PPP)"
-			la var `var' "`pppla'"
 
 		}
 
@@ -254,7 +250,7 @@ forval i = 1/13 {
 	ren gamblingfreq`i' gam_freq`i'_0
 
 }
-*
+
 egen gam_index_0 = weightave(gam_freq*), normby(control)
 la var gam_index_0 "Weighted index of gambling frequency"
 
@@ -368,8 +364,6 @@ foreach v of varlist gam_wtp_0 pref_indiff* pref_*amount {
 	if $USDconvertflag {
 
 		replace `v' = `v' * $ppprate
-		loc pppla "`:var la `v'' (USD PPP)"
-		la var `v' "`pppla'"
 
 	}
 
@@ -516,8 +510,6 @@ foreach v of varlist akiba_controlsave_1 akiba_lotterysave_1 akiba_regretsave_1 
 	if $USDconvertflag {
 
 		replace `v' = `v' * $ppprate
-		loc pppla "`: var la `v'' (USD PPP)"
-		la var `v' "`pppla'"
 
 	}
 
@@ -671,13 +663,11 @@ la var mobile_latedepositamount "Made a deposit (after 30 days)"
 gen mobile_latesaved = mobile_saved if period > 30
 la var mobile_latesaved "Amount deposited (after 30 days)"
 
-foreach v of varlist mobile_balance mobile_finalbalance mobile_*amount mobile_*amt {
+foreach v of varlist mobile_balance mobile_finalbalance mobile_*amount {
 
 	if $USDconvertflag {
 
 		replace `v' = `v' * $ppprate
-		loc pppla "`:var la `v'' (USD PPP)"
-		la var `v' "`pppla'"
 
 	}
 
