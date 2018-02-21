@@ -31,6 +31,7 @@
 \renewcommand\thesubsubsection{\thesubsection.\arabic{subsubsection}}
 
 \newcommand{\specialcell}[2][c]{\begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
+\renewcommand{\today}{\ifcase \month \or January\or February\or March\or April\or May \or June\or July\or August\or September\or October\or November\or December\fi~ \number \year}
 
 \begin{document}
 
@@ -268,11 +269,12 @@
 
 		By the end of the project, the median participant in the control group contributed USD 3.86 to the mobile savings account over 8 deposits. The total saved by the control group amounts to less than 5\% of the median monthly income (USD 77.24). Compared to median monthly savings at baseline (USD 22.91), this result is surprising given the high 5\% rate of return on deposits. Table \ref{tab:tab-lottery} compares the lottery results with the expected probabilities of each type of lottery match. The mean prize award is 0.05 of deposits ($p > 0.10$).
 
+		% is this big?
 		% people are saving large amount already, maybe there was no demand for saving?
 
 		\input{../../tables/tab-lottery-final.tex}
 
-		We find that participants in the \textsc{Regret} group made between 5-6 more deposit transactions ($\hat \beta = 5.71, p < 0.05$) over the entire project period compared to those receiving the match incentive. Table \ref{tab:reg-fwermobile} reports a moderately sized effect of 0.38 SD over the average frequency of deposits in the control group. This result is further robust to the inclusion of control variables and significant at the 10\% level with FWER adjusted $p$-values. These effects exhibit no heterogeneity across demographic characteristics, risk attitudes, or temporal discounting. We do not find strong evidence of an effect of the lottery incentive alone against either \textsc{Regret} or the control group ($p < 0.10$), but estimates suggest that the magnitude of this treatment effect is comparable to that of \textsc{Regret}. Panel A of Figure \ref{fig:line-cumdeposits} traces the cumulative path of deposits made over the duration of the project. Average deposits for the \textsc{Lottery} and \textsc{Regret} groups are greater than for the control group over all periods. We are able to statistically distinguish total values at the end of the 60-day period for \textsc{Regret} and not for \textsc{Lottery}. Table \ref{tab:reg-mde} displays the minimum detectable effect sizes for each outcome and shows that the present experimental design is powered to detect effects only larger than what we estimate for the \textsc{Lottery} group. A larger sample size may thus be required to reject null effects of \textsc{Lottery} at the 5\% level.
+		We find that participants in the \textsc{Regret} group made between 5-6 more deposit transactions ($\hat \beta = 5.71, p < 0.05$) over the entire project period compared to those receiving the match incentive. Table \ref{tab:reg-fwermobile} reports a moderately sized effect of 0.38 SD over the average frequency of deposits in the control group. This result is further robust to the inclusion of control variables and significant at the 10\% level with FWER adjusted $p$-values. These effects exhibit no heterogeneity across demographic characteristics, risk attitudes, or temporal discounting.\footnote{We report the full set of heterogeneity results in an online appendix.} We do not find strong evidence of an effect of the lottery incentive alone against either \textsc{Regret} or the control group ($p < 0.10$), but estimates suggest that the magnitude of this treatment effect is comparable to that of \textsc{Regret}. Panel A of Figure \ref{fig:line-cumdeposits} traces the cumulative path of deposits made over the duration of the project. Average deposits for the \textsc{Lottery} and \textsc{Regret} groups are greater than for the control group over all periods. We are able to statistically distinguish total values at the end of the 60-day period for \textsc{Regret} and not for \textsc{Lottery}. Table \ref{tab:reg-mde} displays the minimum detectable effect sizes for each outcome and shows that the present experimental design is powered to detect effects only larger than what we estimate for the \textsc{Lottery} group. A larger sample size may thus be required to reject null effects of \textsc{Lottery} at the 5\% level.
 
 		\input{../../tables/reg-fwermobile.tex}
 
@@ -291,37 +293,38 @@
 
 		% why do we observe what we observe? 1. explain priors and 2. explain differences with the lit
 
-		Our results are largely consistent with findings from previous randomized evaluations of lottery-based incentives on savings. \shortciteN{loibl_testing_2016}, examining features of the Individual Development Account program in the U.S., find no effect of PLS over certain returns of equal expected value. The study posits that severe liquidity constraints in the sample rendered behavioral interventions ineffective. With a median monthly income of USD 77, households in our study may be similarly cash-strapped and unable to allocate a greater portion of their budget to savings even when guaranteed rates of return are as high as 5\%. Indeed, baseline correlations suggest that monthly income is predictive of savings in the mobile product \textit{ceteris paribus}.
+		Our results are largely consistent with findings from previous randomized evaluations of lottery-based incentives on savings. \shortciteN{loibl_testing_2016}, examining features of the Individual Development Account program in the U.S., find no effect of PLS over certain returns of equal expected value. The study posits that severe liquidity constraints rendered behavioral interventions ineffective. With a median monthly income of USD 77, households in our study may be similarly cash-strapped and unable to allocate a greater portion of their budget to savings even when guaranteed rates of return are as high as 5\%. Baseline correlations suggest that monthly income is predictive of savings in the mobile product \textit{ceteris paribus} though we do not observe heterogeneity of the treatment effect conditional on income.
 
-		Lottery-based incentives applied to other domains, including labor supply \shortcite{brune_effect_2015} and health-related behaviors \shortcite{kimmel_randomized_2012,bjorkman_nyqvist_using_2015}, are found to have significant effects on behavior. \shortciteN{brune_effect_2015} reports a pattern of effects similar to what we find in this study; lottery bonuses produce effects on the extensive margin (increased attendance of harvesters) but not intensively (harvester output).
+		Lottery-based incentives applied in other domains, including labor supply \shortcite{brune_effect_2015} and health-related behaviors \shortcite{kimmel_randomized_2012,bjorkman_nyqvist_using_2015}, are found to have significant effects on behavior. \shortciteN{brune_effect_2015} reports a pattern of effects similar to what we find in this study; lottery bonuses produce effects on the extensive margin (increased attendance of harvesters) but not intensively (harvester output).
 
-		% \shortciteN{karlan_banking_2016} shows that the problem in rural contexts is liquidity. Check for the same here.
-		% \shortciteN{chetty_active_2014} shows that any kind of incentives have limited effects and can cause crowd-out.
-		% \shortcite{brune_effect_2015} finds effects at the extensive margin but not the intensive margin (qualifying for lottery over paying in for higher rewards)
-		% lybbert tizon in haiti
-		% gertler in mexico
-		% bilal zia paper
-		% why would me and them show increase in frequency but not amount? liquidity constraints + preference gambling + risk aversion -> spread risk a la samuelson
+		The pattern of our results suggest that our participants receive some benefit simply by playing the lottery. An increase in the number of deposits in the treatment group is expected if merely making a deposit on a certain day qualifies participants to play the lottery for that day. When we examine as an outcome the number of days saved, we find that participants indeed save almost 5 days more ($\hat \beta = 4.94, p < 0.05$)---and thus play the lottery 5 more times---than the control group. Unsurprisingly, participants are not making more deposits \textit{within} days since this does not affect lottery eligibility. Thus, the overall effect of the PLS is to encourage savers to make more deposits in order to ``play'' without a corresponding increase in amount saved.
 
-		The pattern of our results suggest that our participants receive some benefit simply by playing the lottery. An increase in the number of deposits in the treatment group is expected if merely making a deposit on a certain day qualifies participants to play the lottery for that day. When we examine as an outcome the number of days saved, we find that participants indeed save almost 5 days more ($\hat \beta = 4.94, p < 0.05$)---and thus play the lottery 5 more times---than the control group. Unsurprisingly, participants are not making more deposits \textit{within} days since this does not affect lottery eligibility. Thus, the overall effect of the PLS is to encourage savers to make more deposits in order to ``play'' without a corresponding increase in amount saved. % This is predicted by the gambling value model and not models of rank-dependent utility
+		% This is predicted by the gambling value model and not models of rank-dependent utility
 
 		% people feel luckier, regret lottery groups select into regret (they want feedback and the lottery)
 		% Do they play because of non-divisible large expenditures like \shortciteN{herskowitz__2016} http://blogs.worldbank.org/impactevaluations/unmet-liquidity-needs-and-spread-sports-betting-guest-post-sylvan-herskowitz?
 		% \shortcite{dizon_leveraging_2016} it doesn't matter the level of risk, effect is in fact higher if lottery component is smaller
 
+		% \shortcite{brune_effect_2015} finds effects at the extensive margin but not the intensive margin (qualifying for lottery over paying in for higher rewards)
+		% lybbert tizon in haiti
+		% gertler in mexico
+		% bilal zia paper
+		% utlity of gambling > preference for skewness
+		% why would me and them show increase in frequency but not amount? liquidity constraints + preference gambling + risk aversion -> spread risk a la samuelson
+
 		\input{../../tables/reg-mde.tex}
 
-		The non-effect on savings we observe are at odds with the experimental literature. \shortciteN{atalay_savings_2014} conducted an online portfolio-choice experiment in the U.S. that resulted in subjects saving an additional 12 percentage points more with lottery-linked and regular savings than with regular savings alone. In an experiment with undergraduates, \shortciteN{filiz-ozbay_lottery_2015} found that subjects are willing to accept a lower rate of return to delay a payment when the return is stochastic than when it is deterministic. A possible explanation is that effects depend on the rate of return offered by the deterministic match. In a companion experiment studying savings decision among 147 MBA students, we find that lottery-based returns increase savings for interest rates between 1-3\%. These differences vanish when rates are increased to 5\%, the rate offered in the present study. Instead of holding returns constant, \shortciteN{filiz-ozbay_lottery_2015} takes rates of return as the outcome with the subects' choice set binary between consuming or saving the entire budget. Our null result on savings may be due to a ceiling effect not observed in previous experimental designs.
+		At first glance, the non-effect on savings we observe are at odds with the experimental literature. \shortciteN{atalay_savings_2014} conducted an online portfolio-choice experiment in the U.S. that resulted in subjects saving an additional 12 percentage points more with lottery-linked and regular savings than with regular savings alone. In an experiment with undergraduates, \shortciteN{filiz-ozbay_lottery_2015} found that subjects are willing to accept a lower rate of return to delay a payment when the return is stochastic than when it is deterministic. A possible explanation is that effects depend on the rate of return offered by the deterministic match. In a companion experiment studying savings decision among 147 business students, we find that lottery-based returns increase savings for interest rates between 1-3\%. These differences vanish when rates are increased to 5\%, the rate offered in the present study. Instead of holding returns constant, \shortciteN{filiz-ozbay_lottery_2015} takes rates of return as the outcome with the subects' choice set binary between consuming or saving the entire budget. Our null result on savings may be due to a ceiling effect not observed in previous experimental designs.
 
 		% \shortcite{dizon_leveraging_2016} \shortciteN{atalay_savings_2014} probably due to menu effects and lack of liquidity constraints
-		\input{../../tables/reg-fwerselect.tex}
-		\input{../../tables/reg-fwerself.tex}
+		% if ^, can merge this with other graf about liquidity constraints
 
-	\subsection{Regret Aversion as a Potential Mechanism}
+		% \input{../../tables/reg-fwerselect.tex}
+		% \input{../../tables/reg-fwerself.tex}
 
-		% seeks to explain why PLS + feedback was especially effective against PLS alone
+	\subsection{Regret Aversion is a Potential Mechanism}
 
-		Our estimates on the effect of \textsc{Lottery} are smaller in magnitude to the effect of \textsc{Regret} and are not significant at the 5\% level. Why might PLS with feedback elicit a larger behavioral response than PLS alone? Two alternative, but not mutually exclusive mechanisms could be driving these results. First, recall that participants in \textsc{Regret} automatically received lottery tickets at the beginning of each day while \textsc{Lottery} participants had to make deposits before obtaining a ticket. Participants who exhibit loss aversion will thus be more willing to save to prevent losing a ticket already in hand \shortcite{kahneman_advances_1992}. Second, participants save to minimize anticipated regret from winning the lottery but being unable to claim the prize. This mechanism is inactive in the PLS treatment alone because that group only receives lottery results after saving. Figure \ref{fig:hist-deposits} plots the distribution of deposits over time and shows timing suggestive of regret aversion. A majority of all deposits made in the \textsc{Regret} group ocurred within an hour of announcing the lottery results from the previous day. A similarly peaked event occurs between the results and the disbursement of that day's lottery ticket. We observe no similar pattern in the \textsc{Lottery} and control groups.
+		Our estimates on the effect of \textsc{Lottery} are smaller in magnitude to the effect of \textsc{Regret} and are not significant at the 5\% level. Why might PLS with feedback elicit a larger behavioral response than PLS alone? Two alternative, but not mutually exclusive mechanisms could be driving these results. First, recall that participants in \textsc{Regret} automatically received lottery tickets at the beginning of each day while \textsc{Lottery} participants had to make deposits before obtaining a ticket. Participants who exhibit loss aversion will thus be more willing to save to prevent losing a ticket already in hand \shortcite{kahneman_advances_1992}. Second, participants save to minimize anticipated regret from winning the lottery but being unable to claim the prize. This mechanism is inactive in the PLS treatment alone because that group only receives lottery results after saving. Figure \ref{fig:hist-deposits} plots the distribution of deposits over time and shows timing suggestive of regret aversion. Nearly all deposits made in the \textsc{Regret} group ocurred within an hour of announcing the lottery results from the previous day. Deposits similarly peaked between the results and the disbursement of that day's lottery ticket. We observe no similar pattern in the \textsc{Lottery} and control groups.
 
 		\begin{figure}[ht]
 		\centering
@@ -331,25 +334,25 @@
 		\caption*{\footnotesize \emph{Notes:} This figure plots the empirical distribution of timing of all deposits over the project period. Each bin spans 30 minutes with a height equal to the fraction of all deposits within each treatment group. Participants received the first SMS at 8:00 that summarized how much the participant saved the previous day, how much the participant earned through a matching contribution or winnings, and their total balance. An hour later, participants received a second SMS encouraging them to save that day. Participants in \textsc{Regret} received a new lottery ticket with the second message.}
 		\end{figure}
 
-		We estimate Equation \ref{eq:regret} to distinguish between regret aversion and other potential channels. Under the regret aversion hypothesis, we expect to observe an additional effect on saving after participants receive feedback on a winning ticket rather than a losing ticket. Table \ref{tab:reg-regretaversion} shows that \textsc{Regret} participants are 2 percentage points ($p<0.05$) more likely to make a deposit after learning about a winning ticket. This effect is small but is statistically distinguishable from the group's average effect. The portion of the treatment effect arising from other mechanisms is significant at the 5\% level so we are unable to rule them out using this test.
+		We estimate Equation \ref{eq:regret} to test for the presence of regret aversion distinct from other potential channels. Under the regret aversion hypothesis, we expect to observe an additional effect on saving after participants receive feedback on a winning ticket rather than a losing ticket. Table \ref{tab:reg-regretaversion} shows that \textsc{Regret} participants are 2 percentage points ($p<0.05$) more likely to make a deposit after learning about a winning ticket. This effect is small but is statistically distinguishable from the group's average effect. The portion of the treatment effect arising from other mechanisms is significant at the 5\% level so we are unable to rule them out using this test.
 
 		\input{../../tables/reg-regretaversion.tex}
 
 		\clearpage
 
-	\subsection{Effect on Deposits Persists Over Time}
+	% \subsection{Effect on Deposits Persists Over Time}
 
 		% we do not find evidence that this decreases (except afte rthe first few days)
 		% this has been documented in the lab with small stakes and repeated decisions. erev demonstrates that people who take median 15 (weber 2007 17) with replacement are less likely to overweight rare events. also erev speculates that this is through experience with the rare event and demonstrates it. alternatively, overweighting of recent evidence. does winning affect decision to play in this study?
 
-		\input{../../tables/reg-timetrend.tex}
+		% \input{../../tables/reg-timetrend.tex}
 		% add effects over time
-
-		\begin{figure}[ht]
-		\caption{Effects over time -- Number of deposits}
-		\includegraphics[width=\textwidth]{../../figures/line-timemobile_deposits.pdf}
-		\caption*{\footnotesize \emph{Notes:} Panel A plots the treatment effect of \textsc{Lottery} on number of deposits as a function of savings period. Panel B plots the treatment effect of \textsc{Regret} on number of deposits as a function of savings period. Shaded areas represent 95\% confidence regions.}
-		\end{figure}
+		%
+		% \begin{figure}[ht]
+		% \caption{Effects over time -- Number of deposits}
+		% \includegraphics[width=\textwidth]{../../figures/line-timemobile_deposits.pdf}
+		% \caption*{\footnotesize \emph{Notes:} Panel A plots the treatment effect of \textsc{Lottery} on number of deposits as a function of savings period. Panel B plots the treatment effect of \textsc{Regret} on number of deposits as a function of savings period. Shaded areas represent 95\% confidence regions.}
+		% \end{figure}
 
 		% \begin{figure}[ht]
 		% \caption{Effects over time -- Amount deposited}
@@ -357,26 +360,26 @@
 		% \caption*{\footnotesize \emph{Notes:} Panel A plots the treatment effect of \textsc{Lottery} on amount deposited as a function of savings period. Panel B plots the treatment effect of \textsc{Regret} on amount deposited as a function of savings period. Shaded areas represent 95\% confidence regions.}
 		% \end{figure}
 
-	% \subsection{No effect of winning on savings}
-
-		% ambiguous effect of winning more (more frequently) because of experience (Ever) and regret aversion (Dutch)
-
-	\subsection{PLS with Feedback Encourages Informal Saving}
+	\subsection{PLS with Feedback Encourages Particpation in Informal Saving}
 
 		% Did they join to finance lottery savings? Can't really tell
-		% Join after receiving cash windfall from mobile savings
+		% Join after receiving cash windfall from mobile savings, so why not lottery, and is it actually that much more money?
 		% Not robust to FWER adjustment
 
+		A related objective of this study is to examine whether PLS act as complements or substitutes to existing savings products. We do not find evidence that PLS crowds out saving by other means. Table \ref{tab:reg-fwersave} reports no statistically significant effect on total saving through M-Pesa or ROSCAs. We do find, however, that respondents in \textsc{Regret} are 14 percentage points ($p < 0.05$) more likely to save with a ROSCA compared to the control group and 16 percentage points ($p < 0.05$) more likely relative to \textsc{Lottery}. This result is robust to the inclusion of covariates but is not significant when correcting for multiple inference ($p < 0.1$). Table \ref{tab:het-labor_employed_0} reports heterogeneous treatment effects on our primary outcomes across employment status. Column 3 shows that the segment of our sample who are unemployed drive the effect on ROSCA participation. Overall, we do not find that PLS cannibalizes savings from other sources.
+
 		\input{../../tables/reg-fwersave.tex}
+		\input{../../tables/het-labor_employed_0.tex}
 
 	\subsection{PLS with Feedback Increases Outside Gambling Behavior}
 
-		Our second research question asks whether PLS act as complements or substitutes to existing gambling activity. At endline, we ask participants whether participants gamble more than they usually do after the savings program. As reported in Table \ref{tab:reg-fwergamble}, we find that participants in the \textsc{Regret} group self-report higher gambling behavior after enrollment in the savings program. On average, treated participants are 15 percentage points ($p < 0.05$) more likely to report gambling than the control group. We find no similar effects for participants in the simple \textsc{Lottery} group. While our measure for gambling activity is susceptible to experimenter demand, this finding provides some evidence of a complementary relationship between PLS and external gambling.
+		Our second research question asks whether PLS act as complement or substitute to existing gambling activity. At endline, we ask participants whether participants gamble more than they usually do after the savings program. As reported in Table \ref{tab:reg-fwergamble}, we find that participants in the \textsc{Regret} group self-report higher gambling behavior after enrollment in the savings program. On average, treated participants are 15 percentage points ($p < 0.05$) more likely to report gambling than the control group. We find no similar effects for participants in the simple \textsc{Lottery} group. While our measure for gambling activity is susceptible to experimenter demand, this finding provides some evidence of a complementary relationship between PLS and external gambling.
 
 		\shortciteN{cookson_when_2016} offered individuals in Nebraska access to an PLS and observed cash withdrawals at casinos as a measure of gambling behavior. They find reductions in transactions between 7-15\% accredit the effect to attribute-based substition of casino gambling with the PLS. One important difference in the savings program from the present study is the bundling of the account with an anti-gambling campaign. Such a feature may have counteracted external gambling associated with the PLS and could explain the difference in our findings.
 
 		% interrogate this more rigorously ^
 		% may be subject to demand effects, but unclear in what direction
+		% Gamble after receiving cash windfall from mobile savings, so why not lottery, and is it actually that much more money?
 		\input{../../tables/reg-fwergamble.tex}
 
 \section{Conclusion} \label{sec:conclusion}

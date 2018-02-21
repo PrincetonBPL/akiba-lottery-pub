@@ -189,12 +189,12 @@ ren endline_mpesa save_mpesa_1
 la var save_mpesa_1 "M-Pesa savings last month"
 
 recode labrosca_yesno (1 = 1) (2 = 0) (nonm = .), gen(save_dorosca_0)
-la var save_dorosca_0 "Currently saves with ROSCA"
+la var save_dorosca_0 "Saves with a ROSCA"
 
 replace endline_ROSCA = trim(lower(endline_ROSCA))
 encode endline_ROSCA, gen(save_dorosca_1)
 replace save_dorosca_1 = save_dorosca_1 - 1
-la var save_dorosca_1 "Currently saves with ROSCA"
+la var save_dorosca_1 "Saves with a ROSCA"
 
 ren labrosca_monthly save_monthlyrosca_0
 la var save_monthlyrosca_0 "ROSCA savings last month"
@@ -671,7 +671,7 @@ la var mobile_latedepositamount "Made a deposit (after 30 days)"
 gen mobile_latesaved = mobile_saved if period > 30
 la var mobile_latesaved "Amount deposited (after 30 days)"
 
-foreach v of varlist mobile_balance mobile_finalbalance mobile_*amount {
+foreach v of varlist mobile_balance mobile_finalbalance mobile_*amount mobile_*amt {
 
 	if $USDconvertflag {
 

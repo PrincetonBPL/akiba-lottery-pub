@@ -1,4 +1,4 @@
-\documentclass[12pt]{article}
+\documentclass[11pt]{article}
 
 \usepackage[a4paper,margin=1.5in]{geometry}
 \usepackage[strict]{changepage}
@@ -25,10 +25,11 @@
 \subsubsectionfont{\normalfont\normalsize\selectfont\itshape}
 
 \newcommand{\specialcell}[2][c]{\begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
+\renewcommand{\today}{\ifcase \month \or January\or February\or March\or April\or May \or June\or July\or August\or September\or October\or November\or December\fi~ \number \year}
 
 \begin{document}
 
-\title{\textsc{Using Lotteries to Encourage Saving: Supplemental Appendix}\protect\footnote{For online publication only. Files for replication are available at \url{https://github.com/princetonbpl/akiba-lottery-pub}.}}
+\title{\textsc{Using Lotteries to Encourage Saving: Appendix}\protect\footnote{For online publication only. Files for replication are available at \url{https://github.com/princetonbpl/akiba-lottery-pub}.}}
 
 \author{Justin Abraham\thanks{Department of Economics. University of California, San Diego. \protect\href{mailto:jabraham@ucsd.edu}{\nolinkurl{jabraham@ucsd.edu}}.}, Merve Akbas\thanks{Department of Economics. Duke University. \protect\href{mailto:merve.akbas@duke.edu}{\nolinkurl{merve.akbas@duke.edu}}.}, Dan Ariely\thanks{Fuqua School of Business. Duke University. \protect\href{mailto:dan@danariely.com}{\nolinkurl{dan@danariely.com}}.}, and Chaning Jang\thanks{The Busara Center for Behavioral Economics. \protect\href{mailto:chaning.jang@busaracenter.org}{\nolinkurl{chaning.jang@busaracenter.org}}.}} % add funding statement and ethics and thanks
 
@@ -343,25 +344,23 @@
 
 		% \input{../../tables/het-lottery.tex}
 		% \input{../../tables/het-regret.tex}
-		\begin{landscape} \input{../../tables/het-demo_children_0.tex} \end{landscape}
-		\begin{landscape} \input{../../tables/het-demo_married_0.tex} \end{landscape}
-		\begin{landscape} \input{../../tables/het-demo_female_0.tex} \end{landscape}
-		\begin{landscape} \input{../../tables/het-demo_young_0.tex} \end{landscape}
-		\begin{landscape} \input{../../tables/het-demo_stdschool_0.tex} \end{landscape}
-		\begin{landscape} \input{../../tables/het-demo_formschool_0.tex} \end{landscape}
-		\begin{landscape} \input{../../tables/het-gam_mediancpgi_z_0.tex} \end{landscape}
-		\begin{landscape} \input{../../tables/het-gam_medianindex_0.tex} \end{landscape}
-		\begin{landscape} \input{../../tables/het-labor_dependants_0.tex} \end{landscape}
-		\begin{landscape} \input{../../tables/het-labor_employed_0.tex} \end{landscape}
-		\begin{landscape} \input{../../tables/het-labor_isdependant_0.tex} \end{landscape}
-		\begin{landscape} \input{../../tables/het-labor_regularinc_0.tex} \end{landscape}
-		\begin{landscape} \input{../../tables/het-labor_selfemployed_0.tex} \end{landscape}
-		\begin{landscape} \input{../../tables/het-lnlabor_medianinc_0.tex} \end{landscape}
-		\begin{landscape} \input{../../tables/het-lnsave_mediansave_0.tex} \end{landscape}
-		\begin{landscape} \input{../../tables/het-pref_riskaverse_0.tex} \end{landscape}
-		\begin{landscape} \input{../../tables/het-save_dosave_0.tex} \end{landscape}
-		\begin{landscape} \input{../../tables/het-pref_medianloc_0.tex} \end{landscape}
-		\begin{landscape} \input{../../tables/het-pref_medianindiff_0.tex} \end{landscape}
+
+        \input{../../tables/het-demo_female_0.tex}
+        \input{../../tables/het-demo_young_0.tex}
+        \input{../../tables/het-demo_stdschool_0.tex}
+        \input{../../tables/het-demo_formschool_0.tex}
+        \input{../../tables/het-demo_married_0.tex}
+        \input{../../tables/het-demo_haschild_0.tex}
+        \input{../../tables/het-save_dosave_0.tex}
+        \input{../../tables/het-labor_medianinc_0.tex}
+        \input{../../tables/het-labor_employed_0.tex}
+        \input{../../tables/het-labor_selfemployed_0.tex}
+        \input{../../tables/het-labor_hasdependant_0.tex}
+        \input{../../tables/het-labor_isdependant_0.tex}
+        \input{../../tables/het-pref_riskaverse_0.tex}
+        \input{../../tables/het-pref_medianloc_0.tex}
+        \input{../../tables/het-pref_medianindiff_0.tex}
+        \input{../../tables/het-gam_mediancpgi_z_0.tex}
 
 	\clearpage
 
