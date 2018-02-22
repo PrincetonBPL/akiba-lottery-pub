@@ -71,7 +71,7 @@ loc ysavedesc "Savings outside the project"
 loc ygambledesc "Gambling"
 loc yakibadesc "Akiba Smart"
 loc yconsdesc "Expenditure"
-loc yselectdesc "Group self-selection"
+loc yselectdesc "Hypothetical treatment assignment"
 loc ylotterydesc "Lottery usage"
 loc yselfdesc "Self-perceptions"
 
