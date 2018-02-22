@@ -255,14 +255,14 @@ sort surveyid period
 gen RxW = (regret == 1 & mobile_matched == 1)
 la var RxW "Regret $\times$ Won prize"
 
-eststo: reg mobile_saved regret RxW period if lottery == 0, vce(cl surveyid)
+eststo: reg mobile_saved regret RxW period if lottery == 0 & L1.mobile_saved != 1, vce(cl surveyid)
 
 	qui sum mobile_saved if control == 1
 	estadd scalar ymean = round(r(mean), 0.01)
 
-loc prehead "\begin{table}[ht]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \caption{Regression of deposits on treatment and lottery results} \label{tab:reg-regretaversion} \maxsizebox*{\textwidth}{\textheight}{ \begin{threeparttable} \begin{tabular}{l*{2}{c}} \toprule"
+loc prehead "\begin{table}[ht]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \caption{Regression of depositing on treatment and lottery results} \label{tab:reg-regretaversion} \maxsizebox*{\textwidth}{\textheight}{ \begin{threeparttable} \begin{tabular}{l*{2}{c}} \toprule"
 loc postfoot "\bottomrule \end{tabular} \begin{tablenotes}[flushleft] \footnotesize \item \emph{Notes:} @note \end{tablenotes} \end{threeparttable} } \end{table}"
-loc footnote "This table reports estimates of a regression of saving on the regret treatment and lottery results. The unit of observation is individual-by-period. Standard errors are in parentheses and clustered at the individual level. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level."
+loc footnote "This table reports estimates of a regression of having saved at period \(t\) on the regret treatment and lottery results conditional on not having saved the previous period. We further restrict the analytic sample to those in control and \textsc{Regret}. The unit of observation is individual-by-period. Standard errors are in parentheses and clustered at the individual level. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level."
 esttab using "$tab_dir/reg-regretaversion", alignment(c) ar2 nobaselevels obslast nogap label nonum b(%9.2f) se(%9.2f) sfmt(%9.2f) scalars("ymean Control mean") star(* 0.10 ** 0.05 *** 0.01) note("`footnote'") prehead("`prehead'") postfoot("`postfoot'") se compress booktabs replace
 eststo clear
 
@@ -277,7 +277,7 @@ file close tex
 eststo: reg mobile_saved i.treatmentgroup##c.period, vce(cl surveyid)
 test 2.treatmentgroup#c.period = 3.treatmentgroup#c.period
 
-loc prehead "\begin{table}[ht]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \caption{Time-dependent treatment effects on deposits} \label{tab:reg-timetrend} \maxsizebox*{\textwidth}{\textheight}{ \begin{threeparttable} \begin{tabular}{l*{2}{c}} \toprule"
+loc prehead "\begin{table}[ht]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \caption{Time-varying treatment effects on deposit frequency} \label{tab:reg-timetrend} \maxsizebox*{\textwidth}{\textheight}{ \begin{threeparttable} \begin{tabular}{l*{2}{c}} \toprule"
 loc postfoot "\bottomrule \end{tabular} \begin{tablenotes}[flushleft] \footnotesize \item \emph{Notes:} @note \end{tablenotes} \end{threeparttable} } \end{table}"
 loc footnote "This table reports a regression of savings activity on treatment indicators and a linear time trend. The unit of observation is individual-by-period. Standard errors are in parentheses and clustered at the individual level. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level."
 esttab using "$tab_dir/reg-timetrend", alignment(c) ar2 nobaselevels nogap label obslast nonum b(%9.3f) se(%9.3f) sfmt(%9.3f) star(* 0.10 ** 0.05 *** 0.01) note("`footnote'") prehead("`prehead'") postfoot("`postfoot'") se compress booktabs replace
