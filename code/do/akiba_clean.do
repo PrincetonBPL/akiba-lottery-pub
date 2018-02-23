@@ -684,6 +684,9 @@ keep surveyid account period period_date in_pilot left_akiba nrblocation kiberal
 order surveyid account period period_date in_pilot left_akiba nrblocation kiberalocation treatmentgroup control lottery regret treated endline attrit participantticket winningticket mobile_* lnmobile_* session *_date FO_* demo_* labor_* lnlabor_* save_* lnsave_* gam_* pref_* self_* akiba_* lnakiba_*
 order *_0 *_1, after(survey_date)
 
+sort surveyid period
+xtset surveyid period
+
 qui compress
 label data "Produced by akiba_clean.do on `c(current_time)' `c(current_date)' by user `c(username)' on Stata `c(version)'"
 save "$data_dir/clean/akiba_long.dta", replace

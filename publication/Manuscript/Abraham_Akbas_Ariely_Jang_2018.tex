@@ -79,7 +79,7 @@
 	This study contributes to the literature as one of the first randomized evaluations examining the impact of PLS on saving behavior. Moreover, the study's unique experimental design allows us to identify dynamic effects: participants make more frequent deposits to their accounts when given lottery-based returns. This result suggests that a non-pecuniary appeal of gambling, unrelated to prize amounts, may be enough to induce a change in savings behavior. PLS may thus improve utilization among existing account holders and be able to attract new savers to open formal savings accounts. Frequent deposits may also have long-term benefits by encouraging the formation of a savings habit \shortcite{alessie_saving_2009}. From a policy perspective, PLS may not be revenue neutral compared to matching if financial institutions incur greater transaction costs as a result of more frequent deposits.
 
 	% not one of the first, but extends the literature
-	% argue that usage is still an important outcome for policy
+	% argue that usage is an important outcome for policy
 	% effect on ROSCA participation
 	% het effects on savings
 	% brune's point about temporary vs persistent preferences implications for policy
@@ -91,9 +91,35 @@
 
 	The remainder of the paper is structured as follows. Section \ref{sec:litreview} presents a brief review of related literature, Section \ref{sec:design} describes our experimental design, Section \ref{sec:est} outlines our estimation strategy, Section \ref{sec:results} discusses our main results, and Section \ref{sec:conclusion} concludes.
 
+	% this section should motivate the paper on 1) academic basis (PLS, gambling, regret) and 2) policy basis (PLS, fin inclusion)
+	% this section should preview methodology, summarize results, summarize implications, and list contributions
+
 \section{Related Literature} \label{sec:litreview}
 
-	How might lotteries induce savings? Preferences for skewed returns are well-documented, so the use of lottery-like structures may play a viable role in incentivizing savings. Models departing from expected utility theory incorporate the overweighting of small probabilities \shortcite{kahneman_advances_1992} and attention to salient payoffs \shortcite{bordalo_salience_2012} in order to account for seemingly risk-loving behavior among risk-averse individuals. Research on preferences for skewness have produced a litany of potential explanations for this phenomenon.\footnote{This paper does not test against these competing explanations and introduces them as a framework for interpreting results.} One broad strand of the literature understands the overweighting of long-odds as a result of persistent preferences for such gambles. Playing the lottery may provide excitement from taking risks and a chance to win a large payoff \shortcite{conlisk_utility_1993}. Similarly, aversion to anticipated regret from foregoing a big prize could drive gambling behavior \shortcite{loomes_regret_1982,zeelenberg_consequences_2004}. Credit-constrained households may also rely on lotteries to save for large, indivisible expenditures \shortcite{kwang_why_1965,herskowitz_gambling_2016}. Alternatively, preferences for gambling may result from bias in subjective probabilities vis-\`{a}-vis true probabilities. The biased weighting of probabilities implies more fickle gambling behavior that depend on exposure to information and repeated choice \shortcite{hertwig_descriptionexperience_2009}.
+	% this section should discuss previous literature: competing explanations for gambling and what they predict
+	% demand for PLS and recent experimental evidence
+	% theories of regret
+	% generally, unanswered questions
+
+		% why people insure and gamble is a longstanding economic puzzle wiwth many explanations coming to fore to explain it
+			% friedman savage, machina's paradox
+		% can classify theories into three main categories
+			% preferences for skewness
+			% subjective probabilities
+			% specific to developing settings: as a form of saving
+		% what are the implications of believing one over the other?
+			% what are the behavioral predictions and how do empirical regularities match up?
+		% theoretically, this is why PLS are promising
+
+		% why is theory of regret important in the first place? (why did we choose to test it?)
+		% what are the prevailing theories of regret?
+		% how does this relate to gambling?
+		% what are the behavioral predictions and how do empirical regularities match up?
+
+		% experimental paragraph as-is with lybbert and gertler
+		% explain unanswered questions and tie it back to the present study
+
+	% How might lotteries induce savings? Preferences for skewed returns are well-documented, so the use of lottery-like structures may play a viable role in incentivizing savings. Models departing from expected utility theory incorporate the overweighting of small probabilities \shortcite{kahneman_advances_1992} and attention to salient payoffs \shortcite{bordalo_salience_2012} in order to account for seemingly risk-loving behavior among risk-averse individuals. Research on preferences for skewness have produced a litany of potential explanations for this phenomenon.\footnote{This paper does not test against these competing explanations and introduces them as a framework for interpreting results.} One broad strand of the literature understands the overweighting of long-odds as a result of persistent preferences for such gambles. Playing the lottery may provide excitement from taking risks and a chance to win a large payoff \shortcite{conlisk_utility_1993}. Similarly, aversion to anticipated regret from foregoing a big prize could drive gambling behavior \shortcite{loomes_regret_1982,zeelenberg_consequences_2004}. Credit-constrained households may also rely on lotteries to save for large, indivisible expenditures \shortcite{kwang_why_1965,herskowitz_gambling_2016}. Alternatively, preferences for gambling may result from bias in subjective probabilities vis-\`{a}-vis true probabilities. The biased weighting of probabilities implies more fickle gambling behavior that depend on exposure to information and repeated choice \shortcite{hertwig_descriptionexperience_2009}.
 
 	% two types: biases in subjective probabilities or preference for skewness
 		% bias hypothesis predicts that people can learn over time "debiasing"
@@ -236,10 +262,10 @@
 		We can leverage the panel structure of our data and the exogeneity of the lottery results to formulate a test of regret aversion. If participants are saving in response to experienced regret of foregoing the prize, we expect to see an effect of winning the lottery above and beyond the group effect. Let $Y_{i,t}$ denote having made a deposit or the amount deposited by participant $i$ in period $t$. $\text{\textsc{Regret}}_{i}$ is the treatment indicator and $\text{Win}_{i,t}$ is an indicator for having a winning lottery ticket announced in period $t$ and earned in period $t-1$. We estimate the following equation conditional on assignment to the control group, assignment to the \textsc{Regret} group, and not having saved one period prior.
 
 		\begin{equation} \begin{split}
-		Y_{i,t} = & \pi_{0} + \pi_{1}\text{\textsc{Regret}}_{i} + \pi_{2}(\text{\textsc{Regret}}_{i} \times \text{Win}_{i,t}) + \omega t + \varepsilon_{i}
+		Y_{i,t} = & \pi_{0} + \pi_{1}\text{\textsc{Regret}}_{i} + \pi_{2}(\text{\textsc{Regret}}_{i} \times \text{Win}_{i,t}) + \omega_{t} + u_{i,t}
 		\end{split} \label{eq:regret} \end{equation}
 
-		$\pi_1$ is the marginal effect of \textsc{Regret} for participants who did not win the lottery in period $t$ while $\pi_2$ is the additional effect from winning. The control group is the comparison group. We omit the indicator for having won the lottery in the control group since those participants did not enter into the drawing. We test the null hypothesis of no regret aversion, $\pi_2 = 0$. Standard errors are clustered at the individual level.
+		$\pi_1$ is the marginal effect of \textsc{Regret} for participants who did not win the lottery in period $t$ while $\pi_2$ is the additional effect from winning. $\omega_{t}$ is a period-specific fixed effect. The control group is the comparison group. We omit the indicator for having won the lottery in the control group since those participants did not enter into the drawing. We test the null hypothesis of no regret aversion, $\pi_2 = 0$. Standard errors are clustered at the individual level.
 
 	% \subsection{Time-Varying Treatment Effects}
 	%
@@ -325,19 +351,17 @@
 		\caption*{\footnotesize \emph{Notes:} This figure plots the empirical distribution of timing of all deposits over the project period. Each bin spans 30 minutes with a height equal to the fraction of all deposits within each treatment group. Participants received the first SMS at 8:00 that summarized how much the participant saved the previous day, how much the participant earned through a matching contribution or winnings, and their total balance. An hour later, participants received a second SMS encouraging them to save that day. Participants in \textsc{Regret} received a new lottery ticket with the second message.}
 		\end{figure}
 
-		We estimate Equation \ref{eq:regret} to test for the presence of regret aversion distinct from other potential channels. Under the regret aversion hypothesis, we expect to observe an additional effect on saving after participants receive feedback on a winning ticket rather than a losing ticket. Table \ref{tab:reg-regretaversion} shows that \textsc{Regret} participants are 2 percentage points ($p<0.05$) more likely to make a deposit after learning about a winning ticket. This effect is small but is statistically distinguishable from the group's average effect. The portion of the treatment effect arising from other mechanisms, however, is not significant at the 5\% level. Thus participant behavior is consistent with the minimization of anticipated regret. Figure \ref{fig:hist-deposits} plots the distribution of deposits over time and shows timing suggestive of regret aversion. Nearly all deposits made in the \textsc{Regret} group ocurred within an hour of announcing the lottery results from the previous day. Deposits similarly peaked between the results and the disbursement of that day's lottery ticket. We observe no similar pattern in the \textsc{Lottery} and control groups.
+		We estimate Equation \ref{eq:regret} to test for the presence of regret aversion distinct from other potential channels. Under the regret aversion hypothesis, we expect to observe an additional effect on saving after participants receive feedback on a winning ticket rather than a losing ticket. Table \ref{tab:reg-regretaversion} shows that the treatment effect is 2.2 percentage points ($p<0.05$) higher after learning about a winning ticket than learning about a losing one. This effect is small but is statistically distinguishable from the portion of the treatment effect arising from other mechanisms ($\hat beta = 0.02, p > 0.1$). Thus participant behavior is consistent with the minimization of anticipated regret. Figure \ref{fig:hist-deposits} plots the distribution of deposits over time and shows timing suggestive of regret aversion. Nearly all deposits made in the \textsc{Regret} group ocurred within an hour of announcing the lottery results from the previous day. Deposits similarly peaked between the results and the disbursement of that day's lottery ticket. We observe no similar pattern in the \textsc{Lottery} and control groups.
 
 		\input{../../tables/reg-regretaversion.tex}
 
 		\clearpage
 
-		% can this not be increasing subjective bias by winning lottery?
-		% can subjective bias be decreasing over time? (zia paper)
-
 	% \subsection{Effect on Deposits Persists Over Time}
 	%
 	%  We additionally find no statistically significant heterogeneity by interacting the treatment effect with indicators of the first through eigth weeks.
 
+		% can subjective bias be decreasing over time? (zia paper)
 		% we do not find evidence that this decreases (except afte rthe first few days)
 		% this has been documented in the lab with small stakes and repeated decisions. erev demonstrates that people who take median 15 (weber 2007 17) with replacement are less likely to overweight rare events. also erev speculates that this is through experience with the rare event and demonstrates it. alternatively, overweighting of recent evidence. does winning affect decision to play in this study?
 
