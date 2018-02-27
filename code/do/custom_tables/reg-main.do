@@ -96,7 +96,7 @@ foreach yvar in $regvars {
 		loc se = SE`i'[`varindex', 1]
 		loc p = P`i'[`varindex', 1]
 
-		pstar, b(`b') se(`se') p(`p') prec(2)
+		sigstar, b(`b') se(`se') p(`p') prec(2)
 		estadd loc thisstat`count' = "`r(bstar)'": col`i'
 		estadd loc thisstat`countse' = "`r(sestar)'": col`i'
 

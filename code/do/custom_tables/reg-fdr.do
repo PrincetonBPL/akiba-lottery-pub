@@ -106,11 +106,11 @@ foreach yvar in $regvars {
 		loc p = P`i'[`varindex', 1]
 		loc q = Q`i'[`varindex', 1]
 
-		pstar, b(`b') se(`se') p(`p') prec(2)
+		sigstar, b(`b') se(`se') p(`p') prec(2)
 		estadd loc thisstat`count' = "`r(bstar)'": col`i'
 		estadd loc thisstat`countse' = "`r(sestar)'": col`i'
 
-		pstar, p(`q') prec(2) pbracket pstar
+		sigstar, p(`q') prec(2) pbracket pstar
 		estadd local thisstat`countp' = "`r(pstar)'": col`i'
 
 	}

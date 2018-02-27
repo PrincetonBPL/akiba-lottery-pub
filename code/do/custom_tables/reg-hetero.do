@@ -56,13 +56,13 @@ foreach het in $hetvars {
 		loc b = _b[1.$treat] + _b[1.$treat#1.`het']
 		qui test 1.$treat + 1.$treat#1.`het' = 0
 
-		pstar, b(`b') p(`r(p)') prec(2)
+		sigstar, b(`b') p(`r(p)') prec(2)
 		estadd loc thisstat`count' = "`r(bstar)'": col`column'
 		estadd loc thisstat`countse' = "`r(sestar)'": col`column'
 
 		qui est res reg
 
-		pstar 1.$treat, prec(2)
+		sigstar 1.$treat, prec(2)
 		estadd loc thisstat`count2' = "`r(bstar)'": col`column'
 		estadd loc thisstat`countse2' = "`r(sestar)'": col`column'
 

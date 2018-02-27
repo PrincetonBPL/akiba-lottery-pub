@@ -1,7 +1,7 @@
 ** Title: akiba_master.do
 ** Author: Justin Abraham
-** Desc: Master do file for re-creating dataset and running analysis
-** New users must change filepaths to point to your local repository
+** Desc: Master do file for recreating dataset and running analysis
+** Ensure pwd is set to where this file is located
 
 version 13.1
 
@@ -16,12 +16,12 @@ timer on 1
 
 cd "../../"
 
-***********
-** Setup **
-***********
+///////////
+// Setup //
+///////////
 
 glo project_dir "`c(pwd)'"
-glo ado_dir "$project_dir/code/ado/personal"
+glo ado_dir "$project_dir/code/ado"
 glo data_dir "$project_dir/data"
 glo do_dir "$project_dir/code/do"
 glo fig_dir "$project_dir/figures"
@@ -30,37 +30,40 @@ glo tab_dir "$project_dir/tables"
 adopath + "$ado_dir"
 cap cd "$project_dir"
 
-/* Typeface for graphics */
-
-loc graphfont "CMU Serif"
-
-graph set eps fontface "`graphfont'"
-graph set eps fontfaceserif "`graphfont'"
-graph set window fontface "`graphfont'"
-graph set window fontfaceserif "`graphfont'"
-
 /* Customize program */
 
-glo builddataflag = 1		 // Build combined dataset
-glo cleandataflag = 1		 // Clean combined dataset
-glo summaryflag = 1	 		 // Output summary stats
-glo estimateflag = 1         // Output regression tables
-glo figuresflag = 1			 // Output graphs and figures
+glo builddataflag = 1	// Build combined dataset
+glo cleandataflag = 1	// Clean combined dataset
+glo summaryflag = 1	 	// Output summary stats
+glo estimateflag = 1    // Output regression tables
+glo figuresflag = 1		// Output graphs and figures
 
 /* Analysis options */
 
-glo attritionflag = 1		 // Attrition analysis
-glo maineffectsflag = 1      // Analyze main treatment effects
-glo riflag = 1				 // Randomization inference
-glo heteffectsflag = 1       // Analyze heterogenous treatment effects
+glo attritionflag = 1	// Attrition analysis
+glo maineffectsflag = 1 // Treatment effects (covariate adjustment, multiple inference)
+glo riflag = 1			// Tests with randomization inference
+glo heteffectsflag = 1  // Heterogenous treatment effects
 
-glo USDconvertflag = 1 		 // Runs analysis in USD-PPP
-glo ppprate = (1/38.84) 	 // PPP exchange rate from KSH (2009-2013)
+glo USDconvertflag = 1  // Runs and reports analysis in USD-PPP
+glo ppprate = (1/38.84) // PPP exchange rate from KSH (2009-2013)
 
-glo iterations = 10000 		 // Number of iterations for calculating FWER adjusted p-values
-glo riterations = 10000		 // Number of iterations for permutation test
+glo iterations = 10000  // Number of iterations for calculating FWER adjusted p-values
+glo riterations = 10000 // Number of iterations for permutation test
 
 /* Regressands by category */
+
+glo ymobiledesc "Mobile savings"
+glo yearlydesc "Mobile savings (before 30 days)"
+glo ylatedesc "Mobile savings (after 30 days)"
+glo ypaneldesc "Mobile savings by period"
+glo ysavedesc "Savings outside the project"
+glo ygambledesc "Gambling"
+glo yakibadesc "Akiba Smart"
+glo yconsdesc "Expenditure"
+glo yselectdesc "Hypothetical treatment assignment"
+glo ylotterydesc "Lottery usage"
+glo yselfdesc "Self-perceptions"
 
 glo ymobile "mobile_totdeposits mobile_savedays mobile_totdepositamt mobile_totwithdrawalamt"
 glo yearly "mobile_earlytotdeposits mobile_earlysavedays mobile_earlyavgdeposits mobile_earlytotdepositamt"
@@ -74,33 +77,20 @@ glo yselect "akiba_controlselect_1 akiba_lotteryselect_1 akiba_regretselect_1 ak
 glo ylottery "akiba_lotteryfair_z_1 akiba_prizegood_z_1 akiba_prizebad_z_1"
 glo yself "self_saver_z_1 self_lucky_z_1 self_savingsfeel_z_1 self_nosavefeel_z_1"
 glo ynull "$ymobile $ysave gam_moregamble_1"
-
-/* Baseline summary outcomes */
-
-glo controlvars "demo_female_0 demo_young_0 demo_stdschool_0 demo_haschild_0 demo_married_0 save_dosave_0 gam_mediancpgi_z_0"
-glo ysum1 "demo_female_0 demo_age_0 demo_stdschool_0 demo_married_0 demo_children_0 pref_crra_0 pref_locscore_0"
-glo ysum2 "labor_monthlyinc_0 labor_regularinc_0 labor_employed_0 labor_selfemployed_0 labor_dependants_0 labor_isdependant_0"
-glo ysum3 "save_dosave_0 save_monthlysave_0 save_dorosca_0 save_monthlyrosca_0 save_mpesa_0"
-glo ysum4 "gam_index_0 gam_cpgi_0 gam_cpgi_z_0 gam_wtp_0"
-glo ysum5 "pref_avgindiff_0 pref_avggeometric_0 pref_avgexponential_0 pref_avghyperbolic_0 pref_decrimp_0 pref_station_0"
-
-/* Endline summary outcomes */
-
-glo ysum6 "mobile_totdeposits mobile_totdepositamt mobile_avgdepositamt mobile_totwithdrawalamt"
-glo ysum7 "akiba_trust_1 akiba_confidence_1 akiba_lotteryfair_1 akiba_family_1 akiba_prizegood_1 akiba_prizebad_1 akiba_continue_1 akiba_rules_1"
-glo ysum8 "akiba_controlselect_1 akiba_lotteryselect_1 akiba_regretselect_1 akiba_controlsave_1 akiba_lotterysave_1 akiba_regretsave_1"
-glo ysum9 "gam_moretempted_1 gam_lesstempted_1 gam_moregamble_1 gam_lessgamble_1 self_saver_1 self_lucky_1 self_savingsfeel_1 self_nosavefeel_1"
+glo yhet "mobile_totdeposits mobile_totdepositamt save_dorosca_1 gam_moregamble_1"
 
 /* Regressors */
 
 glo xhet "demo_female_0 demo_young_0 demo_stdschool_0 demo_formschool_0 demo_married_0 demo_haschild_0 save_dosave_0 labor_medianinc_0 labor_employed_0 labor_selfemployed_0 labor_hasdependant_0 labor_isdependant_0 pref_riskaverse_0 pref_medianloc_0 pref_medianindiff_0 gam_mediancpgi_z_0"
 glo xcor "pref_avgindiff_0 pref_avggeometric_0 pref_avgexponential_0 pref_avghyperbolic_0 pref_station_0 pref_decrimp_0 pref_crra_0 pref_locscore_z_0"
 
-*************
-** Program **
-*************
+/* Control variables */
 
-/* Stop! Can't touch this */
+glo controlvars "demo_female_0 demo_young_0 demo_stdschool_0 demo_haschild_0 demo_married_0 save_dosave_0 gam_mediancpgi_z_0"
+
+/////////////
+// Program //
+/////////////
 
 glo currentdate = date("$S_DATE", "DMY")
 glo date : di %td_CY.N.D date("$S_DATE", "DMY")
@@ -118,12 +108,10 @@ if $summaryflag do "$do_dir/akiba_summary.do"
 if $figuresflag do "$do_dir/akiba_figures.do"
 if $estimateflag do "$do_dir/akiba_estimate.do"
 
-shell find "$project_dir/code" -name "sublime2stata.do" -delete
-
 timer off 1
 qui timer list 1
 di "Finished in `r(t1)' seconds."
 
-/**********
-** Notes **
-***********
+///////////
+// Notes //
+//////////*

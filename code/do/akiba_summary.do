@@ -30,7 +30,7 @@ file open tex using "$tab_dir/tab-select.tex", write append
 file write tex _n "% File produced by akiba_summary.do with `c(filename)' on `c(current_time)' `c(current_date)' by user `c(username)' on Stata `c(version)' with seed `c(seed)'"
 file close tex
 
-/* Unified summary statistics */
+/* Baseline balance checks */
 
 glo sumvars "demo_female_0 demo_age_0 demo_stdschool_0 demo_married_0 demo_children_0 save_dosave_0 save_monthlysave_0 labor_monthlyinc_0 labor_employed_0 pref_crra_0 pref_locscore_0 gam_cpgi_z_0 pref_avgexponential_0"
 
@@ -46,33 +46,17 @@ glo sumtitle "Baseline balance by treatment group for endline sample"
 glo sumpath "sum-eltreatall"
 do "$do_dir/custom_tables/sum-eltreat.do"
 
-/* Summary statistics across groups */
-
-forval i = 1/5 {
-
-	loc trunc "ysum`i'"
-	glo sumvars $`trunc'
-
-	glo sumtitle "Baseline balance check by treatment group"
-	glo sumpath "sum-ysum`i'"
-	do "$do_dir/custom_tables/sum-treat.do"
-
-	glo sumtitle "Baseline balance check by attrition status"
-	glo sumpath "sum-attr`i'"
-	do "$do_dir/custom_tables/sum-participation.do"
-
-	glo sumtitle "Baseline balance check by treatment group for endline sample"
-	glo sumpath "sum-eltreat`i'"
-	do "$do_dir/custom_tables/sum-eltreat.do"
-
-}
-
 /* Unconditional summary statistics */
+
+loc ysum6 "mobile_totdeposits mobile_totdepositamt mobile_avgdepositamt mobile_totwithdrawalamt"
+loc ysum7 "akiba_trust_1 akiba_confidence_1 akiba_lotteryfair_1 akiba_family_1 akiba_prizegood_1 akiba_prizebad_1 akiba_continue_1 akiba_rules_1"
+loc ysum8 "akiba_controlselect_1 akiba_lotteryselect_1 akiba_regretselect_1 akiba_controlsave_1 akiba_lotterysave_1 akiba_regretsave_1"
+loc ysum9 "gam_moretempted_1 gam_lesstempted_1 gam_moregamble_1 gam_lessgamble_1 self_saver_1 self_lucky_1 self_savingsfeel_1 self_nosavefeel_1"
 
 forval i = 6/9 {
 
 	loc trunc "ysum`i'"
-	glo sumvars $`trunc'
+	glo sumvars ``trunc''
 
 	glo sumtitle "Endine summary statistics"
 	glo sumpath "sum-ysum`i'"

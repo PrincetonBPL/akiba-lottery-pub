@@ -63,18 +63,6 @@ use "$data_dir/clean/akiba_wide.dta", clear
 
 loc grouplist "ymobile yearly ylate ypanel ysave ygamble yakiba ycons yselect yself" // ylottery
 
-loc ymobiledesc "Mobile savings"
-loc yearlydesc "Mobile savings (before 30 days)"
-loc ylatedesc "Mobile savings (after 30 days)"
-loc ypaneldesc "Mobile savings by period"
-loc ysavedesc "Savings outside the project"
-loc ygambledesc "Gambling"
-loc yakibadesc "Akiba Smart"
-loc yconsdesc "Expenditure"
-loc yselectdesc "Hypothetical treatment assignment"
-loc ylotterydesc "Lottery usage"
-loc yselfdesc "Self-perceptions"
-
 if $maineffectsflag {
 
 	foreach group in `grouplist' {
@@ -87,19 +75,19 @@ if $maineffectsflag {
 			use "$data_dir/clean/akiba_wide.dta", clear
 
 			glo regpath "reg-`root'"
-			glo regtitle "Treatment effects -- ``group'desc'"
+			glo regtitle "Treatment effects -- $`group'desc"
 			do "$do_dir/custom_tables/reg-main.do"
 
 			glo regpath "reg-cov`root'"
-			glo regtitle "Covariate-adjusted treatment effects -- ``group'desc'"
+			glo regtitle "Covariate-adjusted treatment effects -- $`group'desc"
 			do "$do_dir/custom_tables/reg-cov.do"
 
 			glo regpath "reg-fdr`root'"
-			glo regtitle "Treatment effects controlling the FDR -- ``group'desc'"
+			glo regtitle "Treatment effects controlling the FDR -- $`group'desc"
 			do "$do_dir/custom_tables/reg-fdr.do"
 
 			glo regpath "reg-fwer`root'"
-			glo regtitle "Treatment effects -- ``group'desc'"
+			glo regtitle "Treatment effects -- $`group'desc"
 			do "$do_dir/custom_tables/reg-fwer.do"
 
 		}
@@ -109,7 +97,7 @@ if $maineffectsflag {
 			use "$data_dir/clean/akiba_long.dta", clear
 
 			glo regpath "reg-`root'"
-			glo regtitle "Treatment effects -- ``group'desc'"
+			glo regtitle "Treatment effects -- $`group'desc"
 			do "$do_dir/custom_tables/reg-main.do"
 
 		}
@@ -146,7 +134,7 @@ if $riflag {
 		loc root = substr("`group'", 2, .)
 		glo regvars "$`group'"
 		glo regpath "ri-`root'"
-		glo regtitle "Treatment effects with randomization inference -- ``group'desc'"
+		glo regtitle "Treatment effects with randomization inference -- $`group'desc"
 
 		if ("`group'" == "ypanel") use "$data_dir/clean/akiba_long.dta", clear
 		else use "$data_dir/clean/akiba_wide.dta", clear
@@ -163,7 +151,7 @@ if $riflag {
 
 if $heteffectsflag {
 
-	glo yvars "mobile_totdeposits mobile_totdepositamt save_dorosca_1 gam_moregamble_1"
+	glo yvars "$yhet"
 	glo hetvars "$xhet"
 	glo control "control"
 
@@ -197,7 +185,7 @@ if $heteffectsflag {
 
 		loc columns = 0
 
-		foreach yvar in mobile_totdeposits mobile_totdepositamt save_dorosca_1 gam_moregamble_1 {
+		foreach yvar in $yhet {
 
 			eststo: reg `yvar' lottery LX`xvar' regret RX`xvar' `xvar', vce(r)
 
@@ -227,7 +215,7 @@ if $heteffectsflag {
 
 	}
 
-	foreach yvar in mobile_totdeposits mobile_totdepositamt save_dorosca_1 gam_moregamble_1 {
+	foreach yvar in $yhet {
 
 		eststo, prefix(horse): reg `yvar' lottery regret `righthand' `fillmiss', vce(r)
 

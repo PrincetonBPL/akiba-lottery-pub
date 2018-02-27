@@ -37,7 +37,7 @@ foreach yvar in $sumvars {
 
 	/* Column 1: Completed - attrited */
 
-	pstar endline, prec(2)
+	sigstar endline, prec(2)
 	estadd loc thisstat`count' = "`r(bstar)'": col1
 	estadd loc thisstat`countse' = "`r(sestar)'": col1
 

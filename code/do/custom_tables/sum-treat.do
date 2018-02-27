@@ -40,7 +40,7 @@ foreach yvar in $sumvars {
 
 	est res reg
 
-	pstar lottery, prec(2)
+	sigstar lottery, prec(2)
 	estadd loc thisstat`count' = r(bstar): col1
 	estadd loc thisstat`countse' = r(sestar): col1
 
@@ -48,7 +48,7 @@ foreach yvar in $sumvars {
 
 	est res reg
 
-	pstar regret, prec(2)
+	sigstar regret, prec(2)
 	estadd loc thisstat`count' = r(bstar): col2
 	estadd loc thisstat`countse' = r(sestar): col2
 
@@ -60,7 +60,7 @@ foreach yvar in $sumvars {
 	loc se = r(se)
 	loc p = r(p)
 
-	pstar, b(`b') se(`se') p(`p') prec(2)
+	sigstar, b(`b') se(`se') p(`p') prec(2)
 	estadd loc thisstat`count' = r(bstar): col3
 	estadd loc thisstat`countse' = r(sestar): col3
 
