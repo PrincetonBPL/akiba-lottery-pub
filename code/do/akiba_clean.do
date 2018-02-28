@@ -126,11 +126,11 @@ ren labemployment labor_empstatus_0
 la var labor_empstatus_0 "Employment status"
 
 recode labor_empstatus_0 (1 2 = 1) (3 = 0), gen(labor_employed_0)
-la var labor_employed_0 "Employed"
+la var labor_employed_0 "Employment status"
 
 gen labor_selfemployed_0 = selfemployed - 1
 replace labor_selfemployed_0 = 0 if ~labor_employed_0
-la var labor_selfemployed_0 "Self-employed"
+la var labor_selfemployed_0 "Self-employment"
 
 gen labor_isdependant_0 = 2 - labsupported_dummy
 la var labor_isdependant_0 "Subject is a dependant"

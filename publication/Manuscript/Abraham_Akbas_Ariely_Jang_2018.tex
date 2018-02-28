@@ -16,7 +16,7 @@
 \usepackage{xcolor}
 
 \fontfamily{qcs}
-\linespread{1.1}
+\linespread{1}
 \urlstyle{tt}
 
 \allsectionsfont{\rmfamily}
@@ -254,33 +254,30 @@
 		We can leverage the panel structure of our data and the exogeneity of the lottery results to formulate a test of regret aversion. If participants are saving in response to experienced regret of foregoing the prize, we expect to see an effect of winning the lottery above and beyond the group effect. Let $Y_{i,t}$ denote having made a deposit or the amount deposited by participant $i$ in period $t$. $\text{\textsc{Regret}}_{i}$ is the treatment indicator and $\text{Win}_{i,t}$ is an indicator for having a winning lottery ticket announced in period $t$ and earned in period $t-1$. We estimate the following equation conditional on assignment to the control group, assignment to the \textsc{Regret} group, and not having saved one period prior.
 
 		\begin{equation} \begin{split}
-		Y_{i,t} = & \pi_{0} + \pi_{1}\text{\textsc{Regret}}_{i} + \pi_{2}(\text{\textsc{Regret}}_{i} \times \text{Win}_{i,t}) + \omega_{t} + u_{i,t}
+		Y_{i,t} = & \pi_{1}\text{\textsc{Regret}}_{i} + \pi_{2}(\text{\textsc{Regret}}_{i} \times \text{Win}_{i,t}) + \omega_{t} + u_{i,t}
 		\end{split} \label{eq:regret} \end{equation}
 
 		$\pi_1$ is the marginal effect of \textsc{Regret} for participants who did not win the lottery in period $t$ while $\pi_2$ is the additional effect from winning. $\omega_{t}$ is a period-specific fixed effect. The control group is the comparison group. We omit the indicator for having won the lottery in the control group since those participants did not enter into the drawing. We test the null hypothesis of no regret aversion, $\pi_2 = 0$. Standard errors are clustered at the individual level.
 
-	% \subsection{Time-Varying Treatment Effects}
-	%
-	% 	Using detailed daily transaction data, we can estimate treatment effects of PLS conditional on the time elapsed since the start of the savings program. We estimate a model that interacts the treatment indicators with a linear time trend.
-	%
-	% 	\begin{equation} \begin{split}
-	% 	Y_{i,t} = & \beta_{0} + \beta_{1}\text{\textsc{Lottery}}_{i} + \beta_{2}\text{\textsc{Regret}}_{i} + \lambda_{0}t \\
-	% 				& + \lambda_{1}(\text{\textsc{Lottery}}_{i} \times t) + \lambda_{2}(\text{\textsc{Regret}}_{i} \times t) + \varepsilon_{i}
-	% 	\end{split} \label{eq:timelinear} \end{equation}
-	%
-	% 	In this equation, $t$ is the number of days since the start of the savings program and $Y_{i,t}$ denotes whether participant $i$ made a deposit at period $t$. We also estimate this equation for $Y_{i,t}$ as the amount deposited in period $t$. $\lambda_1$ is the marginal effect of the lottery incentive on $Y_{i,t}$ with respect to days elapsed. $\lambda_2$ is the marginal effect of lottery with feedback. We test the hypotheses $\lambda_1 = 0$ and $\lambda_2 = 0$---that the effects of PLS are constant as a function of time. Standard errors are clustered at the individual level.
+	\subsection{Time-Varying Treatment Effects}
 
-		% time trend could be quadratic -- u-shaped effects
-		% graph suggests a some decay function
-
-		% We estimate day-specific effects with the following specification.
+		% Using detailed daily transaction data, we can estimate treatment effects of PLS conditional on the time elapsed since the start of the savings program. We estimate a model that interacts the treatment indicators with a linear time trend.
 		%
 		% \begin{equation} \begin{split}
-		% Y_{i,t} = & \beta_{0} + \beta_{1}\text{\textsc{Lottery}}_{i} + \beta_{2}\text{\textsc{Regret}}_{i} \\
-		% 			& + \sum_{t=2}^{60} \bigg [ \zeta_{t} \tau_{t} + \eta_{t}(\text{\textsc{Lottery}}_{i} \times \tau_{t}) + \theta_{t}(\text{\textsc{Regret}}_{i} \times \tau_{t}) \bigg ] + \varepsilon_{i}
-		% \end{split} \label{eq:timedummy} \end{equation}
+		% Y_{i,t} = & \beta_{0} + \beta_{1}\text{\textsc{Lottery}}_{i} + \beta_{2}\text{\textsc{Regret}}_{i} + \lambda_{0}t \\
+		% 			& + \lambda_{1}(\text{\textsc{Lottery}}_{i} \times t) + \lambda_{2}(\text{\textsc{Regret}}_{i} \times t) + \varepsilon_{i}
+		% \end{split} \label{eq:timelinear} \end{equation}
 		%
-		% $Y_{i, t}$ is the outcome for individual $i$ at period $t$, \textsc{Lottery}$_i$ indicates assignment to the \textsc{Lottery} group, and \textsc{Regret}$_i$ indicates assignment to the \textsc{Regret} group. $\tau_t$ is an indicator taking the value 1 in period $t$. The omitted group is the control group at $t=1$. We can interpret the value of $\beta_1 + \eta_t$ and $\beta_1 + \theta_t$ as the effects of \textsc{Lottery} and \textsc{Regret}, respectively, at period $t$. Standard errors are clustered at the individual level.
+		% In this equation, $t$ is the number of days since the start of the savings program and $Y_{i,t}$ denotes whether participant $i$ made a deposit at period $t$. We also estimate this equation for $Y_{i,t}$ as the amount deposited in period $t$. $\lambda_1$ is the marginal effect of the lottery incentive on $Y_{i,t}$ with respect to days elapsed. $\lambda_2$ is the marginal effect of lottery with feedback. We test the hypotheses $\lambda_1 = 0$ and $\lambda_2 = 0$---that the effects of PLS are constant as a function of time. Standard errors are clustered at the individual level.
+
+		Using detailed daily transaction data, we can estimate treatment effects of PLS conditional on the time elapsed since the start of the savings program. We estimate day-specific effects with the following specification.
+
+		\begin{equation} \begin{split}
+		Y_{i,t} = & \beta_{0} + \beta_{1}\text{\textsc{Lottery}}_{i} + \beta_{2}\text{\textsc{Regret}}_{i} \\
+					& + \sum_{t=2}^{60} \bigg [ \zeta_{t} \tau_{t} + \eta_{t}(\text{\textsc{Lottery}}_{i} \times \tau_{t}) + \theta_{t}(\text{\textsc{Regret}}_{i} \times \tau_{t}) \bigg ] + u_{i, t}
+		\end{split} \label{eq:timedummy} \end{equation}
+
+		$Y_{i, t}$ is the outcome for individual $i$ at period $t$, \textsc{Lottery}$_i$ indicates assignment to the \textsc{Lottery} group, and \textsc{Regret}$_i$ indicates assignment to the \textsc{Regret} group. $\tau_t$ is an indicator taking the value 1 in period $t$. The omitted group is the control group at $t=1$. We can interpret the value of $\beta_1 + \eta_t$ and $\beta_2 + \theta_t$ as the effects of \textsc{Lottery} and \textsc{Regret}, respectively, at period $t$. We test the null hypothesis of no time-varying treatment effects with a joint tests of $\beta_1 + \eta_t = 0$ and $\beta_2 + \theta_t = 0$, respectively, for $t = 2, \ldots, 60$. Standard errors are clustered at the individual level.
 
 \section{Results} \label{sec:results}
 
@@ -349,30 +346,27 @@
 
 		\clearpage
 
-	% \subsection{Effect on Deposits Persists Over Time}
-	%
-	%  We additionally find no statistically significant heterogeneity by interacting the treatment effect with indicators of the first through eigth weeks.
+	\subsection{Effect on Deposits Persists Over Time}
 
+		The preceding results provide evidence that PLS with feedback compels individuals to make more frequent deposits. 
+
+		We additionally find no statistically significant heterogeneity by interacting the treatment effect with period indicators.
+
+		% we do not find evidence that this decreases (except after the first few days)
+
+		% this has been documented in the lab with small stakes and repeated decisions. erev demonstrates that people who take median 15 (weber 2007 17) with replacement are less likely to overweight rare events. also erev speculates that this is through experience with the rare event and demonstrates it.
+		% alternatively, overweighting of recent evidence. does winning affect decision to play in this study?
 		% can subjective bias be decreasing over time? (zia paper)
-		% we do not find evidence that this decreases (except afte rthe first few days)
-		% this has been documented in the lab with small stakes and repeated decisions. erev demonstrates that people who take median 15 (weber 2007 17) with replacement are less likely to overweight rare events. also erev speculates that this is through experience with the rare event and demonstrates it. alternatively, overweighting of recent evidence. does winning affect decision to play in this study?
+		% brune paper on time dependence
+		% which mechanisms are being activated? debiasing, overweighting of recent evidence
 
-		% bilal zia paper on debiasing
+		% \input{../../tables/reg-timedummy.tex}
 
-		% \input{../../tables/reg-timetrend.tex}
-		% add effects over time
-		%
-		% \begin{figure}[ht]
-		% \caption{Effects over time -- Number of deposits}
-		% \includegraphics[width=\textwidth]{../../figures/line-timemobile_deposits.pdf}
-		% \caption*{\footnotesize \emph{Notes:} Panel A plots the treatment effect of \textsc{Lottery} on number of deposits as a function of savings period. Panel B plots the treatment effect of \textsc{Regret} on number of deposits as a function of savings period. Shaded areas represent 95\% confidence regions.}
-		% \end{figure}
-
-		% \begin{figure}[ht]
-		% \caption{Effects over time -- Amount deposited}
-		% \includegraphics[width=\textwidth]{../../figures/line-timemobile_depositamount.pdf}
-		% \caption*{\footnotesize \emph{Notes:} Panel A plots the treatment effect of \textsc{Lottery} on amount deposited as a function of savings period. Panel B plots the treatment effect of \textsc{Regret} on amount deposited as a function of savings period. Shaded areas represent 95\% confidence regions.}
-		% \end{figure}
+		\begin{figure}[ht]
+		\caption{Effects over time -- Number of deposits}
+		\includegraphics[width=\textwidth]{../../figures/line-timemobile_deposits.pdf}
+		\caption*{\footnotesize \emph{Notes:} Panel A plots the treatment effect of \textsc{Lottery} on number of deposits as a function of savings period. Panel B plots the treatment effect of \textsc{Regret} on number of deposits as a function of savings period. Shaded areas represent period-specific 95\% confidence regions.}
+		\end{figure}
 
 	\subsection{PLS with Feedback Encourages Particpation in Informal Saving}
 
@@ -381,7 +375,7 @@
 		\input{../../tables/reg-fwersave.tex}
 		\input{../../tables/het-labor_employed_0.tex}
 
-	\subsection{PLS with Feedback Increases Outside Gambling Behavior}
+	\subsection{PLS with Feedback Increases Gambling}
 
 		At endline, we ask participants whether participants gambled more than they usually do apart from participating in the savings program. As reported in Table \ref{tab:reg-fwergamble}, we find that participants in the \textsc{Regret} group self-report higher gambling behavior the savings program. On average, treated participants are 15 percentage points ($p < 0.05$) more likely to report gambling than the control group. This finding is robust to covariate ajdustment and is significant at the 10\% level after FWER adjustment. We find no average effects for participants in the \textsc{Lottery} group but Table \ref{tab:het-labor_employed_0} shows that \textsc{Lottery} induces increased gambling among the unemployed ($\hat \beta = 0.17, p < 0.05$). Our measure for gambling activity is susceptible to experimenter demand though it is unclear in what direction this might bias our estimate. With this caveat in mind, the effect provides some evidence of a complementary relationship between PLS and broader gambling behavior.
 

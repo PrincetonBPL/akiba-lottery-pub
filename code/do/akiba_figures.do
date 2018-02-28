@@ -121,7 +121,7 @@ foreach yvar of varlist mobile_deposits mobile_depositamount {
 	svmat M
 
 	gen period = _n
-	la var period "Savings period"
+	la var period "Savings period (days)"
 
 	gen ub1 = M1 + (M2 * 1.96)
 	gen lb1 = M1 - (M2 * 1.96)
