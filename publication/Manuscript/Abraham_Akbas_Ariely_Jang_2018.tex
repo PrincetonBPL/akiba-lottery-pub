@@ -16,35 +16,40 @@
 \usepackage{pdflscape}
 \usepackage{placeins}
 \usepackage{xcolor}
-\usepackage{fancyhdr}
+\usepackage{titling}
 
-\pagestyle{fancy}
-\fancyhf{} \chead{\textsc{Using Lotteries to Encourage Saving}} \rhead{\thepage}
 \linespread{1}
 \urlstyle{tt}
 
-\allsectionsfont{\rmfamily}
-\sectionfont{\normalsize}
-\subsectionfont{\normalfont\normalsize\selectfont\itshape}
-\subsubsectionfont{\normalfont\normalsize\selectfont\itshape}
+\sectionfont{\centering\normalfont\normalsize\scshape}
+\subsectionfont{\centering\normalfont\normalsize\selectfont\itshape}
+\subsubsectionfont{\centering\normalfont\normalsize\selectfont\itshape}
 
 \sectiondot{subsection}
+
+\renewcommand{\abstractname}{\vspace{-\baselineskip}}
 
 \renewcommand\thesection{\Roman{section}}
 \renewcommand\thesubsection{\thesection.\Alph{subsection}}
 \renewcommand\thesubsubsection{\thesubsection.\arabic{subsubsection}}
 
-\renewcommand{\today}{\ifcase \month \or January\or February\or March\or April\or May \or June\or July\or August\or September\or October\or November\or December\fi~ \number \year}
-
-\renewcommand{\headrulewidth}{0pt}
-
 \newcommand{\specialcell}[2][c]{\begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
+\renewcommand{\today}{\ifcase \month \or January\or February\or March\or April\or May \or June\or July\or August\or September\or October\or November\or December\fi~\number \year}
 
 \begin{document}
 
 \title{\textsc{Using Lotteries to Encourage Saving: Experimental Evidence from Kenya}\protect\footnote{We are grateful to the study participants for generously giving their time. We thank Jonathan Page and Arun Varghese for excellent research assistance. This study was pre-registered with the AEA RCT registry (AEARCTR-0000893). Files for replication are available at \url{https://github.com/princetonbpl/akiba-lottery-pub}.}}
 
-\author{Justin Abraham\thanks{Department of Economics. University of California, San Diego. \protect\href{mailto:jabraham@ucsd.edu}{\nolinkurl{jabraham@ucsd.edu}}.}, Merve Akbas\thanks{Department of Economics. Duke University. \protect\href{mailto:merve.akbas@duke.edu}{\nolinkurl{merve.akbas@duke.edu}}.}, Dan Ariely\thanks{Fuqua School of Business. Duke University. \protect\href{mailto:dan@danariely.com}{\nolinkurl{dan@danariely.com}}.}, and Chaning Jang\thanks{The Busara Center for Behavioral Economics. \protect\href{mailto:chaning.jang@busaracenter.org}{\nolinkurl{chaning.jang@busaracenter.org}}.}}
+\author{
+	Justin Abraham
+		\thanks{Department of Economics. University of California, San Diego. \protect\href{mailto:jabraham@ucsd.edu}{\nolinkurl{jabraham@ucsd.edu}}.},
+	Merve Akbas
+		\thanks{Department of Economics. Duke University. \protect\href{mailto:merve.akbas@duke.edu}{\nolinkurl{merve.akbas@duke.edu}}.},
+	Dan Ariely
+		\thanks{Fuqua School of Business. Duke University. \protect\href{mailto:dan@danariely.com}{\nolinkurl{dan@danariely.com}}.}, and
+	Chaning Jang
+		\thanks{The Busara Center for Behavioral Economics. \protect\href{mailto:chaning.jang@busaracenter.org}{\nolinkurl{chaning.jang@busaracenter.org}}.}
+}
 
 \maketitle
 
@@ -53,9 +58,9 @@
 		We conduct a field experiment to study the provision of prize-linked savings accounts (PLS)---savings products that incorporate stochastic returns to deposits---against standard, interest-bearing accounts. We randomly provided a mobile savings account with a fixed incentive, a PLS account, and a PLS account with feedback about winnings to 311 informal residents of Nairobi, Kenya and observe account activity over 60 days. Individuals saving with PLS with feedback made 42\% more deposits on average over the project period than participants who received a fixed incentive of equal expected value. We do not observe any effects of the lottery incentive on the amount deposited with PLS or on savings with other products. Lastly, we find that use of PLS results in a 15\% increase in gambling activity. We argue that the effects on deposit frequency are due to regret aversion, a hypothesis which receives support from the presence of larger treatment effects conditional on winning the lottery but being unable to claim the prize.
 
 		\medskip \noindent
-		\textbf{JEL Classification}: D14, E21, G11
+		\textbf{JEL Classifications}: D14, E21, G11
 
-	\end{abstract}
+ 	\end{abstract}
 
 \newpage
 
@@ -244,11 +249,7 @@
 			\mathrm{MDE}_{\hat \beta} = (t_{1-\kappa} + t_{\alpha/2}) \times \mathrm{SE}(\hat \beta)
 		\label{eq:mde} \end{equation}
 
-		This metric is the smallest effect that would have been detectable given our current sample size. Thus, a MDE lower than our estimated treatment effect suggests that null results are due to a lack of statistical power. We calculate MDEs \textit{ex post} with $\alpha = 0.05$ and 0.80 power for both treatment effects.
-
-		% what is the null under mDE?
-		% MDE for het effects? why not for all null outcomes?
-		% scrap this section; just talk about whether sizes we can detect will be econmically meaningful
+		This metric is the smallest effect that would have been detectable given our current sample size. Thus, a MDE greater than our estimated treatment effect suggests that null results are due to a lack of statistical power. We calculate MDEs \textit{ex post} with $\alpha = 0.05$ and 0.80 power for both Lottery and Regret treatment effects.
 
 	\subsection{Heterogeneous Treatment Effects}
 
@@ -293,17 +294,20 @@
 
 \section{Results} \label{sec:results}
 
+	By the end of the project, the median participant in the control group contributed USD 3.86 to the mobile savings account over 8 deposits. The total saved by the control group amounts to less than 5\% of the median monthly income (USD 77.24) and 17\% of the median monthly savings (USD 22.91). 13\% of the control group did not use their accounts at all. Despite the relatively high 5\% rate of return on deposits, minimal saving is consistent with estimates of low interest rate elasticities \shortcite{karlan_price_2018}. Table \ref{tab:tab-lottery} compares the lottery results with the expected probabilities of each type of lottery match.
+
+	% elasticities relate to the margin, we have something comparable if we compare baseline and control savings
+	% karlan has a 2016 paper
+
+	\input{../../tables/tab-lottery-final.tex}
+
 	\subsection{PLS with Feedback Increases Deposit Frequency but Not Savings}
 
-		By the end of the project, the median participant in the control group contributed USD 3.86 to the mobile savings account over 8 deposits. The total saved by the control group amounts to less than 5\% of the median monthly income (USD 77.24) and 17\% of the median monthly savings (USD 22.91). 13\% of the control group did not use their accounts at all. Despite the relatively high 5\% rate of return on deposits, minimal saving is consistent with estimates of low interest rate elasticities \shortcite{karlan_price_2018}. Table \ref{tab:tab-lottery} compares the lottery results with the expected probabilities of each type of lottery match. The mean prize award is 0.05 of deposits ($p > 0.10$).
+		We find that participants in the Regret group made between 5-6 more deposit transactions ($\hat \beta = 5.71, p < 0.05$) over the entire project period compared to those receiving the match incentive. Table \ref{tab:reg-fwermobile} reports a moderately sized effect of 0.38 SD over the average frequency of deposits in the control group. This result is further robust to the inclusion of control variables and significant at the 10\% level with FWER adjusted $p$-values. These effects exhibit no heterogeneity across demographic characteristics, risk attitudes, or temporal discounting.\footnote{We report the full set of heterogeneity results in an online appendix.} Participants in Regret had an additional 5 days on average that they chose to make at least one deposit relative to the control ($\hat \beta = 4.94, p < 0.05$). This suggests that the effect on the frequency of deposits occurs on the daily margin; it is not driven by participants saving more within periods. This result is robust to covariate adjustment and is significant at the 10\% level after FWER adjustment.
 
-		\input{../../tables/tab-lottery-final.tex}
-
-		We find that participants in the Regret group made between 5-6 more deposit transactions ($\hat \beta = 5.71, p < 0.05$) over the entire project period compared to those receiving the match incentive. Table \ref{tab:reg-fwermobile} reports a moderately sized effect of 0.38 SD over the average frequency of deposits in the control group. This result is further robust to the inclusion of control variables and significant at the 10\% level with FWER adjusted $p$-values. These effects exhibit no heterogeneity across demographic characteristics, risk attitudes, or temporal discounting.\footnote{We report the full set of heterogeneity results in an online appendix.} We do not find strong evidence of an effect of the lottery incentive alone against either Regret or the control group ($p < 0.10$), but estimates suggest that the magnitude of this treatment effect is comparable to that of Regret. Panel A of Figure \ref{fig:line-cumdeposits} traces the cumulative path of deposits made over the duration of the project. Average deposits for the Lottery and Regret groups are greater than for the control group over all periods. We are able to statistically distinguish total values at the end of the 60-day period for Regret and not for Lottery. Table \ref{tab:reg-mde} displays the minimum detectable effect sizes for each outcome and shows that the present experimental design is powered to detect effects only larger than what we estimate for the Lottery group. A larger sample size may thus be required to reject null effects of Lottery at the 5\% level.
+		We do not find strong evidence of an effect of the lottery incentive alone against either Regret or the control group ($p < 0.10$), but estimates suggest that the magnitude of this treatment effect is comparable to that of Regret. The effect of PLS on the number of days saved is smaller in magnitude to Regret ($\hat \beta = 3.93$) and is significant at the 10\% level. Panel A of Figure \ref{fig:line-cumdeposits} traces the cumulative path of deposits made over the duration of the project. Average number of deposits for the Lottery and Regret groups are greater than for the control group over all periods, though we are able to statistically distinguish total values at the end of the 60-day period only for Regret and not for Lottery. We are nevertheless interested in whether this null finding is due to a lack of statistical power since point estimates are similar in magnitude to Regret. Table \ref{tab:reg-mde} displays the minimum detectable effect sizes for each outcome and shows that the present experimental design is powered to detect effects only larger than what we estimate for the Lottery group.
 
 		\input{../../tables/reg-fwermobile.tex}
-
-		Participants in Regret had an additional 5 days on average that they chose to make at least one deposit relative to the control ($\hat \beta = 4.94, p < 0.05$). This suggests that the effect on the frequency of deposits occurs on the daily margin; it is not driven by participants saving more within periods. This result is robust to covariate adjustment and is significant at the 10\% level after FWER adjustment. The effect of PLS alone is smaller in magnitude to Regret ($\hat \beta = 3.93$) and is significant at the 10\% level.
 
 		\begin{figure}[ht]
 			\caption{Number of deposits and amount deposited over project period}
@@ -423,7 +427,7 @@
 
 % Our contributions:
 %
-% 	One of the first causal evidence of PLS on savings and gambling
+% 	causal evidence of PLS on savings and gambling
 % 	Developing country setting
 % 	Mobile savings allow tight tracking of savings behavior
 % 	Multi-period panel setting gives us dynamic information (Samuelson)
