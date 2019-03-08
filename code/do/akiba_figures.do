@@ -59,8 +59,8 @@ collapse (mean) mobile_depositamount mobile_cumdepositamount mobile_deposits mob
 
 foreach root in depositamount deposits cumdepositamount cumdeposits balance {
 
-	gen ub_`root' = mobile_`root' + 1.96*sem_`root'
-	gen lb_`root' = mobile_`root' - 1.96*sem_`root'
+	gen ub_`root' = mobile_`root' + sem_`root'
+	gen lb_`root' = mobile_`root' - sem_`root'
 
 }
 
