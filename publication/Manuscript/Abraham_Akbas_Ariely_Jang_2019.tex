@@ -58,10 +58,11 @@
 
 	\begin{abstract}
 
-		We conduct a field experiment to study the provision of prize-linked savings accounts (PLS)---savings products that incorporate stochastic returns to deposits---against standard, interest-bearing accounts. We randomly provided a mobile savings account with a fixed incentive, a PLS account, and a PLS account with feedback about winnings to 311 informal residents of Nairobi, Kenya and observe account activity over 60 days. Individuals saving with PLS with feedback made 42\% more deposits on average over the project period than participants who received a fixed incentive of equal expected value. We do not observe any effects of the lottery incentive on the amount deposited with PLS or on savings with other products. Lastly, we document limited evidence that use of PLS results in a 15\% increase in gambling activity. We argue that the effects on deposit frequency are due to regret aversion, a hypothesis which receives support from the presence of larger treatment effects conditional on winning the lottery but being unable to claim the prize.
+		We conduct a field experiment that randomly assigned 311 informal residents of Nairobi to either a prize-linked savings account (PLS)---a product that incorporate stochastic returns to deposits---against standard, interest-bearing accounts of equivalent expected value. In the PLS treatment, individuals could only enter the lottery conditional on their making a deposit. We implement a third treatment arm that provides feedback on lottery results unconditionally to test for regret aversion. Individuals saving with PLS with feedback made 42\% more deposits on average over the project period than participants who received a fixed incentive of equal expected value. We do not observe any effects of the lottery incentive on the amount deposited with PLS or on savings with other products. Lastly, we document limited evidence that use of PLS results in a 15\% increase in gambling activity. We argue that the effects on deposit frequency are due to regret aversion, a hypothesis which receives support from the presence of larger treatment effects conditional on winning the lottery but being unable to claim the prize.
 
 		% be more explicit about third treatment
 		% what's the motivation for testing the PLS?
+		% edit this after reframing the paper
 
 		\medskip \noindent
 		JEL Classifications: D14, E21, G11
@@ -246,9 +247,7 @@
 
 		The set of indicators partitions our sample so that our estimate remains unbiased for the average treatment effect \parencite{lin_agnostic_2013}. As in Equation \ref{eq:teffect}, we test $\beta_{1} = 0$ and $\beta_{2} = 0$ to identify the effects of the lottery and lottery with feedback relative to the matching group and test $\beta_{2} - \beta_{1} = 0$ for differential effects between the two lottery treatments. Standard errors are clustered at the individual level. Equation \ref{eq:teffect} is our preferred specification and report results with covariate adjustment for robustness.
 
-		% We might expect that the errors of each outcome variable are correlated. Instead of estimating these equations separately, we estimate the system of seemingly unrelated regressions (SUR) to improve the precision of the coefficient estimates \parencite{zellner_efficient_1962}. SUR estimation is equivalent to OLS when the error terms are in fact uncorrelated between regressions or when each equation contains the same set of regressors. We perform joint estimation over outcome groups for Equation \ref{eq:teffect} and Equation \ref{eq:controls} separately.
-
-		% Given that our survey instrument included several items related to a single behavior or dimension, we calculate sharpened $q$-values within each outcome family following \parencite{benjamini_adaptive_2006} to control the false discovery rate (FDR). Rather than specifying a single $q$, we report the minimum $q$-value at which each hypothesis is rejected, following \parencite{anderson_multiple_2008}. We apply this correction over outcome variables in each family and separately for each hypothesis test.
+		We might expect that the errors of each outcome variable are correlated. Instead of estimating these equations separately, we estimate the system of seemingly unrelated regressions (SUR) to improve the precision of the coefficient estimates \parencite{zellner_efficient_1962}. SUR estimation is equivalent to OLS when the error terms are in fact uncorrelated between regressions or when each equation contains the same set of regressors. We perform joint estimation over outcome groups for Equation \ref{eq:teffect} and Equation \ref{eq:controls} separately.
 
 		We control for the family-wise error rate (FWER) to correct for multiple inference. We compute adjusted $p$-values within categories of outcome variables using the free step-down resampling method \parencite{westfall_resampling-based_1993,anderson_multiple_2008}. This approach sets the size of the test to exactly the desired crticial value. We apply this correction over outcome variables in each family and separately for each hypothesis test. For each variable, we apply the procedure with 10,000 iterations and report both unadjusted and adjusted $p$-values.
 
@@ -272,21 +271,6 @@
 		\end{split} \label{eq:heteffect} \end{equation}
 
 		$x_{i}$ is the binary dimension of heterogeneity measured before treatment assignment. $\delta_{1}$ and $\delta_{2}$ respectively identify the heterogeneous treatment effects of the lottery and lottery with feedback relative to $x_{i} = 0$. Standard errors are clustered at the individual level. We estimate this model with the following baseline variables as $x_{i}$: gender, marriage status, below age 30, completed std. 8, uses a savings account, above median monthly income, employment status, above median CPGI score, coefficient of relative risk aversion, above median indifference point.
-
-	\subsection{Testing for Regret Aversion}
-
-		We can leverage the panel structure of our data and the randomness of the lottery results to formulate a test of regret aversion. If participants are saving in response to experienced regret of foregoing the prize, we expect to see an effect of winning the lottery above and beyond the group effect. Let $Y_{i,t}$ denote having made a deposit or the amount deposited by participant $i$ in period $t$. $\text{Win}_{i,t}$ is an indicator for having a winning lottery ticket from the pervious day announced in period $t$. We estimate the following equation conditional on assignment to the Regret group and not having saved one period prior.
-
-		\begin{equation} \begin{split}
-		Y_{i,t} = & \pi \text{Win}_{i,t} + \omega_{t} + u_{i,t}
-		\end{split} \label{eq:regret} \end{equation}
-
-		$\pi$ is the additional effect from winning but not being able to claim the prize. $\omega_{t}$ is a period-specific fixed effect. We test the null hypothesis of no regret aversion, $\pi = 0$. Standard errors are clustered at the individual level.
-
-		% do this overall only among the regret group and then plot the time trend of effects
-		% the previous analysis in this section seems wrong
-		% regret - lottery identifies the anticipated regret aversion but maybe we dont see effects due to power or time trend
-		% motivates a look at the time trend of effects
 
 	% \subsection{Time-Varying Treatment Effects}
 	%
@@ -314,7 +298,7 @@
 
 	\input{../../tables/tab-lottery-final.tex}
 
-	\subsection{PLS with Feedback Increases Deposit Frequency but Not Savings}
+	\subsection{PLS with Feedback Increases Deposit Frequency}
 
 		We find that participants in the Regret group made between 5-6 more deposit transactions ($\hat \beta = 5.71, p < 0.05$) over the entire project period compared to those receiving the match incentive. Table \ref{tab:reg-fwermobile} reports a moderately sized effect of 0.38 SD over the average frequency of deposits in the control group. This result is further robust to the inclusion of control variables and significant at the 10\% level with FWER adjusted $p$-values. These effects exhibit no heterogeneity across demographic characteristics, risk attitudes, or temporal discounting.\footnote{We report the full set of heterogeneity results in an online appendix.} Participants in Regret had an additional 5 days on average that they chose to make at least one deposit relative to the control ($\hat \beta = 4.94, p < 0.05$). This suggests that the effect on the frequency of deposits occurs on the daily margin; it is not driven by participants saving more within periods. This result is robust to covariate adjustment and is significant at the 10\% level after FWER adjustment.
 
@@ -353,6 +337,7 @@
 
 		That potential savers respond to PLS by making more frequent deposits without a corresponding increase in balance can be partially rationalized as the subdivision of lotteries to reduce risk. Under this hypothesis, risk averse individuals will subdivide bets over a greater number of gambles so that the risk of a low return is minimized. Since PLS offers returns equivalent in expectation to the matching incentive, we would expect risk averse individuals to save no more with PLS than with the standard account even without liquidity constraints.\footnote{\textcite{samuelson_risk_1963} proves that expected utility maximizers would accept a sequence of identical lotteries if and only if they accept a single instance of the lottery.} Yet another explanation for our findings is the ``entertainment'' utility hypothesis of gambling \parencite{conlisk_utility_1993}. That is, consumers will behave in ways that enable them to make gambles because they derive consumption utility from simply playing and irrespective of potential earnings. Under this hypothesis, an increase in the number of deposits in the treatment group is expected if merely making a deposit on a certain day qualifies participants to play the lottery for that day. Recall that participants had almost five more active days---and thus play the lottery five more times---than the control group. Unsurprisingly, participants are not making more deposits \textit{within} days since this does not affect lottery eligibility. For these reasons we expect the PLS to induce more deposits without a corresponding increase in amount saved. But since the effect estimates of Lottery are not significant at the 5\% level, we require a separate channel through which PLS with feedback changes behavior.
 
+		% do these other schemes provide lottery results even without saving? (thus activating regret aversion)
 		% people feel luckier, regret lottery groups select into regret (they want feedback and the lottery)
 		% Do they play because of non-divisible large expenditures like \textcite{herskowitz__2016} http://blogs.worldbank.org/impactevaluations/unmet-liquidity-needs-and-spread-sports-betting-guest-post-sylvan-herskowitz? no savings and lottery both do that.
 
@@ -366,15 +351,30 @@
 
 		Our estimates on the effect of Lottery are smaller in magnitude to the effect of Regret and are not significant at the 5\% level. Why might PLS with feedback elicit a more acute behavioral response than PLS alone? Two alternative, but not mutually exclusive mechanisms could be driving these results. First, recall that participants in Regret automatically received lottery tickets at the beginning of each day while Lottery participants had to make deposits before obtaining a ticket. Participants who exhibit loss aversion will thus be more willing to save to prevent losing a ticket already in hand \parencite{kahneman_advances_1992}. Second, participants save to minimize anticipated regret from winning the lottery but being unable to claim the prize. This mechanism is inactive in PLS treatment alone because that group only receives lottery results after saving.
 
+		% don't even use loss aversion
+
+		We can leverage the panel structure of our data and the randomness of the lottery results to formulate a test of regret aversion. If participants are saving in response to experienced regret of foregoing the prize, we expect to see an independent effect of winning the lottery on the decision to save in the Regret group. Let $Y_{i,t}$ denote having made a deposit by participant $i$ in period $t$. $\text{Win}_{i,t}$ is an indicator for having a winning lottery ticket from the pervious day announced in period $t$. We estimate the following equation conditional on assignment to the Regret group and not having saved one period prior.
+
+		\begin{equation} \begin{split}
+		Y_{i,t} = & \pi \text{Win}_{i,t} + \omega_{t} + u_{i,t}
+		\end{split} \label{eq:regret} \end{equation}
+
+		$\pi$ is the additional effect from winning but not being able to claim the prize. $\omega_{t}$ is a period-specific fixed effect. We test the null hypothesis of no regret aversion, $\pi = 0$.
+
+		% do this overall only among the regret group and then plot the time trend of effects
+		% the previous analysis in this section seems wrong
+		% regret - lottery identifies the anticipated regret aversion but maybe we dont see effects due to power or time trend
+		% motivates a look at the time trend of effects
+
 		\begin{figure}[ht]
 		\centering
 		\caption{Timing of deposits}
 		\includegraphics[width=\textwidth]{../../figures/hist-deposits.pdf}
 		\label{fig:hist-deposits}
-		\caption*{\footnotesize \emph{Notes:} This figure plots the empirical distribution of timing of all deposits over the project period. Each bin spans 30 minutes with a height equal to the fraction of all deposits within each treatment group. Participants received the first SMS at 8:00 that summarized how much the participant saved the previous day, how much the participant earned through a matching contribution or winnings, and their total balance. An hour later, participants received a second SMS encouraging them to save that day. Participants in Regret received a new lottery ticket with the second message.}
+		\caption*{\footnotesize \emph{Notes:} This figure plots the empirical distribution of timing of all deposits over the project period. Each bin spans 30 minutes with a height equal to the fraction of all deposits within each treatment group. A vertical line marks 8:00, when participants received the first SMS that summarized how much the participant saved the previous day, how much the participant earned through a matching contribution or winnings, and their total balance. An hour later, participants received a second SMS encouraging them to save that day. Participants in Regret received a new lottery ticket with the second message.}
 		\end{figure}
 
-		We estimate Equation \ref{eq:regret} to test for the presence of regret aversion distinct from other potential channels. Under the regret aversion hypothesis, we expect to observe an additional effect on saving after participants receive feedback on a winning ticket rather than a losing ticket. Table \ref{tab:reg-regretaversion} shows that the treatment effect is 2.2 percentage points ($p<0.05$) higher after learning about a winning ticket than learning about a losing one. This effect is small but is statistically distinguishable from the portion of the treatment effect arising from other mechanisms ($\hat \beta = 0.02, p > 0.1$). Thus participant behavior is consistent with the minimization of anticipated regret. Figure \ref{fig:hist-deposits} plots the distribution of deposits over time and shows timing suggestive of regret aversion. Nearly all deposits made in the Regret group ocurred within an hour of announcing the lottery results from the previous day. Deposits similarly peaked between the results and the disbursement of that day's lottery ticket. We observe no similar pattern in the Lottery and control groups.
+		Table \ref{tab:reg-regretaversion} shows that the treatment effect is 2 percentage points ($p<0.05$) higher after learning about a winning ticket than learning about a losing one. With an average daily effect of 0.08 of Regret, this account for a fourth of the group treatment effect. It suggests that individuals respond to the experience of regret from foregone winnings. Figure \ref{fig:hist-deposits} plots the distribution of deposits over time and shows timing suggestive of regret aversion. Nearly all deposits made in the Regret group ocurred within an hour of announcing the lottery results from the previous day. We observe no similar pattern in the Lottery and control groups.
 
 		\input{../../tables/reg-regretaversion.tex}
 

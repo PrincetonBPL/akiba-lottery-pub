@@ -2,8 +2,10 @@
 
 \usepackage[a4paper,margin=1.5in]{geometry}
 \usepackage[strict]{changepage}
-\usepackage[scale=0.92]{tgschola}
-\usepackage{fouriernc}
+% \usepackage[scale=0.92]{tgschola}
+% \usepackage{fouriernc}
+\usepackage{lmodern}
+\usepackage{inconsolata}
 \usepackage[T1]{fontenc}
 
 \usepackage{booktabs, threeparttable, adjustbox, tabularx, longtable}
@@ -282,32 +284,18 @@
 
 \section{Treatment Effects}
 
-	% \subsection{Average treatment effects}
-    %
-	% 	\input{../../tables/reg-mobile.tex}
-    %     \input{../../tables/reg-early.tex}
-    %     \input{../../tables/reg-late.tex}
-	% 	\input{../../tables/reg-panel.tex}
-	% 	\input{../../tables/reg-save.tex}
-	% 	\input{../../tables/reg-gamble.tex}
-	% 	\input{../../tables/reg-akiba.tex}
-    %     \input{../../tables/reg-cons.tex}
-	% 	\input{../../tables/reg-self.tex}
-	% 	\input{../../tables/reg-select.tex}
-    %
-	% \clearpage
-
-    \subsection{Average treatment effects with FWER correction}
-
-        \input{../../tables/reg-fwermobile.tex}
-        \input{../../tables/reg-fwerearly.tex}
-        \input{../../tables/reg-fwerlate.tex}
-        \input{../../tables/reg-fwersave.tex}
-        \input{../../tables/reg-fwergamble.tex}
-        \input{../../tables/reg-fwerakiba.tex}
-        \input{../../tables/reg-fwercons.tex}
-        \input{../../tables/reg-fwerself.tex}
-        \input{../../tables/reg-fwerselect.tex}
+	\subsection{Average treatment effects}
+    
+		\input{../../tables/reg-mobile.tex}
+        \input{../../tables/reg-early.tex}
+        \input{../../tables/reg-late.tex}
+		\input{../../tables/reg-panel.tex}
+		\input{../../tables/reg-save.tex}
+		\input{../../tables/reg-gamble.tex}
+		\input{../../tables/reg-akiba.tex}
+        \input{../../tables/reg-cons.tex}
+		\input{../../tables/reg-self.tex}
+		\input{../../tables/reg-select.tex}
 
     \clearpage
 
