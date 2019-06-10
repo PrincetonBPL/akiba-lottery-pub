@@ -1,0 +1,7 @@
+Todo
+
+	Consider additional motivation by regret aversion
+		Add literature on regret aversion
+		Present pooled effect then by regret and lottery
+		Quantify roles of regret aversion and skewness by a model
+		Test for dynamic effects (using a dynamic model?)
