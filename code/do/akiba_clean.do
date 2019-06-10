@@ -629,6 +629,9 @@ la var mobile_cumdepositamount "Cumulative deposit amount"
 bysort account: gen mobile_cumdeposits = sum(mobile_deposits)
 la var mobile_cumdeposits "Cumulative deposits made"
 
+bysort account: gen mobile_cumprizeamount = sum(mobile_prizeamount)
+la var mobile_cumprizeamount "Cumulative prizes won"
+
 /* Daily mobile savings activity */
 
 gen mobile_saved = mobile_depositamount > 0 & ~mi(mobile_depositamount)
@@ -639,6 +642,9 @@ la var mobile_withindeposits "No. of deposits on days saved"
 
 gen mobile_matched = mobile_matches > 0 & ~mi(mobile_matches)
 la var mobile_matched "Winning ticket"
+
+bysort account: gen mobile_cummatches = sum(mobile_matched)
+la var mobile_cummatches "Cumulative lottery wins"
 
 gen mobile_awarded = mobile_matched == 1 & mobile_saved == 1 & control == 0
 la var mobile_awarded "Awarded prize"

@@ -1,0 +1,16 @@
+\begin{table}[h]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \caption{Treatment effects -- Gambling} \label{tab:reg-newgamble} \maxsizebox*{\textwidth}{\textheight}{ \begin{threeparttable} \begin{tabular}{l*{6}{c}} \toprule
+          &\multicolumn{4}{c}{Effect estimates}   &\multicolumn{2}{c}{Sample}\\\cmidrule(lr){2-5}\cmidrule(lr){6-7}
+          &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}&\multicolumn{1}{c}{(5)}&\multicolumn{1}{c}{(6)}\\
+          &\multicolumn{1}{c}{Lottery}&\multicolumn{1}{c}{No feedback}&\multicolumn{1}{c}{Feedback}&\multicolumn{1}{c}{\specialcell{Regret-\\Lottery}}&\multicolumn{1}{c}{\specialcell{Control Mean\\(SD)}}&\multicolumn{1}{c}{Obs.}\\
+\midrule
+Gamble more&0.10\sym{**}&     0.06&0.15\sym{***}&     0.08&     0.12&      284\\
+          &   (0.04)&   (0.05)&   (0.06)&   (0.06)&   (0.32)&         \\
+Gamble less&     0.01&    -0.02&     0.04&     0.06&     0.16&      284\\
+          &   (0.05)&   (0.05)&   (0.06)&   (0.05)&   (0.37)&         \\
+More tempted to gamble&     0.07&     0.09&     0.05&    -0.04&     0.47&      284\\
+          &   (0.06)&   (0.07)&   (0.07)&   (0.07)&   (0.50)&         \\
+Less tempted to gamble&     0.01&    -0.01&     0.03&     0.04&     0.06&      284\\
+          &   (0.03)&   (0.03)&   (0.04)&   (0.04)&   (0.25)&         \\
+\bottomrule \end{tabular} \begin{tablenotes}[flushleft] \footnotesize \item \emph{Notes:} Columns 1--3 report OLS estimates of the treatment effect. Standard errors are in parentheses. Columns 4--5 report the mean and SD of the control group and the number observations, respectively. Observations are at the individual level. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level. \end{tablenotes} \end{threeparttable} } \end{table}
+
+% File produced by reg-new.do with /Users/justin/Repos/akiba-lottery-pub/data/clean/akiba_wide.dta on 09:11:22 10 Jun 2019 by user justin on Stata 13.1 with seed X02be4b816237fe6e6a333726618fd6dd00043d82

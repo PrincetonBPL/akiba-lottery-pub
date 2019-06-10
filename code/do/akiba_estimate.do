@@ -82,6 +82,10 @@ if $maineffectsflag {
 			glo regtitle "Covariate-adjusted treatment effects -- $`group'desc"
 			do "$do_dir/custom_tables/reg-cov.do"
 
+			glo regpath "reg-four`root'"
+			glo regtitle "Treatment effects -- $`group'desc"
+			do "$do_dir/custom_tables/reg-four.do"
+
 			glo regpath "reg-fdr`root'"
 			glo regtitle "Treatment effects controlling the FDR -- $`group'desc"
 			do "$do_dir/custom_tables/reg-fdr.do"
@@ -239,6 +243,8 @@ if $heteffectsflag {
 
 use "$data_dir/clean/akiba_long.dta", clear
 
+// Does a counterfactual win induce savings over a counterfactual loss? //
+
 eststo: reg mobile_saved mobile_matched i.period if L1.mobile_saved != 1 & regret == 1, vce(cl surveyid)
 
 	qui sum mobile_saved if control == 1
@@ -256,6 +262,14 @@ eststo clear
 file open tex using "$tab_dir/reg-regretaversion.tex", write append
 file write tex _n "% File produced by akiba-estimate.do with `c(filename)' on `c(current_time)' `c(current_date)' by user `c(username)' on Stata `c(version)' with seed `c(seed)'"
 file close tex
+
+// Does the number of lottery wins in the past induce savings? //
+
+reg mobile_saved mobile_cummatches i.period if regret == 1, vce(cl surveyid)
+
+// Is the amount of lottery winnings predictive of saving? //
+
+reg mobile_saved mobile_cumprizeamount i.period if L1.mobile_saved != 1 & regret == 1, vce(cl surveyid)
 
 //////////////////////////////////////
 /* Time-dependent treatment effects */

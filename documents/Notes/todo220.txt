@@ -5,3 +5,7 @@ Todo
 		Present pooled effect then by regret and lottery
 		Quantify roles of regret aversion and skewness by a model
 		Test for dynamic effects (using a dynamic model?)
+
+	Set of results
+		Effect of PLS
+		Effect of PLS compared to regret aversion
