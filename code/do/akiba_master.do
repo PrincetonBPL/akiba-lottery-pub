@@ -49,7 +49,7 @@ glo USDconvertflag = 1  // Runs and reports analysis in USD-PPP
 glo ppprate = (1/38.84) // PPP exchange rate from KSH (2009-2013)
 
 glo iterations = 10000  // Number of iterations for calculating FWER adjusted p-values
-glo riterations = 5 // Number of iterations for permutation test
+glo riterations = 10000 // Number of iterations for permutation test
 
 /* Regressands by category */
 
