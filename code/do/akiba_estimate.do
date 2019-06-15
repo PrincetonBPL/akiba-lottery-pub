@@ -82,9 +82,9 @@ if $maineffectsflag {
 			glo regtitle "Covariate-adjusted treatment effects -- $`group'desc"
 			do "$do_dir/custom_tables/reg-cov.do"
 
-			glo regpath "reg-four`root'"
-			glo regtitle "Treatment effects -- $`group'desc"
-			do "$do_dir/custom_tables/reg-four.do"
+			* glo regpath "reg-four`root'"
+			* glo regtitle "Treatment effects -- $`group'desc"
+			* do "$do_dir/custom_tables/reg-four.do"
 
 			glo regpath "reg-fdr`root'"
 			glo regtitle "Treatment effects controlling the FDR -- $`group'desc"
