@@ -65,11 +65,11 @@ la var treatmentgroup "Treatment group"
 tab treatmentgroup, gen(treat)
 
 ren treat1 control
-la var control "Interest"
+la var control "Control"
 ren treat2 lottery
-la var lottery "Lottery"
+la var lottery "No Feedback"
 ren treat3 regret
-la var regret "Regret"
+la var regret "PLS"
 
 gen treated = ~control
 la var treated "Treated"
@@ -440,7 +440,7 @@ la var akiba_rules_1 "Can describe rules of AKIBA"
 encode endline_chooseplan, gen(akiba_select_1)
 la var akiba_select_1 "Group self-selection"
 
-la def la_select 1 "Interest" 2 "Lottery" 3 "Regret"
+la def la_select 1 "Control" 2 "No Feedback" 3 "PLS"
 la val akiba_select_1 la_select
 
 tab akiba_select_1, gen(akiba_select)
@@ -449,25 +449,25 @@ ren akiba_select1 akiba_controlselect_1
 la var akiba_controlselect_1 "Select control group"
 
 ren akiba_select2 akiba_lotteryselect_1
-la var akiba_lotteryselect_1 "Select lottery group"
+la var akiba_lotteryselect_1 "Select No Feedback group"
 
 ren akiba_select3 akiba_regretselect_1
-la var akiba_regretselect_1 "Select regret group"
+la var akiba_regretselect_1 "Select PLS group"
 
 gen akiba_controlsave_1 = real(endline_plan1save)
 la var akiba_controlsave_1 "Save with control"
 
 gen akiba_lotterysave_1 = real(endline_plan2save)
-la var akiba_lotterysave_1 "Save with lottery"
+la var akiba_lotterysave_1 "Save with No Feedback"
 
 gen akiba_regretsave_1 = real(endline_plan3save)
-la var akiba_regretsave_1 "Save with regret"
+la var akiba_regretsave_1 "Save with PLS"
 
 gen akiba_lotteryeffect_1 = akiba_lotterysave_1 - akiba_controlsave_1
-la var akiba_lotteryeffect_1 "Perceived effect of lottery"
+la var akiba_lotteryeffect_1 "Perceived effect of PLS without feedback"
 
 gen akiba_regreteffect_1 = akiba_regretsave_1 - akiba_controlsave_1
-la var akiba_regreteffect_1 "Perceived effect of regret"
+la var akiba_regreteffect_1 "Perceived effect of PLS"
 
 ren endline_comments akiba_comments_1
 ren endline_moneyspent akiba_spent_1

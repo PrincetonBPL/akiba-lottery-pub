@@ -42,6 +42,8 @@ save `ledger', replace
 
 import delim "$data_dir/lottery/ticket_report_091014_anon.csv", clear
 
+ren *icketid ticketid
+
 format account %15.0g
 
 * Adjusting period because Arun says so

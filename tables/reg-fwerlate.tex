@@ -1,20 +1,20 @@
 \begin{table}[ht]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \caption{Treatment effects -- Mobile savings (after 30 days)} \label{tab:reg-fwerlate} \maxsizebox*{\textwidth}{\textheight}{ \begin{threeparttable} \begin{tabular}{l*{5}{c}} \toprule
           &\multicolumn{3}{c}{Effect estimates}&\multicolumn{2}{c}{Sample}\\\cmidrule(lr){2-4}\cmidrule(lr){5-6}
           &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}&\multicolumn{1}{c}{(5)}\\
-          &\multicolumn{1}{c}{Lottery}&\multicolumn{1}{c}{Regret}&\multicolumn{1}{c}{\specialcell{Regret-\\Lottery}}&\multicolumn{1}{c}{\specialcell{Control Mean\\(SD)}}&\multicolumn{1}{c}{Obs.}\\
+          &\multicolumn{1}{c}{No Feedback}&\multicolumn{1}{c}{PLS}&\multicolumn{1}{c}{\specialcell{PLS-\\No Feedback}}&\multicolumn{1}{c}{\specialcell{Control Mean\\(SD)}}&\multicolumn{1}{c}{Obs.}\\
 \midrule
 Total no. of deposits (after 30 days)&     2.02&2.63\sym{**}&     0.61&     5.18&      311\\
           &   (1.26)&   (1.25)&   (1.44)&   (7.56)&         \\
-          &   [0.20]&[0.00\sym{***}]&   [1.00]&         &         \\
+          &   [0.24]&[0.02\sym{**}]&   [0.84]&         &         \\
 No. of days saved (after 30 days)&1.99\sym{*}&2.38\sym{**}&     0.39&     4.36&      311\\
           &   (1.02)&   (1.05)&   (1.18)&   (6.36)&         \\
-          &[0.00\sym{***}]&[0.00\sym{***}]&   [1.00]&         &         \\
+          &[0.08\sym{*}]&[0.02\sym{**}]&   [0.86]&         &         \\
 Daily avg. no. of deposits (after 30 days)&     0.07&0.09\sym{**}&     0.02&     0.17&      311\\
           &   (0.04)&   (0.04)&   (0.05)&   (0.25)&         \\
-          &   [0.20]&[0.00\sym{***}]&   [1.00]&         &         \\
+          &   [0.24]&[0.02\sym{**}]&   [0.84]&         &         \\
 Total deposit amount (after 30 days)&     0.38&     0.05&    -0.33&     5.88&      311\\
           &   (1.68)&   (1.47)&   (1.58)&  (11.43)&         \\
-          &   [0.40]&   [1.00]&   [1.00]&         &         \\
+          &   [0.90]&   [0.96]&   [0.86]&         &         \\
 \bottomrule \end{tabular} \begin{tablenotes}[flushleft] \footnotesize \item \emph{Notes:} Columns 1--3 report OLS estimates of the treatment effect. Standard errors are in parentheses and FWER adjusted \(p\)-values are in brackets. Observations are at the individual level. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level. Stars on the coefficient estimates reflect unadjusted \(p\)-values. \end{tablenotes} \end{threeparttable} } \end{table}
 
-% File produced by reg-fwer.do with /Users/justin/Repos/akiba-lottery-pub/data/clean/akiba_wide.dta on 10:04:37 14 Jun 2019 by user justin on Stata 13.1 with seed X27e0a1708256a41cdeaf4038df2ac2a9000400f4
+% File produced by reg-fwer.do with /Users/justin/Repos/akiba-lottery-pub/data/clean/akiba_wide.dta on 15:49:46 11 Mar 2020 by user justin on Stata 13.1 with seed X7da58e996cc9a9f9707bcb9490ad99a500041535

@@ -51,7 +51,7 @@
 	Slw setlinewidth
 	Slrgb setrgbcolor
 	x1p y1p x2p y2p x3p y3p curveto
-	stroke
+	S
 } def
 /Stxtl {
 	/sp exch def
@@ -184,7 +184,7 @@
 	} if
 	Slw setlinewidth
 	Slrgb setrgbcolor
-	stroke
+	S
 } def
 /Sdia {
 	/sfill exch def
@@ -245,12 +245,12 @@
 		gsave
 		Slw 2 mul setlinewidth
 		clip
-		stroke
+		S
 		grestore
 	} if
 	salign 1 eq {
 		Slw setlinewidth
-		stroke
+		S
 	} if
 	salign 2 eq {
 		gsave
@@ -265,7 +265,7 @@
 		Pie
 		eoclip
 		newpath Pie
-		stroke
+		S
 		grestore
 	} if
 	newpath
@@ -370,7 +370,7 @@
 		grestore
 	} ifelse
 	Slw setlinewidth
-	stroke
+	S
 	grestore
 } def
 /Spipe {
@@ -407,7 +407,7 @@
 	newpath xleft ytop moveto xcen ybot lineto xright ytop lineto
 	Slw setlinewidth
 	Slrgb setrgbcolor
-	stroke
+	S
 } def
 /Lcs {
 	currentlinecap
@@ -430,25 +430,37 @@
 		Slw 2 mul setlinewidth
 		clip
 		Slrgb setrgbcolor
-		stroke
+		S
 		grestore
 	} if
 	salign 1 eq {
 		sfill Sfill
 		Slw setlinewidth
 		Slrgb setrgbcolor
-		stroke
+		S
 	} if
 	salign 2 eq {
 		gsave
 		Slw 2 mul setlinewidth
 		Slrgb setrgbcolor
-		stroke
+		S
 		grestore
 		sfill Sfill
 	} if
 	newpath
 	Lcr
+} def
+/Sbpa {
+	newpath
+} def
+/Sepa {
+	Slw setlinewidth
+	Slrgb setrgbcolor
+	currentlinejoin
+	1 setlinejoin
+	S
+	setlinejoin
+	newpath
 } def
 /Stransrot {
 	/anglep exch def
@@ -463,7 +475,14 @@
 /cp {currentpoint} def 
 /M {moveto} def 
 /rm {rmoveto} def 
-/S {stroke} def 
+/S {
+	Slw 0.000 eq {
+		newpath
+	} if
+	Slw 0.000 ne {
+		stroke
+	} if
+} def
 /L {Slw setlinewidth Slrgb setrgbcolor lineto Lcs S Lcr} def 
 /PL {Slw setlinewidth Slrgb setrgbcolor lineto} def 
 /MF-Helvetica {
@@ -496,7 +515,7 @@
 	sstroke 1 eq {
 		Slw setlinewidth
 		Slrgb setrgbcolor
-		stroke
+		S
 	} if
 	newpath
 } def
@@ -536,124 +555,69 @@
 /Slw 0.576 def
 /Slrgb {0.000 0.000 0.000} def
 /Slw 0.864 def
+Sbpa
 4119 4206 Sm
-4569 4598 Sl
-4569 4598 Sm
-5019 4935 Sl
-5019 4935 Sm
-5469 5319 Sl
-5469 5319 Sm
-5920 5610 Sl
-5920 5610 Sm
-6370 5856 Sl
-6370 5856 Sm
-6820 6094 Sl
-6820 6094 Sm
-7270 6439 Sl
-7270 6439 Sm
-7720 6631 Sl
-7720 6631 Sm
-8170 6838 Sl
-8170 6838 Sm
-8620 7106 Sl
-8620 7106 Sm
-9070 7314 Sl
-9070 7314 Sm
-9520 7498 Sl
-9520 7498 Sm
-9970 7720 Sl
-9970 7720 Sm
-10420 7858 Sl
-10420 7858 Sm
-10870 8081 Sl
-10870 8081 Sm
-11320 8296 Sl
-11320 8296 Sm
-11770 8464 Sl
-11770 8464 Sm
-12220 8649 Sl
-12220 8649 Sm
-12670 8840 Sl
-12670 8840 Sm
-13120 9017 Sl
-13120 9017 Sm
-13570 9201 Sl
-13570 9201 Sm
-14020 9354 Sl
-14020 9354 Sm
-14470 9531 Sl
-14470 9531 Sm
-14920 9723 Sl
-14920 9723 Sm
-15370 9884 Sl
-15370 9884 Sm
-15821 10014 Sl
-15821 10014 Sm
-16271 10152 Sl
-16271 10152 Sm
-16721 10344 Sl
-16721 10344 Sm
-17171 10498 Sl
-17171 10498 Sm
-17621 10605 Sl
-17621 10605 Sm
-18071 10781 Sl
-18071 10781 Sm
-18521 10919 Sl
-18521 10919 Sm
-18971 11081 Sl
-18971 11081 Sm
-19421 11165 Sl
-19421 11165 Sm
-19871 11341 Sl
-19871 11341 Sm
-20321 11449 Sl
-20321 11449 Sm
-20771 11602 Sl
-20771 11602 Sm
-21221 11733 Sl
-21221 11733 Sm
-21671 11902 Sl
-21671 11902 Sm
-22121 12032 Sl
-22121 12032 Sm
-22571 12139 Sl
-22571 12139 Sm
-23021 12293 Sl
-23021 12293 Sm
-23471 12408 Sl
-23471 12408 Sm
-23921 12538 Sl
-23921 12538 Sm
-24371 12638 Sl
-24371 12638 Sm
-24821 12784 Sl
-24821 12784 Sm
-25271 12922 Sl
-25271 12922 Sm
-25722 13037 Sl
-25722 13037 Sm
-26172 13160 Sl
-26172 13160 Sm
-26622 13306 Sl
-26622 13306 Sm
-27072 13459 Sl
-27072 13459 Sm
-27522 13597 Sl
-27522 13597 Sm
-27972 13766 Sl
-27972 13766 Sm
-28422 13927 Sl
-28422 13927 Sm
-28872 14080 Sl
-28872 14080 Sm
-29322 14249 Sl
-29322 14249 Sm
-29772 14464 Sl
-29772 14464 Sm
-30222 14640 Sl
-30222 14640 Sm
-30672 14671 Sl
+4569 4598 SPl
+5019 4935 SPl
+5469 5319 SPl
+5920 5610 SPl
+6370 5856 SPl
+6820 6094 SPl
+7270 6439 SPl
+7720 6631 SPl
+8170 6838 SPl
+8620 7106 SPl
+9070 7314 SPl
+9520 7498 SPl
+9970 7720 SPl
+10420 7858 SPl
+10870 8081 SPl
+11320 8296 SPl
+11770 8464 SPl
+12220 8649 SPl
+12670 8840 SPl
+13120 9017 SPl
+13570 9201 SPl
+14020 9354 SPl
+14470 9531 SPl
+14920 9723 SPl
+15370 9884 SPl
+15821 10014 SPl
+16271 10152 SPl
+16721 10344 SPl
+17171 10498 SPl
+17621 10605 SPl
+18071 10781 SPl
+18521 10919 SPl
+18971 11081 SPl
+19421 11165 SPl
+19871 11341 SPl
+20321 11449 SPl
+20771 11602 SPl
+21221 11733 SPl
+21671 11902 SPl
+22121 12032 SPl
+22571 12139 SPl
+23021 12293 SPl
+23471 12408 SPl
+23921 12538 SPl
+24371 12638 SPl
+24821 12784 SPl
+25271 12922 SPl
+25722 13037 SPl
+26172 13160 SPl
+26622 13306 SPl
+27072 13459 SPl
+27522 13597 SPl
+27972 13766 SPl
+28422 13927 SPl
+28872 14080 SPl
+29322 14249 SPl
+29772 14464 SPl
+30222 14640 SPl
+30672 14671 SPl
+Sepa
+Sbpa
 4119 4326 4391 4704 Sln
 4527 4893 4569 4952 Sln
 4569 4952 4823 5251 Sln
@@ -735,6 +699,8 @@
 29684 18057 29772 18107 Sln
 29772 18107 30097 18271 Sln
 30315 18340 30672 18365 Sln
+Sepa
+Sbpa
 4119 4436 4132 4455 Sln
 4223 4591 4235 4610 Sln
 4326 4745 4339 4765 Sln
@@ -908,6 +874,7 @@
 30148 19102 30169 19112 Sln
 30321 19169 30343 19175 Sln
 30499 19221 30522 19228 Sln
+Sepa
 /Ssrgb {0.200 0.200 0.200} def
 30672 15858 30672 13486 Sln
 30494 13486 Sm
