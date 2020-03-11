@@ -1,0 +1,5 @@
+Previous notes:
+
+	I'm revisiting the mechanism part just to make sure that it's really doing what I think it's doing. I think it's one highlight of the paper so maybe some more attention is warranted? On submission, it seems like JDE and JEBO would be good reaches. Maybe we can even try for AEJ:Applied. I'm leaning to JDE since the way the paper is framed is more like an evaluation of a financial intervention and less behavioral.
+
+	Since the last update I was able to present the paper to a more general audience and received some actionable feedback (slides attached for reference). I think the most important of these is to improve the exposition on regret aversion since we are targeting an applied outlet and the theory is quite central to the paper. This is less a full model and more a better explanation of how it maps onto our hypotheses. I'm shooting to circulate a new draft Friday with this addition highlighted. 

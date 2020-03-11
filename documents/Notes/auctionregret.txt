@@ -1,0 +1,12 @@
+Notes on ``Auctions with Regret''
+
+	Attempt to explain overbidding in first price auctions
+	The counterfactual is with respect to winning/losing the auction; with lotteries it's with respect to state
+	Model derives symmetric equilibrium with regret
+	Seller revenue is higher under standard assumptions (violated RET); we can say something about deposits
+	Need to document how past experiments have treated feedback; maybe regret can rationalize different results; this should be a main contribution
+	Actually only evidence for loser regret and not winner regret; loser regret is more intense; so on net its overbidding
+	The slope of the bid functions are steeper; not everyone overbids
+	CDF of bid-value coefficients by treatment group
+	Structural estimation of regret intensity; how does it compare to the marginal utility of money?
+	Winner regret only in first price auctions.

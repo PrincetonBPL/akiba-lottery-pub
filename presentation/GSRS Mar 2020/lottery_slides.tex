@@ -1,0 +1,522 @@
+\documentclass[aspectratio=169]{beamer}
+
+\usetheme{boxes}
+\useinnertheme{circles}
+
+\definecolor{UC}{RGB}{0, 50, 98}
+\definecolor{Beamer}{RGB}{51, 51, 178}
+\definecolor{Hooker}{RGB}{73, 121, 107}
+\definecolor{Triton}{RGB}{0, 106, 150}
+\definecolor{Prussian}{RGB}{0, 49, 83}
+\definecolor{Forest}{RGB}{101, 121, 48}
+\definecolor{Metro}{RGB}{35, 55, 59}
+\definecolor{Gamboge}{RGB}{228, 155, 15}
+\definecolor{Devil}{RGB}{115, 39, 43}
+\definecolor{Shade}{RGB}{250, 250, 250}
+\definecolor{JPAL}{RGB}{227, 89, 37}
+\definecolor{IPA}{RGB}{90, 128, 38}
+
+\usecolortheme[named=Beamer]{structure}
+
+% \setbeamercolor{background canvas}{bg=Shade}
+\setbeamercolor{block title}{bg=Beamer!12}
+\setbeamercolor{block body}{bg=Beamer!8}
+
+\setbeamersize{text margin left=0.2in,text margin right=0.2in}
+
+% \setbeamertemplate{footline} % To remove the footer line in all slides uncomment this line
+\setbeamertemplate{footline}[page number] % To replace the footer line in all slides with a simple slide count uncomment this line
+\setbeamertemplate{navigation symbols}{} % To remove the navigation symbols from the bottom of all slides uncomment this line
+\setbeamertemplate{bibliography item}{}
+\setbeamertemplate{caption}[numbered]
+
+\setbeamertemplate{frametitle}{%
+    \usebeamerfont{frametitle} \vspace{0.5em} \insertframetitle%
+    \vphantom{g}% To avoid fluctuations per frame
+    \vspace{0.5em} \hrule% Uncomment to see desired effect, without a full-width hrule
+    \par\hspace*{-\dimexpr0.5\textwidth-0.5\textwidth}\rule[0.5\baselineskip]{\textwidth}{0.4pt}
+    \par\vspace*{-\baselineskip}% <-- reduce vertical space after rule
+}
+
+\usepackage[T1]{fontenc}
+\usepackage{inconsolata}
+% \usepackage[sfdefault,light]{roboto}
+\usepackage{cmbright}
+\usepackage{amsmath, amssymb, amsthm, mathrsfs, bbm}
+\usepackage{threeparttable, adjustbox, tabularx, booktabs}
+\usepackage{appendixnumberbeamer}
+\usepackage{hyperref}
+\usepackage{pdflscape}
+\usepackage{placeins}
+\usepackage{caption}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{tfrupee}
+\usepackage[backend=bibtex, style=authortitle, citestyle=authoryear-icomp, url=false]{biblatex}
+\addbibresource{Lottery.bib}
+
+\newcommand{\inv}[1]{#1^{-1}}
+\newcommand{\iid}{\text{i.i.d.}}
+\newcommand{\bmat}[1]{\begin{bmatrix} #1 \end{bmatrix}}
+\newcommand{\asconv}{\xrightarrow{a.s.}}
+\newcommand{\pconv}{\xrightarrow{p}}
+\newcommand{\dconv}{\xrightarrow{d}}
+\newcommand{\msconv}{\xrightarrow{m.s.}}
+\newcommand{\liminfty}{\lim_{n \to \infty}}
+\newcommand*\diff{\mathop{}\!\text{d}}
+\newcommand{\lhood}{\mathcal{L}}
+\newcommand{\var}{\text{Var}}
+\newcommand{\ev}{\text{E}}
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\newcommand{\specialcell}[2][c]{\begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
+
+\newtheorem{prop}{Proposition}
+\newtheorem{claim}{Claim}
+\newtheorem{assume}{Assumption}
+\newtheorem{define}{Definition}
+
+\newenvironment{wideitemize}{\itemize\addtolength{\itemsep}{10pt}}{\enditemize}
+\newenvironment{wideenumerate}{\enumerate\addtolength{\itemsep}{10pt}}{\endenumerate}
+
+\let\oldforall\forall
+\let\forall\undefined
+\DeclareMathOperator{\forall}{\oldforall}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+\lstset{
+  basicstyle=\footnotesize\ttfamily,
+  columns=fixed,
+  fontadjust=true,
+  basewidth=0.5em
+}
+
+\title{Using Lotteries to Encourage Savings: Experimental Evidence from Kenya}
+\author[Abraham, Akbas, Ariely, Jang]{Justin Abraham\inst{1} \and Merve Akbas\inst{2} \and Dan Ariely\inst{2} \and Chaning Jang\inst{3}}
+\institute{\inst{1} University of California, San Diego \and \inst{2} Duke University \and \inst{3} Busara Center for Behavioral Economics}
+\date{\today}
+
+\begin{document}
+
+\begin{frame}
+	\titlepage
+\end{frame}
+
+\begin{frame}{Constraints on Saving}
+
+	\begin{wideitemize}
+
+		\item Access to savings is an important avenue toward economic development.
+
+		\begin{wideitemize}
+
+			\item Annual returns to capital can be as high as 300\% in Sub-Saharan Africa \parencite{udry_return_2006}.
+
+			\item Allows for some degree of consumption smoothing when insurance is incomplete. 
+
+		\end{wideitemize}
+
+		\item In Kenya, 80\% of adults have a banking account or mobile money but only 30\% actually use it to save \parencite{demirguc-kunt_global_2018}.
+
+		\item Interest rate elasticities are very low \parencite{karlan_price_2018,schaner_persistent_2018}.
+
+	\end{wideitemize}
+
+\end{frame}
+
+\begin{frame}{Constraints on Saving}
+
+	Why don't the poor save more? What are the policy implications?
+
+	\begin{wideenumerate}
+
+		\item Banking involves high fixed/transaction costs $\rightarrow$ mobile technologies, etc. \parencite{jack_mobile_2011,karlan_price_2018}.
+		\item Liquidity constraints $\rightarrow$ little guidance for intervention.
+		\item Financial literacy $\rightarrow$ financial education, learning-by-doing.
+		\item Kinship taxes \parencite{banerjee_economic_2007,schaner_cost_2011}.
+		\item Self-control problems/attentiveness $\rightarrow$ default, commitment devices, reminders \parencite{ashraf_tying_2006,dupas_why_2013}.
+
+	\end{wideenumerate}
+
+\end{frame}
+
+\begin{frame}{Prize-Linked Savings}
+	
+	\begin{wideitemize}
+	\item Prize-linked savings (PLS) provide stochastic returns to savings deposits (a lottery ticket for saving).
+		\begin{wideitemize}
+		\item Has existed since the 17th century in England and now widespread \parencite{kearney_making_2010}.
+		\item NS\&I Premium Bonds in the U.K. since 1956 and A-Million-A-Month in South Africa (defunct).
+		\item Legal in the US since 2014.
+		\end{wideitemize}
+	\end{wideitemize}
+
+\end{frame}
+
+\begin{frame}{Prize-Linked Savings}
+
+	How might lotteries induce savings over regular interest-bearing accounts? I.e. why do people play lotteries?
+
+	\begin{itemize}
+		\item Thrill of playing \parencite{conlisk_utility_1993}.
+		\item Preferences for skewness \parencite{garrett_gamblers_1999}.
+		\item Large sums for purchasing durable goods when credit constrained/adjustment costs \parencite{herskowitz_gambling_2016}.
+		\item Probability weighting \parencite{kahneman_advances_1992}.
+		\item \textbf{Aversion to anticipated regret} \parencite{loomes_regret_1982,bell_risk_1983,zeelenberg_consequences_1996}.
+	\end{itemize}
+
+\end{frame}
+
+% \begin{frame}{A Theory of Regret}
+
+% 	\begin{block}{Regret \parencite{zeelenberg_consequences_2004}}
+% 	 ``...a negative, cognitively based emotion that we experience when realizing or imagining that our present situation would have been better, had we decided differently''
+% 	\end{block}
+
+% \end{frame}
+
+\begin{frame}{A Theory of Regret}
+
+	\begin{itemize}
+
+		\item Preferences depend on comparisons between outcomes of chosen and foregone prospects.
+
+		\item Individuals experience regret after the resolution of prospects. Suppose state $i$ obtains, $f, g \in B$, and $f$ is chosen.
+
+			\[ \Psi(f_i, g_i) = u(f_i) + \gamma R(u(f_i) - u(g_i)) \]
+
+		\item $R$ is strictly increasing, decreasingly concave, and satisfies $R(0) = 0$.
+
+		\item If individuals can anticipate regret/rejoicing then it affects ex ante behavior.
+
+		\[ f \succsim g \leftrightarrow \sum_i p_{i} \cdot [\Psi(f_i, g_i) - \Psi(g_i, f_i)] \geq 0 \]
+
+		% Difference from reference dependence/DA? I only make relative comparisons when I know that I will experience ex post regret. Disapointment is related to what might have been in an unrealized state in the same lottery but regret is about what have been in a foregone choice (regret is action-based).
+
+		% When choices also affect resolution/experience of regret then it can affect behavior. 
+
+		% Is it kinked? People postulate so but no quantification
+
+	\end{itemize}
+	
+\end{frame}
+
+\begin{frame}{Research Questions}
+
+	\begin{wideenumerate}
+
+		\item Can prize-linked savings induce account usage in low income settings?
+		\item What role does regret aversion play in lottery-like schemes?
+
+	\end{wideenumerate}
+
+\end{frame}
+
+\begin{frame}{Overview}
+
+	\begin{itemize}
+
+		\item Provided a mobile savings account to 311 informal residents of Nairobi, Kenya.
+		\item Experimentally vary the incentive structure (fixed versus stochastic) and information structure.
+		\item Observe account activity over a 60-day period.
+
+		\begin{itemize}
+			\item Test the effect of stochastic incentives
+			\item Quantify the role of regret aversion
+			\item Limited evidence on total savings, consumption, gambling
+			\item Heterogeneous effects
+		\end{itemize}
+
+	\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Related Literature}
+	
+	\begin{itemize}
+
+		\item Do lottery-like incentives work? 
+		
+		\begin{itemize}
+			\item In the lab, lotteries effectively increase the savings rate \parencite{atalay_savings_2014,filiz-ozbay_lottery_2015}. Evidence for non-linear probability weighting.
+			\item In the field, works over many domains \parencite{dizon_leveraging_2016,gajic_cost-effectiveness_2011,brune_effect_2015,loibl_testing_2016}.
+			\item Regret aversion is an unadressed confound from other explanations.
+		\end{itemize}
+
+		\item Empirical tests of regret aversion using feedback manipulation \parencite{zeelenberg_consequences_1996,zeelenberg_consequences_2004,filiz-ozbay_auctions_2007}.
+		
+		\item Little understanding of regret aversion in repeated settings.
+
+		% Except for Consequences of Regret Aversion 2: Additional Evidence for Effects of Feedback on Decision Making
+
+	\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Study Setting}
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[height=0.8\textheight]{kibera-tracks.jpg}
+	\end{figure}
+
+	% replace this with something personal
+
+\end{frame}
+
+\begin{frame}{Study Setting}
+
+	Sample of 311 adults from informal settlements in Nairobi.
+
+	\begin{wideitemize}
+		\item Less than half of the sample consider themselves employed.
+		\item Only 5\% receive regular income with an average of USD PPP 77 monthly.
+		\item A little over half save regularly and most use ROSCAs.
+		\item Average monthly savings amount to USD 23.
+		\item 24\% report having gambling problems.
+	\end{wideitemize}
+
+	% https://qz.com/africa/1140842/gambling-addiction-is-on-the-rise-in-kenya-and-leaving-young-people-bankrupt-and-suicidal/
+
+\end{frame}
+
+\begin{frame}{Mobile Savings}
+	
+	\begin{wideitemize}
+		\item Respondents provided a mobile phone linked to a Sambaza account for 60 days.
+		\item Make deposits by sending airtime free of charge.
+		\item Respondents received daily SMS reporting balance.
+		\item Lockbox savings; withdrawal allowed only on the 30th day.
+		\item Principal returned after 60 days via M-Pesa.
+	\end{wideitemize}
+
+	% limit transaction costs and setup costs
+
+\end{frame}
+
+\begin{frame}{Experiment}
+
+	\begin{block}{Matching ($N = 105$)}
+		\begin{itemize}
+		\item Certain 5\% match on daily deposits
+		\item Daily balance and returns reported via SMS
+		\end{itemize}
+	\end{block}
+
+	\begin{columns}[T]
+
+		\begin{column}{0.48\textwidth}
+			\begin{block}{Lottery ($N = 103$)}
+			\begin{itemize}
+			\item Daily lottery equal in expectation to 5\% return
+			\item Guarantees no losses
+			\item Received a lottery ticket if made a deposit that day
+			\end{itemize}
+			\end{block}
+		\end{column}
+
+		\begin{column}{0.48\textwidth}
+			\begin{block}{Lottery with Feedback ($N = 103$)}
+			\begin{itemize}
+			\item Incentives identical to lottery group
+			\item Always gets a lottery ticket but redeemable if deposited
+			\end{itemize}
+			\end{block}
+		\end{column}
+
+	\end{columns}
+
+\end{frame}
+
+\begin{frame}{Results}
+	
+	\centering \large What are the effects of prize-linked incentives on savings?
+
+\end{frame}
+
+\begin{frame}{Results}{Mobile Savings}
+
+	\input{reg-mobile-blank.tex}
+
+	% number of deposits but not savings; reflects the fact that knowing the results of the lottery hinges on the extensive margin
+	% 
+
+\end{frame}
+
+\begin{frame}{Results}
+	
+	\centering \large How much of the effect can be explained by regret aversion?
+
+\end{frame}
+
+% \begin{frame}{Identifying Regret Aversion}
+	
+% 	\begin{wideitemize}
+% 		\item Regret is not experienced (anticipated) if unchosen prospects are not resolved.
+% 		\item Regret can be averted in PLS without feedback by not saving/entering the lottery.
+% 		\item Safe outcome is less attractive in feedback group because 1) can experience regret from missing out on big prize and 2) can't use the safe option to avert regret.
+% 		\item Neither choice is regret averting in PLS with feedback.
+% 		\item Differences between the two lottery conditions can be attributed to regret aversion.
+% 	\end{wideitemize}
+
+	% How do we show this in the model? Presence of the R term
+	% does this imply that R is evaluated in this case to be negative?
+	
+% \end{frame}
+
+\begin{frame}{Identifying Regret Aversion}
+
+	\begin{itemize}
+
+		\item Regret is not experienced (anticipated) if unchosen prospects are not resolved.
+
+		\item Suppose $u(0) = 0$ and denote $f_i$ the payoff for depositing in state $i$. 
+	
+		\item Saving without feedback:
+
+		\[ \sum_{i=1}^4 p_i \cdot [u(f_i) + R(u(f_i))] \geq 0 \]
+
+		\item Saving with feedback:	
+
+		\[\sum_{i=1}^4 p_i \cdot [u(f_i) + R(u(f_i))] \geq \sum_{i=1}^4 p_i \cdot R(-u(f_i)) \]
+
+		\item $R(0) = 0$ and strictly increasing implies that $R(u(f_i)) > 0$ and $R(-u(f_i)) < 0$.
+
+		\item We expect more saving in the feedback condition compared to no feedback.
+
+	\end{itemize}
+
+	% If lottery is more attractive in lottery then it implies R is negative here
+	
+\end{frame}
+
+\begin{frame}{Results}{Regret aversion}
+
+	\input{reg-mobile.tex}
+
+\end{frame}
+
+\begin{frame}{Results}
+	
+	\centering \large How does the effect evolve over time?
+
+\end{frame}
+
+\begin{frame}{Results}{Effects over time}
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[height=0.8\textheight]{line-mobile_cumdeposits.pdf}
+	\end{figure}
+
+\end{frame}
+
+\begin{frame}{Results}{Effects over time}
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[height=0.8\textheight]{line-mobile_deposits.pdf}
+	\end{figure}
+
+\end{frame}
+
+\begin{frame}{Results}{Effects over time}
+
+	\centering \large Does experienced regret mediate anticipated regret?
+
+\end{frame}
+
+\begin{frame}{Results}{Effects over time}
+	
+	\input{reg-regretaversion.tex}
+
+\end{frame}
+
+% 	Two effects: anticipation of multiple future resolutions, dependence on experienced
+
+% 	1. Recently experienced regret can make anticipated regret more salient as in zeelenberg 
+% 	2. Initial anticipation may be overconfident and people can learn (or other way)
+
+\begin{frame}{Conclusion}
+
+	\begin{wideitemize}
+		\item The savings experiment finds that:
+		\begin{itemize}
+			\item PLS can increase account usage but not savings per se.
+			\item Behavior is consistent with regret aversion.
+			\item Recently experienced regret reinforces subsequent effect.
+			\item Little effect on other savings, consumption, gambling.
+		\end{itemize}
+		\item Further research
+		\begin{itemize}
+			\item Observe entire portfolio of assets, consumption.
+			\item Investigate long-term effects.
+			\item A structural approach to help quantify role of alternative explanations.
+			\item Examine cost-effectiveness relative to other products.
+			\item Understand learning and salience of regret.
+		\end{itemize}
+	\end{wideitemize}
+
+\end{frame}
+
+\begin{frame}[allowframebreaks] \frametitle{References}
+
+	\printbibliography
+
+\end{frame}
+
+\appendix
+
+\begin{frame}{Demonstration}
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.8\linewidth]{fig-lottery.png}
+	\end{figure}
+
+\end{frame}
+
+\begin{frame}{Financial Inclusion}
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.45\linewidth]{fig-findex.png}
+	\end{figure}
+
+\end{frame}
+
+\begin{frame}{Lottery Draws}
+
+	\input{tab-lottery-final.tex}
+
+\end{frame}
+
+\begin{frame}{Timing}
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.65\linewidth]{hist-deposits.pdf}
+	\end{figure}
+
+\end{frame}
+
+\begin{frame}{Results}{Savings}
+
+	\input{reg-save.tex}
+
+\end{frame}
+
+\begin{frame}{Results}{Savings}
+
+	\input{reg-cons.tex}
+
+\end{frame}
+
+\begin{frame}{Results}{Gambling}
+
+	\input{reg-gamble.tex}
+
+\end{frame}
+
+\end{document}
