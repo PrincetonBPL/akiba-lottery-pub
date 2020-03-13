@@ -164,7 +164,7 @@
 		\item Preferences for skewness \parencite{garrett_gamblers_1999}.
 		\item Large sums for purchasing durable goods when credit constrained/adjustment costs \parencite{herskowitz_gambling_2016}.
 		\item Probability weighting \parencite{kahneman_advances_1992}.
-		\item \textbf{Aversion to anticipated regret} \parencite{loomes_regret_1982,bell_risk_1983,zeelenberg_consequences_1996}.
+		\item \textbf{Aversion to anticipated regret} can induce apparently risk-seeking behavior \parencite{loomes_regret_1982,bell_risk_1983,zeelenberg_consequences_1996}.
 	\end{itemize}
 
 \end{frame}
@@ -305,7 +305,7 @@
 
 \end{frame}
 
-\begin{frame}{Results}{Mobile Savings}
+\begin{frame}{Results -- Mobile Savings}
 
 	\input{reg-mobile-blank.tex}
 
@@ -313,14 +313,14 @@
 
 \end{frame}
 
-\begin{frame}{Discussion}{Mobile Savings}
+\begin{frame}{Discussion -- Mobile Savings}
 
 	\begin{wideitemize}
 		\item Effects occur on the ``extensive margin''.
-		\begin{itemize}
+		\begin{wideitemize}
 			\item Consistent with other studies of lottery incentives \parencite{brune_effect_2015,gertler_long-term_2017}.
 			\item Can be rationalized as the subdivision of lotteries \parencite{samuelson_risk_1963}.
-		\end{itemize}
+		\end{wideitemize}
 		\item Null effect on savings amount likely due to liquidity constraints \parencite{loibl_testing_2016}.
 		\item What does this tell us about potential mechanisms?
 	\end{wideitemize}
@@ -345,7 +345,7 @@
 
 	\begin{itemize}
 
-		\item Preferences depend on comparisons between outcomes of chosen and foregone prospects.
+		\item Preferences depend on comparisons between outcomes of chosen and foregone prospects \parencite{bell_risk_1983,loomes_regret_1982}.
 
 		\item Individuals experience regret after the resolution of prospects. Suppose state $i$ obtains, $f, g \in B$, and $f$ is chosen.
 
@@ -373,19 +373,11 @@
 
 		\item Regret is not experienced (anticipated) if unchosen prospects are not resolved.
 
-		\item This is a common test of regret aversion in the lab \parencite{filiz-ozbay_auctions_2007,zeelenberg_consequences_2004}.
+		\item This is the central test of regret aversion in the lab \parencite{filiz-ozbay_auctions_2007,zeelenberg_consequences_2004,zeelenberg_consequences_1996}.
 
-		% \item Suppose $u(0) = 0$ and denote $f_i$ the payoff for depositing in state $i$. 
-	
-		% \item Saving without feedback:
+		\item In our study, individuals in PLS treatments can experience regret only if they chose \textit{not} to save and learned about a winning ticket at the resolution of the daily lottery.
 
-		% \[ \sum_{i=1}^4 p_i \cdot [u(f_i) + R(u(f_i))] \geq 0 \]
-
-		% \item Saving with feedback:	
-
-		% \[\sum_{i=1}^4 p_i \cdot [u(f_i) + R(u(f_i))] \geq \sum_{i=1}^4 p_i \cdot R(-u(f_i)) \]
-
-		% \item $R(0) = 0$ and strictly increasing implies that $R(u(f_i)) > 0$ and $R(-u(f_i)) < 0$.
+		% they cannot experience regret by choosing to enter the lottery because it cannot result in losses
 
 		\item \textit{Hypothesis}: More deposits with feedback than without.
 
@@ -395,15 +387,35 @@
 	
 \end{frame}
 
-\begin{frame}{Results}{Regret aversion}
+\begin{frame}{Results -- Regret Aversion}
 
 	\input{reg-mobile.tex}
 
 \end{frame}
 
-\begin{frame}{Results}{Regret aversion}
+\begin{frame}{Results -- Regret aversion}
 
-	% timeline of deposits over a day, consider differences between winning and losing a lottery of the previous day
+		\begin{figure}[ht]
+		\centering
+		\caption{Timing of deposits}
+		\includegraphics[height=0.8\textheight]{../../figures/hist-deposits.pdf}
+		\label{fig:hist-deposits}
+		\caption*{\footnotesize \emph{Notes:} This figure plots the empirical distribution of timing of all deposits over the project period. Each bin spans 30 minutes with a height equal to the fraction of all deposits within each treatment group. A vertical line marks 8:00, when participants received the first SMS that summarized how much the participant saved the previous day, how much the participant earned through a matching contribution or winnings, and their total balance. An hour later, participants received a second SMS encouraging them to save that day. Participants in PLS received a new lottery ticket with the second message.}
+		\end{figure}
+
+\end{frame}
+
+\begin{frame}{Results -- Regret Aversion}
+	
+	% Does experienced regret mediate anticipated regret?
+	
+	\input{reg-regretaversion.tex}
+
+	% 	Two effects: anticipation of multiple future resolutions, dependence on experienced
+
+% 	1. Recently experienced regret can make anticipated regret more salient as in zeelenberg 
+% 	2. Initial anticipation may be overconfident and people can learn (or other way)
+
 
 \end{frame}
 
@@ -413,7 +425,7 @@
 
 \end{frame}
 
-\begin{frame}{Results}{Effects over time}
+\begin{frame}{Results -- Effects Over Time}
 
 	\begin{figure}[H]
 		\centering
@@ -422,7 +434,7 @@
 
 \end{frame}
 
-\begin{frame}{Results}{Effects over time}
+\begin{frame}{Results -- Effects Over Time}
 
 	\begin{figure}[H]
 		\centering
@@ -430,23 +442,6 @@
 	\end{figure}
 
 \end{frame}
-
-\begin{frame}{Results}{Effects over time}
-
-	\centering \large Does experienced regret mediate anticipated regret?
-
-\end{frame}
-
-\begin{frame}{Results}{Effects over time}
-	
-	\input{reg-regretaversion.tex}
-
-\end{frame}
-
-% 	Two effects: anticipation of multiple future resolutions, dependence on experienced
-
-% 	1. Recently experienced regret can make anticipated regret more salient as in zeelenberg 
-% 	2. Initial anticipation may be overconfident and people can learn (or other way)
 
 \begin{frame}{Conclusion}
 
@@ -478,6 +473,28 @@
 \end{frame}
 
 \appendix
+
+\begin{frame}{Regret Aversion with PLS}
+
+	\begin{wideitemize}
+
+		\item Suppose $u(0) = 0$ and denote $f_i$ the payoff for depositing in state $i$. 
+	
+		\item Saving without feedback:
+
+		\[ \sum_{i=1}^4 p_i \cdot [u(f_i) + R(u(f_i))] \geq 0 \]
+
+		\item Saving with feedback:	
+
+		\[\sum_{i=1}^4 p_i \cdot [u(f_i) + R(u(f_i))] \geq \sum_{i=1}^4 p_i \cdot R(-u(f_i)) \]
+
+		\item $R(0) = 0$ and strictly increasing implies that $R(u(f_i)) > 0$ and $R(-u(f_i)) < 0$.
+
+		% this is incorrect
+
+	\end{wideitemize}
+
+\end{frame}
 
 \begin{frame}{Demonstration}
 
