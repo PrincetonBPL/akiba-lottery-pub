@@ -64,7 +64,7 @@ foreach root in depositamount deposits cumdepositamount cumdeposits balance {
 
 }
 
-graph twoway (line mobile_balance period if treatmentgroup == 1, color(gs0) lpattern(solid)) (line mobile_balance period if treatmentgroup == 2, color(gs0) lpattern(dot)) (line mobile_balance period if treatmentgroup == 3, color(gs0) lpattern(dot)), yashtle("Balance (USD PPP)") legend(order(1 "Control" 2 "No Feedback" 3 "PLS")) graphregion(color(white))
+graph twoway (line mobile_balance period if treatmentgroup == 1, color(gs0) lpattern(solid)) (line mobile_balance period if treatmentgroup == 2, color(gs0) lpattern(dot)) (line mobile_balance period if treatmentgroup == 3, color(gs0) lpattern(dot)), ytitle("Balance (USD PPP)") legend(order(1 "Control" 2 "No Feedback" 3 "PLS")) graphregion(color(white))
 graph export "$fig_dir/line-balance.eps", replace
 !epstopdf "$fig_dir/line-balance.eps"
 

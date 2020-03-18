@@ -727,6 +727,9 @@ foreach root in deposit refund prize withdrawal {
 gen mobile_anydeposit = mobile_totdeposits > 0
 la var mobile_anydeposit "Made at least one deposit"
 
+gen mobile_userdeposits = mobile_totdeposits if mobile_totdeposits > 0
+la var mobile_userdeposits "No. of deposits among users"
+
 gen mobile_withdrew = mobile_totwithdrawals > 0 | ~mi(mobile_totwithdrawals)
 la var mobile_withdrew "Withdrew at day 30"
 
