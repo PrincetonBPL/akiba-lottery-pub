@@ -220,9 +220,6 @@ forval i = 0/1 {
 
 	}
 
-	gen save_propincome_`i' = save_monthlysave_`i' / labor_monthlyinc_`i'
-	la var save_propincome_`i' "Monthly savings rate"
-
 	gen lnsave_monthlysave_`i' = asinh(save_monthlysave_`i')
 	la var lnsave_monthlysave_`i' "Log total savings last month"
 
