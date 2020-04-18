@@ -255,8 +255,8 @@ eststo: reg mobile_saved mobile_matched i.period if L1.mobile_saved != 1 & regre
 
 loc prehead "\begin{table}[ht]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \caption{Regression of deposits on treatment and lottery results} \label{tab:reg-regretaversion} \maxsizebox*{\textwidth}{\textheight}{ \begin{threeparttable} \begin{tabular}{l*{2}{c}} \toprule"
 loc postfoot "\bottomrule \end{tabular} \begin{tablenotes}[flushleft] \footnotesize \item \emph{Notes:} @note \end{tablenotes} \end{threeparttable} } \end{table}"
-loc footnote "This table reports estimates of a regression of having saved at period \(t\) on winning the lottery at \(t\) conditional on being in the PLS group and not having saved at \(t=1\). The unit of observation is individual-by-period. Standard errors are in parentheses and clustered at the individual level. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level."
-esttab using "$tab_dir/reg-regretaversion", alignment(c) ar2 nobaselevels obslast nogap label nonum b(%9.2f) se(%9.2f) sfmt(%9.2f) drop(_cons *.period) scalars("ymean Control mean" "p1diff Period 1 effect") star(* 0.10 ** 0.05 *** 0.01) note("`footnote'") prehead("`prehead'") postfoot("`postfoot'") se compress booktabs replace
+loc footnote "This table reports estimates of a regression of having saved at period \(t\) on winning the lottery at \(t\) conditional on being in the PLS group and not having saved at \(t-1\). The unit of observation is individual-by-period. Standard errors are in parentheses and clustered at the individual level. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level."
+esttab using "$tab_dir/reg-regretaversion", alignment(c) ar2 nobaselevels obslast nogap label nonum b(%9.2f) se(%9.2f) sfmt(%9.2f) drop(_cons *.period) scalars("ymean Control mean") star(* 0.10 ** 0.05 *** 0.01) note("`footnote'") prehead("`prehead'") postfoot("`postfoot'") se compress booktabs replace
 eststo clear
 
 file open tex using "$tab_dir/reg-regretaversion.tex", write append
