@@ -14,7 +14,7 @@ set seed 95594731
 timer clear
 timer on 1
 
-cd "~/Repos/akiba-lottery-pub"
+cd "~/repos/akiba-lottery-pub"
 
 ///////////
 // Setup //
