@@ -61,7 +61,7 @@ glo ysavedesc "Savings outside the project"
 glo ygambledesc "Gambling"
 glo yakibadesc "Akiba Smart"
 glo yconsdesc "Expenditure"
-glo yselectdesc "Hypothetical treatment assignment"
+glo yselectdesc "Hypothetical treatment selection"
 glo ylotterydesc "Lottery usage"
 glo yselfdesc "Self-perceptions"
 

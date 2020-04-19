@@ -270,6 +270,9 @@ la var gam_mediancpgi_z_0 "Above median CPGI"
 /* Endline gambling measures */
 
 encode endline_gambling_temptation, gen(gam_temptation_1)
+la var gam_temptation_1 "Temptation to gamble"
+la def la_temptation 1 "Less tempted" 2 "More tempted" 3 "No change"
+la val gam_temptation_1 la_temptation
 
 recode gam_temptation_1 (1 = 1) (2 3 = 0), gen(gam_lesstempted_1)
 la var gam_lesstempted_1 "Less tempted to gamble"
@@ -278,6 +281,9 @@ recode gam_temptation_1 (2 = 1) (1 3 = 0), gen(gam_moretempted_1)
 la var gam_moretempted_1 "More tempted to gamble"
 
 encode endline_gambling_freq, gen(gam_behavior_1)
+la var gam_behavior_1 "Self-reported gambling"
+la def la_gambling 1 "Gamble less" 2 "No change" 3 "Gamble more"
+la val gam_behavior_1 la_gambling
 
 recode gam_behavior_1 (1 = 1) (2 3 = 0), gen(gam_lessgamble_1)
 la var gam_lessgamble_1 "Gamble less"
@@ -436,7 +442,6 @@ la var akiba_rules_1 "Can describe rules of AKIBA"
 
 encode endline_chooseplan, gen(akiba_select_1)
 la var akiba_select_1 "Group self-selection"
-
 la def la_select 1 "Control" 2 "No Feedback" 3 "PLS"
 la val akiba_select_1 la_select
 
