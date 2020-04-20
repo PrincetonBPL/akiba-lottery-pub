@@ -274,8 +274,8 @@ eststo: reg mobile_saved mobile_matched i.period if L1.mobile_saved != 1 & regre
 	qui sum mobile_saved if control == 1
 	estadd scalar ymean = round(r(mean), 0.01)
 
-	qui reg mobile_saved lottery regret if period == 1, vce(cl surveyid)
-	estadd scalar p1diff = round(_b[regret], 0.01)
+	* qui reg mobile_saved lottery regret if period == 1, vce(cl surveyid)
+	* estadd scalar p1diff = round(_b[regret], 0.01)
 
 loc prehead "\begin{table}[ht]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \caption{Regression of deposits on treatment and lottery results} \label{tab:reg-regretaversion} \maxsizebox*{\textwidth}{\textheight}{ \begin{threeparttable} \begin{tabular}{l*{2}{c}} \toprule"
 loc postfoot "\bottomrule \end{tabular} \begin{tablenotes}[flushleft] \footnotesize \item \emph{Notes:} @note \end{tablenotes} \end{threeparttable} } \end{table}"
