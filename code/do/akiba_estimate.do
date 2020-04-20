@@ -153,22 +153,22 @@ if $riflag {
 /* Multinomial logit */
 ///////////////////////
 
-glo regvars "gam_behavior_1"
+glo depvar "gam_behavior_1"
 glo regpath "reg-mlogfreq"
 glo regtitle "Multinomial treatment effects -- Gambling behavior"
 do "$do_dir/custom_tables/reg-mlogit.do"
 
-glo regvars  "gam_temptation_1"
+glo depvar  "gam_temptation_1"
 glo regpath "reg-mlogtempt"
 glo regtitle "Multinomial treatment effects -- Temptation to gamble"
 do "$do_dir/custom_tables/reg-mlogit.do"
 
-glo regvars "akiba_spent_1"
+glo depvar "akiba_spent_1"
 glo regpath "reg-mlogcons"
 glo regtitle "Multinomial treatment effects -- Expenditure"
 do "$do_dir/custom_tables/reg-mlogit.do"
 
-glo regvars "akiba_select_1"
+glo depvar "akiba_select_1"
 glo regpath "reg-mlogselect"
 glo regtitle "Multinomial treatment effects -- Hypothetical treatment selection"
 do "$do_dir/custom_tables/reg-mlogit.do"

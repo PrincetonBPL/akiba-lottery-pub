@@ -30,6 +30,44 @@ loc varlabels "" 			// Labels for row vars to be filled
 
 restore
 
+/* Estimation */
+
+mlogit $depvar i.treatmentgroup, rrr vce(cl surveyid)
+
+mat def O = e(out)
+loc matlength = e(k_out)
+loc baseix = e(ibaseout)
+
+forval i = 1/`matlength' {
+
+	if `i' != `baseix' {
+
+		
+
+
+		/* Column 4: Constant */
+
+		qui sum `yvar' if control == 1
+		estadd loc thisstat`count' = string(`r(mean)', "%9.2f"): col4
+		estadd loc thisstat`countse' = "(" + string(`r(sd)', "%9.2f") + ")": col4
+
+		/* Column 5: N */
+
+		estadd loc thisstat`count' = ``yvar'_N': col5
+
+		/* Row Labels */
+
+		loc thisvarlabel: label `yvar' 0[1, `i']
+		local varlabels "`varlabels' "`thisvarlabel'" " " "
+		loc statnames "`statnames' thisstat`count' thisstat`countse'"
+		loc count = `count' + 2
+		loc countse = `count' + 1
+
+	}
+
+}
+
+
 /* Hypothesis tests */
 
 loc varindex = 1
