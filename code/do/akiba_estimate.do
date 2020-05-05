@@ -154,21 +154,19 @@ if $riflag {
 ///////////////////////
 
 glo depvar "gam_behavior_1"
+glo basevalue "2"
 glo regpath "reg-mlogfreq"
 glo regtitle "Multinomial treatment effects -- Gambling behavior"
 do "$do_dir/custom_tables/reg-mlogit.do"
 
 glo depvar  "gam_temptation_1"
+glo basevalue "3"
 glo regpath "reg-mlogtempt"
 glo regtitle "Multinomial treatment effects -- Temptation to gamble"
 do "$do_dir/custom_tables/reg-mlogit.do"
 
-glo depvar "akiba_spent_1"
-glo regpath "reg-mlogcons"
-glo regtitle "Multinomial treatment effects -- Expenditure"
-do "$do_dir/custom_tables/reg-mlogit.do"
-
 glo depvar "akiba_select_1"
+glo basevalue "1"
 glo regpath "reg-mlogselect"
 glo regtitle "Multinomial treatment effects -- Hypothetical treatment selection"
 do "$do_dir/custom_tables/reg-mlogit.do"

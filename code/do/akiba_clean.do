@@ -271,7 +271,7 @@ la var gam_mediancpgi_z_0 "Above median CPGI"
 
 encode endline_gambling_temptation, gen(gam_temptation_1)
 la var gam_temptation_1 "Temptation to gamble"
-la def la_temptation 1 "Less tempted" 2 "More tempted" 3 "No change"
+la def la_temptation 1 "Less tempted" 2 "More tempted" 3 "No change in temptation to gamble"
 la val gam_temptation_1 la_temptation
 
 recode gam_temptation_1 (1 = 1) (2 3 = 0), gen(gam_lesstempted_1)
@@ -282,7 +282,7 @@ la var gam_moretempted_1 "More tempted to gamble"
 
 encode endline_gambling_freq, gen(gam_behavior_1)
 la var gam_behavior_1 "Self-reported gambling"
-la def la_gambling 1 "Gamble less" 2 "No change" 3 "Gamble more"
+la def la_gambling 1 "Gambled less" 2 "No change in gambling behavior" 3 "Gambled more"
 la val gam_behavior_1 la_gambling
 
 recode gam_behavior_1 (1 = 1) (2 3 = 0), gen(gam_lessgamble_1)
@@ -442,7 +442,7 @@ la var akiba_rules_1 "Can describe rules of AKIBA"
 
 encode endline_chooseplan, gen(akiba_select_1)
 la var akiba_select_1 "Group self-selection"
-la def la_select 1 "Control" 2 "No Feedback" 3 "PLS"
+la def la_select 1 "Select control group" 2 "Select No Feedback group" 3 "Select PLS group"
 la val akiba_select_1 la_select
 
 tab akiba_select_1, gen(akiba_select)
@@ -471,22 +471,57 @@ la var akiba_lotteryeffect_1 "Perceived effect of PLS without feedback"
 gen akiba_regreteffect_1 = akiba_regretsave_1 - akiba_controlsave_1
 la var akiba_regreteffect_1 "Perceived effect of PLS"
 
-ren endline_comments akiba_comments_1
-ren endline_moneyspent akiba_spent_1
-ren endline_fam_friends_howoften akiba_familyspec_1
+/* Expenditures */
 
-gen akiba_spentfood_1 = strpos(lower(akiba_spent_1), "food") if ~mi(akiba_spent_1)
-la var akiba_spentfood_1 "Spent balance on food"
-gen akiba_spentschool_1 = strpos(lower(akiba_spent_1), "school") if ~mi(akiba_spent_1)
-la var akiba_spentschool_1 "Spent balance on school"
-gen akiba_spentbus_1 = strpos(lower(akiba_spent_1), "business") if ~mi(akiba_spent_1)
+gen akiba_spent_1 = trim(lower(endline_moneyspent))
+la var akiba_spent_1 "Expenditure free response"
+
+gen akiba_spentairtime_1 = strpos(akiba_spent_1, "air") if ~mi(akiba_spent_1)
+la var akiba_spentairtime_1 "Spent balance on airtime"
+
+gen akiba_spentbus_1 = strpos(akiba_spent_1, "business") | strpos(akiba_spent_1, "chicken") | strpos(akiba_spent_1, "busy") | strpos(akiba_spent_1, "agriculture") if ~mi(akiba_spent_1)
 la var akiba_spentbus_1 "Spent balance on business"
-gen akiba_spentdura_1 = strpos(lower(akiba_spent_1), "cloth") | strpos(lower(akiba_spent_1), "furniture") | strpos(lower(akiba_spent_1), "chick") | strpos(lower(akiba_spent_1), "tank") | strpos(lower(akiba_spent_1), "mirro") if ~mi(akiba_spent_1)
-la var akiba_spentdura_1 "Spent balance on durable goods"
-gen akiba_spentdebt_1 = strpos(lower(akiba_spent_1), "paid") | strpos(lower(akiba_spent_1), "paying") | strpos(lower(akiba_spent_1), "rent") | strpos(lower(akiba_spent_1), "debt") | strpos(lower(akiba_spent_1), "utilit") if ~mi(akiba_spent_1)
-la var akiba_spentdebt_1 "Spent balance on repaying loans"
-gen akiba_spentsave_1 = strpos(lower(akiba_spent_1), "saving") | strpos(lower(akiba_spent_1), "merry") if ~mi(akiba_spent_1)
+
+gen akiba_spentdurables_1 = strpos(akiba_spent_1, "cement") | strpos(akiba_spent_1, "tank") | strpos(akiba_spent_1, "utensil") | strpos(akiba_spent_1, "good") | strpos(akiba_spent_1, "cloth") | strpos(akiba_spent_1, "repair") if ~mi(akiba_spent_1)
+la var akiba_spentdurables_1 "Spent balance on durables"
+
+gen akiba_spentloans_1 = strpos(akiba_spent_1, "credit") | strpos(akiba_spent_1, "loan") | strpos(akiba_spent_1, "debt") if ~mi(akiba_spent_1)
+la var akiba_spentloans_1 "Spent balance on repaying loans"
+
+gen akiba_spentfood_1 = strpos(akiba_spent_1, "food") if ~mi(akiba_spent_1)
+la var akiba_spentfood_1 "Spent balance on food"
+
+gen akiba_spenthouse_1 = strpos(akiba_spent_1, "rent") | strpos(akiba_spent_1, "hous") | strpos(akiba_spent_1, "home") if ~mi(akiba_spent_1)
+la var akiba_spenthouse_1 "Spent balance on rent"
+
+gen akiba_spenthealth_1 = strpos(akiba_spent_1, "medic") | strpos(akiba_spent_1, "hospital") | strpos(akiba_spent_1, "drug") if ~mi(akiba_spent_1)
+la var akiba_spenthealth_1 "Spent balance on health"
+
+gen akiba_spentother_1 = strpos(akiba_spent_1, "tempt") | strpos(akiba_spent_1, "salon") | strpos(akiba_spent_1, "burial") | strpos(akiba_spent_1, "pampers") if ~mi(akiba_spent_1)
+la var akiba_spentother_1 "Spent balance on other goods"
+
+gen akiba_spentsave_1 = strpos(akiba_spent_1, "merry") | strpos(akiba_spent_1, "emergency") | strpos(akiba_spent_1, "saving") if ~mi(akiba_spent_1)
 la var akiba_spentsave_1 "Saved balance"
+
+gen akiba_spentschool_1 = strpos(akiba_spent_1, "school") | strpos(akiba_spent_1, "book") if ~mi(akiba_spent_1)
+la var akiba_spentschool_1 "Spent balance on schooling"
+
+gen akiba_spenttransfer_1 = strpos(akiba_spent_1, "gave") | strpos(akiba_spent_1, "sent") if ~mi(akiba_spent_1)
+la var akiba_spenttransfer_1 "Spent balance on transfers"
+
+gen akiba_spenttravel_1 = strpos(akiba_spent_1, "travel") | strpos(akiba_spent_1, "fare") | strpos(akiba_spent_1, "transport") if ~mi(akiba_spent_1)
+la var akiba_spenttravel_1 "Spent balance on travel"
+
+gen akiba_spentnone_1 = strpos(akiba_spent_1, "not") | strpos(akiba_spent_1, "did") | strpos(akiba_spent_1, "never") if ~mi(akiba_spent_1)
+la var akiba_spentnone_1 "Did not save"
+
+* la def la_cons 0 "Airtime" 1 "Business" 2 "Consumption durables" 3 "Debt service" 4 "Food" 5 "Housing payments" 6 "Health" 7 "Other consumption" 8 "Saved balance" 9 "School-related" 10 "Transfers" 11 "Travel" 12 "No savings"
+* la val akiba_spent_1 la_cons
+
+/* Feedback */
+
+ren endline_comments akiba_comments_1
+ren endline_fam_friends_howoften akiba_familyspec_1
 
 replace endline_fam_friends = trim(itrim(lower(endline_fam_friends)))
 encode endline_fam_friends, gen(akiba_family_1)

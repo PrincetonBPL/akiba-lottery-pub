@@ -42,7 +42,7 @@ glo figuresflag = 1		// Output graphs and figures
 
 glo attritionflag = 1	// Attrition analysis
 glo maineffectsflag = 1 // Treatment effects (covariate adjustment, multiple inference)
-glo riflag = 0			// Tests with randomization inference
+glo riflag = 1			// Tests with randomization inference
 glo heteffectsflag = 1  // Heterogenous treatment effects
 
 glo USDconvertflag = 1  // Runs and reports analysis in USD-PPP
@@ -72,7 +72,7 @@ glo ypanel "mobile_deposits mobile_saved mobile_depositamount mobile_withdrawala
 glo ysave "save_monthlysave_1 save_mpesa_1 save_monthlyrosca_1 save_dorosca_1"
 glo ygamble "gam_moregamble_1 gam_lessgamble_1 gam_moretempted_1 gam_lesstempted_1"
 glo yakiba "akiba_trust_z_1 akiba_confidence_z_1 akiba_family_1 akiba_continue_1"
-glo ycons "akiba_spentfood_1 akiba_spentschool_1 akiba_spentbus_1 akiba_spentdura_1 akiba_spentdebt_1 akiba_spentsave_1"
+glo ycons "akiba_spentairtime_1 akiba_spentbus_1 akiba_spentdurables_1 akiba_spentloans_1 akiba_spentfood_1 akiba_spenthouse_1 akiba_spenthealth_1 akiba_spentother_1 akiba_spentsave_1 akiba_spentschool_1 akiba_spenttransfer_1 akiba_spenttravel_1 akiba_spentnone_1"
 glo yselect "akiba_controlselect_1 akiba_lotteryselect_1 akiba_regretselect_1 akiba_lotteryeffect_1 akiba_regreteffect_1"
 glo ylottery "akiba_lotteryfair_z_1 akiba_prizegood_z_1 akiba_prizebad_z_1"
 glo yself "self_saver_z_1 self_lucky_z_1 self_savingsfeel_z_1 self_nosavefeel_z_1"
