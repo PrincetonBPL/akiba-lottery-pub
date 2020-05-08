@@ -477,40 +477,40 @@ gen akiba_spent_1 = trim(lower(endline_moneyspent))
 la var akiba_spent_1 "Expenditure free response"
 
 gen akiba_spentairtime_1 = strpos(akiba_spent_1, "air") if ~mi(akiba_spent_1)
-la var akiba_spentairtime_1 "Spent balance on airtime"
+la var akiba_spentairtime_1 "Airtime"
 
 gen akiba_spentbus_1 = strpos(akiba_spent_1, "business") | strpos(akiba_spent_1, "chicken") | strpos(akiba_spent_1, "busy") | strpos(akiba_spent_1, "agriculture") if ~mi(akiba_spent_1)
-la var akiba_spentbus_1 "Spent balance on business"
+la var akiba_spentbus_1 "Business-related"
 
 gen akiba_spentdurables_1 = strpos(akiba_spent_1, "cement") | strpos(akiba_spent_1, "tank") | strpos(akiba_spent_1, "utensil") | strpos(akiba_spent_1, "good") | strpos(akiba_spent_1, "cloth") | strpos(akiba_spent_1, "repair") if ~mi(akiba_spent_1)
-la var akiba_spentdurables_1 "Spent balance on durables"
+la var akiba_spentdurables_1 "Durable goods"
 
 gen akiba_spentloans_1 = strpos(akiba_spent_1, "credit") | strpos(akiba_spent_1, "loan") | strpos(akiba_spent_1, "debt") if ~mi(akiba_spent_1)
-la var akiba_spentloans_1 "Spent balance on repaying loans"
+la var akiba_spentloans_1 "Loan repayment"
 
 gen akiba_spentfood_1 = strpos(akiba_spent_1, "food") if ~mi(akiba_spent_1)
-la var akiba_spentfood_1 "Spent balance on food"
+la var akiba_spentfood_1 "Food"
 
 gen akiba_spenthouse_1 = strpos(akiba_spent_1, "rent") | strpos(akiba_spent_1, "hous") | strpos(akiba_spent_1, "home") if ~mi(akiba_spent_1)
-la var akiba_spenthouse_1 "Spent balance on rent"
+la var akiba_spenthouse_1 "Rent and housing payments"
 
 gen akiba_spenthealth_1 = strpos(akiba_spent_1, "medic") | strpos(akiba_spent_1, "hospital") | strpos(akiba_spent_1, "drug") if ~mi(akiba_spent_1)
-la var akiba_spenthealth_1 "Spent balance on health"
+la var akiba_spenthealth_1 "Health-related"
 
 gen akiba_spentother_1 = strpos(akiba_spent_1, "tempt") | strpos(akiba_spent_1, "salon") | strpos(akiba_spent_1, "burial") | strpos(akiba_spent_1, "pampers") if ~mi(akiba_spent_1)
-la var akiba_spentother_1 "Spent balance on other goods"
+la var akiba_spentother_1 "Other non-durables"
 
 gen akiba_spentsave_1 = strpos(akiba_spent_1, "merry") | strpos(akiba_spent_1, "emergency") | strpos(akiba_spent_1, "saving") if ~mi(akiba_spent_1)
 la var akiba_spentsave_1 "Saved balance"
 
 gen akiba_spentschool_1 = strpos(akiba_spent_1, "school") | strpos(akiba_spent_1, "book") if ~mi(akiba_spent_1)
-la var akiba_spentschool_1 "Spent balance on schooling"
+la var akiba_spentschool_1 "School-related"
 
 gen akiba_spenttransfer_1 = strpos(akiba_spent_1, "gave") | strpos(akiba_spent_1, "sent") if ~mi(akiba_spent_1)
-la var akiba_spenttransfer_1 "Spent balance on transfers"
+la var akiba_spenttransfer_1 "Transfers"
 
 gen akiba_spenttravel_1 = strpos(akiba_spent_1, "travel") | strpos(akiba_spent_1, "fare") | strpos(akiba_spent_1, "transport") if ~mi(akiba_spent_1)
-la var akiba_spenttravel_1 "Spent balance on travel"
+la var akiba_spenttravel_1 "Travel"
 
 gen akiba_spentnone_1 = strpos(akiba_spent_1, "not") | strpos(akiba_spent_1, "did") | strpos(akiba_spent_1, "never") if ~mi(akiba_spent_1)
 la var akiba_spentnone_1 "Did not save"

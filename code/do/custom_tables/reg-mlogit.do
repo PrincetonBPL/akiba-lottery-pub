@@ -12,7 +12,7 @@ clear
 eststo clear
 estimates drop _all
 
-loc columns = 4
+loc columns = 5
 
 set obs 10
 gen x = 1
@@ -44,9 +44,9 @@ forval i = 1/`matlength' {
 
 	if `i' != `baseix' {
 
-		/* Column 1 */
+		/* Column 1: Constant */
 
-		qui lincom _b[`i':2.treatmentgroup], rrr
+		qui lincom _b[`i':_cons], rrr
 
 			loc b = r(estimate)
 			loc se = r(se)
@@ -58,7 +58,7 @@ forval i = 1/`matlength' {
 
 		/* Column 2 */
 
-		qui lincom _b[`i':3.treatmentgroup], rrr
+		qui lincom _b[`i':2.treatmentgroup], rrr
 
 			loc b = r(estimate)
 			loc se = r(se)
@@ -70,7 +70,7 @@ forval i = 1/`matlength' {
 
 		/* Column 3 */
 
-		qui lincom _b[`i':3.treatmentgroup] - _b[`i':2.treatmentgroup], rrr
+		qui lincom _b[`i':3.treatmentgroup], rrr
 
 			loc b = r(estimate)
 			loc se = r(se)
@@ -80,11 +80,21 @@ forval i = 1/`matlength' {
 		estadd loc thisstat`count' = "`r(bstar)'": col3
 		estadd loc thisstat`countse' = "`r(sestar)'": col3
 
-		/* Column 4: Control Mean */
+		/* Column 4 */
+
+		qui lincom _b[`i':3.treatmentgroup] - _b[`i':2.treatmentgroup], rrr
+
+			loc b = r(estimate)
+			loc se = r(se)
+			loc p = r(p)
+
+		sigstar, b(`b') se(`se') p(`p') prec(2)
+		estadd loc thisstat`count' = "`r(bstar)'": col4
+		estadd loc thisstat`countse' = "`r(sestar)'": col4
 
 		/* Column 5: N */
 
-		estadd loc thisstat`count' = `obs': col4
+		estadd loc thisstat`count' = `obs': col5
 
 		/* Row Labels */
 
@@ -106,10 +116,10 @@ forval i = 1/`matlength' {
 loc prehead "\begin{table}[h]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \caption{$regtitle} \label{tab:$regpath} \maxsizebox*{\textwidth}{\textheight}{ \begin{threeparttable} \begin{tabular}{l*{`columns'}{c}} \toprule"
 loc prehead_n "\begin{table}[h]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \label{tab:$regpath} \maxsizebox*{\textwidth}{\textheight}{ \begin{threeparttable} \begin{tabular}{l*{`columns'}{c}} \toprule"
 loc postfoot "\bottomrule \end{tabular} \begin{tablenotes}[flushleft] \footnotesize \item @note \end{tablenotes} \end{threeparttable} } \end{table}"
-loc footnote "\emph{Notes:} This table reports estimates from a multinomial logit estimation of the categorial response on treatment assigment. Each row corresponds to a response category with the baseline value as `` `baselabel' ''.  Columns 1--2 reports the treatment effect in relative risk ratios compared to the control group. Column 3 reports the difference between the two PLS treatments. Standard errors are in parentheses. Column 4 reports the number of observations in the analytic sample. Observations are at the individual level. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level."
+loc footnote "\emph{Notes:} This table reports estimates from a multinomial logit regression of the categorial response on treatment assigment. Each row corresponds to a response category with the baseline value as `` `baselabel' ''. Column 1 reports the constant term corresponding to the mean of the control group. Columns 2--3 reports the treatment effect in relative risk ratios compared to the control group. Column 4 reports the difference between the two PLS treatments. Standard errors are in parentheses. Column 5 reports the number of observations in the analytic sample. Observations are at the individual level. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level."
 
-esttab col* using "$tab_dir/$regpath.tex", booktabs cells(none) nogap mgroups("Relative risk ratio" "Sample", pattern(1 0 0 1) prefix(\multicolumn{@span}{c}{) suffix(}) span erepeat(\cmidrule(lr){@span})) mtitle("No Feedback" "PLS" "\specialcell{PLS-\\No Feedback}" "Obs.") stats(`statnames', labels(`varlabels')) note("`footnote'") prehead("`prehead'") postfoot("`postfoot'") compress replace
-esttab col* using "$tab_dir/$regpath-n.tex", booktabs cells(none) nogap mgroups("Relative risk ratio" "Sample", pattern(1 0 0 1) prefix(\multicolumn{@span}{c}{) suffix(}) span erepeat(\cmidrule(lr){@span})) mtitle("No Feedback" "PLS" "\specialcell{PLS-\\No Feedback}" "Obs.") stats(`statnames', labels(`varlabels')) prehead("`prehead_n'") postfoot("`postfoot'") compress replace
+esttab col* using "$tab_dir/$regpath.tex", booktabs cells(none) nogap mgroups("Relative risk ratio" "Sample", pattern(1 0 0 0 1) prefix(\multicolumn{@span}{c}{) suffix(}) span erepeat(\cmidrule(lr){@span})) mtitle("Constant" "No Feedback" "PLS" "\specialcell{PLS-\\No Feedback}" "Obs.") stats(`statnames', labels(`varlabels')) note("`footnote'") prehead("`prehead'") postfoot("`postfoot'") compress replace
+esttab col* using "$tab_dir/$regpath-n.tex", booktabs cells(none) nogap mgroups("Relative risk ratio" "Sample", pattern(1 0 0 1) prefix(\multicolumn{@span}{c}{) suffix(}) span erepeat(\cmidrule(lr){@span})) mtitle("Constant" "No Feedback" "PLS" "\specialcell{PLS-\\No Feedback}" "Obs.") stats(`statnames', labels(`varlabels')) prehead("`prehead_n'") postfoot("`postfoot'") compress replace
 
 eststo clear
 
