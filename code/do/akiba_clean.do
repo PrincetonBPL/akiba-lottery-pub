@@ -339,7 +339,7 @@ la var pref_avgindiff_0 "Avg. indiff. point"
 
 xtile pref_medianindiff_0 = pref_avgindiff_0, n(2)
 replace pref_medianindiff_0 = pref_medianindiff_0 - 1
-la var pref_medianindiff_0 "Above median i. point"
+la var pref_medianindiff_0 "Above median indiff. point"
 
 egen pref_avggeometric_0 = rowmean(pref_geometric*)
 la var pref_avggeometric_0 "Geo. discount factor"
