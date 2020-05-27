@@ -299,7 +299,7 @@
 
 		That potential savers respond to PLS by making more frequent deposits without a corresponding increase in balance can be partially rationalized as the subdivision of lotteries to reduce risk \parencite{samuelson_risk_1963}. Under this hypothesis, risk averse individuals will subdivide bets over a greater number of gambles so that the risk of a low return is minimized. Since PLS offers returns equivalent in expectation to the matching incentive, we would expect risk averse individuals to save no more with PLS than with the standard account even without liquidity constraints. Yet another explanation for our findings is the ``entertainment'' utility hypothesis of gambling \parencite{conlisk_utility_1993}. That is, consumers will behave in ways that enable them to make gambles because they derive consumption utility from simply playing and irrespective of potential earnings. Under this hypothesis, an increase in the number of deposits in the treatment group is expected if merely making a deposit on a certain day qualifies participants to play the lottery for that day. Recall that participants had almost five more active days---and thus play the lottery five more times---than the control group. Unsurprisingly, participants are not making more deposits \textit{within} days since this does not affect lottery eligibility. For these reasons we expect the PLS to induce more deposits without a corresponding increase in amount saved.
 
-		Our study was designed to investigate the role of regret aversion as a specific mechanism explaining demand for PLS. Regret theory is a class of behavioral models that incorporate an individual's aversion to feelings of regret---an emotional response to foregone opportunities due to action or inaction. \textcite{bell_risk_1983} and \textcite{loomes_regret_1982} were one of the first to formalize this as a complication to expected utility theory. Where expected utility depends only on final outcomes, (dis)utility from regret (rejoicing) depends on the difference between the realized outcome and the best foregone outcome. Additionally, regret theory assumes that individuals can anticipate the psychological consequences of the decisions and therefore take them into account ex ante. These class of theories received attention due to their ability to rationalize behavioral deviations from expected utility theory (e.g. the Allais paradoxes).
+		Our study was designed to investigate the role of regret aversion as a specific mechanism explaining demand for PLS. Regret theory is a class of behavioral models that incorporate an individual's aversion to feelings of regret---an emotional response to foregone opportunities due to action or inaction. \textcite{bell_risk_1983} and \textcite{loomes_regret_1982} were one of the first to formalize this as a complication to expected utility theory. Where expected utility depends only on final outcomes, (dis)utility from regret (rejoicing) depends on the difference between the realized outcome and the best foregone outcome. Hence, theories of regret are action-based rather than purely outcome-based. Regret theory further posits that individuals can anticipate the psychological consequences of the decisions and therefore take them into account ex ante. These class of theories received attention due to their ability to rationalize behavioral deviations from expected utility theory (e.g. the Allais paradoxes).
 
 		\textcite{zeelenberg_consequences_1996} and \textcite{zeelenberg_consequences_2004} demonstrate how the minimization of anticipated regret can rationalize risk-seeking behavior among risk-averse individuals in situations of \textit{asymmetric feedback}. This describes, for example, choices between a lottery and a certain outcome where choosing the lottery leads to its resolution whereas choosing certainty typically does not involve a resolution of the lottery. Since regret derives from a comparison of foregone outcomes, choosing the lottery and receiving feedback involves the possibility of regret while choosing certainty does not. A regret-minimizing individual would thus find certainty favorable beyond that implied by her risk preferences. Conversely, providing feedback on the lottery regardless of choice (a situation of \emph{symmetric feedback}), removes the role of regret aversion associated with certainty. \textcite{zeelenberg_consequences_1996} introduced the central test for regret aversion based on this observation. It involves comparing choices between situations of asymmetric versus symmetric feedback, \textit{ceteris paribus}, in order to isolate the role of regret aversion. 
 
@@ -315,10 +315,10 @@
 
 		In the theory of regret outlined in the previous section, the anticipation of regret determines ex ante choice. That model makes no predictions regarding the role of recently experienced regret in individual choice. If participants feel the sting of foregone lottery winnings from yesterday, are they more likely to act on their regret aversion today?
 
-		We can leverage the panel structure of our data and the randomness of the lottery results to estimate the effect of recently experienced regret on deposits. If participants are saving in response to experienced regret of foregoing the prize, we expect to see an independent effect of winning the lottery among non-savers on the decision to save in the PLS group. Let $Y_{i,t}$ denote having made a deposit by participant $i$ in period $t$. $\text{Win}_{i,t}$ is an indicator for having a winning lottery ticket from the pervious day announced in period $t$. We estimate the following equation conditional on assignment to the PLS group and not having saved one period prior.
+		We can leverage the panel structure of our data and the randomness of the lottery results to estimate the effect of recently experienced regret on deposits. If participants are saving in response to experienced regret of foregoing the prize, we expect to see an independent effect of winning the lottery among non-savers on the decision to save in the PLS group. Let $Y_{i,t}$ denote having made a deposit by participant $i$ in period $t$. $\text{Win}_{i,t-1}$ is an indicator for having a winning lottery ticket from the previous day announced in period $t$. We estimate the following equation conditional on assignment to the PLS group and not having saved one period prior.
 
 		\begin{equation} \begin{split}
-		Y_{i,t} = & \pi \text{Win}_{i,t} + \omega_{t} + u_{i,t}
+		Y_{i,t} = & \pi \text{Win}_{i,t-1} + \omega_{t} + u_{i,t}
 		\end{split} \label{eq:regret} \end{equation}
 
 		$\pi$ is the additional effect from winning but not being able to claim the prize. $\omega_{t}$ is a period-specific fixed effect. We test the null hypothesis of $\pi = 0$.
@@ -381,11 +381,6 @@
 
 		\input{../../tables/reg-fwerself.tex}
 
-		\input{../../tables/het-save_dosave_0.tex}
-		\input{../../tables/het-pref_riskaverse_0.tex}
-		\input{../../tables/het-pref_medianindiff_0.tex}
-		\input{../../tables/het-gam_mediancpgi_z_0.tex}
-
 \section{Conclusion} \label{sec:conclusion}
 
 	There is an abundance of evidence on the promise of product design in encouraging savings among the poor. We conducted a randomized experiment testing a prize-linked savings product with informal residents in Nairobi, Kenya. Utilizing a mobile savings platform, we randomly assign respondents to a savings account with a certain, matching incentive, a lottery incentive, and a lottery incentive with feedback on ex post potential lottery winnings. We set the fixed match of 5\% equivalent in expectation to the lottery prize so that comparing the two groups identifies the effect of stochastic incentives compared to deterministic incentives. After observing account transactions over a 60-day savings period, we find that participants in the PLS group made between 5-6 more deposit transactions than the matched payments group without a corresponding increase in amount saved. We further find no effects on amounts saved through other channels except that participants assigned to the PLS treatment with feedback were 14 percentage points more likely to have saved with a ROSCA. Finally, treated participants are 15 percentage points more likely than the control group to report that they gamble more.
@@ -403,5 +398,33 @@
 \newpage
 
 \printbibliography
+
+\appendix
+
+\section{Modelling the Decision to Save with Regret Aversion}
+
+	In this section, we formalize the intuition behind how feedback on lottery results works to increase the number of deposits to PLS accounts. We present a simple model of an individual facing a one-shot, binary decision to save with PLS with and without feedback. 
+
+	When a subject in the PLS treatment makes a deposit her payoff $y$ is contingent on the outcome of the lottery $\ell = (p_1, p_2, p_3, p_4)$.
+
+	Let $f$ be the prospect associated with making a deposit with PLS (thus entering the lottery) and $g$ associated with no deposits. The individual values each outcome with the following utility form.
+
+		\[ u(f_i) + \gamma R(u(f_i) - u(0)) \]
+
+	$f_i$ is the return on the deposit when state $i$ realizes, $u$ is the concave von Neumann-Morgenstern utility, and $R$ is a regret function that evaluates utility differences between outcomes from the selected lottery to outcomes from the foregone lottery, state-by-state. In this setup, not making a deposit results in a certain outcome of 0. $R$ satisfies $R(0) = 0$ and is strictly increasing. $\gamma$ governs the degree of regret aversion so that $\gamma = 0$ represents the standard expected utiltiy case.
+
+			\sum_{i=1}^4 p_i \cdot [u(f_i) + \gamma R(u(f_i) - u(0))] \geq & u(0) \\
+			\sum_{i=1}^4 p_i \cdot [u(f_i) + \gamma R(u(f_i) - u(0))] \geq & u(0) + \textcolor{Triton}{ \sum_{i=1}^4 p_i \cdot \gamma R(u(0) - u(f_i)) }
+
+	anticipated regret works to increase the number of PLS deposits when feedback about lottery results is always provided compared to when 
+
+	% everything saved is subject to a discount factor
+
+\section{Heterogeneous Treatment Effects}
+	
+	\input{../../tables/het-save_dosave_0.tex}
+	\input{../../tables/het-pref_riskaverse_0.tex}
+	\input{../../tables/het-pref_medianindiff_0.tex}
+	\input{../../tables/het-gam_mediancpgi_z_0.tex}
 
 \end{document}

@@ -52,7 +52,7 @@
 \usepackage{caption}
 \usepackage{graphicx}
 \usepackage{listings}
-\usepackage{color}
+\usepackage{color,soul}
 \usepackage{tfrupee}
 \usepackage[backend=bibtex, style=authortitle, citestyle=authoryear-icomp, url=false]{biblatex}
 \addbibresource{Lottery.bib}
@@ -109,14 +109,8 @@
 	\begin{wideitemize}
 
 		\item Access to savings is an important avenue toward economic development.
-
-		% \begin{wideitemize}
-
-		% 	\item Can be used to invest in productive assets when unable to borrow.
-
-		% 	\item Allows for some degree of consumption smoothing when insurance is incomplete. 
-
-		% \end{wideitemize}
+		% Can be used to invest in productive assets when unable to
+		% Allows for some degree of consumption smoothing when insurance is incomplete. 
 
 		\item Poor households face savings constraints.
 
@@ -126,32 +120,12 @@
 		\end{itemize}
 
 		\item Product design (default savings, commitment devices, reminders) targeted to problems of self-control/attentiveness have proven very cost-effective \parencite{ashraf_tying_2006,dupas_why_2013,somville_saving_2018}.
+		% In addition to supply-side interventions such as bank expansions and subsidies
+		% Our paper sits among the research on demand-side frictions.
 
 	\end{wideitemize}
 
 \end{frame}
-
-% \begin{frame}{Savings as a Policy Objective}
-
-% 	\begin{wideenumerate}
-
-% 	% There are both supply and demand side constraints on financial inclusion. A large of the microdevelopment literature has been devoted to addressing financal constraints.
-
-% 		% Initial and transaction costs can be prohibitive for the poor \parencite{karlan_savings_2014}. 
-
-% 		\item Mobile technologies, bank expansions, lowering account requirements, etc. \parencite{jack_mobile_2011,dupas_challenges_2014,dupas_savings_2009,burgess_rural_2005}.
-
-% 		% In Kenya, 80\% of adults have a banking account or mobile money but only 30\% actually use it to save \parencite{demirguc-kunt_global_2018}. So there are also constraints on the consumer side.
-		
-% 		\item Subsidy experiments estimate very low interest rate elasticities \parencite{karlan_price_2018,schaner_persistent_2018}.
-		
-% 		\item Financial literacy is low in developing countries and education interventions have mixed results \parencite{miller_can_2015}.
-		
-% 		\item Product design (default savings, commitment devices, reminders) targeted to problems of self-control/attentiveness have proven very cost-effective \parencite{ashraf_tying_2006,dupas_why_2013,somville_saving_2018}.
-
-% 	\end{wideenumerate}
-
-% \end{frame}
 
 \begin{frame}{Prize-Linked Savings}
 
@@ -166,28 +140,11 @@
 
 \end{frame}
 
-% \begin{frame}{Prize-Linked Savings}
-
-% 	% From an (expected) revenue neutral perspective, 
-
-% 	How might lotteries induce savings over regular interest-bearing accounts?
-
-% 	% Related to an old question in economics about why people hold insurance and gamble.
-
-% 	\begin{wideitemize}
-% 		\item Thrill of playing \parencite{conlisk_utility_1993}.
-% 		\item Large sums for purchasing durable goods when credit constrained/adjustment costs \parencite{herskowitz_gambling_2016}.
-% 		\item Non-linear probability weighting \parencite{kahneman_advances_1992}.
-% 		\item \textbf{Aversion to anticipated regret} can induce apparently risk-seeking behavior \parencite{loomes_regret_1982,bell_risk_1983,zeelenberg_consequences_1996}.
-% 	\end{wideitemize}
-
-% \end{frame}
-
 \begin{frame}{Research Questions}
 
 	\begin{wideenumerate}
 
-		\item Can prize-linked savings induce account usage in low income settings?
+		\item Can prize-linked savings induce account usage in low-income settings?
 		\item How much of this effect can we attribute to a specific mechanism (regret aversion)?
 
 		% Why risk-averse people play the lotteries is a puzzle with a lot of explanations. Here we focus on one.
@@ -198,51 +155,42 @@
 
 \begin{frame}{Overview}
 
-	\begin{itemize}
+	\begin{wideitemize}
 
 		\item Provided a mobile savings account to 311 periurban residents of Nairobi, Kenya.
 		\item Experimentally vary the incentive structure (fixed versus stochastic) and information structure.
 		\item Observe account activity over a 60-day period.
 
-		\begin{itemize}
-			\item Estimate the effect of stochastic incentives on account usage
-			\item Estimate the effect on savings by other means, consumption, and gambling
-			\item Quantify the role of regret aversion
-		\end{itemize}
+		\begin{enumerate}
+			\item Estimate the effect of stochastic incentives on program savings and usage.
+			\item Estimate the effect on savings by other means, consumption, and gambling.
+			\item Quantify the role of regret aversion.
+		\end{enumerate}
 
-	\end{itemize}
+	\end{wideitemize}
 
 \end{frame}
 
-\begin{frame}{Related Literature}
+% \begin{frame}{Related Literature}
 	
-	\begin{enumerate}
+% 	\begin{enumerate}
 
-		\item \textbf{The effect of PLS on savings}: We are one of the first field experiments studying lottery incentives and the first to test for mechanisms.
+% 		\item \textbf{The effect of PLS on savings}: One of the first field experiments studying lottery incentives and the first to test for mechanisms.
 
-		\begin{itemize}
-			\item In the lab, lotteries effectively increase the savings rate \parencite{atalay_savings_2014,filiz-ozbay_lottery_2015}.
-			\item In the field, works over many domains \parencite{dizon_leveraging_2016,gajic_cost-effectiveness_2011,brune_effect_2015,loibl_testing_2016,gertler_long-term_2017}.
-		\end{itemize}
+% 		\begin{itemize}
+% 			\item In the lab, lotteries effectively increase the savings rate \parencite{atalay_savings_2014,filiz-ozbay_lottery_2015}.
+% 			\item In the field, works over many domains \parencite{dizon_leveraging_2016,gajic_cost-effectiveness_2011,brune_effect_2015,loibl_testing_2016,gertler_long-term_2017}.
+% 		\end{itemize}
 
-		\item \textbf{Regret aversion in economic choice}: first to study regret aversion in the domain of household finance and provide some evidence on dynamic effects.
+% 		\item \textbf{Regret aversion in economic choice}: First to study regret aversion in the domain of household finance and provide some evidence on dynamic effects.
 
-		\begin{itemize}
-			\item Lottery feedback influences play in Dutch postcode lotteries \parencite{zeelenberg_consequences_2004}.
-			\item Loser's regret drives overbidding in first price auctions \parencite{filiz-ozbay_auctions_2007}.
-			\item Repeated experiences of regret dissuades risky choices and feedback provides learning opportunities \parencite{imas_regret_2016}.
-		\end{itemize}
+% 		\begin{itemize}
+% 			\item Lottery feedback influences play in Dutch postcode lotteries \parencite{zeelenberg_consequences_2004}.
+% 			\item Loser's regret drives overbidding in first price auctions \parencite{filiz-ozbay_auctions_2007}.
+% 			\item Repeated experiences of regret dissuades risky choices and feedback provides learning opportunities \parencite{imas_regret_2016}.
+% 		\end{itemize}
 
-	\end{enumerate}
-
-\end{frame}
-
-% \begin{frame}{Study Setting}
-
-% 	\begin{figure}[H]
-% 		\centering
-% 		\includegraphics[height=0.8\textheight]{kibera-tracks.jpg}
-% 	\end{figure}
+% 	\end{enumerate}
 
 % \end{frame}
 
@@ -274,7 +222,6 @@
 
 	\end{columns}
 
-
 	% https://qz.com/africa/1140842/gambling-addiction-is-on-the-rise-in-kenya-and-leaving-young-people-bankrupt-and-suicidal/
 
 \end{frame}
@@ -289,9 +236,7 @@
 		\item Principal and returns transferred to subjects after 60 days via M-Pesa.
 	\end{wideitemize}
 
-	% Everyone has a mobile phone, know how to use mobily money, cash out easily, high trust, in order to minimize the role of transaction costs/information/trust
-
-	% limit transaction costs and setup costs
+	% Everyone has a mobile phone, know how to use mobile money, cash out easily, high trust, in order to minimize the role of transaction costs/information/trust
 
 \end{frame}
 
@@ -304,32 +249,32 @@
 		\end{itemize}
 	\end{block}
 
+	% Important to use a standard account with equivalent expected returns so that we comapre only the effect of the stoschastic incentive
+
 	\begin{columns}[T]
 
 		\begin{column}{0.48\textwidth}
 			\begin{block}{PLS ($N = 103$)}
 			\begin{itemize}
-			\item Enter into a lottery drawn daily
-			\item Equal in expectation to 5\% return and guarantees no losses
+			\item Subjects are given a lottery ticket daily
+			\item Returns are proportional to your deposit that day
+			\item Lottery is drawn the following morning
 			\item Always given feedback on whether lottery ticket wins
-			\item Only redeemable if deposited that day
 			\end{itemize}
 			\end{block}
 		\end{column}
 
 		\begin{column}{0.48\textwidth}
-			\begin{block}{PLS without feedback ($N = 103$)}
+			\begin{block}{PLS conditional feedback ($N = 103$)}
 			\begin{itemize}
 			\item Incentives identical to PLS
 			\item Received a lottery ticket only if made a deposit that day
-			\item No feedback on lottery results
+			\item No feedback on lottery results if no deposit
 			\end{itemize}
 			\end{block}
 		\end{column}
 
 	\end{columns}
-
-	% need to make treatment differences more clear
 
 \end{frame}
 
@@ -344,13 +289,30 @@
 
 \end{frame}
 
-\begin{frame}{Results}
+\begin{frame}{Effect on Savings}
 	
 	\centering \large I. What are the effects of prize-linked incentives on savings?
 
 \end{frame}
 
-\begin{frame}{Results -- Mobile Savings}
+\begin{frame}{Effect on Savings}
+
+	\begin{equation} \label{eq:teffect}
+			Y_{i} = \beta_{0} + \beta_{1}\text{NF}_{i} + \beta_{2}\text{PLS}_{i} + \varepsilon_{i}
+	\end{equation}
+
+	\begin{align*}
+	Y_{i}: & \text{~outcome for individual~} i \\
+	\text{NF}_{i}: & \text{~assignment to No Feedback group} \\
+	\text{PLS}_{i}: & \text{~assignment to PLS (with feedback) group} \\
+	\varepsilon_i: & \text{~idiosyncratic error}
+	\end{align*}
+	
+	% Statistical inference is based on heteroskedastic-robust standard errors.
+
+\end{frame}
+
+\begin{frame}{Effect on Savings}
 
 	\input{reg-mobile-blank.tex}
 
@@ -358,33 +320,38 @@
 
 \end{frame}
 
-\begin{frame}{Discussion -- Mobile Savings}
+\begin{frame}{Effect on Savings}
 
 	\begin{wideitemize}
-		\item Effects occur on the ``extensive margin''.
-		\begin{wideitemize}
+		\item The ``extensive margin'': effects on account usage but not total savings.
+		\begin{itemize}
 			\item Consistent with other studies of lottery incentives \parencite{brune_effect_2015,gertler_long-term_2017}.
-			\item Can be rationalized as the subdivision of lotteries \parencite{samuelson_risk_1963}.
-		\end{wideitemize}
-		\item Null effect on savings amount likely due to liquidity constraints \parencite{loibl_testing_2016}.
-		\item What does this tell us about potential mechanisms?
+			\item Null effect on savings amount likely due to liquidity constraints.
+			% This is why it was important to test this in the field and not just the lab.
+		\end{itemize}
+		% \item What does this tell us about potential mechanisms?
+		% \begin{enumerate}
+		% 	\item Subdivision of lotteries \parencite{samuelson_risk_1963}.
+		% 	\item Thrill of playing \parencite{conlisk_utility_1993}.
+		% 	\item \textbf{Aversion to anticipated regret} can induce apparently risk-seeking behavior.
+		% \end{enumerate}
 	\end{wideitemize}
 
 \end{frame}
 
-\begin{frame}{Results}
+\begin{frame}{The Role of Regret}
 	
 	\centering \large II. How much of the effect can be explained by regret aversion?
 
 \end{frame}
 
-\begin{frame}{A Theory of Regret}
+% \begin{frame}{A Theory of Regret}
 
-	\begin{block}{Regret \parencite{zeelenberg_consequences_2004}}
-	 ``...a negative, cognitively based emotion that we experience when realizing or imagining that our present situation would have been better, had we decided differently''
-	\end{block}
+% 	\begin{block}{Regret \parencite{zeelenberg_consequences_2004}}
+% 	 ``...a negative, cognitively based emotion that we experience when realizing or imagining that our present situation would have been better, had we decided differently''
+% 	\end{block}
 
-\end{frame}
+% \end{frame}
 
 \begin{frame}{A Theory of Regret}
 
@@ -392,21 +359,15 @@
 
 		\item Preferences depend on comparisons between outcomes of chosen and foregone prospects \parencite{bell_risk_1983,loomes_regret_1982}.
 
-		\item Individuals experience regret after the resolution of prospects. Suppose state $i$ obtains, $f, g \in B$, and $f$ is chosen.
+		\item Individuals experience regret after the resolution of prospects. Suppose state $i$ is realized, $f, g \in B$, and $f$ is chosen.
 
-			\[ \Psi(f_i; g_i) = u(f_i) + \gamma R(u(f_i) - u(g_i)) \]
+			\[ Q(f_i; g_i) = u(f_i) + R(u(f_i) - u(g_i)) \]
 
-		\item $R$ is strictly increasing, decreasingly concave, and satisfies $R(0) = 0$.
+		\item $R$ is non-decreasing and satisfies $R(0) = 0$.
 
-		\item If individuals can anticipate regret/rejoicing then it affects ex ante behavior.
+		\[ f \succsim g \leftrightarrow \sum_i p_{i} \cdot [Q(f_i; g_i) - Q(g_i; f_i)] \geq 0 \]
 
-		\[ f \succsim g \leftrightarrow \sum_i p_{i} \cdot [\Psi(f_i; g_i) - \Psi(g_i; f_i)] \geq 0 \]
-
-		% Difference from reference dependence/DA? I only make relative comparisons when I know that I will experience ex post regret. Disapointment is related to what might have been in an unrealized state in the same lottery but regret is about what have been in a foregone choice (regret is action-based).
-
-		% When choices also affect resolution/experience of regret then it can affect behavior. 
-
-		% Is it kinked? People postulate so but no quantification
+		\item $Q$ linear corresponds to EU theory while $Q$ convex corresponds to regret aversion.
 
 	\end{itemize}
 	
@@ -416,29 +377,31 @@
 
 	\begin{wideitemize}
 
-		\item Regret is not experienced (anticipated) if unchosen prospects are not resolved.
+		\item Regret is not experienced (not anticipated) if unchosen prospects are not resolved.
 
-		\item This is the central test of regret aversion in the lab \parencite{filiz-ozbay_auctions_2007,zeelenberg_consequences_2004,zeelenberg_consequences_1996}.
+		% If you know you'll never find out about what could have happened you're just an EU maximizer.
 
-		\item In our study, individuals in PLS treatments can experience regret only if they chose \textit{not} to save and learned about a winning ticket at the resolution of the daily lottery.
+		\item Manipulation of feedback have predictable consequences for behavior of regret averse individuals.
 
-		% they cannot experience regret by choosing to enter the lottery because it cannot result in losses
+		% Those who know that they might regret not depositing might be induced to deposit. Those who won't resolve their lottery have nothing to worry about.
 
-		\item \textbf{Hypothesis}: More deposits with feedback than without.
+		\item This is the central test of regret aversion \parencite{filiz-ozbay_auctions_2007,zeelenberg_consequences_2004,zeelenberg_consequences_1996}.
+
+		\item \textbf{Hypothesis}: More deposits in PLS with feedback than without.
 
 	\end{wideitemize}
 
-	% If lottery is more attractive in lottery then it implies R is negative here
-	
+\end{frame}
+
+\begin{frame}{The Role of Regret Aversion}
+
+	\input{reg-mobile.tex}
+	% The difference is not statistically significant, but taking the point estimate at face value then regret aversion accounts for 20% of the PLS effect.
+	% Or from a polic perspective, a regret lottery will give you a better effect that a standard lottery.
+
 \end{frame}
 
 \begin{frame}{Results -- Regret Aversion}
-
-	\input{reg-mobile.tex}
-
-\end{frame}
-
-\begin{frame}{Results -- Regret aversion}
 
 		\begin{figure}[ht]
 		\centering
@@ -448,45 +411,43 @@
 		\caption*{\footnotesize \emph{Notes:} This figure plots the empirical distribution of timing of all deposits over the project period. Each bin spans 30 minutes with a height equal to the fraction of all deposits within each treatment group. A vertical line marks 8:00, when participants received the first SMS that summarized how much the participant saved the previous day, how much the participant earned through a matching contribution or winnings, and their total balance. An hour later, participants received a second SMS encouraging them to save that day. Participants in PLS received a new lottery ticket with the second message.}
 		\end{figure}
 
-		% people make deposits right when they get the lottery ticket and when results are announced
+		% People make deposits right when they get the lottery ticket and when results are announced
+		% Together this suggests that it's the lottery resolution that matters.
 
 \end{frame}
-
-% \begin{frame}{Results -- Regret Aversion}
-	
-	% Does experienced regret mediate anticipated regret?
-	
-	% \input{reg-regretaversion.tex}
-
-	% 	Two effects: anticipation of multiple future resolutions, dependence on experienced
-
-% 	1. Recently experienced regret can make anticipated regret more salient as in zeelenberg 
-% 	2. Initial anticipation may be overconfident and people can learn (or other way)
-
-
-% \end{frame}
 
 \begin{frame}{Results}
 	
-	\centering \large How does the effect evolve over time?
+	\centering \large III. What are the effects of PLS on expenditures and savings by other means?
 
 \end{frame}
 
-\begin{frame}{Results -- Effects Over Time}
+\begin{frame}{Results -- Other Savings}
 
-	\begin{figure}[H]
-		\centering
-		\includegraphics[height=0.8\textheight]{line-mobile_cumdeposits.pdf}
-	\end{figure}
+	\input{reg-save.tex}
+
+	% Since we find no effect on savings amount, we wouldn't expect effects here
 
 \end{frame}
 
-\begin{frame}{Results -- Effects Over Time}
+\begin{frame}{Results -- Expenditure}
 
-	\begin{figure}[H]
-		\centering
-		\includegraphics[height=0.8\textheight]{line-mobile_deposits.pdf}
-	\end{figure}
+	\input{reg-cons.tex}
+
+\end{frame}
+
+
+\begin{frame}{Results -- Gambling}
+	
+	\centering \large IV. What are the effects of PLS on gambling?
+
+\end{frame}
+
+\begin{frame}{Results}{Gambling}
+
+	\input{reg-mlogfreq.tex}
+
+	% The relative risk of gambling more also increases by a factor of 3.03 (1.87) for PLS with feedback compared to without feedback. 
 
 \end{frame}
 
@@ -494,20 +455,18 @@
 
 	\begin{wideitemize}
 		\item The savings experiment finds that:
-		\begin{itemize}
+		\begin{enumerate}
 			\item PLS can increase account usage but not savings per se.
 			\item Behavior is consistent with regret aversion.
-			\item Recently experienced regret reinforces subsequent effect.
-			\item Little effect on other savings, consumption, gambling.
-		\end{itemize}
-		\item Further research
+			% \item Recently experienced regret reinforces subsequent effect.
+			\item Little effect on other savings, consumption.
+			\item Some evidence that PLS is complementary to gambling.
+		\end{enumerate}
+		\item Policy implications
 		\begin{itemize}
-			\item Observe entire portfolio of assets, consumption.
-			\item Investigate long-term effects.
-			\item A structural approach to help quantify role of alternative explanations.
-			\item Examine cost-effectiveness relative to other products.
-			\item Understand learning and salience of regret.
-			\item Understanding portfolio selection when all types of savings are available.
+			\item Welfare consequences are not obvious.
+			\item Revenue neutral (in expectation) compared to standard subsidies.
+			\item Useful from a policy perspective if it encourages habit formation \parencite{schaner_persistent_2018}.
 		\end{itemize}
 	\end{wideitemize}
 
@@ -521,34 +480,26 @@
 
 \appendix
 
-\begin{frame}{Regret Aversion with PLS}
+\begin{frame}{The Decision to Save with PLS}
 
-	\begin{wideitemize}
+	\begin{itemize}
 
-		\item Suppose $u(0) = 0$ and denote $f_i$ the payoff for depositing in state $i$. 
+		\item A one-shot decision problem to save under PLS. Denote $f_i$ the payoff for depositing in state $i$ of the lottery draw and $u(f_i)$ the associated VNM utility. 
 	
-		\item Saving without feedback:
+		\item Saving without feedback satisfies
 
-		\[ \sum_{i=1}^4 p_i \cdot [u(f_i) + R(u(f_i))] \geq 0 \]
+		\begin{align}
+			\sum_{i=1}^4 p_i \cdot [u(f_i) + \gamma R(u(f_i) - u(0))] \geq & u(0) \\
+			\sum_{i=1}^4 p_i \cdot [u(f_i) + \gamma R(u(f_i) - u(0))] \geq & u(0) + \textcolor{Triton}{ \sum_{i=1}^4 p_i \cdot \gamma R(u(0) - u(f_i)) }
+		\end{align}
 
-		\item Saving with feedback:	
+		\item Under standard assumptions, saving without feedback condition is stricter than always with feedback so marginal individuals will be induced to save when they expect feedback.
 
-		\[\sum_{i=1}^4 p_i \cdot [u(f_i) + R(u(f_i))] \geq \sum_{i=1}^4 p_i \cdot R(-u(f_i)) \]
+		\item Captures the idea that people who don't save may or may not be exposed to regret and that they take this into account ex ante.
 
-		\item $R(0) = 0$ and strictly increasing implies that $R(u(f_i)) > 0$ and $R(-u(f_i)) < 0$.
+		\item Without regret ($\gamma = 0$), there is no effect of lottery feedback.
 
-		% this is incorrect
-
-	\end{wideitemize}
-
-\end{frame}
-
-\begin{frame}{Demonstration}
-
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=0.8\linewidth]{fig-lottery.png}
-	\end{figure}
+	\end{itemize}
 
 \end{frame}
 
@@ -567,30 +518,29 @@
 
 \end{frame}
 
-\begin{frame}{Timing}
+\begin{frame}{Results -- Regret Aversion}
 
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=0.65\linewidth]{hist-deposits.pdf}
-	\end{figure}
+	We estimate the following equation conditional on assignment to the PLS with feedback group and not having saved one period prior.
 
-\end{frame}
+	\begin{equation} \begin{split}
+		Y_{i,t} = & \pi \text{Win}_{i,t-1} + \omega_{t} + u_{i,t}
+	\end{split} \label{eq:regret} \end{equation}
 
-\begin{frame}{Results}{Savings}
-
-	\input{reg-save.tex}
-
-\end{frame}
-
-\begin{frame}{Results}{Savings}
-
-	\input{reg-cons.tex}
+	\begin{align*}
+	Y_{i,t}: & i \text{~made a deposit at time~} t \\
+	\text{Win}_{i,t-1}: & \text{~won yesterday's lottery} \\
+	\omega_t: & \text{~period fixed effect} \\
+	u_i: & \text{~idiosyncratic error}
+	\end{align*}
 
 \end{frame}
 
-\begin{frame}{Results}{Gambling}
+\begin{frame}{Results -- Regret Aversion}
+	
+	\input{reg-regretaversion.tex}
 
-	\input{reg-gamble.tex}
+	% I'm 2% more likely to deposit if I won yesterday than if I lost
+	% Foregone winnings from yesterday makes you deposit (play the lottery) today
 
 \end{frame}
 
