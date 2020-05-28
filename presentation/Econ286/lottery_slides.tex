@@ -171,29 +171,6 @@
 
 \end{frame}
 
-% \begin{frame}{Related Literature}
-	
-% 	\begin{enumerate}
-
-% 		\item \textbf{The effect of PLS on savings}: One of the first field experiments studying lottery incentives and the first to test for mechanisms.
-
-% 		\begin{itemize}
-% 			\item In the lab, lotteries effectively increase the savings rate \parencite{atalay_savings_2014,filiz-ozbay_lottery_2015}.
-% 			\item In the field, works over many domains \parencite{dizon_leveraging_2016,gajic_cost-effectiveness_2011,brune_effect_2015,loibl_testing_2016,gertler_long-term_2017}.
-% 		\end{itemize}
-
-% 		\item \textbf{Regret aversion in economic choice}: First to study regret aversion in the domain of household finance and provide some evidence on dynamic effects.
-
-% 		\begin{itemize}
-% 			\item Lottery feedback influences play in Dutch postcode lotteries \parencite{zeelenberg_consequences_2004}.
-% 			\item Loser's regret drives overbidding in first price auctions \parencite{filiz-ozbay_auctions_2007}.
-% 			\item Repeated experiences of regret dissuades risky choices and feedback provides learning opportunities \parencite{imas_regret_2016}.
-% 		\end{itemize}
-
-% 	\end{enumerate}
-
-% \end{frame}
-
 \begin{frame}{Study Setting}
 
 	\begin{columns}
@@ -367,7 +344,7 @@
 
 		\[ f \succsim g \leftrightarrow \sum_i p_{i} \cdot [Q(f_i; g_i) - Q(g_i; f_i)] \geq 0 \]
 
-		\item $Q$ linear corresponds to EU theory while $Q$ convex corresponds to regret aversion.
+		\item Curvature of $Q$ determines regret aversion (seeking).
 
 	\end{itemize}
 	
@@ -480,6 +457,29 @@
 
 \appendix
 
+\begin{frame}{Related Literature}
+	
+	\begin{enumerate}
+
+		\item \textbf{The effect of PLS on savings}: First field experiment in LMIC to study lottery incentives and the first to test for mechanisms.
+
+		\begin{itemize}
+			\item In the lab, lotteries effectively increase the savings rate \parencite{atalay_savings_2014,filiz-ozbay_lottery_2015}.
+			\item In the field, works over many domains \parencite{dizon_leveraging_2016,gajic_cost-effectiveness_2011,brune_effect_2015,loibl_testing_2016,gertler_long-term_2017}.
+		\end{itemize}
+
+		\item \textbf{Regret aversion in economic choice}: First to study regret aversion in the domain of household finance and provide some evidence on dynamic effects.
+
+		\begin{itemize}
+			\item Lottery feedback influences play in Dutch postcode lotteries \parencite{zeelenberg_consequences_2004}.
+			\item Loser's regret drives overbidding in first price auctions \parencite{filiz-ozbay_auctions_2007}.
+			\item Repeated experiences of regret dissuades risky choices and feedback provides learning opportunities \parencite{imas_regret_2016}.
+		\end{itemize}
+
+	\end{enumerate}
+
+\end{frame}
+
 \begin{frame}{The Decision to Save with PLS}
 
 	\begin{itemize}
@@ -544,6 +544,24 @@
 
 \end{frame}
 
+\begin{frame}{Results -- Effects Over Time}
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[height=0.8\textheight]{line-mobile_cumdeposits.pdf}
+	\end{figure}
+
+\end{frame}
+
+\begin{frame}{Results -- Effects Over Time}
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[height=0.8\textheight]{line-mobile_deposits.pdf}
+	\end{figure}
+
+\end{frame}
+
 \end{document}
 
 % Notes from 3/13 presentation to graduate students
@@ -561,3 +579,15 @@
 % For generalizability: explain where and whether we think this product could work
 
 % Examine the initial dropoff in the plot: is this compositional (extensive margin) or at the intensive margin?
+
+Perhaps it’s useful to mention what airtime / M-Pesa is when presenting to broader audience? I didn’t know what they are before I learned some dev econ. 
+
+The ‘Experiment’ slide (8/28) is a bit hard to read because of the arrangement. Honestly I didn’t understand the difference between PLS and PLS w/o feedback until Ken asked the question and you explained it. Perhaps you can think of a better way to contrast the differences between the three groups?  
+
+Do you have basline information about whether the participants play gambles? If people are just paying to play a 60-day gamble by maintaining balance, perhaps exlcuding those who are more prone to play gamble would change the results? -> Scratch it you just showed us the results. 
+
+For me this paper is more about verifying the regret aversion rather than facilitating savings, but you were motivating the audience with more emphasis given to the savings story. 
+
+Internet connection is really bad, btw… 
+
+Ken: if the expected returns are the same between PLS and PLS w/o feedback, why would people play one rather than the other?
