@@ -423,23 +423,27 @@
 
 \section{A Simple Model of Saving with PLS} \label{sec:model}
 
-	In this section, we formalize the intuition behind how feedback on lottery results works to increase the number of deposits to PLS accounts. We present a simple model of an individual facing a one-shot, binary decision to save or not save with PLS with and without feedback. 
+	In this section, we formalize the intuition behind how feedback on lottery results works to increase the number of deposits to PLS accounts. We present a simple model of an individual facing a one-shot, binary decision to save or not save with PLS with and without feedback.
 
-	Regret-sensitive preferences are defined as follows. Let $f, g \in B$ be prospects in the individual's choice set. An individual who chooses $f$ when state $i$ occurs evaluates outcomes according to a bivariate utility function.
+	% need to argue that even with a discount factor the results hold qualitatively. we should see that more patient people will have a greater effect
+
+	% why binary and not continuous? can use it to show effects on the exensive margin not intensive
+
+	Regret-sensitive preferences are defined as follows. Let $f, g \in B$ be prospects in the individual's choice set. $i$ indexes the events in a finite, discrete state space. An individual who chooses $f$ when event $i$ occurs evaluates outcomes according to a bivariate utility function.\footnote{The theoretical literature does not typically make such a restrictive functional form assumption but we do so here for expositional purposes.}
 
 		\[ Q(f_i; g_i) \equiv u(f_i) + \gamma R(u(f_i) - u(g_i)) \]
 
-	$f_i$ is the return on the deposit when event $i$ occurs, $u$ is a von Neumann-Morgenstern utility function, and $R$ is a regret function that evaluates utility differences between outcomes from the selected lottery to outcomes from the foregone lottery, event-by-event. $\gamma \geq 0$ is a parameter that governs the degree of regret/rejoicing.
+	$f_i$ is the return on the deposit when event $i$ occurs, $u$ is a von Neumann-Morgenstern utility function, and $R$ is a regret function that evaluates utility differences between outcomes from the selected lottery to outcomes from the foregone lottery, state-by-state. $\gamma \geq 0$ is a parameter that governs the degree of regret/rejoicing.
 
 	Define $\Psi(f_i; g_i) \equiv Q(f_i; g_i) - Q(g_i; f_i)$ as the advantage, in utility terms, of obtaining $f_i$ over $g_i$ . Regret theory holds if there exists a continuous, strictly increasing function $u$ and a continuous, strictly increasing, and skew-symmetric function $\Psi$ such that
 
 		\[ f \succsim g \leftrightarrow \sum_{i} p_{i} \cdot \Psi (f_i; g_i) \geq 0 \]
 
-	\noindent where $p_i$ is the probability of an event $i$. We also impose $R(0) = 0$ and $\Psi (f_i; g_i)'' > 0$. The first restriction means that no regret/rejoicing is experienced when outcomes are identical. The convexity of $\Psi$ corresponds to regret aversion. When $\Psi$ is linear ($\gamma = 0$ in this parameterization), the individual behaves as if she were maximizing expected utility. 
+	\noindent where $p_i$ is the probability of an event $i$. Skew-symmetry implies $R(0) = 0$ and means that no regret/rejoicing is experienced when outcomes are identical. The convexity of $\Psi$ over gains corresponds to regret aversion. When $\Psi$ is linear ($\gamma = 0$ in this parameterization), the individual behaves as if she were maximizing expected utility.
 
 	When an individual in the PLS treatment makes a deposit, her payoff $y$ is proportional to a match rate applied to the deposit. The rate (and payoff) is determined by a lottery $\ell = (y_i, p_i)_{i=1}^{4}$ defined over the event of no matches, one match, two matches, and four matches of a sequence of numbers in a lottery ticket to a randomly generated sequence. When she chooses not to make a deposit, the individual obtains zero returns with certainty.
 
-	How does feedback regarding the resolution of the lottery affect anticipated regret? We postulate that when the decisionmaker makes a choice that obscures the resolution of the lottery that she is unable to make comparisons to foregone outcomes. In our model, a decision that results in no feedback is associated with an expected utility of $\sum_{i} p_{i} \cdot u(f_i)$.
+	How does feedback regarding the resolution of the lottery affect anticipated regret? We postulate that when the decisionmaker makes a choice that obscures the resolution of the lottery that she is unable to make comparisons to foregone outcomes. In our model, a decision that results in no feedback is associated with an expected utility over final outcomes of $\sum_{i} p_{i} \cdot u(f_i)$.\footnote{Original theories of regret \parencite{loomes_regret_1982,bell_risk_1983} do not explicitly model the role of feedback on decisions. In light of empirical evidence, some applications disallow the calculation of the regret term when foregone lotteries remain unresolved as we do here \parencite{strack_too_2019,filiz-ozbay_auctions_2007} while others impose a less extreme assumption that regret/rejoicing is less intense withou feedback \parencite{somasundaram_regret_2017,humphrey_feedback-conditional_2004}.}
 
 	The expected utility associated with choosing to save with PLS in both the feedback and no feedback treatments is equivalent since saving will result in the resolution of the lottery in both conditions.
 
@@ -449,13 +453,15 @@
 
 		\[ u(0) + \sum_{i=1}^{4} p_i \cdot \gamma R(u(0)-u(y_i)) \]
 
-	\noindent but not saving without feedback attains the decisionmaker $u(0)$. Note that since there is no possibility of negative returns in the lottery, $R(u(0) - u(y_i)) \leq 0$ for all $i$. As a result, 
+	\noindent but not saving without feedback attains the decisionmaker $u(0)$. Note that since there is no possibility of negative returns in the lottery, $R(u(0) - u(y_i)) \leq 0$ for all $i$. As a result, the expected utility from not saving with feedback is weakly less than the utility from not saving with feedback.
 
 	\[ \sum_{i} p_{i} \cdot \Psi_\text{PLS} (y_i; 0)  \geq \sum_{i} p_{i} \cdot \Psi_\text{NF} (y_i; 0) \]
 
-	The relationship is a strict inequality if $\gamma > 0$: the individual exhibits some degree of regret aversion. This expression encapsulates our hypothesis that with regret aversion, marginal decisionmakers will save more under PLS with feedback than PLS where feedback is conditional on saving.
+	The relationship is a strict inequality if $\gamma > 0$: the individual exhibits some degree of regret aversion. This expression encapsulates our hypothesis that with regret aversion, marginal decisionmakers is more likely to make a deposit under PLS with feedback than PLS where feedback is conditional on saving.
 
-	% need to argue that even with a discount factor the results hold qualitatively. we should see that more patient people will have a greater effect
+	% maybe define theorems and propositions
+
+	% additional results on the relationship between regret, risk, and discounting (but no het effects)
 
 	\clearpage
 
@@ -469,3 +475,47 @@
 	\clearpage
 
 \end{document}
+
+% Student feedback
+
+% Exposition on regret aversion
+
+% 	It is good to see the result is consistent with regret aversion? Are there other plausible explanations?
+
+% 	Does regret aversion explain why low-income individuals are more likely to play the lottery in general?
+
+% 	Interesting to see the paper tying behavioral theory in RCT. Maybe you could spend a little more time on the intuition of the theory though to help understand the empirical results.
+
+% Interpretation of results 
+
+% 	I'm not sure what the regret theory portion adds. Probably worth just presenting the intuition for our purposes. Also my evergreen recommendation of doing more explicit functional form modeling / structural stuff (especially with the regret function), even though the assumptions might be strong. I'm not sure why the timing of deposits point is compelling; why wouldn't it show up without regret aversion? (I'm also angry about one * for 10% significance but ¯\_(ツ)_/¯. Slide 23's caption seems to have the baseline value as blank. (You could also make this slide a graph.)
+
+% Framing of paper
+
+% 	For me this paper is more about verifying the regret aversion rather than facilitating savings, but you were motivating the audience with more emphasis given to the savings story. 
+
+% 	I would emphasize that more while perhaps highlighting anecdotes or other studies that help further motivate the kind of behavior that you're seeing.
+
+% 	I think the framing works well (disagreeing with comment made in presentation) - it is important to note interventions with small/no effects on savings. 
+
+% Additional analyses
+
+% 	Can your pre-treatment measures of risk aversion etc push back against the notion that this is people paying to gamble for a couples months? If gamblers are more risk-loving, then you could look for heterogeneity on this measure.
+
+% 	This was a very interesting experiment. I'm wondering whether it's possible for you to distinguish between regret aversion and disappointment aversion as a factor that induces the difference between treatment behaviors. In regret aversion, you experience disutility from not having made a better choice, given state; in disappointment aversion, the disutility comes from the state itself not being better, given your choice. It's essentially a "I could have done better" mindset vs "Things could have been better for me" mindset. Is it possible to distinguish between these two in your experiment? If yes, that could provide additional behavioral findings for your results.
+
+% 	I think this experiment on regret is really interesting. The design of using feedback is a very smart and intuitive way. I was wondering if there is way to quantify this regret aversion by combing the experimental data and the regret theory. Maybe by different profiles of the lottery?
+
+% 	I think this might be out of scope, I am just curious about patterns of saving in PLS groups. (with and without feedback) Isn't is that people would save more right before the withdrawal days (30th day and final day) because cost of saving for doing lottery is lower? If people with feedback already use money to do lottery long before withdrawal days, then would people without feedback (might not spend money to save compared to ones with feedback) use more money to do lottery right before the withdrawal days? If this is true, then PLS with  feedback could make people to save more uniformly during the period, which could help them to smooth their consumption and get insurance against adverse events? Sorry for lacking of rigorous logic on this but it is just my curiosity.
+
+% Policy/welfare discussion
+
+% 	I liked it. I only wonder it's external validity. I'm just not sure if the behaviors in developing countries is same as that for developed countries.
+
+% 	Maybe emphasize the null effect on savings early on. Also, is there any reason why the frequency of deposits is an important margin to look at? Perhaps to reduce the poverty tax on money holdings, e.g., being forced to lend money to family members?
+
+% 	Pretty good! One thing that would be nice to see is the distribution of the interest rate lottery--if you get an expected interest rate of 5\% by having some low probability high/low interest rate outcomes, this would be useful to see. It is also interesting that you find an increase in savings usage, but no real change in amount saved/interest earned. Given that, I would probably talk less about the welfare/policy value of these PLS accounts (politicians can maybe point to higher savings usage as success, but I do not think that increased savings usage a priori socially beneficial, especially when the savings amount does not change) unless you can really sell this habit formation point you mentioned at the very end. Perhaps you could do a habit-formation study as a followup?
+
+% 	The role of regret in prize-linked savings: I find it interesting that PLS can be complementary to the gambling. Can we think that PLS makes people have more interest in gambling behavior through lottery participation, and therefore the likelihood of gambling increases? From the perspective of government or policymakers, they may be reluctant to use this policy to prevent citizens' gambling behavior.
+
+% 	This is a question on framing: if this paper aims to provide policy implications, then it might be beneficial to add more discussions on what are some potential obstacles bigger institutions (NGOs for example) may face when they want to launch such saving programs. I guess you discuss in the full paper, but it would be interesting to discuss how important the distribution of the curvature of the utility function (regarding regret) tell us whether such products should exist (trade-off between profit and specific welfare weight for poor people’s savings) 
