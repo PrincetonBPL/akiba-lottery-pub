@@ -103,7 +103,7 @@ drop if treatment == 3	// Risk was run twice in Session 2, drop the second insta
 	4) r= 0.498612
 	5) r= 0
 
-	Implied CRRA Range
+	Implied CRRA Range (u = x^{1-r})
 	1) 3.45971<r
 	2) 1.16065< r < 3.45971
 	3) 0.705582< r <1.16065

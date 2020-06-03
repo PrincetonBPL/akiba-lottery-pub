@@ -154,13 +154,11 @@ foreach yvar of varlist mobile_deposits mobile_depositamount {
 // Schedule of deposits //
 //////////////////////////
 
-use "$data_dir/clean/akiba_mobile.dta", clear
-merge m:m account using "$data_dir/clean/akiba_subjects.dta", keep(3) keepusing(attrit treat_type endline_treatmenttype) nogen
+use "$data_dir/clean/akiba_long.dta", clear
 
-recode attrit (1 = 0) (0 = 1) (nonm = .), gen(endline)
-gen treatmatch = trim(itrim(lower(treat_type))) == trim(itrim(lower(endline_treatmenttype))) if endline
-replace treat_type = trim(itrim(proper(treat_type)))
-encode treat_type, gen(treatmentgroup)
+keep account period treatmentgroup
+
+joinby account period using "$data_dir/clean/akiba_mobile.dta"
 
 gen dailytime = hms(hh(clock(time, "MD20Yhm")), mm(clock(time, "MD20Yhm")), ss(clock(time, "MD20Yhm")))
 
