@@ -44,7 +44,7 @@ foreach yvar in $regvars {
 	loc se = EST[1, colnumb(matrix(EST),"lotteryse")]
 	loc p = P[1, colnumb(matrix(P),"lottery")]
 
-	sigstar, b(`b') se(`se') p(`p') prec(2)
+	sigstar, b(`b') se(`se') p(`p') prec(2) aer
 	estadd loc thisstat`count' = "`r(bstar)'": col1
 	estadd loc thisstat`countse' = "`r(sestar)'": col1
 
@@ -54,7 +54,7 @@ foreach yvar in $regvars {
 	loc se = EST[1, colnumb(matrix(EST),"regretse")]
 	loc p = P[1, colnumb(matrix(P),"regret")]
 
-	sigstar, b(`b') se(`se') p(`p') prec(2)
+	sigstar, b(`b') se(`se') p(`p') prec(2) aer
 	estadd loc thisstat`count' = "`r(bstar)'": col2
 	estadd loc thisstat`countse' = "`r(sestar)'": col2
 
@@ -64,7 +64,7 @@ foreach yvar in $regvars {
 	loc se = EST[1, colnumb(matrix(EST),"diffse")]
 	loc p = P[1, colnumb(matrix(P),"diff")]
 
-	sigstar, b(`b') se(`se') p(`p') prec(2)
+	sigstar, b(`b') se(`se') p(`p') prec(2) aer
 	estadd loc thisstat`count' = "`r(bstar)'": col3
 	estadd loc thisstat`countse' = "`r(sestar)'": col3
 
@@ -94,7 +94,7 @@ foreach yvar in $regvars {
 loc prehead "\begin{table}[h]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \caption{$regtitle} \label{tab:$regpath} \maxsizebox*{\textwidth}{\textheight}{ \begin{threeparttable} \begin{tabular}{l*{`columns'}{c}} \toprule"
 loc prehead_n "\begin{table}[h]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \label{tab:$regpath} \maxsizebox*{\textwidth}{\textheight}{ \begin{threeparttable} \begin{tabular}{l*{`columns'}{c}} \toprule"
 loc postfoot "\bottomrule \end{tabular} \begin{tablenotes}[flushleft] \footnotesize \item @note \end{tablenotes} \end{threeparttable} } \end{table}"
-loc footnote "\emph{Notes:} Columns 1--3 report OLS estimates of the treatment effect. Standard errors are in parentheses and were calculated under permutation of the treatment assignment. Columns 4--5 report the mean and SD of the control group and the number observations, respectively. Observations are at the individual level. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level."
+loc footnote "\emph{Notes:} Columns 1--3 report OLS estimates of the treatment effect. Standard errors are in parentheses and were calculated under permutation of the treatment assignment. Columns 4--5 report the mean and SD of the control group and the number observations, respectively. Observations are at the individual level."
 
 esttab col* using "$tab_dir/$regpath.tex", booktabs cells(none) nogap mgroups("Effect estimates" "Sample", pattern(1 0 0 1 0) prefix(\multicolumn{@span}{c}{) suffix(}) span erepeat(\cmidrule(lr){@span})) mtitle("No Feedback" "PLS" "\specialcell{PLS-\\No Feedback}" "\specialcell{Control Mean\\(SD)}" "Obs.") stats(`statnames', labels(`varlabels')) note("`footnote'") prehead("`prehead'") postfoot("`postfoot'") compress replace
 esttab col* using "$tab_dir/$regpath-n.tex", booktabs cells(none) nogap mgroups("Effect estimates" "Sample", pattern(1 0 0 1 0) prefix(\multicolumn{@span}{c}{) suffix(}) span erepeat(\cmidrule(lr){@span})) mtitle("No Feedback" "PLS" "\specialcell{PLS-\\No Feedback}" "\specialcell{Control Mean\\(SD)}" "Obs.") stats(`statnames', labels(`varlabels')) prehead("`prehead_n'") postfoot("`postfoot'") compress replace

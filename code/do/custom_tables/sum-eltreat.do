@@ -54,7 +54,7 @@ foreach yvar in $sumvars {
 	loc b = _b[e_`yvar'_mean:lottery]
 	loc se = _se[e_`yvar'_mean:lottery]
 
-	sigstar, b(`b') se(`se') p(`p') prec(2)
+	sigstar, b(`b') se(`se') p(`p') prec(2) aer
 	estadd loc thisstat`count' = "`r(bstar)'": col1
 	estadd loc thisstat`countse' = "`r(sestar)'": col1
 
@@ -63,7 +63,7 @@ foreach yvar in $sumvars {
 	loc b = _b[e_`yvar'_mean:regret]
 	loc se = _se[e_`yvar'_mean:regret]
 
-	sigstar, b(`b') se(`se') p(`p') prec(2)
+	sigstar, b(`b') se(`se') p(`p') prec(2) aer
 	estadd loc thisstat`count' = "`r(bstar)'": col2
 	estadd loc thisstat`countse' = "`r(sestar)'": col2
 
@@ -74,7 +74,7 @@ foreach yvar in $sumvars {
 	qui test [e_`yvar'_mean]regret - [e_`yvar'_mean]lottery = 0
 	loc p = `r(p)'
 
-	sigstar, b(`b') se(`se') p(`p') prec(2)
+	sigstar, b(`b') se(`se') p(`p') prec(2) aer
 	estadd loc thisstat`count' = "`r(bstar)'": col3
 	estadd loc thisstat`countse' = "`r(sestar)'": col3
 
@@ -103,15 +103,15 @@ foreach yvar in $sumvars {
 est restore sur
 
 testparm lottery
-sigstar, p(`r(p)') pstar prec(2)
+sigstar, p(`r(p)') pstar prec(2) aer
 estadd local sur_p "`r(pstar)'": col1
 
 testparm regret
-sigstar, p(`r(p)') pstar prec(2)
+sigstar, p(`r(p)') pstar prec(2) aer
 estadd local sur_p "`r(pstar)'": col2
 
 test `surtest'
-sigstar, p(`r(p)') pstar prec(2)
+sigstar, p(`r(p)') pstar prec(2) aer
 estadd local sur_p "`r(pstar)'": col3
 
 loc statnames "`statnames' sur_p"
@@ -121,7 +121,7 @@ loc varlabels "`varlabels' "\midrule Joint test \emph{p}-value" "
 
 loc prehead "\begin{table}[h]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \caption{$sumtitle} \label{tab:$sumpath} \maxsizebox*{\textwidth}{\textheight}{ \begin{threeparttable} \begin{tabular}{l*{`columns'}{c}} \toprule"
 loc postfoot "\bottomrule \end{tabular} \begin{tablenotes}[flushleft] \footnotesize \item \emph{Notes:} @note \end{tablenotes} \end{threeparttable} } \end{table}"
-loc footnote "These results are restricted to the sample of participants who completed the endline survey. The first three columns report the difference of means across treatment groups with SEs in parentheses. Column 4 reports the mean of the control group with SD in parentheses. The bottom row reports the \(p\)-value of a joint test of significance for each hypothesis. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level."
+loc footnote "These results are restricted to the sample of participants who completed the endline survey. The first three columns report the difference of means across treatment groups with SEs in parentheses. Column 4 reports the mean of the control group with SD in parentheses. The bottom row reports the \(p\)-value of a joint test of significance for each hypothesis."
 
 esttab col* using "$tab_dir/$sumpath.tex", booktabs cells(none) nogap mtitle("\specialcell{No Feedback -\\Control}" "\specialcell{PLS -\\Control}" "\specialcell{No Feedback -\\PLS}" "\specialcell{Control mean\\(SD)}" "Obs.") stats(`statnames', labels(`varlabels')) note("`footnote'") prehead("`prehead'") postfoot("`postfoot'") compress wrap replace
 

@@ -56,13 +56,13 @@ foreach het in $hetvars {
 		loc b = _b[1.$treat] + _b[1.$treat#1.`het']
 		qui test 1.$treat + 1.$treat#1.`het' = 0
 
-		sigstar, b(`b') p(`r(p)') prec(2)
+		sigstar, b(`b') p(`r(p)') prec(2) aer
 		estadd loc thisstat`count' = "`r(bstar)'": col`column'
 		estadd loc thisstat`countse' = "`r(sestar)'": col`column'
 
 		qui est res reg
 
-		sigstar 1.$treat, prec(2)
+		sigstar 1.$treat, prec(2) aer
 		estadd loc thisstat`count2' = "`r(bstar)'": col`column'
 		estadd loc thisstat`countse2' = "`r(sestar)'": col`column'
 
@@ -101,7 +101,7 @@ foreach var in $yvars {
 loc prehead "\begin{table}[h]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \caption{Heterogeneous treatment effects of $treat} \label{tab:het-$treat} \maxsizebox*{\textwidth}{\textheight}{ \begin{threeparttable} \begin{tabular}{l*{`columns'}{c}} \toprule"
 loc prehead "\begin{table}[h]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \label{tab:het-$treat} \maxsizebox*{\textwidth}{\textheight}{ \begin{threeparttable} \begin{tabular}{l*{`columns'}{c}} \toprule"
 loc postfoot "\bottomrule \end{tabular} \begin{tablenotes}[flushleft] \footnotesize \item @note \end{tablenotes} \end{threeparttable} } \end{table}"
-loc footnote "\emph{Notes:} This table reports heterogeneous treatment effects of $treat on each of the column variables where each panel represents a dimension of heterogeneity. The first row of each panel is the treatment coefficient when the baseline dummy variable \(x_i = 1\) and the second row is the treatment coefficient when \(x_i = 0\). Standard errors are in parentheses. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct."
+loc footnote "\emph{Notes:} This table reports heterogeneous treatment effects of $treat on each of the column variables where each panel represents a dimension of heterogeneity. The first row of each panel is the treatment coefficient when the baseline dummy variable \(x_i = 1\) and the second row is the treatment coefficient when \(x_i = 0\). Standard errors are in parentheses."
 
 esttab col* using "$tab_dir/het-$treat.tex", booktabs unstack cells(none) nocons compress nobaselevels noomit nonumber nogap label noobs mti(`header') mgroups("Dependent variables", pattern(1 0 0 0 0) prefix(\multicolumn{@span}{c}{) suffix(}) span erepeat(\cmidrule(lr){@span})) stats(`statnames', labels(`statlabels')) prehead("`prehead'") postfoot("`postfoot'") note("`footnote'") substitute(\_ _) replace
 esttab col* using "$tab_dir/het-$treat-n.tex", booktabs unstack cells(none) nocons compress nobaselevels noomit nonumber nogap label noobs mti(`header') mgroups("Dependent variables", pattern(1 0 0 0 0) prefix(\multicolumn{@span}{c}{) suffix(}) span erepeat(\cmidrule(lr){@span})) stats(`statnames', labels(`statlabels')) prehead("`prehead_n'") postfoot("`postfoot'") note("`footnote'") substitute(\_ _) replace
