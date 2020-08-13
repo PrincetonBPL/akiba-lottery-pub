@@ -31,7 +31,10 @@ The scripts rely on this particular file structure.
 
 ### Data
 
-All individual-level data has been de-identified to protect respondent privacy. Access to personally identifiable data is restricted to authorized users.
+All individual-level data has been de-identified to protect respondent privacy. Access to personally identifiable data is restricted to authorized users. The primary datasets used for primary results are
+
++ `akiba_wide.dta`: This is a cross-section of individual participants that includes baseline lab data, saving outcomes aggregated over the entire 60-day saving period, and data from the endline questionnaire.
++ `akiba_long.dta`: This is an individual-by-period dataset containing daily outcomes as well as the time-invariant individual characteristics in `akiba_wide.dta`.
 
 ### Contact
 
