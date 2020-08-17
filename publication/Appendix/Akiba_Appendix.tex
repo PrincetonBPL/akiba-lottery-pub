@@ -27,19 +27,30 @@
 \subsubsectionfont{\normalfont\normalsize\selectfont\itshape}
 
 \newcommand{\specialcell}[2][c]{\begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
-\renewcommand{\today}{\ifcase \month \or January \or February \or March \or April \or May  \or June \or July \or August \or September \or October \or November \or December \fi~\number \year}
+\renewcommand{\today}{\ifcase \month \or January \or February \or March \or April \or May  \or June \or July \or August \or September \or October \or November \or December \fi \number \year}
 
 \begin{document}
 
 \title{\textsc{The Role of Regret in Prize-Linked Savings: Supplementary Materials}\protect\footnote{For online publication only. Files for replication are available at \url{https://github.com/princetonbpl/akiba-lottery-pub}.}}
 
-\author{Justin Abraham\thanks{Department of Economics. University of California, San Diego. \protect\href{mailto:jabraham@ucsd.edu}{\nolinkurl{jabraham@ucsd.edu}}.}, Merve Akbas\thanks{Department of Economics. Duke University. \protect\href{mailto:merve.akbas@duke.edu}{\nolinkurl{merve.akbas@duke.edu}}.}, Dan Ariely\thanks{Fuqua School of Business. Duke University. \protect\href{mailto:dan@danariely.com}{\nolinkurl{dan@danariely.com}}.}, and Chaning Jang\thanks{The Busara Center for Behavioral Economics. \protect\href{mailto:chaning.jang@busaracenter.org}{\nolinkurl{chaning.jang@busaracenter.org}}.}} % add funding statement and ethics and thanks
+\author{
+    Justin Abraham\thanks{University of California, San Diego. \protect\href{mailto:jabraham@ucsd.edu}{\nolinkurl{jabraham@ucsd.edu}}.},
+    Merve Akbas\thanks{\protect\href{mailto:merveakbas@gmail.com}{\nolinkurl{merveakbas@gmail.com}}.},
+    Dan Ariely\thanks{Duke University. \protect\href{mailto:dan@danariely.com}{\nolinkurl{dan@danariely.com}}.}, and
+    Chaning Jang\thanks{The Busara Center for Behavioral Economics. \protect\href{mailto:chaning.jang@busaracenter.org}{\nolinkurl{chaning.jang@busaracenter.org}}.}
+}
 
 \maketitle
 
 \newpage
 
 \tableofcontents
+
+\newpage
+
+\listoftables
+
+\listoffigures
 
 \newpage
 
@@ -87,7 +98,7 @@
 
             }
 
-        \subsubsection{Account instructions (Lottery)}
+        \subsubsection{Account instructions (PLS no feedback)}
 
             {\setlength{\parskip}{1em} \setlength{\parindent}{0em}
 
@@ -109,7 +120,7 @@
 
             }
 
-        \subsubsection{Account instructions (Regret)}
+        \subsubsection{Account instructions (PLS with feedback)}
 
             {\setlength{\parskip}{1em} \setlength{\parindent}{0em}
 
@@ -156,14 +167,14 @@
                 \item \underline{Upon receipt of airtime}: ``You saved XX. You earned 5\% interest!  QQ was deposited into your account. Your balance is ZZ.''
             \end{itemize}
 
-        \subsubsection{SMS reminders (Lottery)}
+        \subsubsection{SMS reminders (PLS no feedback)}
 
             \begin{itemize}
                 \item \underline{Reminder}: ``{Name}, remember to buy your ticket today (this week) by saving XX. Sambaza *140*XX*Phone to save''
                 \item \underline{Upon receipt of airtime}: ``You saved XX. You purchased your ticket. Your lucky numbers are AA-BB. Your balance is ZZ.''
             \end{itemize}
 
-        \subsubsection{SMS reminders (Regret)}
+        \subsubsection{SMS reminders (PLS with feedback)}
 
             \begin{itemize}
                 \item \underline{Reminder}: ``{Name}, your lucky numbers today (this week) are AA-BB. Keep them by saving XX. Sambaza *140*XX*Phone to save''
@@ -310,19 +321,19 @@
 
     \clearpage
 
-    \subsection{Average treatment effects with randomization inference}
+    % \subsection{Average treatment effects with randomization inference}
 
-        \input{../../tables/ri-mobile.tex}
-        \input{../../tables/ri-early.tex}
-        \input{../../tables/ri-late.tex}
-        \input{../../tables/ri-panel.tex}
-        \input{../../tables/ri-save.tex}
-        \input{../../tables/ri-gamble.tex}
-        \input{../../tables/ri-akiba.tex}
-        \input{../../tables/ri-cons.tex}
-        \input{../../tables/ri-self.tex}
+    %     \input{../../tables/ri-mobile.tex}
+    %     \input{../../tables/ri-early.tex}
+    %     \input{../../tables/ri-late.tex}
+    %     \input{../../tables/ri-panel.tex}
+    %     \input{../../tables/ri-save.tex}
+    %     \input{../../tables/ri-gamble.tex}
+    %     \input{../../tables/ri-akiba.tex}
+    %     \input{../../tables/ri-cons.tex}
+    %     \input{../../tables/ri-self.tex}
 
-    \clearpage
+    % \clearpage
 
 	\subsection{Heterogeneous treatment effects}
 
@@ -348,21 +359,21 @@
 
 	\clearpage
 
-\section{Panel Regression}
+    \subsection{Panel Regression}
 
-    \input{../../tables/reg-regretaversion.tex}
-    \input{../../tables/reg-timetrend.tex}
-    \input{../../tables/reg-timedummy.tex}
+        \input{../../tables/reg-regretaversion.tex}
+        \input{../../tables/reg-timetrend.tex}
+        \input{../../tables/reg-timedummy.tex}
 
-\clearpage
+    \clearpage
 
-\section{Multinomial Logit}
+    \subsection{Multinomial Logit}
 
-    \input{../../tables/reg-mlogfreq.tex}
-    \input{../../tables/reg-mlogtempt.tex}
-    \input{../../tables/reg-mlogselect.tex}
+        \input{../../tables/reg-mlogfreq.tex}
+        \input{../../tables/reg-mlogtempt.tex}
+        \input{../../tables/reg-mlogselect.tex}
 
-\clearpage
+    \clearpage
 
 \section{Baseline Correlates}
 

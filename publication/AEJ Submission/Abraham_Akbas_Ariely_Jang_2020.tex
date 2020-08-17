@@ -25,6 +25,10 @@
 \linespread{1.25}
 \urlstyle{tt}
 
+\sectionfont{\normalsize}
+\subsectionfont{\normalsize}
+\subsubsectionfont{\normalsize}
+
 \renewcommand{\abstractname}{\vspace{-\baselineskip}}
 
 \newcommand{\specialcell}[2][c]{\begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
@@ -35,14 +39,10 @@
 \title{\textsc{The Role of Regret in Prize-Linked Savings: Experimental Evidence from Kenya}\protect\footnote{We are grateful to the study participants for generously giving their time. We thank Jonathan Page and Arun Varghese for invaluable research assistance and the Busara Center for Behavioral Economics for research support. This study was pre-registered with the AEA RCT registry (AEARCTR-0000893). IRB approval was obtained for this study. Files for replication are available at \url{https://github.com/princetonbpl/akiba-lottery-pub}.}}
 
 \author{
-	Justin Abraham
-		\thanks{University of California, San Diego. \protect\href{mailto:jabraham@ucsd.edu}{\nolinkurl{jabraham@ucsd.edu}}.},
-	Merve Akbas
-		\thanks{\protect\href{mailto:merveakbas@gmail.com}{\nolinkurl{merveakbas@gmail.com}}.},
-	Dan Ariely
-		\thanks{Duke University. \protect\href{mailto:dan@danariely.com}{\nolinkurl{dan@danariely.com}}.}, and
-	Chaning Jang
-		\thanks{The Busara Center for Behavioral Economics. \protect\href{mailto:chaning.jang@busaracenter.org}{\nolinkurl{chaning.jang@busaracenter.org}}.}
+    Justin Abraham\thanks{University of California, San Diego. \protect\href{mailto:jabraham@ucsd.edu}{\nolinkurl{jabraham@ucsd.edu}}.},
+    Merve Akbas\thanks{\protect\href{mailto:merveakbas@gmail.com}{\nolinkurl{merveakbas@gmail.com}}.},
+    Dan Ariely\thanks{Duke University. \protect\href{mailto:dan@danariely.com}{\nolinkurl{dan@danariely.com}}.}, and
+    Chaning Jang\thanks{The Busara Center for Behavioral Economics. \protect\href{mailto:chaning.jang@busaracenter.org}{\nolinkurl{chaning.jang@busaracenter.org}}.}
 }
 
 \maketitle
@@ -52,7 +52,7 @@
 		We conducted a field experiment that provided 311 low-income individuals a prize-linked savings account (PLS)---a product that incorporate stochastic returns to deposits. Individuals saving with PLS made 42\% more deposits on average compared to those with standard savings accounts. By varying feedback on lottery results, we attribute 20\% of the treatment effect to regret aversion and find that recent experiences of regret induce more subsequent deposits. We do not observe any effects of PLS on the amount deposited or on savings with other products. Lastly, we document evidence that use of PLS results in a 15\% increase in gambling activity.
 
 		\medskip \noindent
-		JEL Classifications: D14, E21, G11
+		JEL Classifications: D14, D91, O16
 
  	\end{abstract}
 
@@ -268,7 +268,7 @@
 
 		Our results are consistent with a general finding among earlier field experiments on lottery-based incentives that behavioral responses occur on the extensive, but not intensive, margin. \textcite{brune_effect_2015} test a stochastic incentive in Malawi wherein tea harvesters entered a lottery conditional on attendance and could increase their probability of a prize according to their output. That study found significant improvements in workplace attendance, allowing workers to enter the lottery, but without changes in output. \textcite{loibl_testing_2016}, examined features of the Individual Development Account program in the U.S. and found no effect on savings. A recent experiment by \textcite{gertler_long-term_2017} randomized the provision of PLS across banks in Mexico and observed a 43\% increase in the number of account openings in the month the lotteries were in effect but without affecting balances.\footnote{We do not measure account openings since our study opened accounts for all participants in the sample.}
 
-		Other experimental results, which \emph{do} find effects on amount saved, are to some degree at odds with our own. \textcite{atalay_savings_2014} conducted an online portfolio-choice experiment in the U.S. that resulted in subjects saving an additional 12 percentage points more with prize-linked and regular savings than with regular savings alone. \textcite{dizon_leveraging_2016} replicate this design in a field experiment conducted in Haiti and identify a 22\% increase in savings.\footnote{\textcite{dizon_leveraging_2016} emphasize that savings responded to the presence of the stochastic incentive rather than its degree of risk or the expected returns.} In an experiment with undergraduates, \textcite{filiz-ozbay_lottery_2015} found that subjects are willing to accept a lower rate of return to delay a payment when the return is stochastic than when it is deterministic. The experimental design of these three studies differed from this one in two respects. First, subjects in those lab studies were supplied with an endowment with which to make portfolio allocations. With a median monthly income of USD 77, households in our study may be too liquidity constrained to sustain a larger balance with PLS\footnote{The presence of liquidity constraints is also the explanation offered in \textcite{loibl_testing_2016} to rationalize a lack of an effect for their PLS product in the US.}. Baseline correlations suggest that monthly income is predictive of savings in the mobile product, though we do not observe heterogeneity of the treatment effect conditional on income. Second, our sample already had access to a number of competing savings products, both formal and informal, which could have dampened demand for PLS savings. To be sure, this discussion does not preclude other factors which could affect the interpretation of the results presented here.
+		Other experimental results, which \emph{do} find effects on amount saved, are to some degree at odds with our own. \textcite{atalay_savings_2014} conducted an online portfolio-choice experiment in the U.S. that resulted in subjects saving an additional 12 percentage points more with prize-linked and regular savings than with regular savings alone. \textcite{dizon_leveraging_2016} replicate this design in a field experiment conducted in Haiti and identify a 22\% increase in savings.\footnote{\textcite{dizon_leveraging_2016} emphasize that savings responded to the presence of the stochastic incentive rather than its degree of risk or the expected returns.} In an experiment with undergraduates, \textcite{filiz-ozbay_lottery_2015} found that subjects are willing to accept a lower rate of return to delay a payment when the return is stochastic than when it is deterministic. The experimental design of these three studies differed from this one in two respects. First, subjects in those lab studies were supplied with an endowment with which to make portfolio allocations. With only 11\% of our sample receiving a regular income and with a median monthly income of USD 77, households in our study may be too liquidity constrained to sustain a larger balance with PLS\footnote{The presence of liquidity constraints is also the explanation offered in \textcite{loibl_testing_2016} to rationalize a lack of an effect for their PLS product in the US.}. Baseline correlations suggest that monthly income is predictive of savings in the mobile product, though we do not observe heterogeneity of the treatment effect conditional on income level or regularity. Second, our sample already had access to a number of competing savings products, both formal and informal, which could have dampened demand for PLS savings. To be sure, this discussion does not preclude other factors which could affect the interpretation of the results presented here.
 
 		\begin{figure}[ht]
 			\caption{Number of deposits and amount deposited over project period}

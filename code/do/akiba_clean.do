@@ -392,7 +392,7 @@ la var pref_locscore_z_0 "Locus of control"
 
 xtile pref_medianloc_0 = pref_locscore_z_0, n(2)
 replace pref_medianloc_0 = pref_medianloc_0 - 1
-la var pref_medianloc_0 "Above median LOC"
+la var pref_medianloc_0 "Above median locus of control"
 
 /* Self-perceptions */
 
