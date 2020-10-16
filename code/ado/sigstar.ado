@@ -1,5 +1,5 @@
 program define sigstar, rclass
-syntax [anything], [p(real 0)] [se(real 0)] [b(real 0)] [n(real 1000000)] [prec(real 3)] [bstar] [sestar] [pstar] [nopar] [pbracket] [aer]
+syntax [anything], [p(real 0)] [se(real 0)] [b(real 0)] [n(real 1000000)] [prec(real 0)] [bstar] [sestar] [pstar] [nopar] [pbracket]
 
 quietly {
 
@@ -27,7 +27,7 @@ quietly {
 		else if `p' <= 0.05 loc star = "\sym{**}"
 		else if `p' <= 0.10 loc star = "\sym{*}"
 
-		if "`aer'" != "" loc star = ""
+		if "`prec'" == "" loc prec = 3
 
 		return loc bstar = string(`b', "%9.`prec'f") + "`star'"
 		return loc sestar = "(" + string(`se', "%9.`prec'f") + ")"

@@ -42,14 +42,14 @@ glo figuresflag = 1		// Output graphs and figures
 
 glo attritionflag = 1	// Attrition analysis
 glo maineffectsflag = 1 // Treatment effects (covariate adjustment, multiple inference)
-glo riflag = 1			// Tests with randomization inference
+glo riflag = 0			// Tests with randomization inference
 glo heteffectsflag = 1  // Heterogenous treatment effects
 
 glo USDconvertflag = 1  // Runs and reports analysis in USD-PPP
 glo ppprate = (1/38.84) // PPP exchange rate from KSH (2009-2013)
 
-glo iterations = 10000  // Number of iterations for calculating FWER adjusted p-values
-glo riterations = 10000 // Number of iterations for permutation test
+glo iterations = 5  // Number of iterations for calculating FWER adjusted p-values
+glo riterations = 5 // Number of iterations for permutation test
 
 /* Regressands by category */
 

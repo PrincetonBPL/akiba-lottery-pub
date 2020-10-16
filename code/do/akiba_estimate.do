@@ -47,8 +47,8 @@ use "$data_dir/clean/akiba_wide.dta", clear
 
 	loc prehead "\begin{table}[ht]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \caption{Attrition by treatment group} \label{tab:reg-attr} \maxsizebox*{\textwidth}{\textheight}{ \begin{threeparttable} \begin{tabular}{l*{1}{c}} \toprule"
 	loc postfoot "\bottomrule \end{tabular} \begin{tablenotes}[flushleft] \footnotesize \item \emph{Notes:} @note \end{tablenotes} \end{threeparttable} } \end{table}"
-	loc footnote "This table reports a regression of selection on each of the treatment arms. Standard errors are in parentheses."
-	esttab using "$tab_dir/reg-attr", alignment(c) ar2 nobaselevels nonum nogap label obslast b(%9.2f) se(%9.2f) sfmt(%9.2f) scalars("Diff_p Difference p-value" "Joint_p Joint p-value") nostar note("`footnote'") prehead("`prehead'") postfoot("`postfoot'") se compress booktabs replace
+	loc footnote "This table reports a regression of selection on each of the treatment arms. Standard errors are in parentheses. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level."
+	esttab using "$tab_dir/reg-attr", alignment(c) ar2 nobaselevels nonum nogap label obslast b(%9.2f) se(%9.2f) sfmt(%9.2f) scalars("Diff_p Difference p-value" "Joint_p Joint p-value") star(* 0.10 ** 0.05 *** 0.01) note("`footnote'") prehead("`prehead'") postfoot("`postfoot'") se compress booktabs replace
 	eststo clear
 
 	file open tex using "$tab_dir/reg-attr.tex", write append
@@ -230,9 +230,9 @@ if $heteffectsflag {
 
 		loc prehead "\begin{table}[ht]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \caption{Heterogeneous effects -- Primary outcomes by `xvarlab'} \label{tab:het-`xvar'} \maxsizebox*{\textwidth}{\textheight}{ \begin{threeparttable} \begin{tabular}{l*{`columns'}{c}} \toprule"
 		loc postfoot "\bottomrule \end{tabular} \begin{tablenotes}[flushleft] \footnotesize \item \emph{Notes:} @note \end{tablenotes} \end{threeparttable} } \end{table}"
-		loc footnote "This table reports OLS estimates of the treatment effect and its interaction with baseline. Standard errors are in parentheses. We also report the \(p\)-values for joint tests on the direct treatment effect conditional on the baseline covariate $= 1$."
+		loc footnote "This table reports OLS estimates of the treatment effect and its interaction with baseline. Standard errors are in parentheses. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level. We also report the \(p\)-values for joint tests on the direct treatment effect conditional on the baseline covariate $= 1$."
 
-		esttab using "$tab_dir/het-`xvar'.tex", alignment(c) ar2 obslast nobaselevels label b(%9.2f) se(%9.2f) sfmt(%9.2f) scalars("ymean Control mean" "Ljoint_p No Feedback \emph{p}-value" "Rjoint_p PLS \emph{p}-value") nogap nostar prehead("`prehead'") postfoot("`postfoot'") note("`footnote'") substitute(\_ ) se compress booktabs replace
+		esttab using "$tab_dir/het-`xvar'.tex", alignment(c) ar2 obslast nobaselevels label b(%9.2f) se(%9.2f) sfmt(%9.2f) scalars("ymean Control mean" "Ljoint_p No Feedback \emph{p}-value" "Rjoint_p PLS \emph{p}-value") nogap star(* 0.10 ** 0.05 *** 0.01) prehead("`prehead'") postfoot("`postfoot'") note("`footnote'") substitute(\_ ) se compress booktabs replace
 		eststo clear
 
 		file open tex using "$tab_dir/het-`xvar'.tex", write append
@@ -250,7 +250,7 @@ if $heteffectsflag {
 
 	}
 
-	esttab horse* using "$tab_dir/het-horserace.tex", alignment(c) ar2 nobaselevels label drop(`fillmiss') b(%9.2f) se(%9.2f) sfmt(%9.2f) scalars("ymean Control mean") title("Heterogeneous effects - Full regression") nostar se compress booktabs replace
+	esttab horse* using "$tab_dir/het-horserace.tex", alignment(c) ar2 nobaselevels label drop(`fillmiss') b(%9.2f) se(%9.2f) sfmt(%9.2f) scalars("ymean Control mean") title("Heterogeneous effects - Full regression") star(* 0.10 ** 0.05 *** 0.01) se compress booktabs replace
 	eststo clear
 
 	file open tex using "$tab_dir/het-horserace.tex", write append
@@ -275,8 +275,8 @@ eststo: reghdfe mobile_saved mobile_matched if L1.mobile_saved != 1 & regret == 
 
 loc prehead "\begin{table}[ht]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \caption{Regression of deposits on treatment and lottery results} \label{tab:reg-regretaversion} \maxsizebox*{\textwidth}{\textheight}{ \begin{threeparttable} \begin{tabular}{l*{2}{c}} \toprule"
 loc postfoot "\bottomrule \end{tabular} \begin{tablenotes}[flushleft] \footnotesize \item \emph{Notes:} @note \end{tablenotes} \end{threeparttable} } \end{table}"
-loc footnote "This table reports estimates of a regression of having saved at period \(t\) on winning the lottery at \(t\) conditional on being in the PLS group and not having saved at \(t-1\). The unit of observation is individual-by-period. Standard errors are in parentheses and clustered at the individual level."
-esttab using "$tab_dir/reg-regretaversion", alignment(c) ar2 nobaselevels obslast nogap label nonum b(%9.2f) se(%9.2f) sfmt(%9.2f) drop(_cons) scalars("ymean Control mean" "teffect PLS effect") nostar note("`footnote'") prehead("`prehead'") postfoot("`postfoot'") se compress booktabs replace
+loc footnote "This table reports estimates of a regression of having saved at period \(t\) on winning the lottery at \(t\) conditional on being in the PLS group and not having saved at \(t-1\). The unit of observation is individual-by-period. Standard errors are in parentheses and clustered at the individual level. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level."
+esttab using "$tab_dir/reg-regretaversion", alignment(c) ar2 nobaselevels obslast nogap label nonum b(%9.2f) se(%9.2f) sfmt(%9.2f) drop(_cons) scalars("ymean Control mean" "teffect PLS effect") star(* 0.10 ** 0.05 *** 0.01) note("`footnote'") prehead("`prehead'") postfoot("`postfoot'") se compress booktabs replace
 eststo clear
 
 file open tex using "$tab_dir/reg-regretaversion.tex", write append
@@ -305,8 +305,8 @@ eststo: reg mobile_saved i.treatmentgroup##i.period, vce(cl surveyid)
 
 loc prehead "\begin{table}[ht]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \caption{Time-varying treatment effects on deposits} \label{tab:reg-timedummy} \maxsizebox*{\textwidth}{\textheight}{ \begin{threeparttable} \begin{tabular}{l*{2}{c}} \toprule"
 loc postfoot "\bottomrule \end{tabular} \begin{tablenotes}[flushleft] \footnotesize \item \emph{Notes:} @note \end{tablenotes} \end{threeparttable} } \end{table}"
-loc footnote "This table reports a regression of having saved at period \(t\) on treatment indicators interacted with period indicator variables. The unit of observation is individual-by-period. Standard errors are in parentheses and clustered at the individual level."
-esttab using "$tab_dir/reg-timedummy", alignment(c) ar2 nobaselevels nogap label obslast nonum b(%9.2f) se(%9.2f) sfmt(%9.2f) drop(*.period) scalars("jointp2 No Feedback joint \(p\)-value" "jointp3 PLS joint \(p\)-value") nostar note("`footnote'") prehead("`prehead'") postfoot("`postfoot'") se compress booktabs replace
+loc footnote "This table reports a regression of having saved at period \(t\) on treatment indicators interacted with period indicator variables. The unit of observation is individual-by-period. Standard errors are in parentheses and clustered at the individual level. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level."
+esttab using "$tab_dir/reg-timedummy", alignment(c) ar2 nobaselevels nogap label obslast nonum b(%9.2f) se(%9.2f) sfmt(%9.2f) drop(*.period) scalars("jointp2 No Feedback joint \(p\)-value" "jointp3 PLS joint \(p\)-value") star(* 0.10 ** 0.05 *** 0.01) note("`footnote'") prehead("`prehead'") postfoot("`postfoot'") se compress booktabs replace
 eststo clear
 
 file open tex using "$tab_dir/reg-timedummy.tex", write append
@@ -318,8 +318,8 @@ test 2.treatmentgroup#c.period = 3.treatmentgroup#c.period
 
 loc prehead "\begin{table}[ht]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \caption{Treatment effects on deposits with a linear time trend} \label{tab:reg-timetrend} \maxsizebox*{\textwidth}{\textheight}{ \begin{threeparttable} \begin{tabular}{l*{2}{c}} \toprule"
 loc postfoot "\bottomrule \end{tabular} \begin{tablenotes}[flushleft] \footnotesize \item \emph{Notes:} @note \end{tablenotes} \end{threeparttable} } \end{table}"
-loc footnote "This table reports a regression of having saved at period \(t\) on treatment indicators and a linear time trend. The unit of observation is individual-by-period. Standard errors are in parentheses and clustered at the individual level."
-esttab using "$tab_dir/reg-timetrend", alignment(c) ar2 nobaselevels nogap label obslast nonum b(%9.2f) se(%9.2f) sfmt(%9.2f) nostar note("`footnote'") prehead("`prehead'") postfoot("`postfoot'") se compress booktabs replace
+loc footnote "This table reports a regression of having saved at period \(t\) on treatment indicators and a linear time trend. The unit of observation is individual-by-period. Standard errors are in parentheses and clustered at the individual level. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level."
+esttab using "$tab_dir/reg-timetrend", alignment(c) ar2 nobaselevels nogap label obslast nonum b(%9.2f) se(%9.2f) sfmt(%9.2f) star(* 0.10 ** 0.05 *** 0.01) note("`footnote'") prehead("`prehead'") postfoot("`postfoot'") se compress booktabs replace
 eststo clear
 
 file open tex using "$tab_dir/reg-timetrend.tex", write append
@@ -362,13 +362,13 @@ foreach xvar of varlist $xcor {
 
 loc prehead "\begin{table}[ht]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \caption{Baseline correlates of number of deposits made} \label{tab:reg-cortotdeposits} \maxsizebox*{\textwidth}{\textheight}{ \begin{threeparttable} \begin{tabular}{l*{`length'}{c}} \toprule"
 loc postfoot "\bottomrule \end{tabular} \begin{tablenotes}[flushleft] \footnotesize \item \emph{Notes:} @note \end{tablenotes} \end{threeparttable} } \end{table}"
-loc footnote "This table reports estimates of `length' univariate regressions of number of deposits made on preference parameters estimated in the lab. Standard errors are clustered at the participant level and reported in parentheses."
-esttab num* using "$tab_dir/reg-cortotdeposits", alignment(c) obslast nobaselevels nomtitle label b(%9.2f) se(%9.2f) sfmt(%9.2f) scalars("ar2 Adjusted R2" "fstat F-statistic") nogap nostar prehead("`prehead'") postfoot("`postfoot'") note("`footnote'") se compress booktabs replace
+loc footnote "This table reports estimates of `length' univariate regressions of number of deposits made on preference parameters estimated in the lab. Standard errors are clustered at the participant level and reported in parentheses. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level."
+esttab num* using "$tab_dir/reg-cortotdeposits", alignment(c) obslast nobaselevels nomtitle label b(%9.2f) se(%9.2f) sfmt(%9.2f) scalars("ar2 Adjusted R2" "fstat F-statistic") nogap star(* 0.10 ** 0.05 *** 0.01) prehead("`prehead'") postfoot("`postfoot'") note("`footnote'") se compress booktabs replace
 
 loc prehead "\begin{table}[ht]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \caption{Baseline correlates of amount deposited} \label{tab:reg-cortotdepositamt} \maxsizebox*{\textwidth}{\textheight}{ \begin{threeparttable} \begin{tabular}{l*{`length'}{c}} \toprule"
 loc postfoot "\bottomrule \end{tabular} \begin{tablenotes}[flushleft] \footnotesize \item \emph{Notes:} @note \end{tablenotes} \end{threeparttable} } \end{table}"
-loc footnote "This table reports estimates of `length' univariate regressions of amount deposited on preference parameters estimated in the lab. Standard errors are clustered at the participant level and reported in parentheses."
-esttab amt* using "$tab_dir/reg-cortotdepositamt", alignment(c) obslast nobaselevels nomtitle label b(%9.2f) se(%9.2f) sfmt(%9.2f) scalars("ar2 Adjusted R2" "fstat F-statistic") nogap nostar prehead("`prehead'") postfoot("`postfoot'") note("`footnote'") se compress booktabs replace
+loc footnote "This table reports estimates of `length' univariate regressions of amount deposited on preference parameters estimated in the lab. Standard errors are clustered at the participant level and reported in parentheses. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level."
+esttab amt* using "$tab_dir/reg-cortotdepositamt", alignment(c) obslast nobaselevels nomtitle label b(%9.2f) se(%9.2f) sfmt(%9.2f) scalars("ar2 Adjusted R2" "fstat F-statistic") nogap star(* 0.10 ** 0.05 *** 0.01) prehead("`prehead'") postfoot("`postfoot'") note("`footnote'") se compress booktabs replace
 eststo clear
 
 //////////////////////////////
