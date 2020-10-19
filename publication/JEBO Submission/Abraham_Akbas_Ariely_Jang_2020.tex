@@ -162,9 +162,9 @@
 
 			A lottery ticket was a random sequence of four numbers between 1 and 9, inclusive. Each morning, our administrative system randomly generated a winning sequence of four numbers. Prizes were awarded according to how well a participant's lottery numbers matched the winning numbers. If the first or second numbers matched, a 10\% match of savings was awarded. If both the first and second numbers matched, a 100\% match of savings was awarded. Finally if all numbers matched, a prize of 200 times the daily savings was awarded. The expected earnings on this lottery ticket were equal to the 5\% match earned in the control group---\textit{i.e.} the expected payoffs were equivalent but by a mean-preserving increase in risk.\footnote{Table \ref{tab:tab-lottery} details the lottery results and the objective probabilities of each type of lottery match.}
 
-			Our system entered winnings into the internal ledger and reported lottery results via SMS the following day. Participants with winning lottery tickets who did not save could not claim the prize but received feedback on their lottery results daily. We henceforth refer to this group as the PLS group. 
+			Our system entered winnings into the internal ledger and reported lottery results via SMS the following day. Participants with winning lottery tickets who did not save could not claim the prize but received feedback on their lottery results daily. We henceforth refer to this group as the PLS-F group. 
 
-			\item \textit{Prize-linked savings without feedback:} This scheme is identical to the PLS treatment except participants in this third group only received lottery tickets and were made aware of their potential winnings if they made a non-zero deposit the previous day. While participants in the PLS group obtained lottery results everyday, participants in this group only found out about lottery matches conditional on saving. We henceforth refer to this group as the No Feedback group. We leverage the variation of the information regime in this treatment group to test for regret aversion as detailed in Section \ref{sec:mechanisms}.
+			\item \textit{Prize-linked savings without feedback:} This scheme is identical to the PLS treatment except participants in this third group only received lottery tickets and were made aware of their potential winnings if they made a non-zero deposit the previous day. While participants in the PLS group obtained lottery results everyday, participants in this group only found out about lottery matches conditional on saving. We henceforth refer to this group as the PLS-N group. We leverage the variation of the information regime in this treatment group to test for regret aversion as detailed in Section \ref{sec:mechanisms}.
 
 		\end{enumerate}
 
@@ -172,7 +172,7 @@
 			\caption{Summary of treatment conditions} \label{tab:treatments}
 			\maxsizebox*{\textwidth}{\textheight}{ \begin{threeparttable} \begin{tabular}{l cc cc cc}
 			\toprule
-			Treatment & Control Group & PLS (feedback) & PLS (no feedback) \\
+			Treatment & Control Group & PLS-F (feedback) & PLS-N (no feedback) \\
 			\midrule
 			Incentive type & Certain & Stochastic & Stochastic \\
 			Expected match rate & 5\% & 5\% & 5\% \\
@@ -191,10 +191,10 @@
 		We use the following reduced-form specification to estimate the treatment effect of lottery incentives on aggregate participant outcomes over the entire savings period.
 
 		\begin{equation} \label{eq:teffect}
-			Y_{i} = \beta_{0} + \beta_{1}\text{NF}_{i} + \beta_{2}\text{PLS}_{i} + \varepsilon_{i}
+			Y_{i} = \beta_{0} + \beta_{1}\text{PLS}^{N}_{i} + \beta_{2}\text{PLS}^{F}_{i} + \varepsilon_{i}
 		\end{equation}
 
-		$Y_{i}$ refers to the outcome variables for individual $i$ measured after the end of the savings program. NF$_i$ indicates assignment to the No Feedback group and PLS$_i$ indicates assignment to the PLS group. The omitted group is the control group. We test $\beta_{1} = 0$ and $\beta_{2} = 0$ to identify the effects of PLS and PLS without feedback relative to the control group. Since all treatment groups are equivalent in expectation, any effects relative to the control group can be attributed to the stochastic nature of the incentive. We additionally test $\beta_{2} - \beta_{1} = 0$ for differential effects between the two PLS treatments. Effects between the two PLS treatments can be attributed to the differences in feedback, which we interpret as evidence for regret aversion in Section \ref{sec:mechanisms}. Statistical inference is based on heteroskedastic-robust standard errors.
+		$Y_{i}$ refers to the outcome variables for individual $i$ measured after the end of the savings program. NF$_i$ indicates assignment to the PLS-N group and PLS$_i$ indicates assignment to the PLS-D group. The omitted group is the control group. We test $\beta_{1} = 0$ and $\beta_{2} = 0$ to identify the effects of PLS and PLS without feedback relative to the control group. Since all treatment groups are equivalent in expectation, any effects relative to the control group can be attributed to the stochastic nature of the incentive. We additionally test $\beta_{2} - \beta_{1} = 0$ for differential effects between the two PLS treatments. Effects between the two PLS treatments can be attributed to the differences in feedback, which we interpret as evidence for regret aversion in Section \ref{sec:mechanisms}. Statistical inference is based on heteroskedastic-robust standard errors.
 
 		% To improve precision and to control for potential selection bias, we apply covariate adjustment with a vector of baseline indicators.\footnote{We include as control variables 1. Participant is female, 2. Participant is younger than 30 years old, 3. Participant completed primary school, 4. Participant is married, 5. Participant has at least one child dependant, 6. Participant uses a savings account, and 7. Above median CPGI score.} We obtain the covariate-adjusted treatment effect estimate by estimating Equation \ref{eq:teffect} including the demeaned covariate vector $\mathbf{X}_{i}$ as an additive term and as an interaction with the treatment indicator.
 
@@ -224,8 +224,8 @@
 		We analyze the extent to which the savings program produced heterogeneous treatment effects with the following specification.\footnote{$\beta$ here denotes a different parameter than those in the previous regressions.}
 
 		\begin{equation} \begin{split}
-		Y_{i} = & \beta_{0} + \beta_{1}\text{NF}_{i} + \beta_{2}\text{PLS}_{i} + \delta_{0}x_{i} \\
-					& + \delta_{1}(\text{NF}_{i} \times x_{i}) + \delta_{2}(\text{PLS}_{i} \times x_{i}) + \varepsilon_{i}
+		Y_{i} = & \beta_{0} + \beta_{1}\text{PLS}^{N}_{i} + \beta_{2}\text{PLS}^{F}_{i} + \delta_{0}x_{i} \\
+					& + \delta_{1}(\text{PLS}^{N}_{i} \times x_{i}) + \delta_{2}(\text{PLS}^{F}_{i} \times x_{i}) + \varepsilon_{i}
 		\end{split} \label{eq:heteffect} \end{equation}
 
 		$x_{i}$ is the binary dimension of heterogeneity measured before treatment assignment. $\delta_{1}$ and $\delta_{2}$ respectively identify the heterogeneous treatment effects of the two PLS products relative to individuals whose $x_{i} = 0$. We conduct inference with heteroskedstic-robust standard errors. We report estimates with the following baseline variables as $x_{i}$: an indicator for prior usage of a savings account, an indicator for scoring above the median in the CPGI scale, an indicator for being classified as risk averse in the coin toss task, and an indicator for having an above median average indifference point as measured in the titration task.\footnote{We report heterogeneous treatment effects for a wider set of baseline variables in an online appendix.}

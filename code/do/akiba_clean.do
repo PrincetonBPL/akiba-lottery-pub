@@ -616,7 +616,7 @@ la var mobile_matches "No. of matches on ticket"
 
 /* Merge with subjects data */
 
-merge m:1 account using `clean_subjects', keep(2 3) // 24 unmatched didn't use account, 12 matched didn't deposit
+merge m:1 account using `clean_subjects', keep(2 3) // 24 unmatched didn't use account, 12 matched didn't deposit, 3 accounts not matched to subject data
 
 /* Create balanced panel for days without account activity */
 
@@ -633,7 +633,7 @@ la var mobile_nonuser "Never used mobile savings"
 
 foreach var of varlist mobile_*amount mobile_deposits mobile_refunds mobile_prizes mobile_withdrawals {
 
-	replace `var' = 0 if mi(treatmentgroup)
+	replace `var' = 0 if mi(`var')
 
 }
 

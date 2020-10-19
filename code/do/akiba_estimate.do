@@ -292,6 +292,16 @@ reg mobile_saved mobile_cummatches i.period if regret == 1, vce(cl surveyid)
 reg mobile_saved mobile_cumprizeamount i.period if L1.mobile_saved != 1 & regret == 1, vce(cl surveyid)
 
 //////////////////////////////////////
+/* Test regret aversion in period 1 */
+//////////////////////////////////////
+
+use "$data_dir/clean/akiba_long.dta", clear
+
+eststo: reg mobile_deposits lottery regret if period == 1, vce(cl surveyid)
+
+
+
+//////////////////////////////////////
 /* Time-dependent treatment effects */
 //////////////////////////////////////
 
