@@ -1,7 +1,7 @@
 \begin{table}[h]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \caption{Multinomial treatment effects -- Temptation to gamble} \label{tab:reg-mlogtempt} \maxsizebox*{\textwidth}{\textheight}{ \begin{threeparttable} \begin{tabular}{l*{5}{c}} \toprule
           &\multicolumn{4}{c}{Relative risk ratio}&\multicolumn{1}{c}{Sample}\\\cmidrule(lr){2-5}\cmidrule(lr){6-6}
           &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}&\multicolumn{1}{c}{(5)}\\
-          &\multicolumn{1}{c}{Constant}&\multicolumn{1}{c}{No Feedback}&\multicolumn{1}{c}{PLS}&\multicolumn{1}{c}{\specialcell{PLS-\\No Feedback}}&\multicolumn{1}{c}{Obs.}\\
+          &\multicolumn{1}{c}{Constant}&\multicolumn{1}{c}{PLS-N}&\multicolumn{1}{c}{PLS-F}&\multicolumn{1}{c}{\specialcell{PLS-F $-$ \\PLS-N}}&\multicolumn{1}{c}{Obs.}\\
 \midrule
 Less tempted&0.14\sym{***}&     0.99&     1.78&     1.80&      284\\
           &   (0.06)&   (0.64)&   (1.02)&   (1.09)&         \\
@@ -9,4 +9,4 @@ More tempted&     1.00&     1.43&     1.32&     0.92&      284\\
           &   (0.21)&   (0.43)&   (0.40)&   (0.28)&         \\
 \bottomrule \end{tabular} \begin{tablenotes}[flushleft] \footnotesize \item \emph{Notes:} This table reports estimates from a multinomial logit regression of the categorial response on treatment assigment. Each row corresponds to a response category with the baseline value as . Column 1 reports the constant term corresponding to the mean of the control group. Columns 2--3 reports the treatment effect in relative risk ratios compared to the control group. Column 4 reports the difference between the two PLS treatments. Standard errors are in parentheses. Column 5 reports the number of observations in the analytic sample. Observations are at the individual level. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level. \end{tablenotes} \end{threeparttable} } \end{table}
 
-% File produced by reg-mlogit.do with /Users/justin/Repos/akiba-lottery-pub/data/clean/akiba_wide.dta on 20:04:54 16 Oct 2020 by user justin on Stata 13.1 with seed X0ef43553eae27cdf72e6c8ce2ecec8a700043ce8
+% File produced by reg-mlogit.do with /Users/justin/Repos/akiba-lottery-pub/data/clean/akiba_wide.dta on 21:17:12 19 Oct 2020 by user justin on Stata 13.1 with seed X57e97653049874eb1015530dcca131c100043b5b

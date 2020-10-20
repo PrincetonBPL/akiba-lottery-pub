@@ -84,8 +84,8 @@ loc prehead_n "\begin{table}[h]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)
 loc postfoot "\bottomrule \end{tabular} \begin{tablenotes}[flushleft] \footnotesize \item @note \end{tablenotes} \end{threeparttable} } \end{table}"
 loc footnote "\emph{Notes:} Columns 1--2 report the minimum detectable effect sizes of the lottery treatment compared to control and the regret treatment against the lottery, respectively, with \(\alpha\) = 0.05 and 0.8 power. Columns 3--4 report the control group means and SDs and size of the analytic sample."
 
-esttab col* using "$tab_dir/$regpath.tex", booktabs cells(none) nogap mtitle("No Feedback" "\specialcell{PLS-\\No Feedback}" "\specialcell{Control Mean\\(SD)}" "Obs.") stats(`statnames', labels(`varlabels')) note("`footnote'") prehead("`prehead'") postfoot("`postfoot'") compress replace
-esttab col* using "$tab_dir/$regpath-n.tex", booktabs cells(none) nogap mtitle("No Feedback" "\specialcell{PLS-\\No Feedback}" "\specialcell{Control Mean\\(SD)}" "Obs.") stats(`statnames', labels(`varlabels')) prehead("`prehead_n'") postfoot("`postfoot'") compress replace
+esttab col* using "$tab_dir/$regpath.tex", booktabs cells(none) nogap mtitle("PLS-N" "\specialcell{PLS-F $-$ \\PLS-N}" "\specialcell{Control Mean\\(SD)}" "Obs.") stats(`statnames', labels(`varlabels')) note("`footnote'") prehead("`prehead'") postfoot("`postfoot'") compress replace
+esttab col* using "$tab_dir/$regpath-n.tex", booktabs cells(none) nogap mtitle("PLS-N" "\specialcell{PLS-F $-$ \\PLS-N}" "\specialcell{Control Mean\\(SD)}" "Obs.") stats(`statnames', labels(`varlabels')) prehead("`prehead_n'") postfoot("`postfoot'") compress replace
 
 eststo clear
 

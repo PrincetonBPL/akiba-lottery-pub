@@ -67,7 +67,7 @@ loc prehead "\begin{table}[h]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\f
 loc postfoot "\bottomrule \end{tabular} \begin{tablenotes}[flushleft] \footnotesize \item \emph{Notes:} @note \end{tablenotes} \end{threeparttable} } \end{table}"
 loc footnote "Column 1 reports the difference of means between participants who completed endline and those who attrited. Standard errors are in parentheses. Column 2 reports the mean among participants at endline with SD in parentheses. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level."
 
-esttab col* using "$tab_dir/$sumpath.tex", booktabs cells(none) nogap mtitle("\specialcell{Completed -\\attrited}" "\specialcell{Mean (SD)\\of completed}" "Obs.") stats(`statnames', labels(`varlabels')) note("`footnote'") prehead("`prehead'") postfoot("`postfoot'") compress replace
+esttab col* using "$tab_dir/$sumpath.tex", booktabs cells(none) nogap mtitle("\specialcell{Completed $-$\\attrited}" "\specialcell{Mean (SD)\\of completed}" "Obs.") stats(`statnames', labels(`varlabels')) note("`footnote'") prehead("`prehead'") postfoot("`postfoot'") compress replace
 
 eststo clear
 

@@ -2,13 +2,13 @@
                 &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}\\
                 &\multicolumn{1}{c}{Total no. of deposits}&\multicolumn{1}{c}{Total deposit amount}&\multicolumn{1}{c}{Saves with a ROSCA}&\multicolumn{1}{c}{Gamble more}\\
 \midrule
-No Feedback     &     0.24         &   -12.87\sym{*}  &     0.31\sym{**} &     0.20\sym{**} \\
+PLS-N           &     0.24         &   -12.87\sym{*}  &     0.31\sym{**} &     0.20\sym{**} \\
                 &   (3.72)         &   (7.16)         &   (0.13)         &   (0.08)         \\
-No Feedback $\times$ \\ Has children&     5.67         &    16.33\sym{**} &    -0.44\sym{***}&    -0.19\sym{*}  \\
+PLS-N $\times$ \\ Has children&     5.67         &    16.33\sym{**} &    -0.44\sym{***}&    -0.19\sym{*}  \\
                 &   (4.86)         &   (8.01)         &   (0.16)         &   (0.10)         \\
-PLS             &     3.85         &    -8.70         &     0.19         &     0.12\sym{*}  \\
+PLS-F           &     3.85         &    -8.70         &     0.19         &     0.12\sym{*}  \\
                 &   (4.49)         &   (7.76)         &   (0.13)         &   (0.07)         \\
-PLS $\times$ \\ Has children&     2.49         &     9.78         &    -0.06         &     0.04         \\
+PLS-F $\times$ \\ Has children&     2.49         &     9.78         &    -0.06         &     0.04         \\
                 &   (5.37)         &   (8.22)         &   (0.15)         &   (0.10)         \\
 Has children    &     1.57         &    -8.46         &     0.45\sym{***}&     0.16\sym{***}\\
                 &   (3.28)         &   (7.18)         &   (0.10)         &   (0.04)         \\
@@ -17,9 +17,9 @@ Constant        &    12.52\sym{***}&    20.99\sym{***}&     0.21\sym{**} &     0
 \midrule
 Adjusted \(R^{2}\)&    0.014         &    0.003         &    0.097         &    0.033         \\
 Control mean    &    13.66         &    14.87         &     0.54         &     0.12         \\
-No Feedback \emph{p}-value&     0.06         &     0.34         &     0.12         &     0.82         \\
-PLS \emph{p}-value&     0.03         &     0.69         &     0.09         &     0.03         \\
+PLS-N \emph{p}-value&     0.06         &     0.34         &     0.12         &     0.82         \\
+PLS-F \emph{p}-value&     0.03         &     0.69         &     0.09         &     0.03         \\
 Observations    &      311         &      311         &      284         &      284         \\
 \bottomrule \end{tabular} \begin{tablenotes}[flushleft] \footnotesize \item \emph{Notes:} This table reports OLS estimates of the treatment effect and its interaction with baseline. Standard errors are in parentheses. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level. We also report the \(p\)-values for joint tests on the direct treatment effect conditional on the baseline covariate $= 1$. \end{tablenotes} \end{threeparttable} } \end{table}
 
-% File produced by akiba_estimate.do with /Users/justin/Repos/akiba-lottery-pub/data/clean/akiba_wide.dta on 20:04:57 16 Oct 2020 by user justin on Stata 13.1 with seed X0ef43553eae27cdf72e6c8ce2ecec8a700043ce8
+% File produced by akiba_estimate.do with /Users/justin/Repos/akiba-lottery-pub/data/clean/akiba_wide.dta on 21:17:15 19 Oct 2020 by user justin on Stata 13.1 with seed X57e97653049874eb1015530dcca131c100043b5b

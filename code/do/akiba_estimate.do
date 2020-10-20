@@ -200,10 +200,10 @@ if $heteffectsflag {
 		loc fillmiss "`fillmiss' `xvar'_full `xvar'_miss"
 
 		gen LX`xvar' = lottery * `xvar'
-		la var LX`xvar' "No Feedback $\times$ \\ `xvarlab'"
+		la var LX`xvar' "PLS-N $\times$ \\ `xvarlab'"
 
 		gen RX`xvar' = regret * `xvar'
-		la var RX`xvar' "PLS $\times$ \\ `xvarlab'"
+		la var RX`xvar' "PLS-F $\times$ \\ `xvarlab'"
 
 		loc righthand "`righthand' LX`xvar' RX`xvar'"
 
@@ -232,7 +232,7 @@ if $heteffectsflag {
 		loc postfoot "\bottomrule \end{tabular} \begin{tablenotes}[flushleft] \footnotesize \item \emph{Notes:} @note \end{tablenotes} \end{threeparttable} } \end{table}"
 		loc footnote "This table reports OLS estimates of the treatment effect and its interaction with baseline. Standard errors are in parentheses. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level. We also report the \(p\)-values for joint tests on the direct treatment effect conditional on the baseline covariate $= 1$."
 
-		esttab using "$tab_dir/het-`xvar'.tex", alignment(c) ar2 obslast nobaselevels label b(%9.2f) se(%9.2f) sfmt(%9.2f) scalars("ymean Control mean" "Ljoint_p No Feedback \emph{p}-value" "Rjoint_p PLS \emph{p}-value") nogap star(* 0.10 ** 0.05 *** 0.01) prehead("`prehead'") postfoot("`postfoot'") note("`footnote'") substitute(\_ ) se compress booktabs replace
+		esttab using "$tab_dir/het-`xvar'.tex", alignment(c) ar2 obslast nobaselevels label b(%9.2f) se(%9.2f) sfmt(%9.2f) scalars("ymean Control mean" "Ljoint_p PLS-N \emph{p}-value" "Rjoint_p PLS-F \emph{p}-value") nogap star(* 0.10 ** 0.05 *** 0.01) prehead("`prehead'") postfoot("`postfoot'") note("`footnote'") substitute(\_ ) se compress booktabs replace
 		eststo clear
 
 		file open tex using "$tab_dir/het-`xvar'.tex", write append
@@ -273,10 +273,10 @@ eststo: reghdfe mobile_saved mobile_matched if L1.mobile_saved != 1 & regret == 
 	qui reghdfe mobile_saved lottery regret, absorb(period) vce(cl surveyid)
 	estadd scalar teffect = round(_b[regret], 0.01)
 
-loc prehead "\begin{table}[ht]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \caption{Regression of deposits onlottery results} \label{tab:reg-regretaversion} \maxsizebox*{\textwidth}{\textheight}{ \begin{threeparttable} \begin{tabular}{l*{2}{c}} \toprule"
+loc prehead "\begin{table}[ht]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \caption{Regression of deposits on lottery results} \label{tab:reg-regretaversion} \maxsizebox*{\textwidth}{\textheight}{ \begin{threeparttable} \begin{tabular}{l*{2}{c}} \toprule"
 loc postfoot "\bottomrule \end{tabular} \begin{tablenotes}[flushleft] \footnotesize \item \emph{Notes:} @note \end{tablenotes} \end{threeparttable} } \end{table}"
 loc footnote "This table reports on a regression of having saved at period \(t\) on winning the lottery at \(t\) conditional on being in the PLS group and not having saved at \(t-1\). The unit of observation is individual-by-period. The regression includes period fixed effects. Standard errors are in parentheses and clustered at the individual level. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level."
-esttab using "$tab_dir/reg-regretaversion", alignment(c) ar2 nobaselevels obslast nogap label nonum b(%9.2f) se(%9.2f) sfmt(%9.2f) drop(_cons) scalars("ymean Control mean" "teffect PLS effect") star(* 0.10 ** 0.05 *** 0.01) note("`footnote'") prehead("`prehead'") postfoot("`postfoot'") se compress booktabs replace
+esttab using "$tab_dir/reg-regretaversion", alignment(c) ar2 nobaselevels obslast nogap label nonum b(%9.2f) se(%9.2f) sfmt(%9.2f) drop(_cons) scalars("ymean Control mean" "teffect Daily PLS effect") star(* 0.10 ** 0.05 *** 0.01) note("`footnote'") prehead("`prehead'") postfoot("`postfoot'") se compress booktabs replace
 eststo clear
 
 file open tex using "$tab_dir/reg-regretaversion.tex", write append
@@ -327,7 +327,7 @@ eststo: reg mobile_saved i.treatmentgroup##i.period, vce(cl surveyid)
 loc prehead "\begin{table}[ht]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \caption{Time-varying treatment effects on deposits} \label{tab:reg-timedummy} \maxsizebox*{\textwidth}{\textheight}{ \begin{threeparttable} \begin{tabular}{l*{2}{c}} \toprule"
 loc postfoot "\bottomrule \end{tabular} \begin{tablenotes}[flushleft] \footnotesize \item \emph{Notes:} @note \end{tablenotes} \end{threeparttable} } \end{table}"
 loc footnote "This table reports a regression of having saved at period \(t\) on treatment indicators interacted with period indicator variables. The unit of observation is individual-by-period. Standard errors are in parentheses and clustered at the individual level. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level."
-esttab using "$tab_dir/reg-timedummy", alignment(c) ar2 nobaselevels nogap label obslast nonum b(%9.2f) se(%9.2f) sfmt(%9.2f) drop(*.period) scalars("jointp2 No Feedback joint \(p\)-value" "jointp3 PLS joint \(p\)-value") star(* 0.10 ** 0.05 *** 0.01) note("`footnote'") prehead("`prehead'") postfoot("`postfoot'") se compress booktabs replace
+esttab using "$tab_dir/reg-timedummy", alignment(c) ar2 nobaselevels nogap label obslast nonum b(%9.2f) se(%9.2f) sfmt(%9.2f) drop(*.period) scalars("jointp2 PLS-N joint \(p\)-value" "jointp3 PLS-F joint \(p\)-value") star(* 0.10 ** 0.05 *** 0.01) note("`footnote'") prehead("`prehead'") postfoot("`postfoot'") se compress booktabs replace
 eststo clear
 
 file open tex using "$tab_dir/reg-timedummy.tex", write append
