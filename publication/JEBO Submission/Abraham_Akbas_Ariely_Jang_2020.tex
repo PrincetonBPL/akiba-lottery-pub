@@ -469,19 +469,24 @@
 	
 	\begin{landscape}
 	
-		\begin{longtable}{p{0.3\textwidth}p{0.3\textwidth}p{0.3\textwidth}p{0.3\textwidth}}
-			\caption{Deviations from pre-analysis plan} \label{tab:deviations} \\
+		\begin{longtable}{p{0.35\textwidth}p{0.35\textwidth}p{0.35\textwidth}p{0.35\textwidth}}
+			\caption{Deviations from the pre-analysis plan} \label{tab:deviations} \\
 			\toprule
 			Pre-analysis plan & Modification & Reason for modification & Location(s) \\
 			\midrule
 			Regression equations would include the baseline level of the individual outcome (ANCOVA) when available to increase statistical power. & The four outcome variables for which we do have baseline analogs (total saved in the previous month, amount saved with M-Pesa, amount saved in a ROSCA, use of ROSCA) were estimated without baseline levels of the dependent variables. & The regression equations were changed for these variables to allow the analysis to be consistent across all outcomes. & Table \ref{tab:reg-fwersave} \\
+			\midrule
 			We specified secondary analysis that involved estimating an autoregressive finite distributed lag model on savings outcomes at the daily level. & We estimate linear autoregressions without lagged treatment variables. & There is no treatment variation over time. & Supplementary Appendix Fig. 9-10 \\
-			We included as an outcome variable the highest number of consecutive days in which an individual made a deposit. & We omitted this variable from the analysis. & There is little theoretical interest in the effect on this variable. & N/A \\
-			Multinomial & & & \\
-			Randomization inference & & & \\
-			cov adjustment & & & \\
-			Regression on first day & & & \\
-			Regression on winning lottery & & & \\
+			\midrule
+			We included as an outcome variable the highest number of consecutive days in which an individual made a deposit. & We omitted this variable from the analysis. & There is little theoretical interest in this outcome and it is computationally difficult to calculate. & N/A \\
+			\midrule
+			The treatment effect on self-reported gambling was to be estimated using a linear regression. & Treatment effects on gambling behavior, a measure of temptation to gamble, and ex-post respondent selection into treatment were estimated using a multinomial logit regression. & This specification is appropriate since these three outcomes were measured as categorical variables. & Table \ref{tab:reg-mlogfreq} and Tables 44-46 in the Supplementary Appendix \\
+			\midrule
+			Our main treatment regression did not specify the use of control variables. & We conducted an additional set of analyses which estimate Eq. \ref{eq:teffect} with covariate adjustment. We include as control variables indicators for gender, being younger thant 30 years, completion of primary school, marital status, having a dependant, usage of a savings account, and scoring above the median on the CPGI. The regression without covariates remains our preferred specification. & To improve precision and to examine robustness to potential selection bias. & Supplementary Appendix Section C.2 \\
+			\midrule
+			We did not specify in the PAP that we would estimate treatment effects on savings on the first period. & We estimated treatment effects on savings on the first period. & & Table \ref{tab:reg-firstperiod} \\
+			\midrule
+			Regression on winning lottery & & & Table \ref{tab:reg-regretaversion} \\
 			\bottomrule
 		\end{longtable}
 
