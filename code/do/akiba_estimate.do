@@ -259,9 +259,9 @@ if $heteffectsflag {
 
 }
 
-//////////////////////////////////////
-/* Test regret aversion using panel */
-//////////////////////////////////////
+/////////////////////////////
+/* Test experienced regret */
+/////////////////////////////
 
 use "$data_dir/clean/akiba_long.dta", clear
 
@@ -315,6 +315,8 @@ file close tex
 //////////////////////////////////////
 /* Time-dependent treatment effects */
 //////////////////////////////////////
+
+use "$data_dir/clean/akiba_long.dta", clear
 
 eststo: reg mobile_saved i.treatmentgroup##i.period, vce(cl surveyid)
 

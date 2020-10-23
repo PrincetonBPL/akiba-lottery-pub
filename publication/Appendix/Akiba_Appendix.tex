@@ -337,9 +337,6 @@
 
 	\subsection{Heterogeneous treatment effects}
 
-		% \input{../../tables/het-lottery.tex}
-		% \input{../../tables/het-regret.tex}
-
         \input{../../tables/het-demo_female_0.tex}
         \input{../../tables/het-demo_young_0.tex}
         \input{../../tables/het-demo_stdschool_0.tex}
@@ -356,6 +353,9 @@
         \input{../../tables/het-pref_medianloc_0.tex}
         \input{../../tables/het-pref_medianindiff_0.tex}
         \input{../../tables/het-gam_mediancpgi_z_0.tex}
+
+        \input{../../tables/het-lottery.tex}
+        \input{../../tables/het-regret.tex}
 
 	\clearpage
 
@@ -438,16 +438,16 @@
         \includegraphics[width=\textwidth]{../../figures/line-timemobile_depositamount.pdf}
         \end{figure}
 
-		% \begin{figure}[ht]
-		% \centering
-		% \caption{Autoregressive model - Saved on day t}
-		% \includegraphics[width=\textwidth]{../../figures/line-ar.pdf}
-		% \end{figure}
-        %
-		% \begin{figure}[ht]
-		% \centering
-		% \caption{Distributed lag model - Saved on day t}
-		% \includegraphics[width=\textwidth]{../../figures/line-dl.pdf}
-		% \end{figure}
+        \begin{figure}[ht]
+        \centering
+        \caption{Autoregression -- Number of deposits}
+        \includegraphics[width=\textwidth]{../../figures/lags-mobile_deposits.pdf}
+        \end{figure}
+
+        \begin{figure}[ht]
+        \centering
+        \caption{Autoregression -- Amount deposited}
+        \includegraphics[width=\textwidth]{../../figures/lags-mobile_depositamount.pdf}
+        \end{figure}
 
 \end{document}

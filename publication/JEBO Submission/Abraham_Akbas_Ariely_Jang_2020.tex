@@ -205,7 +205,7 @@
 
 		% The set of indicators partitions our sample so that our estimate remains unbiased for the average treatment effect \parencite{lin_agnostic_2013}. As in Equation \ref{eq:teffect}, we test $\beta_{1} = 0$ and $\beta_{2} = 0$ to identify the effects of the PLS with and without feedback relative to the matching group and test $\beta_{2} - \beta_{1} = 0$ for differential effects between the two PLS treatments. Standard errors are clustered at the individual level. Equation \ref{eq:teffect} is our preferred specification and report results with covariate adjustment for robustness.
 
-		We might expect that the errors of each outcome variable are correlated. Instead of estimating these equations separately, we estimate the system of seemingly unrelated regressions (SUR) to improve the precision of the coefficient estimates \parencite{zellner_efficient_1962}. SUR estimation is equivalent to OLS when the error terms are in fact uncorrelated between regressions or when each equation contains the same set of regressors. We perform joint estimation over outcome groups\footnote{Grouping of dependent variables was specified in a pre-analysis plan.} for Equation \ref{eq:teffect}.
+		We might expect that the errors of each outcome variable are correlated. Instead of estimating these equations separately, we estimate the system of seemingly unrelated regressions (SUR) to improve the precision of the coefficient estimates \parencite{zellner_efficient_1962}. SUR estimation is equivalent to OLS when the error terms are in fact uncorrelated between regressions or when each equation contains the same set of regressors. We perform joint estimation over outcome groups\footnote{Grouping of dependent variables was specified in a pre-analysis plan. We document differences between the present analysis and the pre-analysis plan in Table \ref{tab:deviations}.} for Equation \ref{eq:teffect}.
 
 		We control for the family-wise error rate (FWER) to correct for multiple inference. We compute adjusted $p$-values within categories of outcome variables using the free step-down resampling method \parencite{westfall_resampling-based_1993,anderson_multiple_2008}. This approach sets the size of the test to exactly the desired crticial value. We apply this correction over outcome variables in each family and separately for each hypothesis test. For each variable, we apply the procedure with 10,000 iterations and report both unadjusted and adjusted $p$-values.
 
@@ -467,6 +467,26 @@
 
 \section{Additional Tables}
 	
+	\begin{landscape}
+	
+		\begin{longtable}{p{0.3\textwidth}p{0.3\textwidth}p{0.3\textwidth}p{0.3\textwidth}}
+			\caption{Deviations from pre-analysis plan} \label{tab:deviations} \\
+			\toprule
+			Pre-analysis plan & Modification & Reason for modification & Location(s) \\
+			\midrule
+			Regression equations would include the baseline level of the individual outcome (ANCOVA) when available to increase statistical power. & The four outcome variables for which we do have baseline analogs (total saved in the previous month, amount saved with M-Pesa, amount saved in a ROSCA, use of ROSCA) were estimated without baseline levels of the dependent variables. & The regression equations were changed for these variables to allow the analysis to be consistent across all outcomes. & Table \ref{tab:reg-fwersave} \\
+			We specified secondary analysis that involved estimating an autoregressive finite distributed lag model on savings outcomes at the daily level. & We estimate linear autoregressions without lagged treatment variables. & There is no treatment variation over time. & Supplementary Appendix Fig. 9-10 \\
+			We included as an outcome variable the highest number of consecutive days in which an individual made a deposit. & We omitted this variable from the analysis. & There is little theoretical interest in the effect on this variable. & N/A \\
+			Multinomial & & & \\
+			Randomization inference & & & \\
+			cov adjustment & & & \\
+			Regression on first day & & & \\
+			Regression on winning lottery & & & \\
+			\bottomrule
+		\end{longtable}
+
+	\end{landscape}
+
 	\input{../../tables/tab-lottery-final.tex}
 	\input{../../tables/het-save_dosave_0.tex}
 	\input{../../tables/het-pref_riskaverse_0.tex}

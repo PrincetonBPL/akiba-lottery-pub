@@ -169,3 +169,61 @@ cap noi !epstopdf "$fig_dir/hist-deposits.eps"
 tw (hist dailytime if type_deposit & inrange(dailytime, 25200000, 36000000) & treatmentgroup == 1, frac width(360000) lwidth(thin) lcolor(gs1) fcolor(none)) (hist dailytime if type_deposit & inrange(dailytime, 25200000, 36000000) & treatmentgroup == 2, frac width(360000) lwidth(thin) lcolor(gs1) fcolor(gs12)) (hist dailytime if type_deposit & inrange(dailytime, 25200000, 36000000) & treatmentgroup == 3, frac width(360000) lwidth(thin) lcolor(gs1) fcolor(gs2)), xline(28800000) xtitle("Time") ylabel(, glwidth(vthin) glcolor(gs14)) xlabel(25200000(720000)36000000,format(%tcHH:MM) angle(330)) graphregion(color(white)) legend(order(1 "Control" 2 "PLS-N" 3 "PLS-F"))
 gr export "$fig_dir/hist-zoomdeposits.eps", replace
 cap noi !epstopdf "$fig_dir/hist-zoomdeposits.eps"
+
+////////////////////
+/* Autoregression */
+////////////////////
+
+use "$data_dir/clean/akiba_long.dta", clear
+
+preserve
+
+foreach outcome in mobile_depositamount mobile_deposits mobile_saved {
+
+	qui reg `outcome'
+	qui estat ic
+
+	loc minaic = r(S)[1, 5]
+	loc mindex = 0
+
+	forval k = 1/59 {
+
+		qui reg `outcome' L(1/`k').`outcome'
+		qui estat ic
+		loc aic = r(S)[1, 5]
+
+		if (`aic' <= `minaic') {
+			loc minaic = `aic'
+			loc mindex = `k'
+		}
+
+	}
+
+	mat def L = J(`mindex', 3, .)
+
+	qui reg `outcome' i.treatmentgroup##c.L(1/`mindex').`outcome', vce(cl surveyid)
+
+		mat L[1, 1] = _b[L.`outcome']
+		mat L[1, 2] = _b[2.treatmentgroup#cL.`outcome']
+		mat L[1, 3] = _b[3.treatmentgroup#cL.`outcome']
+
+	forval k = 2/`mindex'{
+
+		mat L[`k', 1] = _b[L.`outcome'] + _b[L`k'.`outcome']
+		mat L[`k', 2] = _b[2.treatmentgroup#cL.`outcome'] + _b[2.treatmentgroup#cL`k'.`outcome']
+		mat L[`k', 3] = _b[3.treatmentgroup#cL.`outcome'] + _b[3.treatmentgroup#cL`k'.`outcome']
+
+	}
+
+	clear
+	svmat L
+
+	gen period = _n
+	la var period "Lag"
+
+	gr tw (line L1 period, color(gs0) lpattern(solid)) (line L2 period, color(gs0) lpattern(dot)) (line L3 period, color(gs0) lpattern(dash)), ytitle("Lag coefficients") legend(order(1 "Control" 2 "PLS-N" 3 "PLS-F")) graphregion(color(white)) ylabel(,glcolor(gs14))
+	gr export "$fig_dir/lags-`outcome'.pdf", replace
+
+	restore, preserve
+
+}

@@ -34,8 +34,8 @@ cap cd "$project_dir"
 
 glo builddataflag = 1	// Build combined dataset
 glo cleandataflag = 1	// Clean combined dataset
-glo summaryflag = 1	 	// Output summary stats
-glo estimateflag = 1    // Output regression tables
+glo summaryflag = 0	 	// Output summary stats
+glo estimateflag = 0    // Output regression tables
 glo figuresflag = 1		// Output graphs and figures
 
 /* Analysis options */
