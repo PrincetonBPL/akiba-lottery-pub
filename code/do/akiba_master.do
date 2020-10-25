@@ -34,8 +34,8 @@ cap cd "$project_dir"
 
 glo builddataflag = 1	// Build combined dataset
 glo cleandataflag = 1	// Clean combined dataset
-glo summaryflag = 0	 	// Output summary stats
-glo estimateflag = 0    // Output regression tables
+glo summaryflag = 1	 	// Output summary stats
+glo estimateflag = 1    // Output regression tables
 glo figuresflag = 1		// Output graphs and figures
 
 /* Analysis options */
@@ -77,7 +77,7 @@ glo yselect "akiba_controlselect_1 akiba_lotteryselect_1 akiba_regretselect_1 ak
 glo ylottery "akiba_lotteryfair_z_1 akiba_prizegood_z_1 akiba_prizebad_z_1"
 glo yself "self_saver_z_1 self_lucky_z_1 self_savingsfeel_z_1 self_nosavefeel_z_1"
 glo ynull "$ymobile $ysave gam_moregamble_1"
-glo yhet "mobile_totdeposits mobile_totdepositamt save_dorosca_1 gam_moregamble_1"
+glo yhet "mobile_totdeposits mobile_totdepositamt save_monthlysave_1 gam_moregamble_1"
 
 /* Regressors */
 
