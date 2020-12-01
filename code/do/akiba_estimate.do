@@ -299,13 +299,18 @@ use "$data_dir/clean/akiba_long.dta", clear
 
 eststo: reg mobile_deposits lottery regret if period == 1, vce(cl surveyid)
 
+	qui test lottery = regret
+	loc p = r(p)
+	sigstar, p(`p') prec(3)
+	estadd loc ttest = r(pstar)
+
 	qui sum mobile_deposits if control == 1 & period == 1
 	estadd scalar ymean = round(r(mean), 0.01)
 
 loc prehead "\begin{table}[ht]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \caption{Regression of deposits on treatment in the first period} \label{tab:reg-firstperiod} \maxsizebox*{\textwidth}{\textheight}{ \begin{threeparttable} \begin{tabular}{l*{2}{c}} \toprule"
 loc postfoot "\bottomrule \end{tabular} \begin{tablenotes}[flushleft] \footnotesize \item \emph{Notes:} @note \end{tablenotes} \end{threeparttable} } \end{table}"
 loc footnote "This table reports on a regression of the number of deposits made in period 1 on each of the PLS treatments. The unit of observation is the individual. Standard errors are in parentheses and clustered at the individual level. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level."
-esttab using "$tab_dir/reg-firstperiod", alignment(c) ar2 nobaselevels obslast nogap label nonum b(%9.2f) se(%9.2f) sfmt(%9.2f) drop(_cons) scalars("ymean Control mean") star(* 0.10 ** 0.05 *** 0.01) note("`footnote'") prehead("`prehead'") postfoot("`postfoot'") se compress booktabs replace
+esttab using "$tab_dir/reg-firstperiod", alignment(c) ar2 nobaselevels obslast nogap label nonum b(%9.2f) se(%9.2f) sfmt(%9.2f) drop(_cons) scalars("ttest PLS-F vs. PLS-N \(p\)-value" "ymean Control mean") star(* 0.10 ** 0.05 *** 0.01) note("`footnote'") prehead("`prehead'") postfoot("`postfoot'") se compress booktabs replace
 eststo clear
 
 file open tex using "$tab_dir/reg-firstperiod.tex", write append
