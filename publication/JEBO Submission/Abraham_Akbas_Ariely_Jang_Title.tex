@@ -1,0 +1,50 @@
+\documentclass[12pt, titlepage]{article}
+
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage[strict]{changepage}
+% \usepackage[scale=0.92]{tgschola}
+% \usepackage{fouriernc}
+\usepackage{lmodern}
+% \usepackage{libertinus}
+\usepackage{inconsolata}
+\usepackage[T1]{fontenc}
+
+\usepackage{booktabs, threeparttable, adjustbox, tabularx, longtable}
+\usepackage{amsmath, amssymb, amsthm, bbm}
+\usepackage{hyperref, achicago}
+\usepackage{caption, graphicx}
+\usepackage{secdot, sectsty}
+\usepackage{pdflscape}
+\usepackage{placeins}
+\usepackage{xcolor}
+\usepackage{titling}
+
+\usepackage[backend=bibtex, style=authortitle, citestyle=authoryear-icomp, maxcitenames=2, url=false]{biblatex}
+\addbibresource{Lottery.bib}
+
+\linespread{1.25}
+\urlstyle{tt}
+
+\sectionfont{\normalsize}
+\subsectionfont{\normalsize}
+\subsubsectionfont{\normalsize}
+
+\renewcommand{\abstractname}{\vspace{-\baselineskip}}
+
+\newcommand{\specialcell}[2][c]{\begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
+\renewcommand{\today}{\ifcase \month \or January \or February \or March \or April \or May  \or June \or July \or August \or September \or October \or November \or December \fi \number \year}
+
+\begin{document}
+
+\title{\textsc{The Role of Regret in Prize-Linked Savings: Experimental Evidence from Kenya}\protect\footnote{We are grateful to the study participants for generously giving their time. We thank Jonathan Page and Arun Varghese for invaluable research assistance and the Busara Center for Behavioral Economics for research support. The authors declare that they have no known competing financial interests or personal relationships that could have appeared to influence the work reported in this paper. This study was pre-registered with the AEA RCT registry (AEARCTR-0000893). IRB approval was obtained for this study. Files for replication are available at \url{https://github.com/princetonbpl/akiba-lottery-pub}.}}
+
+\author{
+    Justin Abraham\thanks{Corresponding author. University of California, San Diego. \protect\href{mailto:jabraham@ucsd.edu}{\nolinkurl{jabraham@ucsd.edu}}.},
+    Merve Akbas\thanks{\protect\href{mailto:merveakbas@gmail.com}{\nolinkurl{merveakbas@gmail.com}}.},
+    Dan Ariely\thanks{Duke University. \protect\href{mailto:dan@danariely.com}{\nolinkurl{dan@danariely.com}}.}, and
+    Chaning Jang\thanks{The Busara Center for Behavioral Economics. \protect\href{mailto:chaning.jang@busaracenter.org}{\nolinkurl{chaning.jang@busaracenter.org}}.}
+}
+
+\maketitle
+
+\end{document}
