@@ -6,7 +6,7 @@ Papers should be submitted electronically to http://mc.manuscriptcentral.com/aej
 
 	x Your manuscript should include a title page with each author's name, institution, and contact information.
 
-	Effective July 1, 2012: All submissions, including revisions, must be accompanied by a Disclosure Statement. This is applicable even when the authors have no relevant interests to disclose. Authors will need to provide a separate Disclosure Statement for each coauthor at the time of submission. The statements will also need to disclose whether IRB approval was obtained for the project, and if not, state the reason(s). Submissions that do not include the statements will be considered incomplete and will not be reviewed. Please upload disclosure statements in Step 5 of the submission process for original submissions and Step 6 for revisions.
+	x Effective July 1, 2012: All submissions, including revisions, must be accompanied by a Disclosure Statement. This is applicable even when the authors have no relevant interests to disclose. Authors will need to provide a separate Disclosure Statement for each coauthor at the time of submission. The statements will also need to disclose whether IRB approval was obtained for the project, and if not, state the reason(s). Submissions that do not include the statements will be considered incomplete and will not be reviewed. Please upload disclosure statements in Step 5 of the submission process for original submissions and Step 6 for revisions.
 
 	x Include an abstract of 100 or fewer words.
 
@@ -60,9 +60,9 @@ For experimental papers, additional rules apply. We normally expect authors of e
 
 	x The AEA has a policy on the registration of randomized control trials. Please see the policy at https://www.aeaweb.org/journals/policies/rct-registry.
 
-When submitting a paper, the authors should prepare a separate page entitled “Disclosure Statement” that will be uploaded using the online submission form. If the paper involves several co-authors, each coauthor should submit a separate disclosure statement.
+x When submitting a paper, the authors should prepare a separate page entitled “Disclosure Statement” that will be uploaded using the online submission form. If the paper involves several co-authors, each coauthor should submit a separate disclosure statement.
 
-The disclosure statement should be included even if the authors have nothing to disclose; this fact should be explicitly stated. The disclosure statement will be available to referees.
+x The disclosure statement should be included even if the authors have nothing to disclose; this fact should be explicitly stated. The disclosure statement will be available to referees.
 
 Your final manuscript should adhere to our Formatting and Style Guide.  The PDF should include your reference list, tables and figures, and those appendices that are intended as part of the article. (Online appendices must be supplied as a separate document.) Tables and figures may be placed within the manuscript in their intended location or at the end of the PDF. Please ensure that the file is not encrypted.
 

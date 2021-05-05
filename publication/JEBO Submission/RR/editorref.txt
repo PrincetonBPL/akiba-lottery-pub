@@ -1,0 +1,52 @@
+Ms. Ref. No.:  JEBO-D-20-01667
+Title: The Role of Regret in Prize-Linked Savings: Experimental Evidence from Kenya
+Journal of Economic Behavior and Organization
+
+Dear Mr. Justin Abraham,
+
+We sent your paper to two reviewers and their comments on your work have now been received.  Based on their reports, the advice of an associate editor, and my own reading of the paper, I am happy to report that we would like to invite you to revise your paper and resubmit it for further consideration, keeping in mind that we make no promises regarding the final outcome at this time.
+
+The research question you attempt to answer and the research setting are fascinating and I very much enjoyed reading the paper. In addition to the helpful comments of the associate editor and referees I add some additional comments.
+
+1) The analysis in this paper was registered, but not pre-registered, contrary to what is stated in the paper. The first footnote to the paper states: "This study was pre-registered with the AEA RCT registry (AEARCTR-0000893)." Table 10 discusses differences with the original registration again calling it a PAP or a pre-analysis plan (e.g., ``We did not specify in the PAP...") In fact, the savings program was completed by August 2014, whereas the registry entry is written and posted September 30, 2015, more than a year after data collection had finished. Please change the verbiage throughout to not claim pre-registration.
+
+2)    The first footnote states: "IRB approval was obtained for this study." Please be more specific as to which IRB, and what is the approval number.
+
+3)    Table 10 discusses difference between the content of the paper and the 2015 analysis plan: ``We included [in the analysis plan] as an outcome variable the highest number of consecutive days in which an individual made a deposit. We omitted this variable from the analysis. There is little theoretical interest in this outcome and it is computationally difficult to calculate." Please change the wording for this explanation. Given that there are only 300 savers with the possibility of saving for 60 days, it's hard for me to see how it could be "computationally difficult" to calculate the highest number of consecutive days of depositing.
+ 
+4)   This leads me to a comment brought up by both reviewers. My gut reaction would be that what we care about is the amount of savings, not the number of deposits over which that total amount saved is distributed. More discussion of how the reader should think about this is warranted.
+
+5)    I am a bit confused by the use of SUR in the paper. The paper states: "Instead of estimating these equations separately, we estimate the system of seemingly unrelated regressions (SUR) to improve the precision of the coefficient estimates (Zellner 1962). SUR estimation is equivalent to OLS when the error terms are in fact uncorrelated between regressions or when each equation contains the same set of regressors." From my understanding, the equations do all contain the same set of regressors and so SUR and OLS are identical. In that case, why do you say that you use SUR to improve the precision of your coefficient estimates? If it were me I would take out the discussion and use of SUR, or at least modify the description of why you use it.
+
+For your guidance, reviewers' comments are appended below and in your EM author account.
+
+If you decide to revise the work, please submit a list of changes or a rebuttal against each point which is being raised when you submit the revised manuscript.
+
+To submit a revision, please go to https://www.editorialmanager.com/jebo/ and login as an Author. 
+Your username is: jrpabraham@gmail.com
+If you need to retrieve password details, please go to: 
+https://www.editorialmanager.com/jebo/l.asp?i=333294&l=MDBNR52O
+
+On your Main Menu page is a folder entitled "Submissions Needing Revision". You will find your submission record there. 
+
+We are grateful that you chose JEBO as a potential outlet for this paper, and we look forward to seeing the revised version.
+
+Please note that this journal offers a new, free service called AudioSlides: brief, webcast-style presentations that are shown next to published articles on ScienceDirect (see also http://www.elsevier.com/audioslides). If your paper is accepted for publication, you will automatically receive an invitation to create an AudioSlides presentation.
+
+The revised version of your submission is due by Sep 22, 2021.
+
+Journal of Economic Behavior and Organization features the Interactive Plot Viewer, see: http://www.elsevier.com/interactiveplots. Interactive Plots provide easy access to the data behind plots. To include one with your article, please prepare a .csv file with your plot data and test it online at http://authortools.elsevier.com/interactiveplots/verification before submission as supplementary material.
+
+Include interactive data visualizations in your publication and let your readers interact and engage more closely with your research. Follow the instructions here: https://www.elsevier.com/authors/author-services/data-visualization to find out about available data visualization options and how to include them with your article.
+
+Yours sincerely,
+
+Laura Schechter
+Co-Editor
+Journal of Economic Behavior and Organization
+
+Additional comments from the Editors and Reviewers (if any):
+
+
+Associate Editor:
+I have received two excellent reports from expert reviewers. The reports are very similar. They both think this is an interesting topic and like the experiment. Both of them also point out that the experiment is severely underpowered and there are issues with the interpretation of the results. As a result, both reviewers mentioned being on the edge between R&R and rejection. I agree with their evaluations.  I also like the topic and think the relation with regret aversion to be interesting, but there is a lot to improve on. In particular, it is hard to interpret the insignificant findings given how underpowered the experiment appears to be.

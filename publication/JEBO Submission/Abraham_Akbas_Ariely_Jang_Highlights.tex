@@ -1,0 +1,55 @@
+\documentclass[12pt, titlepage]{article}
+
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage[strict]{changepage}
+% \usepackage[scale=0.92]{tgschola}
+% \usepackage{fouriernc}
+\usepackage{lmodern}
+% \usepackage{libertinus}
+\usepackage{inconsolata}
+\usepackage[T1]{fontenc}
+
+\usepackage{booktabs, threeparttable, adjustbox, tabularx, longtable}
+\usepackage{amsmath, amssymb, amsthm, bbm}
+\usepackage{hyperref, achicago}
+\usepackage{caption, graphicx}
+\usepackage{secdot, sectsty}
+\usepackage{pdflscape}
+\usepackage{placeins}
+\usepackage{xcolor}
+\usepackage{titling}
+
+\usepackage[backend=bibtex, style=authortitle, citestyle=authoryear-icomp, maxcitenames=2, url=false]{biblatex}
+\addbibresource{Lottery.bib}
+
+\linespread{1.25}
+\urlstyle{tt}
+
+\sectionfont{\normalsize}
+\subsectionfont{\normalsize}
+\subsubsectionfont{\normalsize}
+
+\renewcommand{\abstractname}{\vspace{-\baselineskip}}
+
+\newcommand{\specialcell}[2][c]{\begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
+\renewcommand{\today}{\ifcase \month \or January \or February \or March \or April \or May  \or June \or July \or August \or September \or October \or November \or December \fi \number \year}
+
+\begin{document}
+
+	\begin{abstract}
+
+		\paragraph{Highlights}
+
+		\begin{itemize}
+
+		\item We conducted a field experiment among 311 low-income individuals comparins a prize-linked savings account (PLS) and a standard interest-bearing account.
+		\item Individuals saving with PLS made 42\% more deposits on average compared to those with standard savings accounts. 
+		\item By varying feedback on lottery results, we find some evidence that the treatment effect is consistent with regret aversion.
+		\item Recent experiences of regret induce more subsequent deposits.
+		\item We document evidence that use of PLS results in a 15\% increase in gambling activity.
+
+		\end{itemize}
+
+ 	\end{abstract}
+
+\end{document}
