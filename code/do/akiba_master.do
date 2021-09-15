@@ -32,17 +32,17 @@ cap cd "$project_dir"
 
 /* Customize program */
 
-glo builddataflag = 1	// Build combined dataset
+glo builddataflag = 0	// Build combined dataset
 glo cleandataflag = 1	// Clean combined dataset
-glo summaryflag = 1	 	// Output summary stats
+glo summaryflag = 0	 	// Output summary stats
 glo estimateflag = 1    // Output regression tables
-glo figuresflag = 1		// Output graphs and figures
+glo figuresflag = 0		// Output graphs and figures
 
 /* Analysis options */
 
 glo attritionflag = 1	// Attrition analysis
 glo maineffectsflag = 1 // Treatment effects (covariate adjustment, multiple inference)
-glo riflag = 1			// Tests with randomization inference
+glo riflag = 0			// Tests with randomization inference
 glo heteffectsflag = 1  // Heterogenous treatment effects
 
 glo USDconvertflag = 1  // Runs and reports analysis in USD-PPP
@@ -65,7 +65,7 @@ glo yselectdesc "Hypothetical treatment selection"
 glo ylotterydesc "Lottery usage"
 glo yselfdesc "Self-perceptions"
 
-glo ymobile "mobile_totdeposits mobile_savedays mobile_totdepositamt mobile_totwithdrawalamt"
+glo ymobile "mobile_totdeposits mobile_savedays mobile_maxstreak mobile_totdepositamt mobile_totwithdrawalamt"
 glo yearly "mobile_earlytotdeposits mobile_earlysavedays mobile_earlyavgdeposits mobile_earlytotdepositamt"
 glo ylate "mobile_latetotdeposits mobile_latesavedays mobile_lateavgdeposits mobile_latetotdepositamt"
 glo ypanel "mobile_deposits mobile_saved mobile_depositamount mobile_withdrawalamount"

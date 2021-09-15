@@ -1,0 +1,70 @@
+Document replying to each point and identifying changes in the manuscript.
+
+------------------------------------------------------------------------------
+
+1) The analysis in this paper was registered, but not pre-registered, contrary to what is stated in the paper. The first footnote to the paper states: "This study was pre-registered with the AEA RCT registry (AEARCTR-0000893)." Table 10 discusses differences with the original registration again calling it a PAP or a pre-analysis plan (e.g., ``We did not specify in the PAP...") In fact, the savings program was completed by August 2014, whereas the registry entry is written and posted September 30, 2015, more than a year after data collection had finished. Please change the verbiage throughout to not claim pre-registration.
+
+	[x] Reply: change wording.
+
+2)    The first footnote states: "IRB approval was obtained for this study." Please be more specific as to which IRB, and what is the approval number.
+
+	Reply: obtain and add information.
+
+3)    Table 10 discusses difference between the content of the paper and the 2015 analysis plan: ``We included [in the analysis plan] as an outcome variable the highest number of consecutive days in which an individual made a deposit. We omitted this variable from the analysis. There is little theoretical interest in this outcome and it is computationally difficult to calculate." Please change the wording for this explanation. Given that there are only 300 savers with the possibility of saving for 60 days, it's hard for me to see how it could be "computationally difficult" to calculate the highest number of consecutive days of depositing.
+
+	Reply: include this analysis in the appendix and remove from PAP table.
+
+4)   This leads me to a comment brought up by both reviewers. My gut reaction would be that what we care about is the amount of savings, not the number of deposits over which that total amount saved is distributed. More discussion of how the reader should think about this is warranted.
+
+	Reply: I do this in the conclusion section but maybe add the same discussion to intro/abstract. Can also beef this up.
+
+5)    I am a bit confused by the use of SUR in the paper. The paper states: "Instead of estimating these equations separately, we estimate the system of seemingly unrelated regressions (SUR) to improve the precision of the coefficient estimates (Zellner 1962). SUR estimation is equivalent to OLS when the error terms are in fact uncorrelated between regressions or when each equation contains the same set of regressors." From my understanding, the equations do all contain the same set of regressors and so SUR and OLS are identical. In that case, why do you say that you use SUR to improve the precision of your coefficient estimates? If it were me I would take out the discussion and use of SUR, or at least modify the description of why you use it.
+
+	Reply: Add description that says the reasons: joint tests and more efficiency due to joint estimation of the cv matrix.
+
+I have received two excellent reports from expert reviewers. The reports are very similar. They both think this is an interesting topic and like the experiment. Both of them also point out that the experiment is severely underpowered and there are issues with the interpretation of the results. As a result, both reviewers mentioned being on the edge between R&R and rejection. I agree with their evaluations.  I also like the topic and think the relation with regret aversion to be interesting, but there is a lot to improve on. In particular, it is hard to interpret the insignificant findings given how underpowered the experiment appears to be.
+
+------------------------------------------------------------------------------
+
+I fully agree that the point estimate is substantial, but there are substantial point estimates in the balance table and in the heterogeneous effects as well, which are basically ignored:oBalance Table 2: there is significant imbalance for a couple of variables only, but for  the  most  important  variable –savings -the  differences  are  substantial:  the control save about 41% more than people in the PLS-N arm. From the appendix, it is clear that more details are available regarding savings at baseline, but those are not included in the baseline table (e.g. the use of ROSCAs, which -given their temporary  nature-are  a  good  comparison).It  would  be  useful  to  present normalized  differences  across  the  groups,  as  in  Imbens  and  Rubin  (2015).  That provides a scale-invariant measure of the size of the difference.oThe  authors  put  forward  there  is  no  heterogeneity  across  prior  savings  usage, problem gambling, risk attitudes and temporal discounting (pg 12). However, the Tables  12  and  13  show  non-significant  but  important  point  estimates.  The  effect seems to be driven by people who do not save currently and people who are not risk averse? These traits should also be added to the balance table.
+
+	Reply: do the balance test as in Imbens/Rubin (2015) on savings measures and report. Talk about why we don't think there is imbalance. Discuss non-sig but importnat point estimates in Tables 12-13. Add those variables to balance table and rerun.
+
+The  experiment  has  three  important  features:  (i)  it  is  limited  in  time  (it  runs  for  60  days only), (ii) people were reminded about savingsevery day, (iii) withdrawals were allowed only  once  for  the  duration  of  the  experiment  (day  30).  These  features deviate  from  any standard  account.  For  example,  while  most  experiments  focus  on  having  at  least  two deposits  in six  months,  the  control  deposit14 times in a time span of 60 days... These features are the same across treatment arms, but it is still important to discuss what we learn  about  regular  savings  products (which  is  not  limited  in  time,  does  not  send  out 
+reminders and where withdrawals may be costly, but are not restricted).Maybe nothing, but I would be explicit about that.
+
+	Reply: discuss these differences from regular savings explicitly. Discuss generalizability to these more general settings.
+
+Empirical strategy: While the use of SUR was pre-planned, this is unseen in the savings literature.  A  more  standard  approach  is  to  estimate  using  OLS,  but  adjust  the  standard errors   for   multiple   hypothesis   testing.   The   results   seem   not   very   robust   across specifications, so I would want to see those results for the main Table 3.
+
+	Reply: say that the estimates will be computationally the same and that we already did the adjustment.
+
+The  results  in  Table  5  are  interesting,  but  potentially endogenous?  Whether  someone played inthe  previous  time  periodis  not exogenousand  you  restrict  the  sample  to periods  in  which  people  did  not  play. Theexercise  is  interesting,  but  should  be interpreted with caution (are the results the same if you use the full sample and include a dummy for‘having played in the previous period’
+
+	Reply: the restriction is not endogenous to the RHS variable (win the lottey or not) so the coefficient is still identified. This is a matter of external not internal validity. Run the recommended regression. Then the difference in coefficient between these two groups _will_ be endogenous but still might be interesting? How do we interpret the effect on people who did play?
+
+Instead  of  focusing  on  endline  outcomes  (savings  and  expenditures),  it  may  be  worth spending  more  time  on  the  heterogeneous  effects(e.g.  include  a  heterogeneous gambling effect!). First, the endline asked about the past 30 days, which implies there is an  overlap  with  the  experiment.  What didyou  expect?  People  may  save  or  spend  less because theirmoney  is  on  the  temporary  account?  For  this  exercise  to  be  informative, the  endline  should  have  been  conducted  at  least  one  month  after  theend  of  theexperiment. This makes me a bit cautious about the gambling effects as well. People still had access to the PLF accounts, so ‘same’ gambling, implies more if they also deposit on  the  PLF  accounts?  Given  the  left-hand  side  is  ordered,  an  ordered  logit  is  more appropriate than a multinomial one, but for the ease of interpretation,I would just create a dummy indicating gambling increased(as you pre-planned).
+
+I am still a bit puzzled about the conclusions. People deposit more (but potentially for the wrong reasons), but savings –which should be the first order outcome variable –do not change.  In  addition,  it  may  encourage  people  to  gamble  more.  So,  should  we  conclude this is not to be implemented?That would be an important conclusion.
+
+	Reply: I do this in the conclusion section but maybe add the same discussion to intro/abstract. Can also beef this up.
+
+This report also has minor errata noted at the end.
+
+------------------------------------------------------------------------------
+
+1. The main contribution of this paper is in its examination of the role of regret aversion in driving any effects of PLS incentive schemes. The authors do this by comparing the participants in PLS incentive schemes who receive feedback on their lottery outcomes versus only receive feedback conditional on having saved (and therefore in theory cannot experience regret). However, the authors find no differences between the two groups at conventional levels of significance across any of its main savings outcomes, regardless of whether they look over the full period of the savings program or just the first period. The paper somewhat glosses over this point, instead focusing more heavily on the treatment effects of PLS-F and PLS-N individually. The strongest evidence the authors find in support of regret aversion is in the comparison of the timing of deposits for PLS-F vs. PLS-N. The paper would be better positioned if it were to reframe its discussion to more tightly link the
+theory on regret aversion with the differences we might to expect to see with regard to the timing of deposits and to expand on its analysis of the timing. For example, the authors could more formally test and show that the distributions significantly differ for PLS-F vs PLS-N participants. They could also expand on their findings in Table 5 and show how the distribution of deposit timings compares among non-savers in the PLS-F group after winning vs. not winning the lottery. 
+
+More generally, if the authors are going to conclude that their results are supportive of regret aversion, this conclusion needs to be drawn solely on the basis of the timing result, as all of the other results comparing these two treatment arms show that the two treatments are not statistically different from each other. This will require the paper to both expand the conceptual discussion of how the timing of deposits relates to the theory of regret aversion and extend the empirical analysis on deposit timing. 
+
+	Reply: probably downweigh the importance of the PLS average effects and use it as a bridge to discuss further evidence (timing). Consider additional analysis as they specify on timing.
+
+2. It would also be helpful to know the average frequency of winning the lottery (regardless of whether the participant actually made a savings deposit and therefore receive any winnings) among those with PLS incentive schemes. Similarly, what is the frequency of instances where a participant received news that they won when they hadn't saved among those with PLS incentive schemes? 
+
+	Reply: don't we have this table (11)? Maybe draw up a histogram on winning but not claiming.
+
+3. Consistent with several other papers in the literature on prize-linked savings, this paper finds that PLS accounts are not associated with increased total savings. Given this fact, it would help if the paper were able to provide a more detailed discussion of why the reader or policymakers should pay attention to more nuanced features of PLS design (e.g. providing feedback) which primarily serve to increase the number of deposits but not the savings rate. The authors mention that "if PLS opens the door for greater account usage,…then it could lead to persistent changes in financial decision-making over time." It would be helpful if the authors could expand on this in light of the paper's results on the number of deposits. Should we think of 5-6 additional deposits over a 60-day period as meaningfully greater account usage? One possible way to look at this would be to provide some evidence on how the timing of these deposits are distributed over the 60-day period they see.
+More generally, additional discussion of why the number of deposits is independently interesting as an outcome even though total savings remains unaffected would help us better draw meaningful policy implications from the results.
+
+	Reply: yea ok

@@ -740,6 +740,38 @@ save "$data_dir/clean/akiba_long.dta", replace
 
 keep account period* mobile_*
 
+/* Calculate longest streaks */
+
+preserve
+
+keep account period mobile_saved
+
+reshape wide mobile_saved, i(account) j(period)
+
+gen mobile_maxstreak = 0
+la var mobile_maxstreak "Max. savings streak"
+
+gen counter = mobile_saved1
+
+forval t = 2/60 {
+
+	loc t0 = `t' - 1
+	
+	replace counter = counter + mobile_saved`t'
+	replace mobile_maxstreak = counter if (counter > mobile_maxstreak) & ((mobile_saved`t' == 0 & mobile_saved`t0' == 1) | (`t' == 60))
+	replace counter = 0 if mobile_saved`t' == 0
+
+}
+
+keep account mobile_maxstreak
+
+tempfile maxstreaks
+save `maxstreaks', replace
+
+restore
+
+/* Collapse panel data */
+
 collapse ///
 	(mean) mobile_finalbalance = mobile_finalbalance mobile_avgdeposits = mobile_deposits mobile_avgdepositamt = mobile_depositamount mobile_avgrefunds = mobile_refunds mobile_avgrefundamt = mobile_refundamount mobile_avgprizes = mobile_prizes mobile_avgprizeamt = mobile_prizeamount mobile_avgwithdrawals = mobile_withdrawals mobile_avgwithdrawalamt = mobile_withdrawalamount mobile_earlyavgdeposits = mobile_earlydeposits mobile_lateavgdeposits = mobile_latedeposits ///
 	(sum) mobile_totdeposits = mobile_deposits mobile_totdepositamt = mobile_depositamount mobile_totrefunds = mobile_refunds mobile_totrefundamt = mobile_refundamount mobile_totprizes = mobile_prizes mobile_totprizeamt = mobile_prizeamount mobile_totwithdrawals = mobile_withdrawals mobile_totwithdrawalamt = mobile_withdrawalamount mobile_totmatches = mobile_matched mobile_savedays = mobile_saved mobile_earlytotdeposits = mobile_earlydeposits mobile_earlytotdepositamt = mobile_earlydepositamount mobile_earlysavedays = mobile_earlysaved mobile_latetotdeposits = mobile_latedeposits mobile_latetotdepositamt = mobile_latedepositamount mobile_latesavedays = mobile_latesaved ///
@@ -748,6 +780,7 @@ collapse ///
 , by(account)
 
 merge 1:1 account using `clean_subjects', nogen
+merge 1:1 account using `maxstreaks', nogen
 
 foreach root in deposit refund prize withdrawal {
 
