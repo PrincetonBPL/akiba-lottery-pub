@@ -21,109 +21,56 @@ forval i = 1/`columns' {
 }
 
 loc count = 1
-loc countse = `count' + 1
 
 loc statnames "" // Added scalars to be filled
 loc varlabels "" // Labels for row vars to be filled
-loc surlist ""
-loc surtest ""
-
-/* SUR */
 
 use "$data_dir/clean/akiba_wide.dta", clear
 
+/* Variable labels */
+
 foreach yvar in $sumvars {
 
-	qui reg `yvar' lottery regret
-	est sto e_`yvar'
-	loc surlist "`surlist' e_`yvar'"
+	loc thisvarlabel: var la `yvar'
+	loc varlabels "`varlabels' "`thisvarlabel'" "
 
 }
 
-qui suest `surlist', vce(cl surveyid)
-est sto sur
+/* Normalized differences */
+
+normdiff $sumvars if regret == 0, treat(lottery)
+mat def V1 = r(ndiffs)
+
+normdiff $sumvars if lottery == 0, treat(regret)
+mat def V2 = r(ndiffs)
+
+normdiff $sumvars if control == 0, treat(regret)
+mat def V3 = r(ndiffs)
 
 /* Custom fill cells */
 
-est restore sur
+loc varcount: word count $sumvars
 
-foreach yvar in $sumvars {
+forval i = 1/`varcount' {
 
-	qui test [e_`yvar'_mean]lottery = 0
-	loc p = `r(p)'
-	loc b = _b[e_`yvar'_mean:lottery]
-	loc se = _se[e_`yvar'_mean:lottery]
+	forval j = 1/3 {
 
-	sigstar, b(`b') se(`se') p(`p') prec(2)
-	estadd loc thisstat`count' = "`r(bstar)'": col1
-	estadd loc thisstat`countse' = "`r(sestar)'": col1
+		loc res: di %9.3f = V`j'[`i', 1]
+		estadd loc thisstat`i' = "`res'": col`j'
 
-	qui test [e_`yvar'_mean]regret = 0
-	loc p = `r(p)'
-	loc b = _b[e_`yvar'_mean:regret]
-	loc se = _se[e_`yvar'_mean:regret]
+	}
 
-	sigstar, b(`b') se(`se') p(`p') prec(2)
-	estadd loc thisstat`count' = "`r(bstar)'": col2
-	estadd loc thisstat`countse' = "`r(sestar)'": col2
-
-	qui lincom [e_`yvar'_mean]regret - [e_`yvar'_mean]lottery
-	loc b = `r(estimate)'
-	loc se = `r(se)'
-
-	qui test [e_`yvar'_mean]regret - [e_`yvar'_mean]lottery = 0
-	loc p = `r(p)'
-
-	sigstar, b(`b') se(`se') p(`p') prec(2)
-	estadd loc thisstat`count' = "`r(bstar)'": col3
-	estadd loc thisstat`countse' = "`r(sestar)'": col3
-
-	qui su `yvar' if control == 1
-	estadd loc thisstat`count' = string(r(mean), "%9.2f"): col4
-	estadd loc thisstat`countse' = "(" + string(r(sd), "%9.2f") + ")": col4
-
-	qui su `yvar' if ~mi(lottery, regret)
-	loc N = e(N)
-	estadd loc thisstat`count' = `N': col5
-
-	loc surtest "`surtest' ([e_`yvar'_mean]regret = [e_`yvar'_mean]lottery = 0)"
-
-	/* Row Labels */
-
-	loc thisvarlabel: variable label `yvar' // Extracts label from row var
-	local varlabels "`varlabels' "`thisvarlabel'" " " "
-	loc statnames "`statnames' thisstat`count' thisstat`countse'"
-	loc count = `count' + 2
-	loc countse = `count' + 1
+	loc statnames "`statnames' thisstat`i'"
 
 }
-
-/* Joint test */
-
-est restore sur
-
-testparm lottery
-sigstar, p(`r(p)') pstar prec(2)
-estadd local sur_p "`r(pstar)'": col1
-
-testparm regret
-sigstar, p(`r(p)') pstar prec(2)
-estadd local sur_p "`r(pstar)'": col2
-
-test `surtest'
-sigstar, p(`r(p)') pstar prec(2)
-estadd local sur_p "`r(pstar)'": col3
-
-loc statnames "`statnames' sur_p"
-loc varlabels "`varlabels' "\midrule Joint test \emph{p}-value" "
 
 /* Table options */
 
 loc prehead "\begin{table}[h]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \caption{$sumtitle} \label{tab:$sumpath} \maxsizebox*{\textwidth}{\textheight}{ \begin{threeparttable} \begin{tabular}{l*{`columns'}{c}} \toprule"
 loc postfoot "\bottomrule \end{tabular} \begin{tablenotes}[flushleft] \footnotesize \item \emph{Notes:} @note \end{tablenotes} \end{threeparttable} } \end{table}"
-loc footnote "The first three columns report the difference of means across treatment groups with standard errors in parentheses. Column 4 reports the mean of the control group with SD in parentheses. The bottom row reports the \(p\)-value of a joint test of significance for each hypothesis. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level."
+loc footnote "This table reports normalized differences between treatment groups for each row variable. The normalized difference is the difference in group means scaled by the square root of the average of the within-group variances (Imbens and Rubin, 2015)."
 
-esttab col* using "$tab_dir/$sumpath.tex", booktabs cells(none) nogap mtitle("\specialcell{PLS-N $-$\\Control}" "\specialcell{PLS-F $-$\\Control}" "\specialcell{PLS-F $-$\\PLS-N}" "\specialcell{Control mean\\(SD)}" "Obs.") stats(`statnames', labels(`varlabels')) note("`footnote'") prehead("`prehead'") postfoot("`postfoot'") compress wrap replace
+esttab col* using "$tab_dir/$sumpath.tex", booktabs cells(none) nogap mtitle("\specialcell{PLS-N $-$\\Control}" "\specialcell{PLS-F $-$\\Control}" "\specialcell{PLS-F $-$\\PLS-N}") stats(`statnames', labels(`varlabels')) note("`footnote'") prehead("`prehead'") postfoot("`postfoot'") compress wrap replace
 
 eststo clear
 

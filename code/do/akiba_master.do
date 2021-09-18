@@ -33,10 +33,10 @@ cap cd "$project_dir"
 /* Customize program */
 
 glo builddataflag = 0	// Build combined dataset
-glo cleandataflag = 1	// Clean combined dataset
+glo cleandataflag = 0	// Clean combined dataset
 glo summaryflag = 1	 	// Output summary stats
-glo estimateflag = 1    // Output regression tables
-glo figuresflag = 1		// Output graphs and figures
+glo estimateflag = 0    // Output regression tables
+glo figuresflag = 0		// Output graphs and figures
 
 /* Analysis options */
 
