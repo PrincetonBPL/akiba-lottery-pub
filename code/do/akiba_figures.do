@@ -162,9 +162,15 @@ joinby account period using "$data_dir/clean/akiba_mobile.dta"
 
 gen dailytime = hms(hh(clock(time, "MD20Yhm")), mm(clock(time, "MD20Yhm")), ss(clock(time, "MD20Yhm")))
 
-tw (hist dailytime if type_deposit & treatmentgroup == 1, frac width(1800000) lwidth(thin) lcolor(gs1) fcolor(none)) (hist dailytime if type_deposit & treatmentgroup == 2, frac width(1800000) lwidth(thin) lcolor(gs1) fcolor(gs12)) (hist dailytime if type_deposit & treatmentgroup == 3, frac width(1800000) lwidth(thin) lcolor(gs1) fcolor(gs2)), xline(28800000) xtitle("Time") ylabel(, glwidth(vthin) glcolor(gs14)) xlabel(0(7200000)86400000, format(%tcHH:MM) angle(330)) graphregion(color(white)) legend(order(1 "Control" 2 "PLS-N" 3 "PLS-F"))
+hist dailytime if type_deposit & treatmentgroup == 1, frac width(1800000) lwidth(thin) lcolor(gs1) fcolor(none) xline(28800000) xtitle("Time") ylabel(, glwidth(vthin) glcolor(gs14)) xlabel(0(7200000)86400000, format(%tcHH:MM) angle(330)) graphregion(color(white)) saving("$fig_dir/hist-timing0", replace)
+hist dailytime if type_deposit & treatmentgroup == 2, frac width(1800000) lwidth(thin) lcolor(gs1) fcolor(gs12) xline(28800000) xtitle("Time") ylabel(, glwidth(vthin) glcolor(gs14)) xlabel(0(7200000)86400000, format(%tcHH:MM) angle(330)) graphregion(color(white)) saving("$fig_dir/hist-timing1", replace)
+hist dailytime if type_deposit & treatmentgroup == 3, frac width(1800000) lwidth(thin) lcolor(gs1) fcolor(gs2) xline(28800000) xtitle("Time") ylabel(, glwidth(vthin) glcolor(gs14)) xlabel(0(7200000)86400000, format(%tcHH:MM) angle(330)) graphregion(color(white)) legend(order(1 "Control" 2 "PLS-N" 3 "PLS-F")) saving("$fig_dir/hist-timing2", replace)
+
+gr combine hist-timing0.gph hist-timing1.gph hist-timing2.gph, col(1) xcommon ycommon graphregion(color(white))
 gr export "$fig_dir/hist-deposits.eps", replace
 cap noi !epstopdf "$fig_dir/hist-deposits.eps"
+
+* can either do gr combine or have the bars side to side
 
 tw (hist dailytime if type_deposit & inrange(dailytime, 25200000, 36000000) & treatmentgroup == 1, frac width(360000) lwidth(thin) lcolor(gs1) fcolor(none)) (hist dailytime if type_deposit & inrange(dailytime, 25200000, 36000000) & treatmentgroup == 2, frac width(360000) lwidth(thin) lcolor(gs1) fcolor(gs12)) (hist dailytime if type_deposit & inrange(dailytime, 25200000, 36000000) & treatmentgroup == 3, frac width(360000) lwidth(thin) lcolor(gs1) fcolor(gs2)), xline(28800000) xtitle("Time") ylabel(, glwidth(vthin) glcolor(gs14)) xlabel(25200000(720000)36000000,format(%tcHH:MM) angle(330)) graphregion(color(white)) legend(order(1 "Control" 2 "PLS-N" 3 "PLS-F"))
 gr export "$fig_dir/hist-zoomdeposits.eps", replace

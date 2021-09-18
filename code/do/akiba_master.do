@@ -34,16 +34,16 @@ cap cd "$project_dir"
 
 glo builddataflag = 0	// Build combined dataset
 glo cleandataflag = 1	// Clean combined dataset
-glo summaryflag = 0	 	// Output summary stats
+glo summaryflag = 1	 	// Output summary stats
 glo estimateflag = 1    // Output regression tables
-glo figuresflag = 0		// Output graphs and figures
+glo figuresflag = 1		// Output graphs and figures
 
 /* Analysis options */
 
-glo attritionflag = 1	// Attrition analysis
+glo attritionflag = 0	// Attrition analysis
 glo maineffectsflag = 1 // Treatment effects (covariate adjustment, multiple inference)
 glo riflag = 0			// Tests with randomization inference
-glo heteffectsflag = 1  // Heterogenous treatment effects
+glo heteffectsflag = 0  // Heterogenous treatment effects
 
 glo USDconvertflag = 1  // Runs and reports analysis in USD-PPP
 glo ppprate = (1/38.84) // PPP exchange rate from KSH (2009-2013)

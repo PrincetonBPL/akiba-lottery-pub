@@ -123,7 +123,7 @@ loc prehead "\begin{table}[h]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\f
 loc postfoot "\bottomrule \end{tabular} \begin{tablenotes}[flushleft] \footnotesize \item \emph{Notes:} @note \end{tablenotes} \end{threeparttable} } \end{table}"
 loc footnote "These results are restricted to the sample of participants who completed the endline survey. The first three columns report the difference of means across treatment groups with SEs in parentheses. Column 4 reports the mean of the control group with SD in parentheses. The bottom row reports the \(p\)-value of a joint test of significance for each hypothesis. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level."
 
-esttab col* using "$tab_dir/$sumpath.tex", booktabs cells(none) nogap mtitle("\specialcell{PLS-N $-$\\Control}" "\specialcell{PLS-F $-$\\Control}" "\specialcell{PLS-N $-$\\PLS-F}" "\specialcell{Control mean\\(SD)}" "Obs.") stats(`statnames', labels(`varlabels')) note("`footnote'") prehead("`prehead'") postfoot("`postfoot'") compress wrap replace
+esttab col* using "$tab_dir/$sumpath.tex", booktabs cells(none) nogap mtitle("\specialcell{PLS-N $-$\\Control}" "\specialcell{PLS-F $-$\\Control}" "\specialcell{PLS-F $-$\\PLS-N}" "\specialcell{Control mean\\(SD)}" "Obs.") stats(`statnames', labels(`varlabels')) note("`footnote'") prehead("`prehead'") postfoot("`postfoot'") compress wrap replace
 
 eststo clear
 
