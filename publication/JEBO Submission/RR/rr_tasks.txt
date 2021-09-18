@@ -12,7 +12,7 @@ Document replying to each point and identifying changes in the manuscript.
 
 3)    Table 10 discusses difference between the content of the paper and the 2015 analysis plan: ``We included [in the analysis plan] as an outcome variable the highest number of consecutive days in which an individual made a deposit. We omitted this variable from the analysis. There is little theoretical interest in this outcome and it is computationally difficult to calculate." Please change the wording for this explanation. Given that there are only 300 savers with the possibility of saving for 60 days, it's hard for me to see how it could be "computationally difficult" to calculate the highest number of consecutive days of depositing.
 
-	[] Reply: include this analysis in the appendix and remove from PAP table.
+	[x] Reply: include this analysis in the appendix and remove from PAP table.
 
 4)   This leads me to a comment brought up by both reviewers. My gut reaction would be that what we care about is the amount of savings, not the number of deposits over which that total amount saved is distributed. More discussion of how the reader should think about this is warranted.
 
