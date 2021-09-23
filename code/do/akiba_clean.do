@@ -46,7 +46,10 @@ la var enroll_date "Enrollment date"
 
 gen survey_date = mdyhms(month(identifydate), day(identifydate), year(identifydate), hh(identifystart), mm(identifystart), ss(identifystart))
 format survey_date %tCDD_Mon_YY_HH:MM:SS
-la var survey_date "Survey date"
+la var survey_date "Baseline survey date"
+
+gen endline_date = date(endline_timestamp, "DM20Yhm")
+la var endline_date "Endline survey date"
 
 replace nrblocation = 0 if inkibera == 1
 la def nrblocation 0 "kibera", add
@@ -95,10 +98,10 @@ la var demo_young_0 "Below 30 y.o."
 ren education demo_education_0
 
 gen demo_stdschool_0 = demo_education > 9
-la var demo_stdschool_0 "Completed std. 8"
+la var demo_stdschool_0 "Completed primary school"
 
 gen demo_formschool_0 = demo_education > 13
-la var demo_formschool_0 "Completed formal 4"
+la var demo_formschool_0 "Completed secondary school"
 
 ren nativelanguage demo_language_0
 ren nativelanguage_spec demo_language_spec_0
@@ -172,7 +175,7 @@ la var labor_medianinc_0 "Above median monthly inc."
 *************
 
 gen save_dosave_0 = 2 - labsaving_yesno
-la var save_dosave_0 "Currently saves"
+la var save_dosave_0 "Prior savings usage"
 
 ren labtot_save_pastmonth save_monthlysave_0
 la var save_monthlysave_0 "Total savings last month"
@@ -380,7 +383,7 @@ la var pref_crra_0 "Coefficient of relative risk aversion"
 
 xtile pref_riskaverse_0 = pref_crra_0, n(2)
 replace pref_riskaverse_0 = pref_riskaverse_0 - 1
-la var pref_riskaverse_0 "Risk averse"
+la var pref_riskaverse_0 "Risk aversion"
 
 /* Locus of control */
 
@@ -583,7 +586,7 @@ collapse (mean) ticketid participantticket winningticket matchtype awarded (sum)
 
 la var mobile_depositamount "Amount deposited"
 la var mobile_refundamount "Amount refunded"
-la var mobile_prizeamount "Amount received as prize"
+la var mobile_prizeamount "Amount awarded as prize"
 
 replace mobile_withdrawalamount = abs(mobile_withdrawalamount)
 la var mobile_withdrawalamount "Amount withdrew"
@@ -601,7 +604,7 @@ ren type_refund mobile_refunds
 la var mobile_refunds "No. of refunds made"
 
 ren type_prize mobile_prizes
-la var mobile_prizes "No. of prizes won"
+la var mobile_prizes "No. of prizes received"
 
 ren type_withdrawal mobile_withdrawals
 la var mobile_withdrawals "No. of withdrawals made"
@@ -725,7 +728,7 @@ foreach v of varlist mobile_balance mobile_finalbalance mobile_*amount {
 
 keep surveyid account period period_date in_pilot left_akiba nrblocation kiberalocation treatmentgroup control lottery regret treated endline attrit participantticket winningticket mobile_* lnmobile_* session *_date FO_* demo_* labor_* lnlabor_* save_* lnsave_* gam_* pref_* self_* akiba_* lnakiba_*
 order surveyid account period period_date in_pilot left_akiba nrblocation kiberalocation treatmentgroup control lottery regret treated endline attrit participantticket winningticket mobile_* lnmobile_* session *_date FO_* demo_* labor_* lnlabor_* save_* lnsave_* gam_* pref_* self_* akiba_* lnakiba_*
-order *_0 *_1, after(survey_date)
+order *_0 *_1, after(endline_date)
 
 sort surveyid period
 xtset surveyid period
@@ -775,7 +778,7 @@ restore
 collapse ///
 	(mean) mobile_finalbalance = mobile_finalbalance mobile_avgdeposits = mobile_deposits mobile_avgdepositamt = mobile_depositamount mobile_avgrefunds = mobile_refunds mobile_avgrefundamt = mobile_refundamount mobile_avgprizes = mobile_prizes mobile_avgprizeamt = mobile_prizeamount mobile_avgwithdrawals = mobile_withdrawals mobile_avgwithdrawalamt = mobile_withdrawalamount mobile_earlyavgdeposits = mobile_earlydeposits mobile_lateavgdeposits = mobile_latedeposits ///
 	(sum) mobile_totdeposits = mobile_deposits mobile_totdepositamt = mobile_depositamount mobile_totrefunds = mobile_refunds mobile_totrefundamt = mobile_refundamount mobile_totprizes = mobile_prizes mobile_totprizeamt = mobile_prizeamount mobile_totwithdrawals = mobile_withdrawals mobile_totwithdrawalamt = mobile_withdrawalamount mobile_totmatches = mobile_matched mobile_savedays = mobile_saved mobile_earlytotdeposits = mobile_earlydeposits mobile_earlytotdepositamt = mobile_earlydepositamount mobile_earlysavedays = mobile_earlysaved mobile_latetotdeposits = mobile_latedeposits mobile_latetotdepositamt = mobile_latedepositamount mobile_latesavedays = mobile_latesaved ///
-	(max) mobile_nonuser = mobile_nonuser ///
+	(max) mobile_nonuser = mobile_nonuser mobile_enddate = period_date ///
 	(min) mobile_startdate = period_date ///
 , by(account)
 
@@ -828,11 +831,16 @@ la var mobile_totmatches "No. of hypothetical and realized lottery wins"
 la var mobile_nonuser "Never used mobile savings"
 la var mobile_startdate "Savings period start date"
 
+/* Calculate time between end of savings and endline questionnaire */
+
+gen diff_date = endline_date - mobile_enddate
+la var diff_date "No. of days between final period and endline"
+
 /* Save subjects dataset */
 
 keep surveyid account in_pilot left_akiba nrblocation kiberalocation treatmentgroup control lottery regret treated endline attrit session *_date FO_* demo_* mobile_* lnmobile_* labor_* lnlabor_* save_* lnsave_* gam_* pref_* self_* akiba_* lnakiba_*
 order surveyid account in_pilot left_akiba nrblocation kiberalocation treatmentgroup control lottery regret treated endline attrit session *_date FO_* demo_* mobile_* lnmobile_* labor_* lnlabor_* save_* lnsave_* gam_* pref_* self_* akiba_* lnakiba_*
-order *_0 *_1, after(survey_date)
+order *_0 *_1, after(endline_date)
 
 qui compress
 label data "Produced by akiba_clean.do on `c(current_time)' `c(current_date)' by user `c(username)' on Stata `c(version)'"

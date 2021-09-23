@@ -68,7 +68,7 @@ forval i = 1/`varcount' {
 
 loc prehead "\begin{table}[h]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \caption{$sumtitle} \label{tab:$sumpath} \maxsizebox*{\textwidth}{\textheight}{ \begin{threeparttable} \begin{tabular}{l*{`columns'}{c}} \toprule"
 loc postfoot "\bottomrule \end{tabular} \begin{tablenotes}[flushleft] \footnotesize \item \emph{Notes:} @note \end{tablenotes} \end{threeparttable} } \end{table}"
-loc footnote "This table reports normalized differences between treatment groups for each row variable. The normalized difference is the difference in group means scaled by the square root of the average of the within-group variances (Imbens and Rubin, 2015)."
+loc footnote "This table reports normalized differences between treatment groups for each row variable. The normalized difference is the difference in group means scaled by the square root of the average of the within-group variances and is a scale-invariant way of comparing the distribution of variables across treatment groups (Imbens and Rubin, 2015)."
 
 esttab col* using "$tab_dir/$sumpath.tex", booktabs cells(none) nogap mtitle("\specialcell{PLS-N $-$\\Control}" "\specialcell{PLS-F $-$\\Control}" "\specialcell{PLS-F $-$\\PLS-N}") stats(`statnames', labels(`varlabels')) note("`footnote'") prehead("`prehead'") postfoot("`postfoot'") compress wrap replace
 

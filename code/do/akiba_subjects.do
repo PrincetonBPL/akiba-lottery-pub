@@ -385,9 +385,10 @@ drop if surveyid == 3
 replace surveyid = 169770 if surveyid > 999999
 
 * dropping extra variables
-drop v35 pleaseconsiderthefollowingthreed timestamp
+drop v35 pleaseconsiderthefollowingthreed
 
 * renaming variables
+rename timestamp endline_timestamp
 rename respondentsfirstname endline_firstname
 rename surveyid endline_surveyid
 rename howmuchmoneyinkshdidyouearninthe endline_pastmonth_earnings

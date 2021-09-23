@@ -1,4 +1,4 @@
-\begin{table}[h]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \caption{Multinomial treatment effects -- Hypothetical treatment selection} \label{tab:reg-mlogselect} \maxsizebox*{\textwidth}{\textheight}{ \begin{threeparttable} \begin{tabular}{l*{5}{c}} \toprule
+\begin{table}[h]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \caption{Multinomial logit -- Hypothetical treatment selection} \label{tab:reg-mlogselect} \maxsizebox*{\textwidth}{\textheight}{ \begin{threeparttable} \begin{tabular}{l*{5}{c}} \toprule
           &\multicolumn{4}{c}{Relative risk ratio}&\multicolumn{1}{c}{Sample}\\\cmidrule(lr){2-5}\cmidrule(lr){6-6}
           &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}&\multicolumn{1}{c}{(5)}\\
           &\multicolumn{1}{c}{Constant}&\multicolumn{1}{c}{PLS-N}&\multicolumn{1}{c}{PLS-F}&\multicolumn{1}{c}{\specialcell{PLS-F $-$ \\PLS-N}}&\multicolumn{1}{c}{Obs.}\\
@@ -9,4 +9,4 @@ Select PLS-F group&0.08\sym{***}&6.74\sym{***}&8.53\sym{***}&     1.27&      284
           &   (0.05)&   (4.62)&   (5.66)&   (0.55)&         \\
 \bottomrule \end{tabular} \begin{tablenotes}[flushleft] \footnotesize \item \emph{Notes:} This table reports estimates from a multinomial logit regression of the categorial response on treatment assigment. Each row corresponds to a response category with the baseline value as Select control group. Column 1 reports the constant term corresponding to the mean of the control group. Columns 2--3 reports the treatment effect in relative risk ratios compared to the control group. Column 4 reports the difference between the two PLS treatments. Standard errors are in parentheses. Column 5 reports the number of observations in the analytic sample. Observations are at the individual level. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level. \end{tablenotes} \end{threeparttable} } \end{table}
 
-% File produced by reg-mlogit.do with /Users/justin/Repos/akiba-lottery-pub/data/clean/akiba_wide.dta on 21:38:53 15 Sep 2021 by user justin on Stata 13.1 with seed X71d1d353b37e281e006fa26738e26f4500044a1c
+% File produced by reg-mlogit.do with /Users/justin/Repos/akiba-lottery-pub/data/clean/akiba_wide.dta on 16:49:13 21 Sep 2021 by user justin on Stata 13.1 with seed X53d8cd0fc43f462544a474abacbdd93d00044a8f

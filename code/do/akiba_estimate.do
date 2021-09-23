@@ -153,22 +153,17 @@ if $riflag {
 /* Multinomial logit */
 ///////////////////////
 
-glo depvar "gam_behavior_1"
-glo basevalue "2"
-glo regpath "reg-mlogfreq"
-glo regtitle "Multinomial treatment effects -- Gambling behavior"
-do "$do_dir/custom_tables/reg-mlogit.do"
+use "$data_dir/clean/akiba_wide.dta"
 
-glo depvar  "gam_temptation_1"
-glo basevalue "3"
-glo regpath "reg-mlogtempt"
-glo regtitle "Multinomial treatment effects -- Temptation to gamble"
-do "$do_dir/custom_tables/reg-mlogit.do"
+glo regvars "gam_behavior_1 gam_temptation_1"
+glo regpath "reg-ologit"
+glo regtitle "Ordered logit -- Gambling behavior and temptation"
+do "$do_dir/custom_tables/reg-ologit.do"
 
 glo depvar "akiba_select_1"
 glo basevalue "1"
 glo regpath "reg-mlogselect"
-glo regtitle "Multinomial treatment effects -- Hypothetical treatment selection"
+glo regtitle "Multinomial logit -- Hypothetical treatment selection"
 do "$do_dir/custom_tables/reg-mlogit.do"
 
 /////////////////////////////////////
@@ -230,7 +225,7 @@ if $heteffectsflag {
 
 		loc prehead "\begin{table}[ht]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \caption{Heterogeneous effects -- Primary outcomes by `xvarlab'} \label{tab:het-`xvar'} \maxsizebox*{\textwidth}{\textheight}{ \begin{threeparttable} \begin{tabular}{l*{`columns'}{c}} \toprule"
 		loc postfoot "\bottomrule \end{tabular} \begin{tablenotes}[flushleft] \footnotesize \item \emph{Notes:} @note \end{tablenotes} \end{threeparttable} } \end{table}"
-		loc footnote "This table reports OLS estimates of the treatment effect and its interaction with baseline. Standard errors are in parentheses. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level. We also report the \(p\)-values for joint tests on the direct treatment effect conditional on the baseline covariate $= 1$."
+		loc footnote "This table reports OLS estimates of the treatment effect and its interaction with the baseline variable. Standard errors are in parentheses. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level. We also report the \(p\)-values for joint tests on the direct treatment effect conditional on the baseline covariate $= 1$."
 
 		esttab using "$tab_dir/het-`xvar'.tex", alignment(c) ar2 obslast nobaselevels label b(%9.2f) se(%9.2f) sfmt(%9.2f) scalars("ymean Control mean" "Ljoint_p PLS-N \emph{p}-value" "Rjoint_p PLS-F \emph{p}-value") nogap star(* 0.10 ** 0.05 *** 0.01) prehead("`prehead'") postfoot("`postfoot'") note("`footnote'") substitute(\_ ) se compress booktabs replace
 		eststo clear
@@ -273,9 +268,11 @@ eststo: reghdfe mobile_saved mobile_matched if L1.mobile_saved != 1 & regret == 
 	qui reghdfe mobile_saved lottery regret, absorb(period) vce(cl surveyid)
 	estadd scalar teffect = round(_b[regret], 0.01)
 
+eststo: reghdfe mobile_saved mobile_matched L1.mobile_saved if treated == 1, absorb(period) vce(cl surveyid)
+
 loc prehead "\begin{table}[ht]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \caption{Regression of deposits on lottery results} \label{tab:reg-regretaversion} \maxsizebox*{\textwidth}{\textheight}{ \begin{threeparttable} \begin{tabular}{l*{2}{c}} \toprule"
 loc postfoot "\bottomrule \end{tabular} \begin{tablenotes}[flushleft] \footnotesize \item \emph{Notes:} @note \end{tablenotes} \end{threeparttable} } \end{table}"
-loc footnote "This table reports on a regression of having saved at period \(t\) on winning the lottery at \(t\) conditional on being in the PLS group and not having saved at \(t-1\). The unit of observation is individual-by-period. The regression includes period fixed effects. Standard errors are in parentheses and clustered at the individual level. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level."
+loc footnote "Column 1 reports on a regression of having saved at period \(t\) on winning the lottery at \(t\) conditional on being in the PLS group and not having saved at \(t-1\). Column 2 reports coefficients from a regression including both savers and non-savers with having saved in the previous period as a control variable. The unit of observation is individual-by-period. The regression includes period fixed effects. Standard errors are in parentheses and clustered at the individual level. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level."
 esttab using "$tab_dir/reg-regretaversion", alignment(c) ar2 nobaselevels obslast nogap label nonum b(%9.2f) se(%9.2f) sfmt(%9.2f) drop(_cons) scalars("ymean Control mean" "teffect Daily PLS effect") star(* 0.10 ** 0.05 *** 0.01) note("`footnote'") prehead("`prehead'") postfoot("`postfoot'") se compress booktabs replace
 eststo clear
 

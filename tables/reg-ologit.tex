@@ -1,0 +1,12 @@
+\begin{table}[h]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \caption{Ordered logit -- Gambling behavior and temptation} \label{tab:reg-ologit} \maxsizebox*{\textwidth}{\textheight}{ \begin{threeparttable} \begin{tabular}{l*{4}{c}} \toprule
+          &\multicolumn{3}{c}{Log odds} &\multicolumn{1}{c}{Sample}\\\cmidrule(lr){2-4}\cmidrule(lr){5-5}
+          &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}\\
+          &\multicolumn{1}{c}{PLS-N}&\multicolumn{1}{c}{PLS-F}&\multicolumn{1}{c}{\specialcell{PLS-F $-$ \\PLS-N}}&\multicolumn{1}{c}{Obs.}\\
+\midrule
+Self-reported gambling&     0.28&     0.38&     0.09&      284\\
+          &   (0.27)&   (0.32)&   (0.32)&         \\
+Temptation to gamble&    -0.25&    -0.35&    -0.10&      284\\
+          &   (0.28)&   (0.29)&   (0.28)&         \\
+\bottomrule \end{tabular} \begin{tablenotes}[flushleft] \footnotesize \item \emph{Notes:} This table reports estimates from a ordered logit regression of the categorial response on treatment assigment. Each row corresponds to an outcome variable. Columns 1-2 reports the treatment effect in log-odds compared to the control group. Column 3 reports the difference between the two PLS treatments. Standard errors are in parentheses. Column 4 reports the number of observations in the analytic sample. Observations are at the individual level. Standard errors are clustered at the individual level. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level. \end{tablenotes} \end{threeparttable} } \end{table}
+
+% File produced by reg-ologit.do with /Users/justin/Repos/akiba-lottery-pub/data/clean/akiba_wide.dta on 16:49:12 21 Sep 2021 by user justin on Stata 13.1 with seed X53d8cd0fc43f462544a474abacbdd93d00044a8f

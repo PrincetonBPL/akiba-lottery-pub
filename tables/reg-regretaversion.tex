@@ -1,13 +1,15 @@
 \begin{table}[ht]\centering \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} \caption{Regression of deposits on lottery results} \label{tab:reg-regretaversion} \maxsizebox*{\textwidth}{\textheight}{ \begin{threeparttable} \begin{tabular}{l*{2}{c}} \toprule
-                &\multicolumn{1}{c}{Made a deposit}\\
+                &\multicolumn{1}{c}{Made a deposit}&\multicolumn{1}{c}{Made a deposit}\\
 \midrule
-Winning ticket  &     0.02\sym{**} \\
-                &   (0.01)         \\
+Winning ticket  &     0.02\sym{**} &     0.15\sym{***}\\
+                &   (0.01)         &   (0.02)         \\
+L.Made a deposit&                  &     0.47\sym{***}\\
+                &                  &   (0.02)         \\
 \midrule
-Adjusted \(R^{2}\)&    0.081         \\
-Control mean    &     0.20         \\
-Daily PLS effect&                  \\
-Observations    &     4473         \\
-\bottomrule \end{tabular} \begin{tablenotes}[flushleft] \footnotesize \item \emph{Notes:} This table reports on a regression of having saved at period \(t\) on winning the lottery at \(t\) conditional on being in the PLS group and not having saved at \(t-1\). The unit of observation is individual-by-period. The regression includes period fixed effects. Standard errors are in parentheses and clustered at the individual level. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level. \end{tablenotes} \end{threeparttable} } \end{table}
+Adjusted \(R^{2}\)&    0.081         &    0.267         \\
+Control mean    &     0.20         &                  \\
+Daily PLS effect&                  &                  \\
+Observations    &     4473         &    12154         \\
+\bottomrule \end{tabular} \begin{tablenotes}[flushleft] \footnotesize \item \emph{Notes:} Column 1 reports on a regression of having saved at period \(t\) on winning the lottery at \(t\) conditional on being in the PLS group and not having saved at \(t-1\). Column 2 reports coefficients from a regression including both savers and non-savers with having saved in the previous period as a control variable. The unit of observation is individual-by-period. The regression includes period fixed effects. Standard errors are in parentheses and clustered at the individual level. * denotes significance at 10 pct., ** at 5 pct., and *** at 1 pct. level. \end{tablenotes} \end{threeparttable} } \end{table}
 
-% File produced by akiba-estimate.do with /Users/justin/Repos/akiba-lottery-pub/data/clean/akiba_long.dta on 21:38:53 15 Sep 2021 by user justin on Stata 13.1 with seed X71d1d353b37e281e006fa26738e26f4500044a1c
+% File produced by akiba-estimate.do with /Users/justin/Repos/akiba-lottery-pub/data/clean/akiba_long.dta on 16:49:13 21 Sep 2021 by user justin on Stata 13.1 with seed X53d8cd0fc43f462544a474abacbdd93d00044a8f

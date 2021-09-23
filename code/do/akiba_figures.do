@@ -156,25 +156,38 @@ foreach yvar of varlist mobile_deposits mobile_depositamount {
 
 use "$data_dir/clean/akiba_long.dta", clear
 
-keep account period treatmentgroup
+gen winregret = mobile_matched if regret == 1 & L1.mobile_saved == 0
+keep account period treatmentgroup winregret
 
 joinby account period using "$data_dir/clean/akiba_mobile.dta"
 
 gen dailytime = hms(hh(clock(time, "MD20Yhm")), mm(clock(time, "MD20Yhm")), ss(clock(time, "MD20Yhm")))
 
-hist dailytime if type_deposit & treatmentgroup == 1, frac width(1800000) lwidth(thin) lcolor(gs1) fcolor(none) xline(28800000) xtitle("Time") ylabel(, glwidth(vthin) glcolor(gs14)) xlabel(0(7200000)86400000, format(%tcHH:MM) angle(330)) graphregion(color(white)) saving("$fig_dir/hist-timing0", replace)
-hist dailytime if type_deposit & treatmentgroup == 2, frac width(1800000) lwidth(thin) lcolor(gs1) fcolor(gs12) xline(28800000) xtitle("Time") ylabel(, glwidth(vthin) glcolor(gs14)) xlabel(0(7200000)86400000, format(%tcHH:MM) angle(330)) graphregion(color(white)) saving("$fig_dir/hist-timing1", replace)
-hist dailytime if type_deposit & treatmentgroup == 3, frac width(1800000) lwidth(thin) lcolor(gs1) fcolor(gs2) xline(28800000) xtitle("Time") ylabel(, glwidth(vthin) glcolor(gs14)) xlabel(0(7200000)86400000, format(%tcHH:MM) angle(330)) graphregion(color(white)) legend(order(1 "Control" 2 "PLS-N" 3 "PLS-F")) saving("$fig_dir/hist-timing2", replace)
+gen withinhour = dailytime > 28800000 & dailytime < 34200000
+bys treatmentgroup: su withinhour if type_deposit
 
-gr combine hist-timing0.gph hist-timing1.gph hist-timing2.gph, col(1) xcommon ycommon graphregion(color(white))
+ksmirnov dailytime if type_deposit & treatmentgroup != 2, by(treatmentgroup)
+ksmirnov dailytime if type_deposit & treatmentgroup != 1, by(treatmentgroup)
+
+hist dailytime if type_deposit & treatmentgroup == 1, frac width(1800000) lwidth(thin) lcolor(gs1) fcolor(gs12) xline(28800000) title("Control") xtitle("") ylabel(, glwidth(vthin) glcolor(gs14)) xlabel(0(7200000)86400000, format(%tcHH:MM) angle(330)) graphregion(color(white)) saving("$fig_dir/hist-timing0", replace)
+hist dailytime if type_deposit & treatmentgroup == 2, frac width(1800000) lwidth(thin) lcolor(gs1) fcolor(gs12) xline(28800000) title("PLS-N") xtitle("") ylabel(, glwidth(vthin) glcolor(gs14)) xlabel(0(7200000)86400000, format(%tcHH:MM) angle(330)) graphregion(color(white)) saving("$fig_dir/hist-timing1", replace)
+hist dailytime if type_deposit & treatmentgroup == 3, frac width(1800000) lwidth(thin) lcolor(gs1) fcolor(gs12) xline(28800000) title("PLS-F") xtitle("Time") ylabel(, glwidth(vthin) glcolor(gs14)) xlabel(0(7200000)86400000, format(%tcHH:MM) angle(330)) graphregion(color(white)) saving("$fig_dir/hist-timing2", replace)
+
+gr combine hist-timing0.gph hist-timing1.gph hist-timing2.gph, col(1) xcommon ycommon graphregion(color(white)) ysize(1.5) xsize(1)
 gr export "$fig_dir/hist-deposits.eps", replace
 cap noi !epstopdf "$fig_dir/hist-deposits.eps"
-
-* can either do gr combine or have the bars side to side
 
 tw (hist dailytime if type_deposit & inrange(dailytime, 25200000, 36000000) & treatmentgroup == 1, frac width(360000) lwidth(thin) lcolor(gs1) fcolor(none)) (hist dailytime if type_deposit & inrange(dailytime, 25200000, 36000000) & treatmentgroup == 2, frac width(360000) lwidth(thin) lcolor(gs1) fcolor(gs12)) (hist dailytime if type_deposit & inrange(dailytime, 25200000, 36000000) & treatmentgroup == 3, frac width(360000) lwidth(thin) lcolor(gs1) fcolor(gs2)), xline(28800000) xtitle("Time") ylabel(, glwidth(vthin) glcolor(gs14)) xlabel(25200000(720000)36000000,format(%tcHH:MM) angle(330)) graphregion(color(white)) legend(order(1 "Control" 2 "PLS-N" 3 "PLS-F"))
 gr export "$fig_dir/hist-zoomdeposits.eps", replace
 cap noi !epstopdf "$fig_dir/hist-zoomdeposits.eps"
+
+/* Does timing change for non-savers in response to winning? */
+
+hist dailytime if type_deposit & inrange(dailytime, 25200000, 36000000) & winregret == 1, frac lcolor(gs1) fcolor(gs2) width(360000) lwidth(thin) xlabel(25200000(720000)36000000,format(%tcHH:MM) angle(330)) graphregion(color(white)) saving("$fig_dir/hist-regret1", replace)
+
+hist dailytime if type_deposit & inrange(dailytime, 25200000, 36000000) & winregret == 0, frac lcolor(gs1) fcolor(gs12) width(360000) lwidth(thin) xlabel(25200000(720000)36000000,format(%tcHH:MM) angle(330)) graphregion(color(white)) saving("$fig_dir/hist-regret0", replace)
+
+gr combine hist-regret0.gph hist-regret1.gph, col(1) xcommon ycommon graphregion(color(white))
 
 ////////////////////
 /* Autoregression */
