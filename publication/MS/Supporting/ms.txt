@@ -1,0 +1,92 @@
+Statement
+
+	Management Science is a scholarly journal that publishes scientific research on the theory and practice of management. The journal includes within its scope all aspects of management related to strategy, entrepreneurship, innovation, technology, and organizations as well as all functional areas of business, such as accounting, finance, information systems, marketing, and operations. The journal includes studies on organizational, managerial, group and individual decision making, from both normative and descriptive perspectives. The articles are primarily based on the foundational disciplines of computer science, economics, mathematics, psychology, sociology, and statistics, but cross-functional, multidisciplinary research that reflects the diversity of the management science professions is also encouraged. The journal interest extends to managerial issues in diverse organizational forms, such as for-profit and nonprofit firms, private and public sector institutions, and formal and informal networks of individuals. We welcome theoretical, experimental (field or lab) and empirical contributions.
+
+	The unifying thread of all Management Science articles is an analytical focus on improving the understanding of management. An acceptable manuscript must be relevant to the theory or practice of management, must meet high standards of rigor, and must be of broad interest to the community of management science scholars.
+
+Submission
+
+	Step 1: Type, Title & Abstract: “Type” refers to the department in Management Science to which the manuscript is being submitted as well as the whether the paper is a regular or fast-track submission. Abstracts should be 250 words or less.
+
+	Step 2: Attributes: Please provide three to five keywords.
+
+	Step 3: Authors & Institutions: All authors and their institutions must be identified. Please note that the submitting author is required to provide their ORCID iD (more information about ORCID iDs can be found here.
+
+	Step 4: Reviewers & Editors: The names of five appropriate reviewers for the manuscript, including their institutions and e-mail addresses, are required.
+
+	The names of three Associate Editors (AEs) who would be appropriate to review the manuscript must be included. The three preferred AEs should in general be chosen from the list of current AEs in the Editorial Board list. Authors may recommend one Guest Associate Editor, providing his or her contact information and the reason for the choice in the submission cover letter.
+
+	Authors should not select any DE, AE, or reviewer with whom any author of the paper has a conflict of interest (COI). An author has a conflict of interest with (i) his/her major professor or a student for whom the author served as a major professor, (ii) a person working at the same institution, and/or (iii) a co-author on work completed or in progress, if the joint work was done during the 5 years prior to submission. If an author feels that it is absolutely necessary to include a person with a COI, then they must clearly identify the COI with that particular person and explain the reason for the person’s inclusion.
+
+	Step 5: Details & Comments (cover letter, ethics policy, and department editor preference): Submitting authors will enter their cover letter first. The cover letter should include the abstract of the manuscript and whether the paper is being submitted to the fast-track category. It may also include (i) a brief description for the author’s choices of 5 reviewers and 3 Associate Editors (in particular if a guest AE was recommended) and/or (ii) any additional comments to convey to the department editor.
+
+	Submitting authors will designate a Department Editor (DE) to whom they would like to submit the manuscript. (Before choosing a DE, authors should consult the journal's Editorial Board list and the departmental Editorial Statements.) The preferred DE is likely to be assigned, but a different DE may handle the paper if the workload of the preferred DE is too great or if the DE feels that another DE would be better suited to handle the paper. The corresponding author will be notified if the paper is assigned to a different DE, and the author will have the option to withdraw the manuscript. If the submission is a revision and the DE on the previous version is not listed, then he or she is no longer on the editorial board and might not be assigned to handle the revision. Authors should choose "Other" as the preferred DE if they would like the previous DE to handle the revision; DE assignment will be decided on a case-by-case basis. Note that revisions will be assigned automatically to the AE who handled the previous version.
+
+	Last, submitting authors will certify that they are complying with the journal's ethical policies.
+
+	Step 6: File Upload: Submitting authors will upload the blinded files for their manuscript and supporting documents. Please do not upload a title page with your submission.
+
+	Step 7: Review & Submit: As the final step, authors will review the previous six steps for completeness and view the PDF proof generated by the ScholarOne system (this is required). Be sure to select “Submit” when done.
+
+Citations
+
+	The ABCs of Financial Education: Experimental Evidence on Attitudes, Behavior, and Cognitive Biases
+	Fenella Carpena
+	, Shawn Cole
+	, Jeremy Shapiro
+	, Bilal Zia
+	Published Online:19 Sep 2017https://doi.org/10.1287/mnsc.2017.2819
+
+	Financial Literacy, Financial Education, and Downstream Financial Behaviors
+	Daniel Fernandes
+	, John G. Lynch Jr.
+	, Richard G. Netemeyer
+	Published Online:27 Jan 2014https://doi.org/10.1287/mnsc.2013.1849
+
+	Lottery-Related Anomalies: The Role of Reference-Dependent Preferences
+	Li An
+	, Huijun Wang
+	, Jian Wang
+	, Jianfeng Yu
+	Published Online:1 Aug 2019https://doi.org/10.1287/mnsc.2018.3205
+
+	Judgment Error in Lottery Play: When the Hot Hand Meets the Gambler’s Fallacy
+	Qingxia Kong
+	, Georg D. Granic
+	, Nicolas S. Lambert
+	, Chung Piaw Teo
+	Published Online:1 Aug 2019https://doi.org/10.1287/mnsc.2018.3233
+
+	Ride Your Luck! A Field Experiment on Lottery-Based Incentives for Compliance
+	Marco Fabbri
+	, Paolo Nicola Barbieri
+	, Maria Bigoni
+	Published Online:8 May 2019https://doi.org/10.1287/mnsc.2018.3163
+
+	Can Gambling Increase Savings? Empirical Evidence on Prize-Linked Savings Accounts
+	Shawn Cole
+	, Benjamin Iverson
+	, Peter Tufano
+	Published Online:27 May 2021https://doi.org/10.1287/mnsc.2021.4047
+
+	A Context-Dependent Model of the Gambling Effect
+	Han Bleichrodt
+	, Ulrich Schmidt
+	Published Online:1 Jun 2002https://doi.org/10.1287/mnsc.48.6.802.190
+
+	A Direct Test of Risk Aversion and Regret in First Price Sealed-Bid Auctions
+	Richard Engelbrecht-Wiggans
+	, Elena Katok
+	Published Online:11 Mar 2009https://doi.org/10.1287/deca.1090.0135
+
+	A Generalized Utility Model of Disappointment and Regret Effects on Post-Choice Valuation
+	J. Jeffrey Inman
+	, James S. Dyer
+	, Jianmin Jia
+	Published Online:1 May 1997https://doi.org/10.1287/mksc.16.2.97
+
+	A Quantitative Measurement of Regret Theory
+	Han Bleichrodt
+	, Alessandra Cillo
+	, Enrico Diecidue
+	Published Online:6 Nov 2009https://doi.org/10.1287/mnsc.1090.1097

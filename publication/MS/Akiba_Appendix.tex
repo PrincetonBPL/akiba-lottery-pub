@@ -1,0 +1,458 @@
+\documentclass[11pt]{article}
+
+\usepackage[a4paper,margin=1.5in]{geometry}
+\usepackage[strict]{changepage}
+% \usepackage[scale=0.92]{tgschola}
+% \usepackage{fouriernc}
+\usepackage{lmodern}
+\usepackage{inconsolata}
+\usepackage[T1]{fontenc}
+
+\usepackage{booktabs, threeparttable, adjustbox, tabularx, longtable}
+\usepackage{amsmath, amssymb, amsthm, bbm}
+\usepackage{hyperref, achicago}
+\usepackage{caption, graphicx}
+\usepackage{secdot, sectsty}
+\usepackage{pdflscape}
+\usepackage{placeins}
+\usepackage{xcolor}
+
+\fontfamily{qcs}
+\linespread{1.1}
+\urlstyle{tt}
+
+\allsectionsfont{\rmfamily}
+\sectionfont{\normalsize}
+\subsectionfont{\normalsize\selectfont}
+\subsubsectionfont{\normalfont\normalsize\selectfont\itshape}
+
+\newcommand{\specialcell}[2][c]{\begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
+\renewcommand{\today}{\ifcase \month \or January \or February \or March \or April \or May  \or June \or July \or August \or September \or October \or November \or December \fi \number \year}
+
+\begin{document}
+
+\title{\textsc{The Role of Regret in Prize-Linked Savings: Supplementary Materials}\protect\footnote{For online publication only. Files for replication are available at \url{https://github.com/princetonbpl/akiba-lottery-pub}.}}
+
+\author{
+    Justin Abraham\thanks{University of California, San Diego. \protect\href{mailto:jabraham@ucsd.edu}{\nolinkurl{jabraham@ucsd.edu}}.},
+    Merve Akbas\thanks{\protect\href{mailto:merveakbas@gmail.com}{\nolinkurl{merveakbas@gmail.com}}.},
+    Dan Ariely\thanks{Duke University. \protect\href{mailto:dan@danariely.com}{\nolinkurl{dan@danariely.com}}.}, and
+    Chaning Jang\thanks{The Busara Center for Behavioral Economics. \protect\href{mailto:chaning.jang@busaracenter.org}{\nolinkurl{chaning.jang@busaracenter.org}}.}
+}
+
+\maketitle
+
+\newpage
+
+\tableofcontents
+
+\newpage
+
+\listoftables
+
+\listoffigures
+
+\newpage
+
+\appendix
+
+\section{Experimental Materials}
+
+    \subsection{Consent form}
+
+        {\setlength{\parskip}{1em} \setlength{\parindent}{0em}
+
+        You are asked to participate in research project conducted by researchers at Duke University, Dan Ariely (dan@danariely.com) and Seher Merve Akbas (merve.akbas@duke.edu). The purpose of this project is (1) to understand how people make decisions about money, (2) how people make risky decisions, (3) how people decide to save money.
+
+        During the study in the laboratory, you will be presented a number of decisions involving money. Your payment will depend on your decisions and specific rules about it will be explained to you before you start.
+
+        Your participation in this project is completely voluntary and you are free to withdraw from it at any time. During the project, all the information about you will be analyzed anonymously and reported by groups.
+
+        Do you have any questions that you would like to ask now?
+
+        For any future questions or concerns about the project, please contact the researcher Seher Merve Akbas via e-mail (merve.akbas@duke.edu) or phone (+1919-328-0080) or Dan Ariely via e-mail (dan@danariely.com) or the project associate, James Vancel (email: jvancel@poverty-action.org) (Phone: +254725066428), or the project manager, Joseph Njoroge (jmuiruri@poverty-action.org) (Phone: +254722900068).
+
+        I have read this information, and would like to participate
+
+        Name: \qquad Date:
+
+        }
+
+    \subsection{Savings account}
+
+        \subsubsection{Account instructions (Control)}
+
+            {\setlength{\parskip}{1em} \setlength{\parindent}{0em}
+
+            Here, we are introducing you AKIBA SMART, which will allow you to save money for a period of four weeks (28 days). Now I will explain how AKIBA SMART works. Using AKIBA SMART, you can save money by sending airtime (via Sambaza) to 0726-085246. The net worth of the airtime you send will be the amount you save. For example, if you send Airtime worth 20KSh it means you saved 20Ksh. This way, you won't pay any MPESA fees to save.
+
+            AKIBA SMART helps you save in two ways:
+
+            1. Every day, AKIBA SMART will add 5\% of your daily savings to your account. For example, if you saved 20KSH, you will receive 1 KSH extra. The more you save each day, the more money you will accumulate yourself. Furthermore, the more you save, the more you will receive extra from AKIBA SMART.
+
+            2. You will be able to keep your money in a safe place for 28 days, and at the end of 28 days, you will receive all your savings, with the extra money you received from AKIBA SMART back via MPESA (you won't receive Airtime).
+
+            As a promotion, you are automatically enrolled in AKIBA SMART today. You will receive your ID cards now and you can start saving immediately. [We will try out how it works here. As part of our promotion, we will give you some money to save today to learn how it works. This money is yours and you will receive it at the end of 28 days.]
+
+            Do you have any questions?
+
+            }
+
+        \subsubsection{Account instructions (PLS no feedback)}
+
+            {\setlength{\parskip}{1em} \setlength{\parindent}{0em}
+
+            Here, we are introducing you AKIBA SMART, which will allow you to save money for a period of four weeks (28 days). Now I will explain how AKIBA SMART works. Using AKIBA SMART, you can save money by sending airtime (via Sambaza) to 0726-085246. The net worth of the airtime you send will be the amount you save. For example, if you send Airtime worth 20KSh it means you saved 20Ksh. This way, you won't pay any MPESA fees to save.
+
+            AKIBA SMART helps you save in two ways:
+
+            1. Every day, if you save, you will receive your Lottery Ticket in an SMS and you will enter a lottery. The next day, you will be notified by SMS whether you won, and how much money you won. If you win, the prize will be added to your account. If you don't win, you will still keep your savings. This will continue every day for 28 days. The more you save each day, the more money you will accumulate yourself. Furthermore, the more you save, the bigger the prizes!!!
+
+            2. You will be able to keep your money in a safe place for 28 days, and at the end of 28 days you will receive all your savings, with the prizes you won back via MPESA (you won't receive Airtime).
+
+            The lottery works as follows:
+
+            Each day, if you save, you will receive a lottery ticket as SMS. The lottery ticket includes 4 numbers between 1 and 10. If the FIRST OR SECOND number in your lottery ticket match the first or second number in the winning ticket, you win Prize 1: 10\% of what you saved that day! For example, if you saved 20KSH that day, you win 2 KSH extra. If the FIRST AND SECOND numbers in your lottery ticket match the first and second numbers in the winning ticket, you win Prize 2: 100\% of what you saved that day! For example, if you saved 20KSH that day, you win 20 KSH extra. If the ALL NUMBERS in your lottery ticket match all numbers in the winning ticket in the same order, you win Prize 3: 200 times what you saved that day! For example, if you saved 20KSH that day, you win 4000 KSH extra.
+
+            As a promotion, you are automatically enrolled in AKIBA SMART today. You will receive your ID cards now and you can start saving immediately. [We will try out how it works here. As part of our promotion, we will give you some money to save today to learn how it works. This money is yours and you will receive it at the end of 28 days.]
+
+            Do you have any questions?
+
+            }
+
+        \subsubsection{Account instructions (PLS with feedback)}
+
+            {\setlength{\parskip}{1em} \setlength{\parindent}{0em}
+
+            Here, we are introducing you AKIBA SMART, which will allow you to save money for a period of four weeks (28 days). Now I will explain how AKIBA SMART works.
+            Using AKIBA SMART, you can save money by sending airtime (via Sambaza) to 0726-085246. The net worth of the airtime you send will be the amount you save. For example, if you send Airtime worth 20KSh it means you saved 20Ksh. This way, you won't pay any MPESA fees to save.
+
+            AKIBA SMART helps you save in two ways:
+
+            1. Every day, you will receive your Lottery Ticket in an SMS and you will enter a lottery. The next day, you will be notified by SMS whether you won, and how much money you won. If you win, your prize will be added to your account ONLY IF YOU SAVED that day, if you did not save, you will give up your prize. If you don't win, you will still keep your savings. This will continue every day for 28 days. The more you save each day, the more money you will accumulate yourself. Furthermore, the more you save, the bigger the prizes!!!
+
+            2. You will be able to keep your money in a safe place for 28 days, and at the end of 28 days you will receive all your savings, with the prizes you won back via MPESA (you won't receive Airtime).
+
+            The lottery works as follows:
+
+            Each day, you will receive a lottery ticket as SMS. The lottery ticket includes 4 numbers between 1 and 10. If the FIRST OR SECOND number in your lottery ticket match the first or second number in the winning ticket, you win Prize 1: 10\% of what you saved that day! For example, if you saved 20KSH that day, you win 2 KSH extra. If the FIRST AND SECOND numbers in your lottery ticket match the first and second numbers in the winning ticket, you win Prize 2: 100\% of what you saved that day! For example, if you saved 20KSH that day, you win 20 KSH extra. If the ALL NUMBERS in your lottery ticket match all numbers in the winning ticket in the same order, you win Prize 3: 200times what you saved that day! For example, if you saved 20KSH that day, you win 4000 KSH extra.
+
+            REMEMBER: YOU CAN REDEEM YOUR PRIZE ONLY IF YOU SAVED THAT DAY.
+
+            As a promotion, you are automatically enrolled in AKIBA SMART today. You will receive your ID cards now and you can start saving immediately. [We will try out how it works here. As part of our promotion, we will give you some money to save today to learn how it works. This money is yours and you will receive it at the end of 28 days.]
+
+            Do you have any questions?
+
+            }
+
+        \clearpage
+
+        \begin{figure}[ht]
+        \caption{Savings ID cards}
+        \centering
+        \begin{tabular}{cc}
+        \includegraphics[width=0.45\textwidth]{../../figures/id_front_control.pdf} & \includegraphics[width=0.45\textwidth]{../../figures/id_front_lottery.pdf} \\
+        (a) Front & (b) Front \\
+        \includegraphics[width=0.45\textwidth]{../../figures/id_back_control.pdf} & \includegraphics[width=0.45\textwidth]{../../figures/id_back_lottery.pdf} \\
+        (c) Back (Control) & (d) Back (Lottery) \\
+        \end{tabular}
+        \end{figure}
+
+        \clearpage
+
+        \subsubsection{SMS reminders (Control)}
+
+            \begin{itemize}
+                \item \underline{Reminder}: ``{Name}, remember to save XX or more today to earn 5\% daily interest. Sambaza *140*XX*Phone to save''
+                \item \underline{Upon receipt of airtime}: ``You saved XX. You earned 5\% interest!  QQ was deposited into your account. Your balance is ZZ.''
+            \end{itemize}
+
+        \subsubsection{SMS reminders (PLS no feedback)}
+
+            \begin{itemize}
+                \item \underline{Reminder}: ``{Name}, remember to buy your ticket today (this week) by saving XX. Sambaza *140*XX*Phone to save''
+                \item \underline{Upon receipt of airtime}: ``You saved XX. You purchased your ticket. Your lucky numbers are AA-BB. Your balance is ZZ.''
+            \end{itemize}
+
+        \subsubsection{SMS reminders (PLS with feedback)}
+
+            \begin{itemize}
+                \item \underline{Reminder}: ``{Name}, your lucky numbers today (this week) are AA-BB. Keep them by saving XX. Sambaza *140*XX*Phone to save''
+                \item \underline{Upon receipt of airtime}: ``You saved XX. You purchased your ticket. Your lucky numbers are AA-BB. Your balance is ZZ.''
+            \end{itemize}
+
+        \subsubsection{Lottery administration (for treatment groups)}
+
+            \begin{itemize}
+                \item \underline{Winning numbers}: ``Yesterday's (last week's) lucky numbers were CC-DD. Winners receive PPP Ksh. Save today (this week) to play again!''
+                \item \underline{Winners}: ``Your lucky numbers were AA-BB. Congratulations!  You won PPP Ksh!  Win again today (this week) by saving.''
+                \item \underline{Losers}: ``Your lucky numbers were AA-BB. You did not win. Try again today (this week) by saving.''
+                \item \underline{Losers in regret group}: ``Your lucky numbers were AA-BB. You would have won, but you did not save enough to buy your ticket!  Don't miss you again, save to play.''
+            \end{itemize}
+
+        \subsubsection{Other}
+
+            \begin{itemize}
+                \item \underline{Upon receipt of an incoming SMS}: ``Your balance is ZZ. Save YY to buy your ticket (reach your match) OR You have reached your goal today (this week). Save more, Sambaza *140*XX*Phone.''
+                \item \underline{Upon receipt of airtime from unknown number}: ``This number is not known in the system. What is your standard phone number (10-digits)?''
+                \item \underline{If reply is not understood (return airtime via Sambaza)}: ``This is not a valid response. We are returning your airtime. Please save using your phone only. Call Phone for help.''
+            \end{itemize}
+
+    \subsection{Laboratory instructions}
+
+        \subsubsection{Coin toss task}
+
+            For the next task your payoff will depend on a coin flip.  You will win money if it is a heads or if it is a tails.  You must decide which payoffs for heads and tails you prefer. The exact amount of money you will win will depend on which side the coin landed on. On the next screen you will see 6 different values for heads and tails. You make a SINGLE decision on which coin you prefer and remember that you can only flip one of the coins and only once. There are no right or wrong answers, only your preference.
+
+        \subsubsection{Titration task}
+
+            On the following screen you will find a series of questions. In each question, you are asked to choose between Option A and Option B. If you choose Option A, you will get a smaller amount but sooner. If you choose Option B, you will get a larger amount but later. Please choose the option you prefer. There are no right or wrong answers. After you make all your choices, the computer will randomly pick one of the questions and your payment will be determined by the option you chose in that question. Remember that the computer will pick only one question and any question could be picked. Therefore it is in your interest to answer each question as if it is the only question you are answering.
+
+        \subsubsection{Lottery task}
+
+            In this game, FIRST the computer will randomly chose 4 numbers, each between 0 and 9, to create a lottery ticket for you. For example, your lottery ticket could be: 5067 Then the computer will randomly choose 4 numbers again, each between 0 and 9, to create the winning lottery ticket. For example the winning ticket could be 5645 The lottery prizes are as follows:
+
+            PRIZE 1 (5KSH): If the FIRST OR SECOND number of your lottery ticket match the first OR second number of the winning ticket, your ticket will win prize 1.
+
+            PRIZE 2 (50KSH): If the FIRST AND SECOND number of your lottery ticket match the first AND second number of the winning ticket in the same order, your ticket will win prize 2.
+
+            PRIZE 3 (5000KSH): If ALL NUMBERS of your ticket match all numbers of the winning ticket in the same order, your ticket will win prize 3.
+
+        \subsubsection{Canadian Problem Gambling Index}
+
+        In the last 12 months how often have you [or have for item 7]? 0 = Never, 1 = Sometimes, 2 = Most of the time, 3 = Almost always
+
+        \begin{enumerate}
+            \item Bet more than you could really afford to lose?
+        	\item Needed to gamble with larger amounts of money to get the same feeling of excitement?
+        	\item Gone back another day to try and win back the money you lost?
+        	\item Borrowed money or sold anything to get money to gamble?
+        	\item Felt that you might have a problem with gambling?
+        	\item Felt that gambling has caused you health problems, including stress and anxiety?
+        	\item People criticized your betting or told you that you have a gambling problem, whether or not you thought it was true?
+        	\item Felt your gambling has caused financial problems for you or your household?
+        \end{enumerate}
+
+        In the past month, how often have you done the following? 0 = Never, 1 = 1-4 times, 2 = Daily, 3 = multiple times per day
+
+        \begin{enumerate}
+        	\item Bet money on a sporting event
+        	\item Played the lottery (Charity Sweepstakes)
+        	\item Played cards or another game for money (billards, checkers, etc)
+        	\item In the past month, how often have you gambled in all activities?
+        	\item Participated in an SMS promotion (Safaricom ''Bonyeza Ushinde'' ''Tetemesha'' or other)
+        \end{enumerate}
+
+	\clearpage
+
+% \section{Description of variables}
+%
+% 	We estimate treatment effects on measured savings behavior. The main outcome variables we are interested in are:
+%
+% 		\begin{enumerate}
+% 		\item Average savings over the entire study period.
+% 		\item Average savings over the first and second 30-day period.
+% 		\item Average number of active days and average number of transactions.
+% 		\item Average length of the streaks, i.e. the highest number of consecutive days with a positive daily balance for each person.
+% 		\end{enumerate}
+%
+% 	Aside from the overall savings behavior, we additionally estimate the effect of the program on:
+%
+% 		\begin{enumerate}
+% 		\item Amount withdrawn mid-project
+% 		\item Monthly savings
+% 		\item Whether subject saves
+% 		\item Monthly M-Pesa savings
+% 		\item Whether subject saves with a ROSCA
+% 		\item Temptation to gamble
+% 		\item Gambling behavior
+% 		\item How often subject discussed savings program with family and friends
+% 		\item Trust in the savings program
+% 		\item Satisfaction with saving behavior in the program
+% 		\item Continuation with the savings program
+% 		\item Self-perception as a saver
+% 		\item Trust in the savings program
+% 		\end{enumerate}
+
+\section{Summary Statistics}
+
+	\subsection{Balance checks}
+
+        \input{../../tables/sum-ysumall}
+        \input{../../tables/sum-eltreatall}
+        \input{../../tables/tab-select-final.tex}
+        \input{../../tables/tab-lottery-final.tex}
+
+	\clearpage
+
+    \subsection{Sample attrition}
+
+        \input{../../tables/tab-balance-final.tex}
+        \input{../../tables/reg-attr.tex}
+        \input{../../tables/sum-attrall.tex}
+
+    \clearpage
+
+    \subsection{Normalized differences}
+
+        \input{../../tables/sum-normdiff.tex}
+
+    \clearpage
+
+\section{Treatment Effects}
+
+	\subsection{Average treatment effects with FWER adjustments}
+    
+		\input{../../tables/reg-fwermobile.tex}
+        \input{../../tables/reg-fwerearly.tex}
+        \input{../../tables/reg-fwerlate.tex}
+		\input{../../tables/reg-fwersave.tex}
+		\input{../../tables/reg-fwergamble.tex}
+		\input{../../tables/reg-fwerakiba.tex}
+        \input{../../tables/reg-fwercons.tex}
+		\input{../../tables/reg-fwerself.tex}
+
+    \clearpage
+
+    \subsection{Covariate-adjusted treatment effects}
+
+        \input{../../tables/reg-covmobile.tex}
+        \input{../../tables/reg-covearly.tex}
+        \input{../../tables/reg-covlate.tex}
+        \input{../../tables/reg-covsave.tex}
+        \input{../../tables/reg-covgamble.tex}
+        \input{../../tables/reg-covakiba.tex}
+        \input{../../tables/reg-covcons.tex}
+        \input{../../tables/reg-covself.tex}
+
+    \clearpage
+
+    % \subsection{Average treatment effects with randomization inference}
+
+    %     \input{../../tables/ri-mobile.tex}
+    %     \input{../../tables/ri-early.tex}
+    %     \input{../../tables/ri-late.tex}
+    %     \input{../../tables/ri-panel.tex}
+    %     \input{../../tables/ri-save.tex}
+    %     \input{../../tables/ri-gamble.tex}
+    %     \input{../../tables/ri-akiba.tex}
+    %     \input{../../tables/ri-cons.tex}
+    %     \input{../../tables/ri-self.tex}
+
+    % \clearpage
+
+	\subsection{Heterogeneous treatment effects}
+
+        \input{../../tables/het-demo_female_0.tex}
+        \input{../../tables/het-demo_young_0.tex}
+        \input{../../tables/het-demo_stdschool_0.tex}
+        \input{../../tables/het-demo_formschool_0.tex}
+        \input{../../tables/het-demo_married_0.tex}
+        \input{../../tables/het-demo_haschild_0.tex}
+        \input{../../tables/het-save_dosave_0.tex}
+        \input{../../tables/het-labor_medianinc_0.tex}
+        \input{../../tables/het-labor_employed_0.tex}
+        \input{../../tables/het-labor_selfemployed_0.tex}
+        \input{../../tables/het-labor_hasdependant_0.tex}
+        \input{../../tables/het-labor_isdependant_0.tex}
+        \input{../../tables/het-pref_riskaverse_0.tex}
+        \input{../../tables/het-pref_medianloc_0.tex}
+        \input{../../tables/het-pref_medianindiff_0.tex}
+        \input{../../tables/het-gam_mediancpgi_z_0.tex}
+
+        % \input{../../tables/het-lottery.tex}
+        % \input{../../tables/het-regret.tex}
+
+	\clearpage
+
+    \subsection{Regressions at the participant-period level}
+
+        \input{../../tables/reg-regretaversion.tex}
+        \input{../../tables/reg-firstperiod.tex}
+        % \input{../../tables/reg-timetrend.tex}
+        % \input{../../tables/reg-timedummy.tex}
+
+    \clearpage
+
+    \subsection{Logistic regression}
+
+        \input{../../tables/reg-ologit.tex}
+        \input{../../tables/reg-mlogselect.tex}
+
+    \clearpage
+
+\section{Baseline Correlates of Savings}
+
+    \input{../../tables/reg-cortotdeposits.tex}
+    \input{../../tables/reg-cortotdepositamt.tex}
+
+\clearpage
+
+\section{Data Visualization}
+
+	\subsection{Main treatment effects by risk aversion}
+
+		\begin{figure}[ht]
+		\centering
+		\caption{Treatment effect by risk aversion -- Total deposits made}
+		\includegraphics[width=\textwidth]{../../figures/line-mobile_totdepositsbyrisk.pdf}
+		\end{figure}
+
+	\clearpage
+
+	\subsection{Savings behavior over project period}
+
+        \begin{figure}[ht]
+        \centering
+        \caption{Timing of deposits}
+        \includegraphics[width=\textwidth]{../../figures/hist-deposits.pdf}
+        \caption*{\footnotesize \emph{Notes:} This figure plots the empirical distribution of timing of all deposits over the project period. Each bin spans 30 minutes with a height equal to the fraction of all deposits within each treatment group. Participants received the first SMS at 8:00 that summarized how much the participant saved the previous day, how much the participant earned through a matching contribution or winnings, and their total balance. An hour later, participants received a second SMS encouraging them to save that day. Participants in \textsc{Regret} received a new lottery ticket with the second message.}
+        \end{figure}
+
+		\begin{figure}[ht]
+		\centering
+		\caption{Number of daily deposits}
+		\includegraphics[width=\textwidth]{../../figures/line-deposits.pdf}
+		\end{figure}
+
+		\begin{figure}[ht]
+		\centering
+		\caption{Cumulative number of deposits}
+		\includegraphics[width=\textwidth]{../../figures/line-cumdeposits.pdf}
+		\end{figure}
+
+		\begin{figure}[ht]
+		\centering
+		\caption{Daily balance averaged over all participants}
+		\includegraphics[width=\textwidth]{../../figures/line-balance.pdf}
+		\end{figure}
+
+	\clearpage
+
+	\subsection{Panel treatment effects}
+
+        \begin{figure}[ht]
+        \centering
+        \caption{Treatment effects over time -- Number of deposits}
+        \includegraphics[width=\textwidth]{../../figures/line-timemobile_deposits.pdf}
+        \end{figure}
+
+        \begin{figure}[ht]
+        \centering
+        \caption{Treatment effects over time -- Amount deposited}
+        \includegraphics[width=\textwidth]{../../figures/line-timemobile_depositamount.pdf}
+        \end{figure}
+
+        \begin{figure}[ht]
+        \centering
+        \caption{Autoregression of daily savings by treatment group -- Number of deposits}
+        \includegraphics[width=\textwidth]{../../figures/lags-mobile_deposits.pdf}
+        \end{figure}
+
+        \begin{figure}[ht]
+        \centering
+        \caption{Autoregression of daily savings by treatment group -- Amount deposited}
+        \includegraphics[width=\textwidth]{../../figures/lags-mobile_depositamount.pdf}
+        \end{figure}
+
+\end{document}
